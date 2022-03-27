@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Http\UserController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,4 +19,4 @@ Route::get("hello",function(){
     return "Hello World!";
 });
 
-Route::get("index",action: UserController@index);
+Route::get("index",UserController@index);
