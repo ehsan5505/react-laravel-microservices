@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get(url: "hello",function(){
+Route::get("hello",function(){
     return "Hello World!";
 });
