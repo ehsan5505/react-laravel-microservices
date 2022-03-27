@@ -19,4 +19,4 @@ Route::get("hello",function(){
     return "Hello World!";
 });
 
-Route::get("index",UserController@index);
+Route::get("index",'UserController@index');
