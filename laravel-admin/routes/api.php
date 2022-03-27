@@ -20,3 +20,5 @@ Route::get("hello",function(){
 });
 
 Route::get("index",'UserController@index');
+
+Route::get("users",'UserController@users');
