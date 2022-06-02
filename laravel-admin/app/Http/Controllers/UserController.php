@@ -22,6 +22,6 @@ class UserController extends Controller
     }
 
     function create(Request $request){
-        return Hash:make($request->password);
+        return Hash::make($request->password);
     }
 }
