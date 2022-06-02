@@ -8,11 +8,15 @@ use App\User;
 class UserController extends Controller
 {
     //
-    function index(){
+    function hello(){
         return "Hello From the Controller";
     }
 
-    function users(){
+    function index(){
         return User::all();
+    }
+
+    function show($id){
+        return User::find($id);
     }
 }
