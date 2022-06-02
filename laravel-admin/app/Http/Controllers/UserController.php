@@ -22,6 +22,14 @@ class UserController extends Controller
     }
 
     function create(Request $request){
-        return Hash::make($request->password);
+        $user =  User::create([
+            'first_name' => $request->first_name,
+            'last_name'  => $request->last_name,
+            'email'     => $request->email,
+            'password'  => Hash::make($request->password)f
+        ]);
+        
+        return response($user,Response::HTTP_CREATED);
+        
     }
 }
