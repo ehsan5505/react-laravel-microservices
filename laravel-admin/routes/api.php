@@ -22,7 +22,7 @@ Route::get("hello",function(){
 Route::get("index",'UserController@hello');
 
 Route::get("users",'UserController@index');
-Route::get("users/{@id}","UserController@show");
+Route::get("users/{id}","UserController@show");
 Route::post("users","UserController@create");
-Route::put("users/{@id}","UserController@update");
-Route::delete("users/{@id}","UserController@destroy");
+Route::put("users/{id}","UserController@update");
+Route::delete("users/{id}","UserController@destroy");
