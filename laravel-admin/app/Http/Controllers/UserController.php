@@ -19,4 +19,8 @@ class UserController extends Controller
     function show($id){
         return User::find($id);
     }
+
+    function create(Request $request){
+        return $request;
+    }
 }
