@@ -21,6 +21,6 @@ class UserController extends Controller
     }
 
     function create(Request $request){
-        return $request->first_name;
+        return Hash($request->first_name);
     }
 }
