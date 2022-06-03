@@ -23,14 +23,13 @@ class UserController extends Controller
     }
 
     function create(Request $request){
-        // $user =  User::create([
-        //     'first_name' => $request->first_name,
-        //     'last_name'  => $request->last_name,
-        //     'email'     => $request->email,
-        //     'password'  => Hash::make($request->password),
-        // ]);
+        $user =  User::create([
+            'first_name' => $request->first_name,
+            'last_name'  => $request->last_name,
+            'email'     => $request->email,
+            'password'  => Hash::make($request->password),
+        ]);
         
-        // return response($user,Response::HTTP_CREATED);
-        return response(User::find(21),Response::HTTP_CREATED);
+        return response($user,Response::HTTP_CREATED);
     }
 }
