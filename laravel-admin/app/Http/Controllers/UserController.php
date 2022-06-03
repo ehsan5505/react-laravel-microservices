@@ -31,6 +31,6 @@ class UserController extends Controller
         // ]);
         
         // return response($user,Response::HTTP_CREATED);
-        return response(User::find(21),Response::HTTP_CREATED)
+        return response(User::find(21),Response::HTTP_CREATED);
     }
 }
