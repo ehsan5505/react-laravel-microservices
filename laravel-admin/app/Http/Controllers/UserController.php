@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
@@ -40,13 +41,10 @@ class UserController extends Controller
 
     // Update Particular user
     // PUT @users:id
-    function update($id,Request $request){
+    function update($id,UserUpdateRequest $request){
         $user = User::find($id);
 
-        $user->update(['first_name' => $request->first_name,
-        'last_name'  => $request->last_name,
-        'email'     => $request->email,
-        'password'  => Hash::make($request->password)]);
+        $user->update($request->read('first_name','last_name','email'));
 
         return response($user, Response::HTTP_ACCEPTED);
     }
