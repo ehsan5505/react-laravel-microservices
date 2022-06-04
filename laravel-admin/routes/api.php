@@ -27,3 +27,4 @@ Route::get("hello",function(){
 // Route::delete("users/{id}","UserController@destroy");
 // Active
 Route::apiResource("users","UserController");
+Route::post("login","AuthController@login");
