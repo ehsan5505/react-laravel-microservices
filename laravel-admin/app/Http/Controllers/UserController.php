@@ -31,7 +31,7 @@ class UserController extends Controller
     // POST @users
     function store(UserCreateRequest $request){
         $user =  User::create([
-            $request->only(keys: 'first_name','last_name','email') 
+            $request->only('first_name','last_name','email') 
             + 'password'  => Hash::make('1234') // default password, user should update
         ]);
         
