@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Request\;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Requests\UserCreateRequest;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
