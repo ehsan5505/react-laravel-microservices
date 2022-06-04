@@ -28,7 +28,7 @@ class UserController extends Controller
 
     // Create new user
     // POST @users
-    function create(Request $request){
+    function store(Request $request){
         $user =  User::create([
             'first_name' => $request->first_name,
             'last_name'  => $request->last_name,
