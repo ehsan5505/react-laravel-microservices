@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Passport\HasAPITokens;
+use Laravel\Passport\HasApiTokens;
 
 /**
  * App\User
@@ -37,7 +37,7 @@ use Laravel\Passport\HasAPITokens;
  */
 class User extends Authenticatable
 {
-    use HasAPITokens, Notifiable;
+    use HasApiTokens, Notifiable;
 
     protected $guarded = ['id'];
 
