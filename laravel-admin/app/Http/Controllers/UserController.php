@@ -28,12 +28,12 @@ class UserController extends Controller
 
     // Create new user
     // POST @users
-    function store(Request $request){
+    function store(UserCreateRequest $request){
         $user =  User::create([
             'first_name' => $request->first_name,
             'last_name'  => $request->last_name,
             'email'     => $request->email,
-            'password'  => Hash::make($request->password),
+            'password'  => Hash::make('1234'), // default password, user should update
         ]);
         
         return response($user,Response::HTTP_CREATED);
