@@ -49,7 +49,7 @@ class UserController extends Controller
         'email'     => $request->email,
         'password'  => Hash::make($request->password)]);
 
-        return response($user, Response::HTTP_UPDATED);
+        return response($user, Response::HTTP_ACCEPTED);
     }
 
 
