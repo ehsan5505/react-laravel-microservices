@@ -18,11 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::get("hello",function(){
     return "Hello World!";
 });
-
-Route::get("index",'UserController@hello');
-
-Route::get("users",'UserController@index');
-Route::get("users/{id}","UserController@show");
-Route::post("users","UserController@create");
-Route::put("users/{id}","UserController@update");
-Route::delete("users/{id}","UserController@destroy");
+// De-Active
+// Route::get("index",'UserController@hello');
+// Route::get("users",'UserController@index');
+// Route::get("users/{id}","UserController@show");
+// Route::post("users","UserController@create");
+// Route::put("users/{id}","UserController@update");
+// Route::delete("users/{id}","UserController@destroy");
+// Active
+Route::apiResource("users","UserController");
