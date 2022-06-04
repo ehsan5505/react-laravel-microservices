@@ -21,6 +21,6 @@ class AuthController extends Controller
 
         return response(
             ['error' => "Could not authenticate the user"],
-            Response::HTTP_UNAUTHORIZE);
+            Response::HTTP_UNAUTHORIZED);
     }
 }
