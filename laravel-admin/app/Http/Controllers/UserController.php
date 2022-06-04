@@ -55,7 +55,10 @@ class UserController extends Controller
     // Delete the User
     // DELETE @users:id
     function destroy($id){
-        return User::destroy($id);
+        if(User::destroy($id) ==0) {
+            return "Record Not Found";
+        }
+        return "Record Found";
         // if (User::destroy($id))
         //     return response(("User Not Exist",Response::HTTP_NOT_FOUND);
         // return response(null,Response::HTTP_NO_CONTENT);
