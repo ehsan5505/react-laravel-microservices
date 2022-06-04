@@ -19,7 +19,7 @@ class UserController extends Controller
     // Return all the users
     // @users
     function index(){
-        return User::all();
+        return User::paginate();
     }
 
     // Return Particular user
