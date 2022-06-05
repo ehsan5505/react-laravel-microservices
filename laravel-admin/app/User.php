@@ -50,7 +50,7 @@ class User extends Authenticatable
     ];
 
     public function role(){
-        $this->belongsTo(\App\Role::class);
+        $this->belongsTo(Role::class);
     }
 
    
