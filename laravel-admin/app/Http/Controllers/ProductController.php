@@ -33,8 +33,17 @@ class ProductController extends Controller
         $filename = $name.".".$file->extension();
         $url = Storage::putFileAs("images",$file,$filename);
         
-        $filename = env('IMAGE_HOST')."/".$url; 
-        return response($filename,Response::HTTP_CREATED);
+        $image_url = env('IMAGE_HOST')."/".$url; 
+
+        $product = Product::create(
+            [
+                'title' => $request->input('title'),
+                'description' => $request->input('description'),
+                'imageUrl'  =>  $image_url,
+                'price'     =>  $request->input('price')
+            ]
+            );
+        return response(new ProductResource($product),Response::HTTP_CREATED);
 
     }
 
