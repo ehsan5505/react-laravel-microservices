@@ -27,7 +27,7 @@ class UserController extends Controller
     // Return Particular user
     // @users:id
     function show($id){
-        return User::with('role')::find($id);
+        return User::with('role')->find($id);
     }
 
     // Create new user
