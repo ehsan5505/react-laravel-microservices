@@ -32,7 +32,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
-        $product->update($request->only(['title','desription','imageUrl','price']));
+        $product->update($request->only(['title','description','imageUrl','price']));
         return response(new ProductResource($product), Response::HTTP_ACCEPTED);
     }
 
