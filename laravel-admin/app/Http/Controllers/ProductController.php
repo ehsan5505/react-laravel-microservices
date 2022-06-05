@@ -33,7 +33,7 @@ class ProductController extends Controller
         $filename = $name.".".$file->extension();
         $url = Storage::putFileAs("images",$file,$filename);
         
-        // $filename = env('APP_URL')."images/".$name.".".$file->extension(); 
+        $filename = env('APP_URL').$url; 
         return response($url,Response::HTTP_CREATED);
 
     }
