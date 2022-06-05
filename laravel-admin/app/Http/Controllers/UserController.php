@@ -6,6 +6,7 @@ use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserUpdateProfileRequest;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
@@ -21,13 +22,14 @@ class UserController extends Controller
     // Return all the users
     // @users
     function index(){
-        return User::with('role')->paginate();
+        $users=User::paginate();
+        return UserResource::collection($users);
     }
 
     // Return Particular user
     // @users:id
     function show($id){
-        return User::with('role')->find($id);
+        return new UserResource(User->find($id));
     }
 
     // Create new user
@@ -38,7 +40,7 @@ class UserController extends Controller
             + ['password'  => Hash::make(1234) ] // default password, user should update
         );
         
-        return response($user,Response::HTTP_CREATED);
+        return response(new UserResource($user),Response::HTTP_CREATED);
     }
 
     // Update Particular user
@@ -48,7 +50,7 @@ class UserController extends Controller
 
         $user->update($request->only('first_name','last_name','email','role_id'));
 
-        return response($user, Response::HTTP_ACCEPTED);
+        return response(new UserResource($user), Response::HTTP_ACCEPTED);
     }
 
     // Delete the User
@@ -63,7 +65,7 @@ class UserController extends Controller
     // Return the User Info
     public function user()
     {
-        return \Auth::user();
+        return new UserResource(\Auth::user());
     }
 
     public function updateInfo(UserUpdateProfileRequest $request)
@@ -72,7 +74,7 @@ class UserController extends Controller
 
         $user->update($request->only('first_name','last_name','email','role_id'));
 
-        return response($user, Response::HTTP_ACCEPTED);
+        return response(new UserResource($user), Response::HTTP_ACCEPTED);
 
     }
 
@@ -82,7 +84,7 @@ class UserController extends Controller
 
         $user->update(['password' => Hash::make($request->input('password')) ] );
 
-        return response($user, Response::HTTP_ACCEPTED);
+        return response(new UserResource($user), Response::HTTP_ACCEPTED);
     }
 
 
