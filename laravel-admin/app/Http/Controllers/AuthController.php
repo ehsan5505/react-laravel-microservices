@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\HTTP\Requests\AuthRegisterRequest;
+use App\Http\Requests\AuthRegisterRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,7 +26,7 @@ class AuthController extends Controller
         );
     }
 
-    public function register(AuthRegisterRquest $request)
+    public function register(AuthRegisterRequest $request)
     {
         $user = User::create(
             $request->only('first_name', 'last_name', 'email')
