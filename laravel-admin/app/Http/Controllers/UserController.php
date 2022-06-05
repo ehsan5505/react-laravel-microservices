@@ -29,7 +29,7 @@ class UserController extends Controller
     // Return Particular user
     // @users:id
     function show($id){
-        return new UserResource(User->find($id));
+        return new UserResource(User::find($id));
     }
 
     // Create new user
