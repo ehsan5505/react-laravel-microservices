@@ -11,6 +11,8 @@ class Roles extends Seeder
      */
     public function run()
     {
-        //
+        \App\Role::create(['name' => 'Admin']);
+        \App\Role::create(['name' => 'Editor']);
+        \App\Role::create(['name' => 'Subscribe']);   
     }
 }
