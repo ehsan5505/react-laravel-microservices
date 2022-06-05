@@ -21,7 +21,7 @@ class UserController extends Controller
     // Return all the users
     // @users
     function index(){
-        return User->with('role')::paginate();
+        return User::with('role')->paginate();
     }
 
     // Return Particular user
