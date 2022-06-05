@@ -21,7 +21,7 @@ class UserController extends Controller
     // Return all the users
     // @users
     function index(){
-        return User::paginate();
+        return User->with('role')::paginate();
     }
 
     // Return Particular user
@@ -34,7 +34,7 @@ class UserController extends Controller
     // POST @users
     function store(UserCreateRequest $request){
         $user =  User::create(
-            $request->only('first_name','last_name','email') 
+            $request->only('first_name','last_name','email','role_id') 
             + ['password'  => Hash::make(1234) ] // default password, user should update
         );
         
@@ -46,7 +46,7 @@ class UserController extends Controller
     function update($id,UserUpdateRequest $request){
         $user = User::find($id);
 
-        $user->update($request->only('first_name','last_name','email'));
+        $user->update($request->only('first_name','last_name','email','role_id'));
 
         return response($user, Response::HTTP_ACCEPTED);
     }
@@ -70,7 +70,7 @@ class UserController extends Controller
     {
         $user = \Auth::user();
 
-        $user->update($request->only('first_name','last_name','email'));
+        $user->update($request->only('first_name','last_name','email','role_id'));
 
         return response($user, Response::HTTP_ACCEPTED);
 

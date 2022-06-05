@@ -49,5 +49,9 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function role(){
+        $this->belongsTo(\App\Role::class);
+    }
+
    
 }
