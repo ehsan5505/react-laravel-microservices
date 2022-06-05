@@ -28,6 +28,6 @@ Route::get("hello",function(){
 // Active
 Route::post("login","AuthController@login");
 
-Route::group(['middleware'=>'Auth:login'],function(){
+Route::group(['middleware'=>'auth:api'],function(){
     Route::apiResource("users","UserController");
 });
