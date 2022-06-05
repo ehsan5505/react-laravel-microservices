@@ -26,5 +26,8 @@ Route::get("hello",function(){
 // Route::put("users/{id}","UserController@update");
 // Route::delete("users/{id}","UserController@destroy");
 // Active
-Route::apiResource("users","UserController");
 Route::post("login","AuthController@login");
+
+Route::group(['middleware'=>'Auth:login'],function(){
+    Route::apiResource("users","UserController");
+});
