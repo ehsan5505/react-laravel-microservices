@@ -39,4 +39,23 @@ Congrats for completing the passport installation, now create the AuthController
 `php artisan make:controller AuthController`
 
 
+### Create A new API 
+Create the Migrate to create the migrate table
+`php artisan make:migration create_roles_tables`
 
+Now append the rules that you want in the table in the create roles_table
+
+Once complete, you can run the migrate to apply/create the schema in db
+`php artisan migrate`
+
+Create the mode to interact with the table
+`php artisan make:model Roles`
+
+Now for the Ide to understand the function we have to update the ide models
+`php artisan ide:model`
+
+Create the Controller with default route function builtin
+`php artisan make:controller RoleController --api`
+
+Now create the default route in the API routes file
+`Route::apiResources('roles','RoleController');`
