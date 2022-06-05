@@ -59,3 +59,30 @@ Create the Controller with default route function builtin
 
 Now create the default route in the API routes file
 `Route::apiResources('roles','RoleController');`
+
+
+#### Using the Foreign Key to Combine the User and Roles Table
+create the migraion first that would alter the user table to add the column
+`php artisan make:migration add_column_role_id_in_users`
+
+It should auto-detect the user table and offer the column, use the foreign('role_id')->references('id').on('roles). Also update the down to drop the Dropforeign(['']) and column dropColumn 
+
+Note! Before running the migration, note that you already fill the users able and adding role_id forign will interrupt/fail as it should be not empty, to avoid this we have to create the seeder
+`php artisan migrate:fresh`
+
+    Seeder (fake data to fill the database or entry)
+    Role Seeder: `php artisan make:seeder Roles`
+    In the roles Seeder Table, you have to make entry (i.e. Admin, Department, Employee)
+
+    On the UserSeed file, you can add the reference to pick the role_id random order from the Roles table
+    Go to the Roles column and add the seeder of \Auth::Role->RandomOrder()->first()->id;
+
+    Link The Role Seeder, open the DatabaseSeeder file and add the RoleSeeder Before the User Seeder
+
+    Run the seed command to generate the data
+    `php artisan db:seed`
+
+    Tip: In between if you lose your precious data, run `compser auto-load`
+
+
+    
