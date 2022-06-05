@@ -79,7 +79,7 @@ class UserController extends Controller
     {
         $user = \Auth::user();
 
-        $user->update(['password' => $request->input('password') ] );
+        $user->update(['password' => Hash::make($request->input('password')) ] );
 
         return response($user, Response::HTTP_ACCEPTED);
     }
