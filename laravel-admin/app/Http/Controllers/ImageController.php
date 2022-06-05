@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ImageUploadRequest;
 use Illuminate\Support\Str;
 use Storage;
 use Symfony\Component\HttpFoundation\Response;
 
 class ImageController extends Controller
 {
-    public function upload(Request $request)
+    public function upload(ImageUploadRequest $request)
     {
 
         if(!$request->has('image'))
-            return response()->json(['message'=>'Please upload the Image...'],Response::HTTP_NOT_FOUND);
+            return response()->json(['message'=>'Please upload the Image...'], Response::HTTP_NOT_FOUND);
         
         $file = $request->file('image');
         $name =  Str::random(10); // Random String name
