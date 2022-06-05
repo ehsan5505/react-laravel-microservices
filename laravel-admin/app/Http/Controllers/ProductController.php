@@ -26,7 +26,9 @@ class ProductController extends Controller
     {
         // print_r($request->input('image'));
         $file = $request->input('image');
-        return response($file->extension());
+        if(!$request->has('image'))
+            return response()->json(['message'=>'Andhay Dekh to lay kahan pe kya kar raha hai...']);
+        // return response($file->extension());
         // $name =  Str::random(10); // Random String name
         // $filename = "images/".$name.".".$file->extension(); 
         // $url = Storage::putFileAs('iamges',$file,$filename);
