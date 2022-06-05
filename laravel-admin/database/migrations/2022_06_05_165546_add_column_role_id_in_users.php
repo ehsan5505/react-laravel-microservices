@@ -14,7 +14,7 @@ class AddColumnRoleIdInUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInt('role_id');
+            $table->unsignedBigInteger('role_id');
             $table->Foreign('role_id')->references('roles')->on('id');
         });
     }
