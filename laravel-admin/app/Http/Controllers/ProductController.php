@@ -30,9 +30,10 @@ class ProductController extends Controller
         
         $file = $request->file('image');
         $name =  Str::random(10); // Random String name
-        $filename = "images/".$name.".".$file->extension(); 
-        $url = Storage::putFileAs('iamges',$file,$filename);
-
+        $filename = $name.".".$file->extension();
+        $url = Storage::putFileAs("images",$file,$filename);
+        
+        // $filename = env('APP_URL')."images/".$name.".".$file->extension(); 
         return response($url,Response::HTTP_CREATED);
 
     }
