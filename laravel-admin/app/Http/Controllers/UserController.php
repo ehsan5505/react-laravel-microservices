@@ -71,7 +71,7 @@ class UserController extends Controller
 
         $user->update($request->only('first_name','last_name','email'));
 
-        return response($user, Response::HTTP_UPDATED);
+        return response($user, Response::HTTP_ACCEPTED);
 
     }
 
@@ -81,7 +81,7 @@ class UserController extends Controller
 
         $user->update(['password' => $request->input('password') ] );
 
-        return response($user, Response::HTTP_UPDATED);
+        return response($user, Response::HTTP_ACCEPTED);
     }
 
 
