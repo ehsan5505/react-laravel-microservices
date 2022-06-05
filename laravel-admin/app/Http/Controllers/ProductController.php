@@ -17,7 +17,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        return new ProductResource::find($id);
+        return new ProductResource(Product::find($id));
     }
 
     public function store(Request $request)
@@ -25,7 +25,7 @@ class ProductController extends Controller
 
     }
 
-    public function update(Request $request,id)
+    public function update(Request $request,$id)
     {
 
     }
