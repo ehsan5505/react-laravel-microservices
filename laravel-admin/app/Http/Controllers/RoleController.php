@@ -15,7 +15,7 @@ class RoleController extends Controller
 
     public function store(Request $request)
     {
-        $role = Role::create(['name' => $request->only('name')]);
+        $role = Role::create('name' => $request->only('name'));
         return response($role,Response::HTTP_CREATED);
     }
 
