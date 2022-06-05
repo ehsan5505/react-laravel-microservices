@@ -13,7 +13,7 @@ class ImageUploadRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class ImageUploadRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' =>  'required|mime:jpg,jpeg,png,gif,webp'
         ];
     }
 }
