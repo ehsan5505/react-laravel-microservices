@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -55,6 +56,32 @@ class UserController extends Controller
         if (User::destroy($id) == 0)
             return response("User Not Exist",Response::HTTP_NOT_FOUND);
         return response(null,Response::HTTP_NO_CONTENT);
+    }
+
+
+    // Return the User Info
+    public function user()
+    {
+        return \Auth::user();
+    }
+
+    public function info(Request $request)
+    {
+        $user = \Auth::user();
+
+        $user->update($request->only('first_name','last_name','email'));
+
+        return response($user, Response::HTTP_UPDATED);
+
+    }
+
+    public function password(UserPasswordUpdateRequest $request)
+    {
+        $user = \Auth::user();
+
+        $user->update(['password' => $request->input('password') ] );
+
+        return response($user, Response::HTTP_UPDATED);
     }
 
 
