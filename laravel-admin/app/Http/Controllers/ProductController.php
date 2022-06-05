@@ -34,7 +34,7 @@ class ProductController extends Controller
         $url = Storage::putFileAs("images",$file,$filename);
         
         $filename = env('APP_URL').$url; 
-        return response($url,Response::HTTP_CREATED);
+        return response($filename,Response::HTTP_CREATED);
 
     }
 
