@@ -19,5 +19,5 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     protected $guarded = ['id'];
-    protected $timestamps = false;
+    public $timestamps = false;
 }
