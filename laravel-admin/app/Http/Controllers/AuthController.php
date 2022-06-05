@@ -31,7 +31,7 @@ class AuthController extends Controller
     {
         $user = User::create(
             $request->only('first_name', 'last_name', 'email')
-                + [Hash::make($request->input('password'))]
+                + ["password" => Hash::make($request->input('password'))]
         );
         return response($user,Response::HTTP_ACCEPTED);
     }
