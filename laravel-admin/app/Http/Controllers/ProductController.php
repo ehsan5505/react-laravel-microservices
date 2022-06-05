@@ -24,8 +24,9 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        print_r($request->input('image'));
-        // $file = $request->input('image');
+        // print_r($request->input('image'));
+        $file = $request->input('image');
+        return $file;
         // $name =  Str::random(10); // Random String name
         // $filename = "images/".$name.".".$file->extension(); 
         // $url = Storage::putFileAs('iamges',$file,$filename);
