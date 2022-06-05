@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ProductResource;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Storage;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
@@ -22,6 +24,12 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        $file = $request->input('image');
+        $name =  Str::random(10); // Random String name
+        $filename = "images/".$name.".".$file->extension(); 
+        $url = Storage::putFileAs('iamges',$file,$filename);
+
+        return response($url,Response::HTTP_CREATED);
 
     }
 
