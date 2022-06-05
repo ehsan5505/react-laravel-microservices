@@ -27,8 +27,7 @@ class AuthRegisterRequest extends FormRequest
             'first_name'    =>  'required',
             'last_name'     =>  'required',
             'email'         =>  'required|email',
-            'password'      =>  'required',
-            'confirm_password'=>'required:same:password',
+            'password'      =>  'required|confirmed',
         ];
     }
 }
