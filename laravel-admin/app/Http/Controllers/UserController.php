@@ -65,7 +65,7 @@ class UserController extends Controller
         return \Auth::user();
     }
 
-    public function info(Request $request)
+    public function updateInfo(Request $request)
     {
         $user = \Auth::user();
 
