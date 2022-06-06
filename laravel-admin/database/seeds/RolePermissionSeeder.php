@@ -17,7 +17,7 @@ class RolePermissionSeeder extends Seeder
         foreach($permissions as $permission)
         {
             DB::table('role_permission')->insert([
-                'role_id'       => $admin->id
+                'role_id'       => $admin->id,
                 'permission_id' => $permission->id,
             ]);
         }
@@ -27,7 +27,7 @@ class RolePermissionSeeder extends Seeder
         {
             if(!in_array($permission,['edit_roles'])){
                 DB:table('role_permission')->insert([
-                    'role_id'           =>  $editor->id
+                    'role_id'           =>  $editor->id,
                     'permission_id'     =>  $permission->id,
                 ]);
             }
@@ -41,7 +41,7 @@ class RolePermissionSeeder extends Seeder
             {
                 DB::table('role_migration')->insert(
                 [
-                    'role_id'           =>  $subscriber->id
+                    'role_id'           =>  $subscriber->id,
                     'permission_id'     =>  $permission->id,
                 ]);
             }
