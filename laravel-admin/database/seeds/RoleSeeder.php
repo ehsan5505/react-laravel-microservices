@@ -13,6 +13,6 @@ class RoleSeeder extends Seeder
     {
         \App\Role::create(['name' => 'Admin']);
         \App\Role::create(['name' => 'Editor']);
-        \App\Role::create(['name' => 'Subscribe']);   
+        \App\Role::create(['name' => 'Subscriber']);   
     }
 }
