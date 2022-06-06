@@ -39,7 +39,7 @@ class RolePermissionSeeder extends Seeder
         {
             if(in_array($permission->name,$access))
             {
-                DB::table('role_migration')->insert(
+                DB::table('role_permission')->insert(
                 [
                     'role_id'           =>  $subscriber->id,
                     'permission_id'     =>  $permission->id,
