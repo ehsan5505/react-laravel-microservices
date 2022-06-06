@@ -25,7 +25,7 @@ class RolePermissionSeeder extends Seeder
         $editor = \App\Role::whereName('Editor')->first();
         foreach($permissions as $permission)
         {
-            if(!in_array($permission,['edit_roles'])){
+            if(!in_array($permission->name,['edit_roles'])){
                 DB::table('role_permission')->insert([
                     'role_id'           =>  $editor->id,
                     'permission_id'     =>  $permission->id,
