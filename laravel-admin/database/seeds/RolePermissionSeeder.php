@@ -17,8 +17,8 @@ class RolePermissionSeeder extends Seeder
         foreach($permissions as $permission)
         {
             DB::table('role_permission')->insert([
-                'permission_id' => $permission->id,
                 'role_id'       => $admin->id
+                'permission_id' => $permission->id,
             ]);
         }
 
