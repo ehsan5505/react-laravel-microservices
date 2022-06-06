@@ -41,7 +41,7 @@ class OrderController extends Controller
             {
                 foreach($order->orderItems as $item)
                 {
-                    fputcsv($handle,$order->id,$order->name,$order->email,$item->price,$item->quantity);
+                    fputcsv($handle,[$order->id,$order->name,$order->email,$item->price,$item->quantity]);
                 }
             }
 
