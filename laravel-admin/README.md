@@ -1,5 +1,6 @@
+## [Administrator Panel]
 
-
+### Laravel 
 For User Validation
 -- For Create Model to validate the fields
 `php artisan make:request UserCreateRequest`
@@ -12,7 +13,7 @@ php artisan ide-helper:generate
 php artisan ide-helper:models
 
 
-### Laravel Passport for the Login
+#### Laravel Passport for the Login
 install
 `composer require laravel/passport:^9`
 
@@ -39,7 +40,7 @@ Congrats for completing the passport installation, now create the AuthController
 `php artisan make:controller AuthController`
 
 
-### Create A new API 
+#### Create A new API 
 Create the Migrate to create the migrate table
 `php artisan make:migration create_roles_tables`
 
@@ -124,3 +125,55 @@ Create the API Routes, for this first create the Controller with apis
 
 For the view, we have to also create the Resource
 `php artisan make:resource ProductResource`
+
+#### Storage
+For the image to be stored, you want to use the $file => $request->file('image') and /Storage::PutFileAs()
+By default the file will be saved in the storage/app/<> folder where public route don't have access
+To change the folder to public/app you would need to open the config/storage.php file and update the local, storage_path('....') to public_path()
+
+To Ease the process of the post/put of the product, we segregate the image upload on separate controller, on /image, it pop up an option to upload the image and return the image url, this url should be save in the product create/update
+
+
+#### Order and OrderItem
+Create the migration for the table definition
+`php artisan make:migration create_orders_table`
+`php artisan make:migration create_order_items_table`
+
+Add your column definition, on order_item table add foreign key of order_id that will point to order table id column, then migrate
+`php artisan migrate`
+
+After migration/Schema completes, create the Model
+`php artisan make:model Order`
+`php artisan make:model OrderItem`
+
+For the IDE helper create the models dummy variable to support ide
+`php artisan ide:model`
+
+Now create the Factories to create the dummy data
+`php artisan make:factory OrderFactory`
+`php artisan make:factory OrderItemFactory`
+
+Create the DB Seeder to apply the factory
+`php artisan make:seeder OrderSeeder`
+Note: Once you create the OrderFactory seed, use each order to create the OrderItem from 1,5
+
+Once you define Schema, just apply the Seeder
+`php artisan db:seed --class=OrderSeeder`
+
+We have to create the Order Controller
+`php artisan make:controller OrderController
+
+With the Resources
+`php artisan make:resource OrderResource`
+`php artisan make:resource OrderItemResource`
+
+Now we have to create the relatonship
+    Order hasMany OrderItems
+    OrderItem belongs to Order
+
+in OrderItem Model, we have to have the function of order that belongsTo orderItem
+While in the Order Model we have a function of order_item->hasMany(\App\Order::class)
+
+Once relationship completes, create the api route with only('index','show') function
+
+!Tricks: As a short in laravel, if you use get<Name>Attribute in the Model, you can use as shortcut in Resource/Controller with <Name> as attribute, get and Attribute are reserved. Example getTotalAttribute() in Model will be $this->total in resource 
