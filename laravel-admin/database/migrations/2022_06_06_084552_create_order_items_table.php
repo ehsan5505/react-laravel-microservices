@@ -22,7 +22,7 @@ class CreateOrderItemsTable extends Migration
             $table->timestamps();
             
             // Add the Foreign Key to point to Orders table
-            $table->foreign('order_id')->references('id').on('orders');
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 
