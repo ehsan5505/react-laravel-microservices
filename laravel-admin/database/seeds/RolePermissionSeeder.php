@@ -16,33 +16,33 @@ class RolePermissionSeeder extends Seeder
 
         foreach($permissions as $permission)
         {
-            DB::insert('role_permission',[
+            DB::table('role_permission')->insert([
                 'permission_id' => $permission->id,
                 'role_id'       => $admin->id
             ]);
         }
 
-        $editor = \App\Role::whereName('Editor');
+        $editor = \App\Role::whereName('Editor')->first();
         foreach($permissions as $permission)
         {
             if(!in_array($permission,['edit_roles'])){
-                DB:insert('role_permission',[
-                    'permission_id'     =>  $permission->id,
+                DB:table('role_permission')->insert([
                     'role_id'           =>  $editor->id
+                    'permission_id'     =>  $permission->id,
                 ]);
             }
         }
 
-        $subscriber = \App\Role::whereName('Subscriber');
+        $subscriber = \App\Role::whereName('Subscriber')->first();
         $access = ['view_users','view_roles','view_products','view_orders'];
         foreach($permissions as $permission)
         {
             if(in_array($permission,$access))
             {
-                DB::insert('role_migration',
+                DB::table('role_migration')->insert(
                 [
-                    'permission_id'     =>  $permission->id,
                     'role_id'           =>  $subscriber->id
+                    'permission_id'     =>  $permission->id,
                 ]);
             }
         }
