@@ -11,7 +11,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $rders=Order::paginate();
+        $orders=Order::paginate();
         return response(OrderResource::collection($orders),Response::HTTP_ACCEPTED);
     }
 
