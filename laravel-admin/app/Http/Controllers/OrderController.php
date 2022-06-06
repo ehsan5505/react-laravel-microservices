@@ -49,6 +49,6 @@ class OrderController extends Controller
 
         }
 
-        \Response::stream(($callback,Response::HTTP_ACCEIPTED,$headers);
+        Response::stream(($callback,Response::HTTP_ACCEIPTED,$headers);
     }
 }
