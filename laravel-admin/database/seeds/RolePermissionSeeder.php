@@ -37,7 +37,7 @@ class RolePermissionSeeder extends Seeder
         $access = ['view_users','view_roles','view_products','view_orders'];
         foreach($permissions as $permission)
         {
-            if(in_array($permission,$access))
+            if(in_array($permission->name,$access))
             {
                 DB::table('role_migration')->insert(
                 [
