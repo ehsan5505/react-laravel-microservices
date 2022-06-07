@@ -24,7 +24,7 @@ class RoleController extends Controller
         // Insert the Permission in the Pivot table
         foreach($permissions as $permission_id)
         {
-            DB::table('role_permission')->insert([
+            \DB::table('role_permission')->insert([
                 'role_id'       => $role->id,
                 'permission_id' => $permission_id
             ]);
@@ -43,12 +43,12 @@ class RoleController extends Controller
         $role = Role::find($id);
         
         // Delete the Old Permission Relationship from the Pivot
-        DB::table('role_permission')->where('role_id',$role->id)->delete();
+        \DB::table('role_permission')->where('role_id',$role->id)->delete();
 
         // Insert the Permission on Pivot Table for relationship
         foreach($permissions as $permission_id)
         {
-            DB::table('role_permission')->insert([
+            \DB::table('role_permission')->insert([
                 'role_id'       => $role->id,
                 'permission_id' => $permission_id
             ]);
@@ -61,7 +61,7 @@ class RoleController extends Controller
     public function destroy($id)
     {
         // Delete the Old Permission Relationship from the Pivot
-        DB::table('role_permission')->where('role_id',$id)->delete();
+        \DB::table('role_permission')->where('role_id',$id)->delete();
         // Delete the Role
         Role::destroy($id);
 
