@@ -46,6 +46,7 @@ class RoleController extends Controller
         \DB::table('role_permission')->where('role_id',$role->id)->delete();
 
         // Insert the Permission on Pivot Table for relationship
+        $permissions = $request->input('permissions');
         foreach($permissions as $permission_id)
         {
             \DB::table('role_permission')->insert([
