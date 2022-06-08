@@ -96,6 +96,49 @@ Note! In case you happen to drop the table or run migrate:fresh
 
 `php artisan passport:install`
 
+
+#### Associating the Role with the Permissions
+
+Create the permission table that shows the  accesses
+`php artisan make:migration create_permission_table`
+
+In the Role Permission Table, the role_id and permission_id both will be foreign key
+`php artisan migrate`
+
+Create the intermediate table join the role_id and the permission_id
+`php artisan make:migration create_role_permission_table`
+
+In the Role Permission Table, the role_id and permission_id both will be foreign key
+`php artisan migrate`
+
+
+Create the Model
+`php artisan make:model Permission`
+
+Create the Permission Seeder to insert the different access
+`php artisan make:seeder PermissionSeeder`
+
+Execute the Seeder
+`php artisan db:seed --clsas=PermissionSeeder`
+
+Create the RolePermission Seeder that would 
+`php artisan make:seeder --class=RolePermission`
+
+##### Associate the Role with the Permission
+Create the RoleResource for the output variable to be shown
+
+In the Role Model, add the permission function that hasMany relationship with the Permission
+In the Permission Model, link with the Role using the belongsTo function 
+
+In the RoleController, we could use the permissions function to bring the records of the permission allocated to the user
+In The RoleResource, we could define the each attribute we want to show in the response
+
+For the Create/Update/Delete, we have to ensure we fetch the data as array of Permission ID and must remove the entry in the role_permission for the specific role_id in the Update/Delete request
+
+@Note!, There is hasMany relation that comes from 1 to Many vs belongsToMany that interact with Many to Many using a pivot table as intermediate relations
+Role    ->   Role_Permission        -> Permission
+id ->  role_id | permission_id -> id
+
 #### Create Products 
 create the migration tables for the product table
 `php artisan make:migration create_products_table`
