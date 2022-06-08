@@ -15,53 +15,59 @@ use Symfony\Component\HttpFoundation\Response;
 class UserController extends Controller
 {
     //
-    function hello(){
+    function hello()
+    {
         return "Hello From the Controller";
     }
 
     // Return all the users
     // @users
-    function index(){
-        $users=User::paginate();
+    function index()
+    {
+        $users = User::paginate();
         return UserResource::collection($users);
     }
 
     // Return Particular user
     // @users:id
-    function show($id){
+    function show($id)
+    {
         $user = \Auth::user();
-        return (new UserResource(User::find($id)))->additional([
-            'data'=> [ 'permissions' => $user->permissions() ]
+        return (new UserResource($user))->additional([
+            'data' => ['permissions' => $user->permissions()]
         ]);
     }
 
     // Create new user
     // POST @users
-    function store(UserCreateRequest $request){
+    function store(UserCreateRequest $request)
+    {
         $user =  User::create(
-            $request->only('first_name','last_name','email','role_id') 
-            + ['password'  => Hash::make(1234) ] // default password, user should update
+            $request->only('first_name', 'last_name', 'email', 'role_id')
+                + ['password'  => Hash::make(1234)] // default password, user should update
         );
-        
-        return response(new UserResource($user),Response::HTTP_CREATED);
+
+        return response(new UserResource($user), Response::HTTP_CREATED);
     }
 
     // Update Particular user
     // PUT @users:id
-    function update($id,UserUpdateRequest $request){
+    function update($id, UserUpdateRequest $request)
+    {
         $user = User::find($id);
 
-        $user->update($request->only('first_name','last_name','email','role_id'));
+        $user->update($request->only('first_name', 'last_name', 'email', 'role_id'));
 
         return response(new UserResource($user), Response::HTTP_ACCEPTED);
     }
 
     // Delete the User
     // DELETE @users:id
-    function destroy($id){
+    function destroy($id)
+    {
         if (User::destroy($id) == 0)
-            return response("User Not Exist",Response::HTTP_NOT_FOUND);
-        return response(null,Response::HTTP_NO_CONTENT);
+            return response("User Not Exist", Response::HTTP_NOT_FOUND);
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 
 
@@ -75,20 +81,17 @@ class UserController extends Controller
     {
         $user = \Auth::user();
 
-        $user->update($request->only('first_name','last_name','email','role_id'));
+        $user->update($request->only('first_name', 'last_name', 'email', 'role_id'));
 
         return response(new UserResource($user), Response::HTTP_ACCEPTED);
-
     }
 
     public function updatePassword(UserPasswordUpdateRequest $request)
     {
         $user = \Auth::user();
 
-        $user->update(['password' => Hash::make($request->input('password')) ] );
+        $user->update(['password' => Hash::make($request->input('password'))]);
 
         return response(new UserResource($user), Response::HTTP_ACCEPTED);
     }
-
-
 }
