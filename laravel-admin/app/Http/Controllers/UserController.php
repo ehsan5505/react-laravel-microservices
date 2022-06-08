@@ -33,7 +33,7 @@ class UserController extends Controller
     function show($id)
     {
         $user = \Auth::user();
-        return (new UserResource($user))->additional([
+        return (new UserResource(User::find($id)))->additional([
             'data' => ['permissions' => $user->permissions()]
         ]);
     }
