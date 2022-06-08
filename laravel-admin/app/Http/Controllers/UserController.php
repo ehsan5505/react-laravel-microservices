@@ -10,6 +10,7 @@ use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use Gate;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
@@ -24,6 +25,8 @@ class UserController extends Controller
     // @users
     function index()
     {
+        // Did the Role has has access view | users (Gate(privilege, model?))
+        Gate::authorize('view','users');
         $users = User::paginate();
         return UserResource::collection($users);
     }
