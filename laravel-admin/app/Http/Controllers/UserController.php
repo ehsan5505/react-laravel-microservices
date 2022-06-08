@@ -29,7 +29,10 @@ class UserController extends Controller
     // Return Particular user
     // @users:id
     function show($id){
-        return new UserResource(User::find($id));
+        $user = \Auth::user();
+        return (new UserResource(User::find($id)))->additional([
+            'data','permissions'=>$this->permissions
+        ]);
     }
 
     // Create new user
