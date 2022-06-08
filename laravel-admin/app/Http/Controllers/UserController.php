@@ -37,9 +37,7 @@ class UserController extends Controller
     {
         Gate::authorize('view','users');
         $user = \Auth::user();
-        return (new UserResource(User::find($id)))->additional([
-            'data' => ['permissions' => $user->permissions()]
-        ]);
+        return new UserResource(User::find($id));
     }
 
     // Create new user
