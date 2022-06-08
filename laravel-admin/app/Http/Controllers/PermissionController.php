@@ -10,6 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 class PermissionController extends Controller
 {
     public function index(Request $request){
-        return response(new PermissionResource(Permission::all()),Response::HTTP_ACCEPTED);
+        return response(PermissionResource::collection(Permission::all()),Response::HTTP_ACCEPTED);
     }
 }
