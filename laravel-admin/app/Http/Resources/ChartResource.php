@@ -14,6 +14,9 @@ class ChartResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'date'  =>  $this->date,
+            'total_sales' =>  (float) $this->sum
+        ];
     }
 }
