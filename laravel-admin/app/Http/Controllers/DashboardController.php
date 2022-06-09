@@ -16,6 +16,7 @@ class DashboardController extends Controller
         ->join("order_items","order_items.order_id", "=", "orders.id")
         ->selectRaw("DATE_FORMAT(orders.created_at, '%Y-%m-%d') as date,sum(quantity*price) as sum")
         ->groupBy('date')
+        ->orderBy("date","desc")
         ->get();
         
         return response(ChartResource::collection($orders),Response::HTTP_ACCEPTED);
