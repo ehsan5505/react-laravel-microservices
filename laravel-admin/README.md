@@ -241,3 +241,16 @@ While in the Order Model we have a function of order_item->hasMany(\App\Order::c
 Once relationship completes, create the api route with only('index','show') function
 
 !Tricks: As a short in laravel, if you use get<Name>Attribute in the Model, you can use as shortcut in Resource/Controller with <Name> as attribute, get and Attribute are reserved. Example getTotalAttribute() in Model will be $this->total in resource 
+
+#### Dashboard with Chart
+To show the number of order we gain in each day, introduce the DashboardController that has a function of chart, link it in the chart route in the api endpoint
+
+In the Chart, we would use the Orm model to make the query, you would find it on the DashboardController, T
+To see the changes, we would append the created_at in the OrderFactory to see different time stamp
+`php artisan db:seed --class=OrderFactory`
+
+Now the api will return the timestamp as date with the records of sum we make in each day
+
+#### Cookie Store the Authorization Key [JWT Token]
+
+From the a
