@@ -18,6 +18,7 @@ class DashboardController extends Controller
         ->groupBy('date')
         ->get();
         
-        return response($orders,Response::HTTP_ACCEPTED);
+        return $orders;
+        // return response($orders,Response::HTTP_ACCEPTED);
     }
 }
