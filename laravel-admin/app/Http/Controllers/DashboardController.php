@@ -14,8 +14,8 @@ class DashboardController extends Controller
 
         $orders = Order::query()
         ->join("order_items","order_items.order_id", "=", "orders.id")
-        ->selectRaw("DATE_FORMAT(orders.created_at, '%Y-%m-%d') as date,sum(quantity*price) as sum")
-        ->groupBy('date');
+        ->selectRaw("DATE_FORMAT(orders.created_at, '%Y-%m-%d') as order_date,sum(quantity*price) as sum")
+        ->groupBy('order_date');
         // ->get();
         
         return response($orders,Response::HTTP_ACCEPTED);
