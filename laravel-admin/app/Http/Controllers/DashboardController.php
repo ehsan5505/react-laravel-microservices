@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DashboardController extends Controller
 {
-    public function chart(Request $request)
+    public function chart()
     {
         \Gate::authorize('view','orders');
 
