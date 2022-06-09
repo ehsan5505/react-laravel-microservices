@@ -1,6 +1,6 @@
-## [Administrator Panel]
+# [Administrator Panel]
 
-### Laravel 
+## Laravel  Validation
 For User Validation
 -- For Create Model to validate the fields
 `php artisan make:request UserCreateRequest`
@@ -13,7 +13,7 @@ php artisan ide-helper:generate
 php artisan ide-helper:models
 
 
-#### Laravel Passport for the Login
+## Laravel Passport for the Login
 install
 `composer require laravel/passport:^9`
 
@@ -40,7 +40,7 @@ Congrats for completing the passport installation, now create the AuthController
 `php artisan make:controller AuthController`
 
 
-#### Create A new API 
+## Create A new API 
 Create the Migrate to create the migrate table
 `php artisan make:migration create_roles_tables`
 
@@ -62,7 +62,7 @@ Now create the default route in the API routes file
 `Route::apiResources('roles','RoleController');`
 
 
-#### Using the Foreign Key to Combine the User and Roles Table
+### Using the Foreign Key to Combine the User and Roles Table
 create the migraion first that would alter the user table to add the column
 `php artisan make:migration add_column_role_id_in_users`
 
@@ -97,7 +97,7 @@ Note! In case you happen to drop the table or run migrate:fresh
 `php artisan passport:install`
 
 
-#### Associating the Role with the Permissions
+## Associating the Role with the Permissions
 
 Create the permission table that shows the  accesses
 `php artisan make:migration create_permission_table`
@@ -124,7 +124,7 @@ Execute the Seeder
 Create the RolePermission Seeder that would 
 `php artisan make:seeder --class=RolePermission`
 
-##### Associate the Role with the Permission
+### Associate the Role with the Permission
 Create the RoleResource for the output variable to be shown
 
 In the Role Model, add the permission function that hasMany relationship with the Permission
@@ -140,27 +140,29 @@ Role    ->   Role_Permission        -> Permission
 id ->  role_id | permission_id -> id
 
 
-###### Link the Permission to the User class
+#### Link the Permission to the User class
 In the User Model, add the function permission that would return $this->role->permission->pluck('name) where pluck is a laravel function that would extract the keyvalue from the array.
 
 Now to access the permission, in the UserController, you can use $user = \Auth::user() [it is necessary to use Auth::user() instead of User:find($id) as User find run query not function as it is listed in the Model class], 
 
 To accomodate the permission in the API, you can use (new UserResource(...)->additional(['data'=>['permission' => $user->permissions()]]))
 
-##### Create the Permission Controller and 
+### Create the Permission Controller and 
 `php artisan make:controller PermissionController`
 `php artisan make:resource PermissionResource`
 Add the route in the api to direct all permissions request to index of the controller that will show the permissions
 
-#### Role Restriction 
-##### on the User Page
+## Role Restriction 
+### on the User Page
 Use laravel built in function Gates on UserController at function you want to restrict with the user type
 Ex. Gates('view'), then go to the AuthProvider and define the gates as Gates::define('view',function(User $user,$model){ if $user->permissions->contains('views_{$model}')}) then it should return true that will allow the user to access
 Please note on edit we also give the access right so we have to use || to allow views_{$model}|| edit_{$model}]
 For the exception handleing to return JSON, go to APP/Exception/Handler.php and return $exception->getMessage, with the http code $exception->getCode() else 400 [Bad Request].
 [Refactor] to Refactor the gate code, you can define hasAccess function in the User class that would have return $this->permission->contains('view_{$model}') so in the Gates we have function($user,$model){ $user->hasAccess($model)} and it will do the trick 
 
-#### Create Products 
+Same Procedure apply of Roles/Products/Orders Controller
+
+## Create Products 
 create the migration tables for the product table
 `php artisan make:migration create_products_table`
 
@@ -190,7 +192,7 @@ Create the API Routes, for this first create the Controller with apis
 For the view, we have to also create the Resource
 `php artisan make:resource ProductResource`
 
-#### Storage
+## Storage
 For the image to be stored, you want to use the $file => $request->file('image') and /Storage::PutFileAs()
 By default the file will be saved in the storage/app/<> folder where public route don't have access
 To change the folder to public/app you would need to open the config/storage.php file and update the local, storage_path('....') to public_path()
@@ -198,7 +200,7 @@ To change the folder to public/app you would need to open the config/storage.php
 To Ease the process of the post/put of the product, we segregate the image upload on separate controller, on /image, it pop up an option to upload the image and return the image url, this url should be save in the product create/update
 
 
-#### Order and OrderItem
+## Order and OrderItem
 Create the migration for the table definition
 `php artisan make:migration create_orders_table`
 `php artisan make:migration create_order_items_table`
@@ -242,7 +244,7 @@ Once relationship completes, create the api route with only('index','show') func
 
 !Tricks: As a short in laravel, if you use get<Name>Attribute in the Model, you can use as shortcut in Resource/Controller with <Name> as attribute, get and Attribute are reserved. Example getTotalAttribute() in Model will be $this->total in resource 
 
-#### Dashboard with Chart
+## Dashboard with Chart
 To show the number of order we gain in each day, introduce the DashboardController that has a function of chart, link it in the chart route in the api endpoint
 
 In the Chart, we would use the Orm model to make the query, you would find it on the DashboardController, T
@@ -251,7 +253,7 @@ To see the changes, we would append the created_at in the OrderFactory to see di
 
 Now the api will return the timestamp as date with the records of sum we make in each day
 
-#### Cookie Store the Authorization Key [JWT Token]
+## Cookie Store the Authorization Key [JWT Token]
 
 From the AuthController, we use the cookie function in the login to store the jwt cookie, cookie(name,value,time_expire), while in the response append the cookie using the cookieWith($cookie)
 
