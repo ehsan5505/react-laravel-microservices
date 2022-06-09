@@ -253,4 +253,13 @@ Now the api will return the timestamp as date with the records of sum we make in
 
 #### Cookie Store the Authorization Key [JWT Token]
 
-From the a
+From the AuthController, we use the cookie function in the login to store the jwt cookie, cookie(name,value,time_expire), while in the response append the cookie using the cookieWith($cookie)
+
+In the cors (config/conrs), enable (true) the "supports_credentials"
+
+To intercept the Cookie and append in the Header, use the Authentication middleware, in this overwrite the handle function from the base class (Authentication) and use
+$token = $request->cookie('jwt')
+using this token you can do, $request->headers->set('Authorization' , "Bearer ".$token);
+[Note]! This function should come before the authentication so that header will have the information while authenticating....
+
+For Logout, create the logout function tht would do the Cookie::forget(name) and return with [message: 'logout successfully'])->withCookie($cookie), where cookie is the forget one (i.e. $cookie = Cookie::forget(name))
