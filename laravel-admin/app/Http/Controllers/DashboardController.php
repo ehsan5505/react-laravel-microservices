@@ -19,7 +19,7 @@ class DashboardController extends Controller
         ->groupBy('day')
         ->get();
         
-        return $orders;
+        return response($orders,Response::HTTP_ACCEPTED);
         // return response($orders,Response::HTTP_ACCEPTED);
     }
 }
