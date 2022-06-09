@@ -139,6 +139,27 @@ For the Create/Update/Delete, we have to ensure we fetch the data as array of Pe
 Role    ->   Role_Permission        -> Permission
 id ->  role_id | permission_id -> id
 
+
+###### Link the Permission to the User class
+In the User Model, add the function permission that would return $this->role->permission->pluck('name) where pluck is a laravel function that would extract the keyvalue from the array.
+
+Now to access the permission, in the UserController, you can use $user = \Auth::user() [it is necessary to use Auth::user() instead of User:find($id) as User find run query not function as it is listed in the Model class], 
+
+To accomodate the permission in the API, you can use (new UserResource(...)->additional(['data'=>['permission' => $user->permissions()]]))
+
+##### Create the Permission Controller and 
+`php artisan make:controller PermissionController`
+`php artisan make:resource PermissionResource`
+Add the route in the api to direct all permissions request to index of the controller that will show the permissions
+
+#### Role Restriction 
+##### on the User Page
+Use laravel built in function Gates on UserController at function you want to restrict with the user type
+Ex. Gates('view'), then go to the AuthProvider and define the gates as Gates::define('view',function(User $user,$model){ if $user->permissions->contains('views_{$model}')}) then it should return true that will allow the user to access
+Please note on edit we also give the access right so we have to use || to allow views_{$model}|| edit_{$model}]
+For the exception handleing to return JSON, go to APP/Exception/Handler.php and return $exception->getMessage, with the http code $exception->getCode() else 400 [Bad Request].
+[Refactor] to Refactor the gate code, you can define hasAccess function in the User class that would have return $this->permission->contains('view_{$model}') so in the Gates we have function($user,$model){ $user->hasAccess($model)} and it will do the trick 
+
 #### Create Products 
 create the migration tables for the product table
 `php artisan make:migration create_products_table`

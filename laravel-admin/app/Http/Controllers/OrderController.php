@@ -11,17 +11,20 @@ class OrderController extends Controller
 {
     public function index()
     {
+        Gate::authorize('view','orders');
         $orders=Order::paginate();
         return response(OrderResource::collection($orders),Response::HTTP_ACCEPTED);
     }
 
     public function show($id)
     {
+        Gate::authorize('view','orders');
         return response(new OrderResource(Order::find($id)),Response::HTTP_ACCEPTED);
     }
 
     public function export()
     {
+        Gate::authorize('view','orders');
         $headers = [
             "Content-Type"      =>  "text/csv",
             "Content-Disposition"=> "attachment; filename=orders.csv",

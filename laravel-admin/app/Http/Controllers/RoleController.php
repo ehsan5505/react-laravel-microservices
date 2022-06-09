@@ -12,13 +12,14 @@ class RoleController extends Controller
 {
     public function index()
     {
+        \Gate::authorize('view','roles');
         return RoleResource::collection(Role::all());
     }
 
     public function store(Request $request)
     {
+        \Gate::authorize('edit','roles');
         $role = Role::create($request->only('name'));
-        
         $permissions = $request->input('permissions');
 
         // Insert the Permission in the Pivot table
@@ -34,14 +35,15 @@ class RoleController extends Controller
 
     public function show($id)
     {
+        \Gate::authorize('edit','roles');
         $role = Role::find($id);
         return response(new RoleResource($role),Response::HTTP_ACCEPTED);        
     }
 
     public function update(Request $request, $id)
     {
+        \Gate::authorize('edit','roles');
         $role = Role::find($id);
-        
         // Delete the Old Permission Relationship from the Pivot
         \DB::table('role_permission')->where('role_id',$role->id)->delete();
 
@@ -61,6 +63,7 @@ class RoleController extends Controller
 
     public function destroy($id)
     {
+        \Gate::authorize('edit','roles');
         // Delete the Old Permission Relationship from the Pivot
         \DB::table('role_permission')->where('role_id',$id)->delete();
         // Delete the Role
