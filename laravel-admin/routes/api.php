@@ -30,6 +30,7 @@ Route::post("login","AuthController@login");
 Route::post("register","AuthController@register");
 
 Route::group(['middleware'=>'auth:api'],function(){
+    Route::get('chart','DashboardController@chart');
     Route::get('user','UserController@user');
     Route::put('info','UserController@updateInfo');
     Route::put('password','UserController@updatePassword');
