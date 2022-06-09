@@ -18,13 +18,22 @@ class AuthController extends Controller
             $user = Auth::user();
             $token = $user->createToken('admin')->accessToken;
 
-            return response($token);
+            $cookie=cookie('jwt',$token,3600);
+
+            return response($token)->withCookie($cookie);
         }
 
         return response(
             ['error' => "Could not authenticate the user"],
             Response::HTTP_UNAUTHORIZED
         );
+    }
+
+    public function logout()
+    {
+        $cookie = \Cookie::forget('jwt');
+
+        return response(['message'=>'Logout successfully'])->withCookie($cookie);
     }
 
     public function register(AuthRegisterRequest $request)

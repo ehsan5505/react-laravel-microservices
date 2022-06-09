@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Closure;
 
 class Authenticate extends Middleware
 {
@@ -18,4 +19,21 @@ class Authenticate extends Middleware
             return route('login');
         }
     }
+
+    public function $handle(Request $request,Closure $next,...$guards)
+    {
+        // Intercept the Cookie and set it in the header as Authorization 
+        if($token = $request->cookie('jwt')){
+            $request->headers->set('Authorization','Bearer '.$token);
+        }
+        
+        $this->authenticate($request,$guard);
+
+        return next($request);
+
+    }
+
+
+
+
 }
