@@ -13,10 +13,9 @@ class DashboardController extends Controller
         \Gate::authorize('view','orders');
 
         $orders = Order::query()
-        .("order_items","order_items.order_id", "=", "orders.id")
-        .selectedRaw("DATE_FORMAT(orders.created_at,'%Y-%m-%d') as 'date',sum(order_items.quantity*order_item*price) as sum")
-        .groupBy('date')
-        .get();
+        ->join("order_items","order_items.order_id", "=", "orders.id")
+        ->selectedRaw("DATE_FORMAT(orders.created_at,'%Y-%m-%d') as 'date',sum(order_items.quantity*order_item*price) as sum")
+        ->groupBy('date');
         
         return response($orders,Response::HTTP_ACCEPTED);
     }
