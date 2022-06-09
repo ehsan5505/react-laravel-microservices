@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ChartResource;
 use App\Order;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class DashboardController extends Controller
