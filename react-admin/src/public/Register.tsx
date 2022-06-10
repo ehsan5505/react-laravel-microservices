@@ -1,6 +1,7 @@
 import React, { Component, SyntheticEvent } from "react";
 import "./Register.css";
-import axios from 'axios';
+import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 class Register extends Component {
   firstName = "";
@@ -10,16 +11,20 @@ class Register extends Component {
   password_confirm = "";
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    const response = await axios.post('http://192.168.22.138:8000/api/register',{
-      'first_name': this.firstName,
-      'last_name':  this.lastName,
-      'email':      this.email,
-      'password':   this.password,
-      'password_confirmation': this.password_confirm
-    });
+    const response = await axios.post(
+      "http://192.168.22.138:8000/api/register",
+      {
+        first_name: this.firstName,
+        last_name: this.lastName,
+        email: this.email,
+        password: this.password,
+        password_confirmation: this.password_confirm,
+      }
+    );
     console.info(response);
   };
   render() {
+    <Redirect path="/" />
     return (
       <section>
         <div className="px-4 py-5 px-md-5 text-center text-lg-start">
