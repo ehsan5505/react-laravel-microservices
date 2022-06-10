@@ -6,19 +6,18 @@ class Login extends Component {
   email = "";
   password = "";
 
-  state = {
+  state = ({
     redirect: false,
-  };
+  });
 
   submit = async (e: SyntheticEvent) => {
     // Prevent the Default Browser Behaviour to refresh the page on data to view
     e.preventDefault();
-    console.info("email:"+this.email+"\nPassword:"+this.password);
     const resp = await axios.post("http://localhost:8000/api/login", {
       email: this.email,
       password: this.password,
     });
-    console.log(resp);
+    console.info(resp);
   };
 
   render() {
