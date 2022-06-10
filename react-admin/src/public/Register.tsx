@@ -9,9 +9,13 @@ class Register extends Component {
   email = "";
   password = "";
   password_confirm = "";
+  state = ({
+    redirect: false
+  });
+
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    const response = await axios.post(
+    await axios.post(
       "http://192.168.22.138:8000/api/register",
       {
         first_name: this.firstName,
@@ -21,10 +25,16 @@ class Register extends Component {
         password_confirmation: this.password_confirm,
       }
     );
-    console.info(response);
+    this.setState({
+      redirect: true
+    });
+
   };
   render() {
-    return <Navigate to="/login" />
+    // Redirect if already registerd
+    if(this.state.redirect)
+      return <Navigate to="/login" />
+
     return (
       <section>
         <div className="px-4 py-5 px-md-5 text-center text-lg-start">
