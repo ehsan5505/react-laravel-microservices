@@ -11,8 +11,8 @@ const Register = () => (
         <div className="row gx-lg-5 align-items-center">
           <div className="col-lg-6 mb-5 mb-lg-0">
             <h1 className="my-5 display-3 fw-bold ls-tight">
-              The best offer <br />
-              <span className="text-primary">for your business</span>
+              Welcome To Be  <br />
+              <span className="text-primary">A Part Of The Team...</span>
             </h1>
             <p style={{ color: "hsl(217, 10%, 50.8%)" }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
