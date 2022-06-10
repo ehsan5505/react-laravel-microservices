@@ -4,6 +4,7 @@ import Dashboard from "./secure/dashboard";
 import User from "./secure/user";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./public/Login";
+import Register from "./public/Register";
 
 function App() {
   return (
