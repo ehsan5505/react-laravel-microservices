@@ -1,12 +1,11 @@
 import React,{Component} from "react";
 
-class Wrapper extends Component<WrapperProps>
+class Wrapper extends Component
 {
-  render(): React.ReactNode {
+  render() {
     {
       return (
         <div>
-          {this.props.children}
         </div>
       )
     }
