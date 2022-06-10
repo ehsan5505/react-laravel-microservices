@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './Login';
+import "./Login";
 
 class Login extends Component {
   render() {
@@ -10,7 +10,7 @@ class Login extends Component {
             <div className="col-12 col-md-8 col-lg-6 col-xl-5">
               <div
                 className="card bg-dark text-white"
-                style={{borderRadius:"1rem"}}
+                style={{ borderRadius: "1rem" }}
               >
                 <div className="card-body p-5 text-center">
                   <div className="mb-md-5 mt-md-4 pb-5">
@@ -44,13 +44,14 @@ class Login extends Component {
                       Login
                     </button>
 
-                  <div>
-                    <p className="mb-0">
-                      Don't have an account?{" "}
-                      <a href="#!" className="text-white-50 fw-bold">
-                        Sign Up
-                      </a>
-                    </p>
+                    <div>
+                      <p className="mb-0">
+                        Don't have an account?{" "}
+                        <a href="#!" className="text-white-50 fw-bold">
+                          Sign Up
+                        </a>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
