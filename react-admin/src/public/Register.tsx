@@ -15,7 +15,7 @@ class Register extends Component {
       'last_name':  this.lastName,
       'email':      this.email,
       'password':   this.password,
-      'password_confirm': this.password_confirm
+      'password_confirmation': this.password_confirm
     });
     console.info(response);
   };
