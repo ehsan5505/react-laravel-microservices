@@ -7,13 +7,13 @@ class Register extends Component {
   email = "";
   password = "";
   password_confirm = "";
-  submit = (e : SyntheticEvent) => {
+  submit = (e: SyntheticEvent) => {
     e.preventDefault();
     console.info(this.firstName);
-  }
+  };
   render() {
     return (
-      <form onSubmit={this.submit}>
+      <section>
         <div className="px-4 py-5 px-md-5 text-center text-lg-start">
           <div className="container">
             <div className="row gx-lg-5 align-items-center">
@@ -33,7 +33,7 @@ class Register extends Component {
               <div className="col-lg-6 mb-5 mb-lg-0">
                 <div className="card">
                   <div className="card-body py-5 px-md-5">
-                    <form>
+                    <form onSubmit={this.submit}>
                       <div className="row">
                         <div className="col-md-6 mb-4">
                           <div className="form-outline">
@@ -45,10 +45,7 @@ class Register extends Component {
                                 (this.firstName = e.target.value)
                               }
                             />
-                            <label
-                              className="form-label"
-                              htmlFor="FirstName"
-                            >
+                            <label className="form-label" htmlFor="FirstName">
                               First name
                             </label>
                           </div>
@@ -61,10 +58,7 @@ class Register extends Component {
                               className="form-control"
                               onChange={(e) => (this.lastName = e.target.value)}
                             />
-                            <label
-                              className="form-label"
-                              htmlFor="lastName"
-                            >
+                            <label className="form-label" htmlFor="lastName">
                               Last name
                             </label>
                           </div>
@@ -100,7 +94,9 @@ class Register extends Component {
                           type="password"
                           id="confirmPassword"
                           className="form-control"
-                          onChange={(e) => (this.password_confirm = e.target.value)}
+                          onChange={(e) =>
+                            (this.password_confirm = e.target.value)
+                          }
                         />
                         <label className="form-label" htmlFor="confirmPassword">
                           Password Confirmation
@@ -120,7 +116,7 @@ class Register extends Component {
             </div>
           </div>
         </div>
-      </form>
+      </section>
     );
   }
 }
