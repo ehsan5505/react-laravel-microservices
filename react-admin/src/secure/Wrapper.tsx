@@ -2,7 +2,13 @@ import React, { Component } from "react";
 import Menu from "./components/menu";
 import Nav from "./components/nav";
 
-class Wrapper extends Component {
+
+interface WrapperProps
+{
+  children: React.ReactNode
+}
+
+class Wrapper extends Component<WrapperProps> {
   render() {
     {
       return (
