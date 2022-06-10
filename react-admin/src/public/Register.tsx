@@ -1,7 +1,9 @@
 import React from "react";
+import './Register.css';
 
 const Register = () => (
   <section className="text-center text-lg-start">
+    
     <div className="container py-4">
       <div className="row g-0 align-items-center">
         <div className="col-lg-6 mb-5 mb-lg-0">
