@@ -1,8 +1,10 @@
 import React from "react";
 import "./App.css";
-import Dashboard from "./components/dashboard";
-import Menu from "./components/menu";
-import Nav from "./components/nav";
+import Dashboard from "./secure/dashboard";
+import User from "./secure/user";
+import Menu from "./secure/components/menu";
+import Nav from "./secure/components/nav";
+import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -14,7 +16,10 @@ function App() {
           <Menu />
 
           <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <Dashboard/>
+            <BrowserRouter>
+              <Route path="/" component={Dashboard} />
+              <Route path="/user" component={User} />
+            </BrowserRouter>
           </main>
         </div>
       </div>
