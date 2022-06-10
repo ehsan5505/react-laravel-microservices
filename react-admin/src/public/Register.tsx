@@ -1,6 +1,6 @@
 import React, { Component, SyntheticEvent } from "react";
 import "./Register.css";
-import 'axios';
+import axios from 'axios';
 
 class Register extends Component {
   firstName = "";
