@@ -1,4 +1,4 @@
-import React,{Children, Component} from "react";
+import React,{Component} from "react";
 
 class Wrapper extends Component 
 {
@@ -6,7 +6,7 @@ class Wrapper extends Component
     {
       return (
         <div>
-          {this.props->Children}
+          {this.props.children}
         </div>
       )
     }
