@@ -1,110 +1,128 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Register.css";
 
-const Register = () => (
-  <section className="">
-    <div
-      className="px-4 py-5 px-md-5 text-center text-lg-start"
-      style={{ backgroundColor: "hsl(0, 0%, 96%)" }}
-    >
-      <div className="container">
-        <div className="row gx-lg-5 align-items-center">
-          <div className="col-lg-6 mb-5 mb-lg-0">
-            <h1 className="my-5 display-3 fw-bold ls-tight">
-              Welcome To Be  <br />
-              <span className="text-primary">A Part Of The Team...</span>
-            </h1>
-            <p style={{ color: "hsl(217, 10%, 50.8%)" }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
-              itaque accusantium odio, soluta, corrupti aliquam quibusdam
-              tempora at cupiditate quis eum maiores libero veritatis? Dicta
-              facilis sint aliquid ipsum atque?
-            </p>
-          </div>
+class Register extends Component {
+  firstName = "";
+  lastName = "";
+  email = "";
+  password = "";
+  password_confirm = "";
+  submit = (e) => {
+    e.preventDefault();
+    console.info(this.firstName);
+  }
+  render() {
+    return (
+      <form onSubmit={this.submit}>
+        <div className="px-4 py-5 px-md-5 text-center text-lg-start">
+          <div className="container">
+            <div className="row gx-lg-5 align-items-center">
+              <div className="col-lg-6 mb-5 mb-lg-0">
+                <h1 className="my-5 display-3 fw-bold ls-tight">
+                  Welcome To Be <br />
+                  <span className="text-primary">A Part Of The Team...</span>
+                </h1>
+                <p className="para">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Eveniet, itaque accusantium odio, soluta, corrupti aliquam
+                  quibusdam tempora at cupiditate quis eum maiores libero
+                  veritatis? Dicta facilis sint aliquid ipsum atque?
+                </p>
+              </div>
 
-          <div className="col-lg-6 mb-5 mb-lg-0">
-            <div className="card">
-              <div className="card-body py-5 px-md-5">
-                <form>
-                  <div className="row">
-                    <div className="col-md-6 mb-4">
-                      <div className="form-outline">
+              <div className="col-lg-6 mb-5 mb-lg-0">
+                <div className="card">
+                  <div className="card-body py-5 px-md-5">
+                    <form>
+                      <div className="row">
+                        <div className="col-md-6 mb-4">
+                          <div className="form-outline">
+                            <input
+                              type="text"
+                              id="firstName"
+                              className="form-control"
+                              onChange={(e) =>
+                                (this.firstName = e.target.value)
+                              }
+                            />
+                            <label
+                              className="form-label"
+                              htmlFor="FirstName"
+                            >
+                              First name
+                            </label>
+                          </div>
+                        </div>
+                        <div className="col-md-6 mb-4">
+                          <div className="form-outline">
+                            <input
+                              type="text"
+                              id="lastName"
+                              className="form-control"
+                              onChange={(e) => (this.lastName = e.target.value)}
+                            />
+                            <label
+                              className="form-label"
+                              htmlFor="lastName"
+                            >
+                              Last name
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="form-outline mb-4">
                         <input
-                          type="text"
-                          id="form3Example1"
+                          type="email"
+                          id="email"
                           className="form-control"
+                          onChange={(e) => (this.email = e.target.value)}
                         />
-                        <label className="form-label" htmlFor="form3Example1">
-                          First name
+                        <label className="form-label" htmlFor="email">
+                          Email address
                         </label>
                       </div>
-                    </div>
-                    <div className="col-md-6 mb-4">
-                      <div className="form-outline">
+
+                      <div className="form-outline mb-4">
                         <input
-                          type="text"
-                          id="form3Example2"
+                          type="password"
+                          id="password"
                           className="form-control"
+                          onChange={(e) => (this.password = e.target.value)}
                         />
-                        <label className="form-label" htmlFor="form3Example2">
-                          Last name
+                        <label className="form-label" htmlFor="password">
+                          Password
                         </label>
                       </div>
-                    </div>
-                  </div>
 
-                  <div className="form-outline mb-4">
-                    <input
-                      type="email"
-                      id="form3Example3"
-                      className="form-control"
-                    />
-                    <label className="form-label" htmlFor="form3Example3">
-                      Email address
-                    </label>
-                  </div>
+                      <div className="form-outline mb-4">
+                        <input
+                          type="password"
+                          id="confirmPassword"
+                          className="form-control"
+                          onChange={(e) => (this.password_confirm = e.target.value)}
+                        />
+                        <label className="form-label" htmlFor="confirmPassword">
+                          Password Confirmation
+                        </label>
+                      </div>
 
-                  <div className="form-outline mb-4">
-                    <input
-                      type="password"
-                      id="form3Example4"
-                      className="form-control"
-                    />
-                    <label className="form-label" htmlFor="form3Example4">
-                      Password
-                    </label>
+                      <button
+                        type="submit"
+                        className="btn btn-primary btn-block mb-4"
+                      >
+                        Sign up
+                      </button>
+                    </form>
                   </div>
-
-                  <div className="form-check d-flex justify-content-center mb-4">
-                    <input
-                      className="form-check-input me-2"
-                      type="checkbox"
-                      value=""
-                      id="form2Example33"
-                      checked
-                    />
-                    <label
-                      className="form-check-label"
-                      htmlFor="form2Example33"
-                    >
-                      Subscribe to our newsletter
-                    </label>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="btn btn-primary btn-block mb-4"
-                  >
-                    Sign up
-                  </button>
-                </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-);
+      </section>
+    );
+  }
+}
 
 export default Register;
