@@ -13,5 +13,24 @@ To route the Componets, you can use the BrowserRoute and Route function, for thi
 `npm install react-router-dom @types/react-router-dom`
 
 <BrowserRouter>
-<Router path="" exact components="{<Name>}"/>
+<Routes>
+<Route path="" exact components="{<Name>}"/>
+<Routes/>
 </BrowserRouter>
+
+
+You can define the Child Props that would enclosed the components inside and help in the navigation based on layout
+
+*Wrapper Class to include the child compoents* 
+
+interace InterfaceName 
+{
+  children: React.ReactNode
+}
+class <CompoName> extends Components<InterfaceName> {
+  <>
+  {this.props.children}
+  </>
+} 
+In above we have to create an interface with children else it will return an error on compilation 
+https://stackoverflow.com/questions/59106742/typescript-error-property-children-does-not-exist-on-type-reactnode
