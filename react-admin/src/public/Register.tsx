@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, SyntheticEvent } from "react";
 import "./Register.css";
 
 class Register extends Component {
@@ -7,7 +7,7 @@ class Register extends Component {
   email = "";
   password = "";
   password_confirm = "";
-  submit = (e) => {
+  submit = (e : SyntheticEvent) => {
     e.preventDefault();
     console.info(this.firstName);
   }
