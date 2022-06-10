@@ -17,8 +17,8 @@ function App() {
 
           <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <BrowserRouter>
-              <Route path="/" component={Dashboard} />
-              <Route path="/user" component={User} />
+              <Route path={"/"} component={Dashboard} />
+              <Route path={"/user"} component={User} />
             </BrowserRouter>
           </main>
         </div>
