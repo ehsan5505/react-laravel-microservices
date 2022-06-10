@@ -14,11 +14,11 @@ class Login extends Component {
     // Prevent the Default Browser Behaviour to refresh the page on data to view
     e.preventDefault();
     console.info("email:"+this.email+"\nPassword:"+this.password);
-    // const resp = await axios.post("http://localhost:8000/api/login", {
-    //   email: this.email,
-    //   password: this.password,
-    // });
-    // console.log(resp);
+    const resp = await axios.post("http://localhost:8000/api/login", {
+      email: this.email,
+      password: this.password,
+    });
+    console.log(resp);
   };
 
   render() {
