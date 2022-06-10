@@ -34,3 +34,6 @@ class <CompoName> extends Components<InterfaceName> {
 } 
 In above we have to create an interface with children else it will return an error on compilation 
 https://stackoverflow.com/questions/59106742/typescript-error-property-children-does-not-exist-on-type-reactnode
+
+For Login Styles we refer to 
+https://mdbootstrap.com/docs/standard/extended/login/#!
