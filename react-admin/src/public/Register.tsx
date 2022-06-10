@@ -1,7 +1,7 @@
 import React, { Component, SyntheticEvent } from "react";
 import "./Register.css";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 class Register extends Component {
   firstName = "";
@@ -24,7 +24,7 @@ class Register extends Component {
     console.info(response);
   };
   render() {
-    return <Redirect to="/login" />
+    return <Navigate to="/login" />
     return (
       <section>
         <div className="px-4 py-5 px-md-5 text-center text-lg-start">
