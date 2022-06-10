@@ -24,10 +24,8 @@ class Login extends Component {
                         type="email"
                         id="typeEmailX"
                         className="form-control form-control-lg"
+                        placeholder="Email"
                       />
-                      <label className="form-label" htmlFor="typeEmailX">
-                        Email
-                      </label>
                     </div>
 
                     <div className="form-outline form-white mb-4">
@@ -35,10 +33,8 @@ class Login extends Component {
                         type="password"
                         id="typePasswordX"
                         className="form-control form-control-lg"
+                        placeholder="Password"
                       />
-                      <label className="form-label" htmlFor="typePasswordX">
-                        Password
-                      </label>
                     </div>
 
                     <p className="small mb-5 pb-lg-2">
