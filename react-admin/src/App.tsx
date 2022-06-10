@@ -5,6 +5,7 @@ import User from "./secure/user";
 import Menu from "./secure/components/menu";
 import Nav from "./secure/components/nav";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./public/Login";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Routes>
                 <Route path={"/"} element={<Dashboard />} />
                 <Route path={"/user"} element={<User />} />
+                <Route path={"/login"} element={<Login />} />
               </Routes>
             </BrowserRouter>
           </main>
