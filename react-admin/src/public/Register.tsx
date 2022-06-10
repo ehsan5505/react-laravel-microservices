@@ -24,7 +24,7 @@ class Register extends Component {
     console.info(response);
   };
   render() {
-    <Redirect path="/" />
+    return <Redirect to="/login" />
     return (
       <section>
         <div className="px-4 py-5 px-md-5 text-center text-lg-start">
