@@ -1,5 +1,6 @@
 import React, { Component, SyntheticEvent } from "react";
 import "./Login";
+import axios from "axios";
 
 class Login extends Component {
   email = "";
@@ -12,6 +13,11 @@ class Login extends Component {
   submit = async (e: SyntheticEvent) => {
     // Prevent the Default Browser Behaviour to refresh the page on data to view
     e.preventDefault();
+    const resp = await axios.post("http://localhost:8000/api/login", {
+      email: this.email,
+      password: this.password,
+    });
+    console.log(resp);
   };
 
   render() {
@@ -57,7 +63,6 @@ class Login extends Component {
                         type="submit"
                         value="Login"
                       />
-                      
                     </form>
 
                     <div className="d-flex justify-content-center text-center mt-4 pt-1">
