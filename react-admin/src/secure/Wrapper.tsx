@@ -38,7 +38,7 @@ class Wrapper extends Component<WrapperProps> {
             </main>
           </div>
         </div>
-        {/* <ToastContainer /> */}
+        <ToastContainer />
       </>
     );
   }
