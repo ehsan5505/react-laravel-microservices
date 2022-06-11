@@ -15,11 +15,14 @@ class Login extends Component {
     // Prevent the Default Browser Behaviour to refresh the page on data to view
     e.preventDefault();
     // console.info("email: "+this.email+" | password: "+this.password);
-    const resp = await axios.post("http://192.168.22.138:8000/api/login", {
+    axios.post("http://192.168.22.138:8000/api/login", {
       email: this.email,
       password: this.password,
+    }).then(response => {
+      console.log(response);
+    }).catch(e => {
+      console.info(e.error);
     });
-    console.log(resp);
     // localStorage.setItem("token", resp.data);
     // this.setState({
     //   redirect: true,
