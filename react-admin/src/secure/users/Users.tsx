@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Wrapper from "../Wrapper";
 import axios from "axios";
 import Role from '../classes/role';
+import { Link } from "react-router-dom";
 
 interface UserProps {
   id: number;
@@ -27,6 +28,8 @@ class User extends Component {
     return (
       <Wrapper>
         <h2>Users</h2>
+        <Link to={"users/create"} className="btn-toolbar btn">Add User</Link>
+
         <div className="table-responsive">
           <table className="table table-striped table-sm">
             <thead>
@@ -48,7 +51,10 @@ class User extends Component {
                     </td>
                     <td>{user.email}</td>
                     <td>{user.role.name}</td>
-                    <td></td>
+                    <td>
+                      <button>Edit</button>
+                      <button>Delete</button>
+                    </td>
                   </tr>
                 );
               })}
