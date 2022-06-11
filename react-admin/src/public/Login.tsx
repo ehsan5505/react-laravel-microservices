@@ -14,19 +14,16 @@ class Login extends Component {
   submit = async (e: SyntheticEvent) => {
     // Prevent the Default Browser Behaviour to refresh the page on data to view
     e.preventDefault();
-    // console.info("email: "+this.email+" | password: "+this.password);
-    axios.post("login", {
+    const resp = await axios.post("login", {
       email: this.email,
       password: this.password,
-    }).then(response => {
-      console.log(response);
-    }).catch(e => {
-      console.info(e);
     });
-    // localStorage.setItem("token", resp.data);
-    // this.setState({
-    //   redirect: true,
-    // });
+
+    localStorage.setItem("token", resp.data);
+    this.setState({
+      redirect: true,
+    });
+
   };
 
   render() {
