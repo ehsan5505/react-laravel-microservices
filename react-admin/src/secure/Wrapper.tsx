@@ -1,13 +1,22 @@
 import React, { Component } from "react";
 import Menu from "./components/menu";
 import Nav from "./components/nav";
-
+import axios from "axios";
 interface WrapperProps {
   children: React.ReactNode;
 }
 
 class Wrapper extends Component<WrapperProps> {
-  render() {
+  state = {
+    redirect: false,
+  };
+
+  componentDidMount = async () => {
+    const user = axios.get("user");
+    console.info(user);
+  };
+
+  render() { 
     return (
       <>
         <Nav />
