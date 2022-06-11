@@ -44,7 +44,7 @@ class User extends Component {
   delete = async (id: number) => {
     if (window.confirm("Are you sure to delete the record?")) {
       await axios
-        .delete(`users/${id}`, () => {
+        .delete(`users/${id}`, {
           // refresh the state
           this.state.users.filter((u: UserProps) => {
             if (u.id != id) return u;
