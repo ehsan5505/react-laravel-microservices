@@ -2,18 +2,18 @@ import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
 
 class Nav extends Component {
-
   state = {
-    redirect: false;
-  }
+    redirect: false,
+  };
   signOut = () => {
-    localStorage.clear();
-    this.setState({
-      redirect: true
-    })
-  } 
+    console.info("Sign Out");
+    // localStorage.clear();
+    // this.setState({
+    //   redirect: true
+    // })
+  };
   render() {
-    if (this.state.redirect) return <Navigate to="/login" />
+    if (this.state.redirect) return <Navigate to="/login" />;
     return (
       <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">
