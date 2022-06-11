@@ -80,8 +80,8 @@ class User extends Component {
             </tbody>
           </table>
           <div className="right">
-            <a className="btn" onClick={prev}>Previous</a>
-            <a className="btn" onClick={next}>Next</a>
+            <a className="btn" onClick={this.prev}>Previous</a>
+            <a className="btn" onClick={this.next}>Next</a>
           </div>
         </div>
       </Wrapper>
