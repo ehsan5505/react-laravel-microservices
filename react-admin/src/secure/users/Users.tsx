@@ -45,10 +45,10 @@ class User extends Component {
     if (window.confirm("Are you sure to Delete the Records?")) {
       try {
         await axios.delete(`users/${id}`);
-      } catch (err: AxiosError) {
+      } catch (err) {
         // this.error = err.response.data;
         // console.warn .response.data);
-        console.log(err['response']);
+        console.log(err.message);
       }
 
       // refresh the state
