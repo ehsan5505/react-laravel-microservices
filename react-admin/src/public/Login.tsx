@@ -11,6 +11,14 @@ class Login extends Component {
     redirect: false,
   };
 
+  componentDidMount = () => {
+    const token = localStorage.getItem("token");
+    if (token)
+      this.setState({
+        redirect: true,
+      });
+  };
+
   submit = async (e: SyntheticEvent) => {
     // Prevent the Default Browser Behaviour to refresh the page on data to view
     e.preventDefault();
@@ -23,7 +31,6 @@ class Login extends Component {
     this.setState({
       redirect: true,
     });
-
   };
 
   render() {
