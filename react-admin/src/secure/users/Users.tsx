@@ -25,7 +25,7 @@ class User extends Component {
   render() {
     return (
       <Wrapper>
-        <h2>Section title</h2>
+        <h2>Users</h2>
         <div className="table-responsive">
           <table className="table table-striped table-sm">
             <thead>
@@ -40,7 +40,7 @@ class User extends Component {
             <tbody>
               {this.state.users.map((user: UserProps) => {
                 return (
-                  <tr>
+                  <tr key={user.id}>
                     <td>{user.id}</td>
                     <td>
                       {user.first_name} {user.last_name}
