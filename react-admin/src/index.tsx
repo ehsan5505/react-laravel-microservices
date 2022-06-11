@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import axios from 'axios';
+
+axios.defaults.baseURL = "http://192.168.22.138/api/";
+axios.defaults.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
