@@ -43,6 +43,7 @@ class User extends Component {
   };
 
   delete = async (id: number) => {
+    toast("Delete is clicked");
     if (window.confirm("Are you sure to Delete the Records?")) {
       await axios.delete(`users/${id}`).catch((err:AxiosError) => {
         if (err.response) {
