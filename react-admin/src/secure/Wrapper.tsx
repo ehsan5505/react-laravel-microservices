@@ -12,8 +12,12 @@ class Wrapper extends Component<WrapperProps> {
   };
 
   componentDidMount = async () => {
-    const user = await axios.get("user");
-    console.info(user);
+    try{
+      const user = await axios.get("user");
+      console.info(user);
+    }catch(e){
+      console.error("Error");
+    }
   };
 
   render() { 
