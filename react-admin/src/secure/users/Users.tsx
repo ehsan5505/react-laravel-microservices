@@ -115,7 +115,7 @@ class User extends Component {
             </div>
           </div>
         </div>
-        <ToastContainer />
+        {/* <ToastContainer /> */}
       </Wrapper>
     );
   }
