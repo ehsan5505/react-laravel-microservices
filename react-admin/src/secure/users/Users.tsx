@@ -19,7 +19,7 @@ class User extends Component {
 
   page = 1;
   last_page = 1;
-  message: string = "";
+  message: string = "Ehsan Message";
 
   componentDidMount = async () => {
     const res = await axios.get(`users?page=${this.page}`);
