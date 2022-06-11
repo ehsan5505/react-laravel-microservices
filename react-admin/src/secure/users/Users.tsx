@@ -5,6 +5,8 @@ import Role from "../classes/role";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
+import 'react-toastify/dist/ReactToastify.css';
+
 interface UserProps {
   id: number;
   first_name: string;
