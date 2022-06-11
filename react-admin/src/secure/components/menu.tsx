@@ -11,13 +11,13 @@ const Menu = () => (
     <div className="position-sticky pt-3">
       <ul className="nav flex-column">
         <li className="nav-item">
-          <NavLink to={User} className="nav-link active" aria-current="page" href="#">
+          <NavLink to={"/"} className="nav-link active" aria-current="page">
             <span data-feather="home" className="align-text-bottom"></span>
             Dashboard
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to={Dashboard} className="nav-link active" aria-current="page" href="#">
+          <NavLink to={"/users"} className="nav-link active" aria-current="page">
             <span data-feather="home" className="align-text-bottom"></span>
             Users
           </NavLink>
