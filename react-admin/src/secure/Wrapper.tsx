@@ -14,20 +14,21 @@ class Wrapper extends Component<WrapperProps> {
   };
 
   componentDidMount = async () => {
-    try{
+    try {
       const user = await axios.get("user");
       console.info(user);
-    }catch(e){
-      this.setState({redirect: true});
+    } catch (e) {
+      this.setState({ redirect: true });
     }
   };
 
-  render() { 
-    if (this.state.redirect) { return <Navigate to="/login"/>; }
+  render() {
+    if (this.state.redirect) {
+      return <Navigate to="/login" />;
+    }
     return (
       <>
         <Nav />
-
         <div className="container-fluid">
           <div className="row">
             <Menu />
@@ -37,7 +38,7 @@ class Wrapper extends Component<WrapperProps> {
             </main>
           </div>
         </div>
-        <ToastContainer/>
+        <ToastContainer />
       </>
     );
   }
