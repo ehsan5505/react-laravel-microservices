@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Menu from "./components/menu";
-import Nav from "./components/nav";
+import Nav from "./components/Nav";
+import { ToastContainer } from "react-toastify";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 interface WrapperProps {
@@ -36,6 +37,7 @@ class Wrapper extends Component<WrapperProps> {
             </main>
           </div>
         </div>
+        <ToastContainer/>
       </>
     );
   }
