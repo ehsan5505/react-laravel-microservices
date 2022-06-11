@@ -46,7 +46,7 @@ class User extends Component {
     if (window.confirm("Are you sure to Delete the Records?")) {
       await axios.delete(`users/${id}`).catch((err:AxiosError) => {
         if (err.response) {
-          toast.error(err.message.data.message);
+          toast.error(err.response.data.message);
         }
       });
 
