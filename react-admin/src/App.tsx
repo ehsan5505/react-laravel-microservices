@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import Dashboard from "./secure/dashboard";
-import User from "./secure/user";
+import Dashboard from "./secure/dashboard/Dashboard";
+import User from "./secure/users/Users";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./public/Login";
 import Register from "./public/Register";
