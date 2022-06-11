@@ -51,7 +51,7 @@ class User extends Component {
             console.log(errors.name);
             // console.info(errors);
           }
-          console.info(errors)
+          console.info(errors.response.data)
       }
 
       // refresh the state
