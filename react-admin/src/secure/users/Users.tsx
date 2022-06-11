@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Wrapper from "../Wrapper";
-import axios,{AxiosError} from "axios";
+import axios, { AxiosError } from "axios";
 import Role from "../classes/role";
 import { Link } from "react-router-dom";
 
@@ -19,7 +19,7 @@ class User extends Component {
 
   page = 1;
   last_page = 1;
-  error: string = "";
+  // error: string = "";
 
   componentDidMount = async () => {
     const res = await axios.get(`users?page=${this.page}`);
@@ -46,9 +46,10 @@ class User extends Component {
       try {
         await axios.delete(`users/${id}`);
       } catch (err) {
-        // this.error = err.response.data;
-        // console.warn .response.data);
-        console.log(err.message);
+          const errors = err as Error | AxiosError;
+          if (!axios.isAxiosError(errors)) {
+            console.log(errors.message);
+          }
       }
 
       // refresh the state
