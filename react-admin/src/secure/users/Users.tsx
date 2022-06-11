@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Wrapper from "../Wrapper";
 import axios from "axios";
-import Role from '../classes/role';
+import Role from "../classes/role";
 import { Link } from "react-router-dom";
 
 interface UserProps {
@@ -30,23 +30,24 @@ class User extends Component {
   };
 
   prev = async () => {
-    if (this.page == 1) return ;
+    if (this.page == 1) return;
     this.page--;
     await this.componentDidMount();
-  }
+  };
   next = async () => {
-    if( this.page == this.last_page) return;
+    if (this.page == this.last_page) return;
     this.page++;
     await this.componentDidMount();
-
-  }
+  };
 
   render() {
     return (
       <Wrapper>
         <h2>Users</h2>
         <div className="col-md-2 right">
-          <Link to={"create"} className="btn-toolbar btn">Add User</Link>
+          <Link to={"create"} className="btn-toolbar btn">
+            Add User
+          </Link>
         </div>
 
         <div className="table-responsive">
@@ -79,9 +80,15 @@ class User extends Component {
               })}
             </tbody>
           </table>
-          <div className="right">
-            <a className="btn" onClick={this.prev}>Previous</a>
-            <a className="btn" onClick={this.next}>Next</a>
+          <div className="btn-toolbar right">
+            <div className="btn-group">
+              <a className="btn btn-secondary" onClick={this.prev}>
+                Previous
+              </a>
+              <a className="btn btn-secondary" onClick={this.next}>
+                Next
+              </a>
+            </div>
           </div>
         </div>
       </Wrapper>
