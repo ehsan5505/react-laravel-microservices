@@ -67,7 +67,11 @@ class User extends Component {
           </Link>
         </div>
 
-        <strong>{this.message}</strong>
+        <strong
+          style={{ color: "red", fontSize: "1.2em", fontVariant: "small-caps" }}
+        >
+          {this.message}
+        </strong>
 
         <div className="table-responsive">
           <table className="table table-striped table-sm">
