@@ -49,8 +49,9 @@ class User extends Component {
           const errors = err as Error | AxiosError;
           if (!axios.isAxiosError(errors)) {
             console.log(errors.name);
-            console.info(errors);
+            // console.info(errors);
           }
+          console.info(errors)
       }
 
       // refresh the state
