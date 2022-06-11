@@ -18,7 +18,7 @@ class User extends Component {
   };
 
   componentDidMount = async () => {
-    const res = await axios.get("users");
+    const res = await axios.get("create");
 
     this.setState({
       users: res.data.data,
