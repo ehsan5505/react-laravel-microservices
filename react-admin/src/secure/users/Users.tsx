@@ -43,17 +43,25 @@ class User extends Component {
 
   delete = async (id: number) => {
     if (window.confirm("Are you sure to delete the record?")) {
-      await axios.delete(`users/${id}`).catch((err: AxiosError) => {
-        if (err.response) {
-          let msg;
-          msg = err.response.data.message;
-          toast.error("Error:" + msg);
-        }
-      });
+      // await axios.delete(`users/${id}`).catch((err: AxiosError) => {
+      //   if (err.response) {
+      //     let msg;
+      //     msg = err.response.data.message;
+      //     toast.error("Error:" + msg);
+      //   }
+      // });
+      try{
+        await axios.delete(`users/${id}`)
+      }catch(err:AxiosError){
+        toast.error(err.response.data.message);
+      }finally{
+        this.state.users.filter((u: UserProps) => {
+          if (u.id != id) return u;
+        });
+        toast.success("Records Deleted Successfully");
+
+      }
       // refresh the state
-      this.state.users.filter((u: UserProps) => {
-        if (u.id != id) return u;
-      });
     }
   };
 
