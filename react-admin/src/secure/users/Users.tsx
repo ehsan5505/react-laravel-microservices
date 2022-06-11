@@ -3,7 +3,7 @@ import Wrapper from "../Wrapper";
 import axios, { AxiosError } from "axios";
 import Role from "../classes/role";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 interface UserProps {
   id: number;
@@ -44,11 +44,10 @@ class User extends Component {
 
   delete = async (id: number) => {
     if (window.confirm("Are you sure to Delete the Records?")) {
-      await axios.delete(`users/${id}`).catch((err:AxiosError) => {
+      await axios.delete(`users/${id}`).catch((err) => {
         if (err.response) {
-          toast(err.response.data.message);
-          console.info(err.response.data.message);
-          console.log(err.message.data);
+          this.message = err.response.data.message;
+          toast(this.message);
         }
       });
 
