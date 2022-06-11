@@ -28,7 +28,9 @@ class User extends Component {
     return (
       <Wrapper>
         <h2>Users</h2>
-        <Link to={"users/create"} className="btn-toolbar btn">Add User</Link>
+        <div className="col-md md-2">
+          <Link to={"users/create"} className="btn-toolbar btn">Add User</Link>
+        </div>
 
         <div className="table-responsive">
           <table className="table table-striped table-sm">
@@ -52,8 +54,8 @@ class User extends Component {
                     <td>{user.email}</td>
                     <td>{user.role.name}</td>
                     <td>
-                      <button>Edit</button>
-                      <button>Delete</button>
+                      <button className="btn">Edit</button>
+                      <button className="btn">Delete</button>
                     </td>
                   </tr>
                 );
