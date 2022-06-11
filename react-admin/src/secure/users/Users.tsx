@@ -9,7 +9,7 @@ interface UserProps {
   role: any;
 }
 
-class User extends Component<UserProps> {
+class User extends Component {
   state = {
     users: [],
   };
