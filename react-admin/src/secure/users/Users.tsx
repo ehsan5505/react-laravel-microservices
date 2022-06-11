@@ -52,10 +52,11 @@ class User extends Component {
       });
 
       // refresh the state
-      // this.state.users.filter((u: UserProps) => {
-      //   if (u.id != id) return u;
-      // });
-    // }
+      this.state.users.filter((u: UserProps) => {
+        if (u.id != id) return u;
+      });
+      toast.success("Record Deleted Successfully");
+    }
   };
 
   render() {
