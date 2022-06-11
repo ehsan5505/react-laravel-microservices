@@ -13,7 +13,7 @@ class Wrapper extends Component<WrapperProps> {
 
   componentDidMount = async () => {
     try{
-      const user = await axios.get("user");
+      const user = await axios.get("user",{withCredentials: true});
       console.info(user);
     }catch(e){
       console.error("Error");
