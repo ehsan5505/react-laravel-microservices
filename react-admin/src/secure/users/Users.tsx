@@ -19,7 +19,7 @@ class User extends Component {
 
   page = 1;
   last_page = 1;
-  message: string = "Ehsan Message";
+  message: string = "";
 
   componentDidMount = async () => {
     const res = await axios.get(`users?page=${this.page}`);
@@ -66,7 +66,7 @@ class User extends Component {
           </Link>
         </div>
 
-        {this.message}
+        <strong>{this.message}</strong>
 
         <div className="table-responsive">
           <table className="table table-striped table-sm">
