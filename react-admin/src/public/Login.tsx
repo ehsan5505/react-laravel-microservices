@@ -1,14 +1,15 @@
 import React, { Component, SyntheticEvent } from "react";
 import "./Login";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 class Login extends Component {
   email = "";
   password = "";
 
-  state = ({
+  state = {
     redirect: false,
-  });
+  };
 
   submit = async (e: SyntheticEvent) => {
     // Prevent the Default Browser Behaviour to refresh the page on data to view
@@ -17,10 +18,15 @@ class Login extends Component {
       email: this.email,
       password: this.password,
     });
-    console.info(resp);
+    localStorage.setItem("token", resp.data);
+    this.setState({
+      redirect: true,
+    });
   };
 
   render() {
+    if (this.state.redirect) return <Navigate to="/" />;
+
     return (
       <section className="vh-100 gradient-custom">
         <div className="container py-5 h-100">
