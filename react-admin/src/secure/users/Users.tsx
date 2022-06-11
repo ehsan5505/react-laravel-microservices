@@ -51,22 +51,19 @@ class User extends Component {
       //     toast.error("Error:" + msg);
       //   }
       // });
-      try{
-        await axios.delete(`users/${id}`)
-      }catch(err){
-        const errors = err as Error|AxiosError
-        if(axios.isAxiosError(err)){
-          toast.error(errors.response.data.message);
-        }else{
-          toast.error(errors.message);
-        }
-
-      }finally{
+      try {
+        await axios.delete(`users/${id}`);
         this.state.users.filter((u: UserProps) => {
           if (u.id != id) return u;
         });
         toast.success("Records Deleted Successfully");
-
+      } catch (err) {
+        const errors = err as Error | AxiosError;
+        if (axios.isAxiosError(err)) {
+          toast.error(errors.response.data.message);
+        } else {
+          toast.error(errors.message);
+        }
       }
       // refresh the state
     }
