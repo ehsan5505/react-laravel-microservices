@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Wrapper from "../Wrapper";
-import axios from "axios";
+import axios,{AxiosError} from "axios";
 import Role from "../classes/role";
 import { Link } from "react-router-dom";
 
@@ -19,6 +19,7 @@ class User extends Component {
 
   page = 1;
   last_page = 1;
+  error: string = "";
 
   componentDidMount = async () => {
     const res = await axios.get(`users?page=${this.page}`);
@@ -40,15 +41,20 @@ class User extends Component {
     await this.componentDidMount();
   };
 
-  delete = async (id:number) =>{
-    if(window.confirm("Are you sure to Delete the Records?"))
-    {
-      await axios.delete(`users/${id}`);
+  delete = async (id: number) => {
+    if (window.confirm("Are you sure to Delete the Records?")) {
+      try {
+        await axios.delete(`users/${id}`);
+      } catch (err: Error | AxiosError) {
+        this.error = e.response.data;
+      }
 
       // refresh the state
-      this.state.users.filter((u:UserProps) => {if(u.id != id) return u; })
+      this.state.users.filter((u: UserProps) => {
+        if (u.id != id) return u;
+      });
     }
-  }
+  };
 
   render() {
     return (
@@ -83,7 +89,12 @@ class User extends Component {
                     <td>{user.role.name}</td>
                     <td>
                       <button className="btn">Edit</button>
-                      <button className="btn" onClick={() => this.delete(user.id)}>Delete</button>
+                      <button
+                        className="btn"
+                        onClick={() => this.delete(user.id)}
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );
