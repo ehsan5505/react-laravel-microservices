@@ -46,6 +46,7 @@ class User extends Component {
       await axios.delete(`users/${id}`).catch((err) => {
         if (err.response) {
           this.message = err.response.data.message;
+          this.componentDidMount();
         }
       });
 
