@@ -21,7 +21,7 @@ class Login extends Component {
     }).then(response => {
       console.log(response);
     }).catch(e => {
-      console.info(e.error);
+      console.info(e);
     });
     // localStorage.setItem("token", resp.data);
     // this.setState({
