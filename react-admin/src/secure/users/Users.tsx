@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Wrapper from "../Wrapper";
+import axios from "axios";
 
 interface UserProps {
   id: number;
@@ -14,6 +15,13 @@ class User extends Component {
     users: [],
   };
 
+  componentDidMount = async () => {
+    const res = await axios.get("users");
+
+    this.setState({
+      users: res.data.data,
+    });
+  };
   render() {
     return (
       <Wrapper>
