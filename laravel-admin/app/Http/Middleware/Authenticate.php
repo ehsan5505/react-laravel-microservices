@@ -20,7 +20,7 @@ class Authenticate extends Middleware
         }
     }
 
-    public function handle(Request $request,Closure $next,)
+    public function handle(Request $request,Closure $next)
     {
         // Intercept the Cookie and set it in the header as Authorization 
         if($token = $request->cookie('jwt')){
