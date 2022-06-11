@@ -18,7 +18,7 @@ class User extends Component {
   };
 
   componentDidMount = async () => {
-    const res = await axios.get("create");
+    const res = await axios.get("users");
 
     this.setState({
       users: res.data.data,
@@ -29,7 +29,7 @@ class User extends Component {
       <Wrapper>
         <h2>Users</h2>
         <div className="col-md-2 right">
-          <Link to={"users/create"} className="btn-toolbar btn">Add User</Link>
+          <Link to={"create"} className="btn-toolbar btn">Add User</Link>
         </div>
 
         <div className="table-responsive">
