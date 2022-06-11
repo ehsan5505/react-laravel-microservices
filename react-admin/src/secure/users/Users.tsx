@@ -19,7 +19,7 @@ class User extends Component {
 
   page = 1;
   last_page = 1;
-  // message: string = "";
+  message: string = "";
 
   componentDidMount = async () => {
     const res = await axios.get(`users?page=${this.page}`);
@@ -45,7 +45,7 @@ class User extends Component {
     if (window.confirm("Are you sure to Delete the Records?")) {
       await axios.delete(`users/${id}`).catch((err) => {
         if (err.response) {
-          console.info(err.response.data.message);
+          this.message = err.response.data.message;
         }
       });
 
@@ -57,6 +57,9 @@ class User extends Component {
   };
 
   render() {
+    if (this.message) {
+      <p style={{ color: "red" }}>{this.message}</p>;
+    }
     return (
       <Wrapper>
         <h2>Users</h2>
