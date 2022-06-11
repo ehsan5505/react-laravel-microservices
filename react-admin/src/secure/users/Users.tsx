@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import Wrapper from "../Wrapper";
 import axios from "axios";
+import Role from '../classes/role';
 
 interface UserProps {
   id: number;
   first_name: string;
   last_name: string;
   email: string;
-  role: any;
+  role: Role;
 }
 
 class User extends Component {
@@ -46,7 +47,7 @@ class User extends Component {
                       {user.first_name} {user.last_name}
                     </td>
                     <td>{user.email}</td>
-                    <td></td>
+                    <td>{user.role.name}</td>
                     <td></td>
                   </tr>
                 );
