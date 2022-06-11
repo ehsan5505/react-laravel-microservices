@@ -3,6 +3,7 @@ import Wrapper from "../Wrapper";
 import axios, { AxiosError } from "axios";
 import Role from "../classes/role";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface UserProps {
   id: number;
@@ -45,8 +46,7 @@ class User extends Component {
     if (window.confirm("Are you sure to Delete the Records?")) {
       await axios.delete(`users/${id}`).catch((err) => {
         if (err.response) {
-          this.message = err.response.data.message;
-          this.componentDidMount();
+          toast.error(err.message.data.message)
         }
       });
 
@@ -66,13 +66,6 @@ class User extends Component {
             Add User
           </Link>
         </div>
-
-        <strong
-          style={{ color: "red", fontSize: "1.2em", fontVariant: "small-caps" }}
-        >
-          {this.message}
-        </strong>
-
         <div className="table-responsive">
           <table className="table table-striped table-sm">
             <thead>
