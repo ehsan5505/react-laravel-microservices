@@ -47,7 +47,7 @@ class User extends Component {
         await axios.delete(`users/${id}`);
       } catch (err: unknown | AxiosError) {
         // this.error = err.response.data;
-        console.warn(err.response.data);
+        // console.warn .response.data);
         console.log(err);
       }
 
