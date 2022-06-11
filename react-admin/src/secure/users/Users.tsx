@@ -57,9 +57,6 @@ class User extends Component {
   };
 
   render() {
-    if (this.message != "") {
-      <p style={{ color: "red", fontSize: "1.2em" }}>{this.message}</p>;
-    }
     return (
       <Wrapper>
         <h2>Users</h2>
@@ -68,6 +65,8 @@ class User extends Component {
             Add User
           </Link>
         </div>
+
+        {this.message}
 
         <div className="table-responsive">
           <table className="table table-striped table-sm">
