@@ -6,12 +6,12 @@ class Nav extends Component {
     redirect: false,
   };
   signOut = () => {
-    console.info("Sign Out");
-    // localStorage.clear();
-    // this.setState({
-    //   redirect: true
-    // })
-  };
+    localStorage.clear();
+    this.setState({
+      redirect: true
+    })
+  }
+  
   render() {
     if (this.state.redirect) return <Navigate to="/login" />;
     return (
