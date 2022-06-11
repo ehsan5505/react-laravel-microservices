@@ -57,8 +57,8 @@ class User extends Component {
   };
 
   render() {
-    if (this.message) {
-      <p style={{ color: "red" }}>{this.message}</p>;
+    if (this.message != "") {
+      <p style={{ color: "red", fontSize: "1.2em" }}>{this.message}</p>;
     }
     return (
       <Wrapper>
