@@ -3,7 +3,7 @@ import Wrapper from "../Wrapper";
 import axios, { AxiosError } from "axios";
 import Role from "../classes/role";
 import { Link } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 interface UserProps {
   id: number;
@@ -20,7 +20,6 @@ class User extends Component {
 
   page = 1;
   last_page = 1;
-  message: string = "";
 
   componentDidMount = async () => {
     const res = await axios.get(`users?page=${this.page}`);
@@ -43,15 +42,14 @@ class User extends Component {
   };
 
   delete = async (id: number) => {
-    toast.warn("Delete is clicked");
-    // if (window.confirm("Are you sure to Delete the Records?")) {
-      // await axios.delete(`users/${id}`).catch((err:AxiosError) => {
-      //   if (err.response) {
-      //     let msg;
-      //     msg = err.response.data.message;
-      //     toast.error("Error:"+msg);
-      //   }
-      // });
+    if (window.confirm("Are you sure to delete the record?")) {
+      await axios.delete(`users/${id}`).catch((err:AxiosError) => {
+        if (err.response) {
+          let msg;
+          msg = err.response.data.message;
+          toast.error("Error:"+msg);
+        }
+      });
 
       // refresh the state
       // this.state.users.filter((u: UserProps) => {
