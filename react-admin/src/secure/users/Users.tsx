@@ -48,7 +48,8 @@ class User extends Component {
       } catch (err) {
           const errors = err as Error | AxiosError;
           if (!axios.isAxiosError(errors)) {
-            console.log(errors.message);
+            console.log(errors.name);
+            console.info(errors);
           }
       }
 
