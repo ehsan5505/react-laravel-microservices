@@ -15,7 +15,7 @@ class Login extends Component {
     // Prevent the Default Browser Behaviour to refresh the page on data to view
     e.preventDefault();
     // console.info("email: "+this.email+" | password: "+this.password);
-    axios.post("http://192.168.22.138:8000/api/login", {
+    axios.post("login", {
       email: this.email,
       password: this.password,
     }).then(response => {
