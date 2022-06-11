@@ -7,6 +7,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = "http://192.168.22.138/api/";
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+axios.defaults.headers.common['crossDomain'] = true;
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
