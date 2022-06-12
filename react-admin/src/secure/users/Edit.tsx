@@ -7,7 +7,7 @@ import Wrapper from "../Wrapper";
 interface EditUserProps {
   match: PropsWithRef<any>;
 }
-class EditUser extends Component<EditUserProps> {
+class EditUser extends Component {
   state = {
     firstName: "",
     lastName: "",
