@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, SyntheticEvent } from "react";
 import Wrapper from "../Wrapper";
 
 class CreateUser extends Component {
@@ -9,7 +9,8 @@ class CreateUser extends Component {
   password_confirmation: string = "";
   role_id: number = 1;
 
-  submit() {
+  submit(e:SyntheticEvent) {
+    e.preventDefault();
     console.info(
       this.firstName +
         " | " +
@@ -92,7 +93,6 @@ class CreateUser extends Component {
             </div>
 
             <select className="form-select" name="role_id">
-              <option selected>Choose the Role</option>
               <option key="1" value="1">
                 Admin
               </option>
