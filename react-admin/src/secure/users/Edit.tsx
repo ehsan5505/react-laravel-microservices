@@ -7,6 +7,7 @@ interface EditUserProps {
   match: PropsWithRef<any>;
 }
 class EditUser extends Component {
+  
   state = {
     firstName: "",
     lastName: "",
@@ -14,11 +15,11 @@ class EditUser extends Component {
     roleId: 3,
     roles: [],
     redirect: false,
+    id: useParams()
   };
-  id = useParams();
   
   componentDidMount = () => {
-    console.info(this.id);
+    console.info(this.state.id);
   };
 
   submit = (e: SyntheticEvent) => {
