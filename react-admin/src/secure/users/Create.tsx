@@ -31,45 +31,60 @@ class CreateUser extends Component {
         <div className="col-md col-md-5">
           <form>
             <div className="form-outline form-white mb-4">
+              <label htmlFor="first_name" className="form-label">
+                First Name
+              </label>
               <input
                 type="text"
                 className="form-control"
-                name="first_name"
+                id="first_name"
                 placeholder="Please Enter First Name"
                 onChange={(e) => (this.firstName = e.target.value)}
               />
             </div>
             <div className="form-outline form-white mb-4">
+              <label htmlFor="last_name" className="form-label">
+                Last Name
+              </label>
               <input
                 type="text"
-                name="last_name"
+                id="last_name"
                 className="form-control"
                 placeholder="Please Enter Last Name"
                 onChange={(e) => (this.lastName = e.target.value)}
               />
             </div>
             <div className="form-outline form-white mb-4">
+              <label htmlFor="email" className="form-label">
+                Email address
+              </label>
               <input
                 type="email"
-                name="email"
+                id="email"
                 className="form-control"
                 placeholder="Please Enter Email Address"
                 onChange={(e) => (this.email = e.target.value)}
               />
             </div>
             <div className="form-outline form-white mb-4">
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
               <input
                 type="password"
-                name="password"
+                id="password"
                 className="form-control"
                 placeholder="Please Enter the Password"
                 onChange={(e) => (this.password = e.target.value)}
               />
             </div>
             <div className="form-outline form-white mb-4">
+              <label htmlFor="password_confirmation" className="form-label">
+                Confirm Password
+              </label>
               <input
                 type="password"
-                name="password_confirmation"
+                id="password_confirmation"
                 className="form-control"
                 placeholder="Please Enter the Confirmation Password"
                 onChange={(e) => (this.password_confirmation = e.target.value)}
