@@ -3,6 +3,7 @@ import Wrapper from "../Wrapper";
 import axios, { AxiosError } from "axios";
 import Role from "../classes/role";
 import { toast } from "react-toastify";
+import { Navigate } from "react-router-dom";
 
 class CreateUser extends Component {
   firstName = "";
@@ -50,6 +51,9 @@ class CreateUser extends Component {
   };
 
   render(): React.ReactNode {
+    if (this.state.redirect) {
+      return <Navigate to="/users" />;
+    }
     return (
       <Wrapper>
         <div className="mb-4">
