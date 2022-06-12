@@ -18,7 +18,6 @@ class EditUser extends Component<RouteProps> {
 
   componentDidMount = () => {
     // const id = this.props.params
-    console.info(GetParamsId());
     // const id = route.params.id;
     // console.log( this.props.route.params );
   };
