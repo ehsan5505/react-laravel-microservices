@@ -2,6 +2,7 @@ import React, { Component, SyntheticEvent } from "react";
 import Wrapper from "../Wrapper";
 
 class CreateUser extends Component {
+  
   firstName: string = "";
   lastName: string = "";
   email: string = "";
@@ -40,7 +41,7 @@ class CreateUser extends Component {
                 className="form-control"
                 id="first_name"
                 placeholder="Please Enter First Name"
-                onChange={(e) => (this.firstName = e.target.value)}
+                onChange={(e) => {this.firstName = e.target.value}}
               />
             </div>
             <div className="mb-4">
@@ -52,7 +53,7 @@ class CreateUser extends Component {
                 id="last_name"
                 className="form-control"
                 placeholder="Please Enter Last Name"
-                onChange={(e) => (this.lastName = e.target.value)}
+                onChange={(e) => {this.lastName = e.target.value}}
               />
             </div>
             <div className="mb-4">
@@ -64,7 +65,7 @@ class CreateUser extends Component {
                 id="email"
                 className="form-control"
                 placeholder="Please Enter Email Address"
-                onChange={(e) => (this.email = e.target.value)}
+                onChange={(e) => {this.email = e.target.value}}
               />
             </div>
             <div className="mb-4">
@@ -76,7 +77,7 @@ class CreateUser extends Component {
                 id="password"
                 className="form-control"
                 placeholder="Please Enter the Password"
-                onChange={(e) => (this.password = e.target.value)}
+                onChange={(e) => {this.password = e.target.value}}
               />
             </div>
             <div className="mb-4">
@@ -88,7 +89,7 @@ class CreateUser extends Component {
                 id="password_confirmation"
                 className="form-control"
                 placeholder="Please Enter the Confirmation Password"
-                onChange={(e) => (this.passwordConfirmation = e.target.value)}
+                onChange={(e) => {this.passwordConfirmation = e.target.value}}
               />
             </div>
 
