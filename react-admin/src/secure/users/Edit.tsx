@@ -3,9 +3,6 @@ import Role from "../classes/role";
 import Wrapper from "../Wrapper";
 import { useParams } from "react-router-dom";
 
-interface EditUserProps {
-  match: PropsWithRef<any>;
-}
 class EditUser extends Component<any, any> {
   firstName = "";
   lastName = "";
@@ -107,10 +104,7 @@ class EditUser extends Component<any, any> {
     );
   }
 }
-export default (props) => (
-  <EditUser
-      {...props}
-      params={useParams()}
-  />
+export default (props: PropsWithRef<any>) => (
+  <EditUser {...props} params={useParams()} />
 );
 // export default (EditUser);
