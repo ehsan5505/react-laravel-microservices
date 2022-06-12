@@ -1,4 +1,5 @@
 import React, { Component, PropsWithRef, SyntheticEvent } from "react";
+import { withRouter } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Role from "../classes/role";
 import Wrapper from "../Wrapper";
@@ -7,7 +8,6 @@ interface EditUserProps {
   match: PropsWithRef<any>;
 }
 class EditUser extends Component {
-  
   state = {
     firstName: "",
     lastName: "",
@@ -15,11 +15,11 @@ class EditUser extends Component {
     roleId: 3,
     roles: [],
     redirect: false,
-    id: useParams()
   };
-  
+
   componentDidMount = () => {
-    console.info(this.state.id);
+    const id = this.props.match.params.id;
+    console.info(id);
   };
 
   submit = (e: SyntheticEvent) => {
@@ -102,4 +102,4 @@ class EditUser extends Component {
   }
 }
 
-export default EditUser;
+export default withRouter(EditUser);
