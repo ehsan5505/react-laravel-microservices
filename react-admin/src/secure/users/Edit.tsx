@@ -22,7 +22,7 @@ class EditUser extends Component<any, any> {
   };
 
   componentDidMount = () => {
-    console.log(this.props.match);
+    console.log(this.props.params);
     // console.log(this.props);
     // const id = this.props.params
     // const id = route.params.id;
@@ -112,5 +112,10 @@ class EditUser extends Component<any, any> {
     );
   }
 }
-
-export default withRouter(EditUser);
+export default (props) => (
+  <EditUser
+      {...props}
+      params={useParams()}
+  />
+);
+// export default (EditUser);
