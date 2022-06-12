@@ -44,18 +44,12 @@ class User extends Component {
 
   delete = async (id: number) => {
     if (window.confirm("Are you sure to delete the record?")) {
-      // await axios.delete(`users/${id}`).catch((err: AxiosError) => {
-      //   if (err.response) {
-      //     let msg;
-      //     msg = err.response.data.message;
-      //     toast.error("Error:" + msg);
-      //   }
-      // });
       try {
         await axios.delete(`users/${id}`);
         this.state.users.filter((u: UserProps) => {
           if (u.id != id) return u;
         });
+        this.componentDidMount();
         toast.success("Records Deleted Successfully");
       } catch (err) {
         const errors = err as Error | AxiosError;
