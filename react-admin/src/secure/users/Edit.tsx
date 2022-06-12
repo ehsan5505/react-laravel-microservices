@@ -1,8 +1,6 @@
 import React, { Component, PropsWithRef, SyntheticEvent } from "react";
 import { RouteProps } from "react-router-dom";
 import Role from "../classes/role";
-import GetParamsId from "../function/getParamId";
-import getParamsId from "../function/getParamId";
 import Wrapper from "../Wrapper";
 
 interface EditUserProps {
@@ -37,8 +35,8 @@ class EditUser extends Component<RouteProps> {
 
   render() {
     console.log(this.props);
-    let { id } = this.props.match.params;
-    console.info(id);
+    // let { id } = this.props.match.params:;
+    // console.info(id);
     return (
       <Wrapper>
         <div className="mb-4">
