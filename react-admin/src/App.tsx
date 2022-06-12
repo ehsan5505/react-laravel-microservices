@@ -18,7 +18,7 @@ function App() {
           <Route path={"/register"} element={<Register />} />
           <Route path={"/users"} element={<User />} />
           <Route path={"/users/create"} element={<CreateUser />} />
-          <Route path={`/users/:id/edit`} component={EditUser} />
+          <Route path={`/users/:id/edit`} element={<EditUser/>} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -6,7 +6,7 @@ import Wrapper from "../Wrapper";
 interface EditUserProps {
   match: PropsWithRef<any>;
 }
-class EditUser extends Component<{ match: PropsWithRef<any> }> {
+class EditUser extends Component {
   state = {
     firstName: "",
     lastName: "",
@@ -18,8 +18,8 @@ class EditUser extends Component<{ match: PropsWithRef<any> }> {
   id: number = 0;
 
   componentDidMount = async () => {
-    this.id = this.props.match.params.id;
-    console.info(this.id);
+    let { id } = useParams();
+    console.info(id);
   };
 
   submit = (e: SyntheticEvent) => {
