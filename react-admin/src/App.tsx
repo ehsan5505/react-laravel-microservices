@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./public/Login";
 import Register from "./public/Register";
 import CreateUser from "./secure/users/Create";
+import EditUser from "./secure/users/Edit";
 
 function App() {
   return (

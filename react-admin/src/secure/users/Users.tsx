@@ -94,7 +94,7 @@ class User extends Component {
                     <td>{user.email}</td>
                     <td>{user.role.name}</td>
                     <td>
-                      <button className="btn">Edit</button>
+                      <Link to={`/users/${user.id}/edit`} className="btn">Edit</Link>
                       <button
                         className="btn"
                         onClick={() => this.delete(user.id)}
