@@ -1,6 +1,4 @@
 import React, { Component, PropsWithRef, SyntheticEvent } from "react";
-import { withRouter } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import Role from "../classes/role";
 import Wrapper from "../Wrapper";
 
@@ -18,8 +16,8 @@ class EditUser extends Component {
   };
 
   componentDidMount = () => {
-    const id = this.props.match.params.id;
-    console.info(id);
+    // const id = this.props.params
+    console.info(this.props);
   };
 
   submit = (e: SyntheticEvent) => {
@@ -102,4 +100,4 @@ class EditUser extends Component {
   }
 }
 
-export default withRouter(EditUser);
+export default (EditUser);
