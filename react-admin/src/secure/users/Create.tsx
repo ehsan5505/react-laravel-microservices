@@ -9,7 +9,7 @@ class CreateUser extends Component {
   passwordConfirmation = "";
   roleId = 1;
 
-  submit(e: SyntheticEvent) {
+  submit = async(e: SyntheticEvent) => {
     e.preventDefault();
     
     console.info("firstname"+this.lastName);
