@@ -1,6 +1,6 @@
 import React, { Component, SyntheticEvent } from "react";
 import Wrapper from "../Wrapper";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import Role from "../classes/role";
 import { toast } from "react-toastify";
 
