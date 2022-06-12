@@ -34,7 +34,6 @@ class User extends Component {
     if (this.page == 1) return;
     this.page--;
     await this.componentDidMount();
-    toast.info("Checking");
   };
   next = async () => {
     if (this.page == this.last_page) return;
