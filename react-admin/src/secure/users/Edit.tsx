@@ -1,8 +1,7 @@
 import React, { Component, PropsWithRef, SyntheticEvent } from "react";
 import Role from "../classes/role";
 import Wrapper from "../Wrapper";
-import { useNavigate, useParams } from "react-router-dom";
-import { withRouter } from "react-router";
+import { useParams } from "react-router-dom";
 
 interface EditUserProps {
   match: PropsWithRef<any>;
@@ -40,10 +39,6 @@ class EditUser extends Component<any, any> {
   };
 
   render() {
-    let { id } = useParams();
-    console.info(id);
-    // let { id } = this.props.match.params:;
-    // console.info(id);
     return (
       <Wrapper>
         <div className="mb-4">
