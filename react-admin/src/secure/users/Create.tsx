@@ -7,23 +7,18 @@ class CreateUser extends Component {
   email = "";
   password = "";
   passwordConfirmation = "";
-  role_id = 1;
+  roleId = 1;
 
   submit(e: SyntheticEvent) {
     e.preventDefault();
-    console.info(
-      this.firstName +
-        " | " +
-        this.lastName +
-        " | " +
-        this.email +
-        " | " +
-        this.password +
-        " | " +
-        this.passwordConfirmation +
-        " | " +
-        this.role_id
-    );
+    console.info({
+      first_name: this.firstName,
+      last_name: this.lastName,
+      email: this.email,
+      password: this.password,
+      password_confirmation: this.passwordConfirmation,
+      role_id: this.roleId,
+    });
   }
 
   render(): React.ReactNode {
@@ -93,7 +88,11 @@ class CreateUser extends Component {
             </div>
 
             <div className="mb-4">
-              <select className="form-select" name="role_id">
+              <select
+                className="form-select"
+                name="role_id"
+                onChange={(e) => (this.roleId = parseInt(e.target.value))}
+              >
                 <option key="1" value="1">
                   Admin
                 </option>
