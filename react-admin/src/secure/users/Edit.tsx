@@ -1,5 +1,4 @@
 import React, { Component, PropsWithRef, SyntheticEvent } from "react";
-import { Route, useRoutes } from "react-router-dom";
 import Role from "../classes/role";
 import getParamsId from "../function/getParamId";
 import Wrapper from "../Wrapper";
@@ -21,8 +20,6 @@ class EditUser extends Component {
     // const id = this.props.params
     console.info(this.props);
     // const id = route.params.id;
-    console.log(getParamsId());
-
     // console.log( this.props.route.params );
   };
 
