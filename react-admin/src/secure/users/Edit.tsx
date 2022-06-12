@@ -22,9 +22,9 @@ class EditUser extends Component<any, any> {
     const { id } = this.props.params;
     console.warn(id);
     const rolesData = await axios.get("/roles");
-    const usersData = await axios.get(`/users/{id}`);
+    // const usersData = await axios.get(`/users/`+id);
     console.info(rolesData);
-    console.info(usersData);
+    // console.info(usersData);
   };
 
   submit = (e: SyntheticEvent) => {
