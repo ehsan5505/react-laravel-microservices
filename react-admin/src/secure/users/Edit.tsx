@@ -7,6 +7,10 @@ interface EditUserProps {
   match: PropsWithRef<any>;
 }
 class EditUser extends Component<any,any> {
+  firstName = "";
+  lastName = "";
+  email="";
+  roleId="";
   state = {
     firstName: "",
     lastName: "",
@@ -51,7 +55,7 @@ class EditUser extends Component<any,any> {
                 className="form-control"
                 id="first_name"
                 placeholder="Please Enter First Name"
-                onChange={(e) => (this.state.firstName = e.target.value)}
+                onChange={(e) => (this.firstName = e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -63,7 +67,7 @@ class EditUser extends Component<any,any> {
                 id="last_name"
                 className="form-control"
                 placeholder="Please Enter Last Name"
-                onChange={(e) => (this.state.lastName = e.target.value)}
+                onChange={(e) => (this.lastName = e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -75,7 +79,7 @@ class EditUser extends Component<any,any> {
                 id="email"
                 className="form-control"
                 placeholder="Please Enter Email Address"
-                onChange={(e) => (this.state.email = e.target.value)}
+                onChange={(e) => (this.email = e.target.value)}
               />
             </div>
 
