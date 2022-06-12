@@ -18,8 +18,6 @@ class EditUser extends Component<any,any> {
   
   componentDidMount = () => {
     // console.log(this.props);
-    let { id } = useParams();
-    console.info(id);
     // const id = this.props.params
     // const id = route.params.id;
     // console.log( this.props.route.params );
@@ -36,7 +34,8 @@ class EditUser extends Component<any,any> {
   };
 
   render() {
-    console.log(this.props);
+    let { id } = useParams();
+    console.info(id);
     // let { id } = this.props.match.params:;
     // console.info(id);
     return (
