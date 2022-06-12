@@ -1,6 +1,5 @@
 import React, { Component, PropsWithRef, SyntheticEvent } from "react";
 import { Route, useRoutes } from "react-router-dom";
-import {useRoute} from '@react-navigation/native';
 import Role from "../classes/role";
 import Wrapper from "../Wrapper";
 
@@ -20,11 +19,9 @@ class EditUser extends Component {
   componentDidMount = () => {
     // const id = this.props.params
     console.info(this.props);
-    const route = useRoute();
-    console.info(route.params);
     // const id = route.params.id;
 
-    console.log( this.props.match.params.id );
+    console.log( this.props.route.params );
   };
 
   submit = (e: SyntheticEvent) => {
