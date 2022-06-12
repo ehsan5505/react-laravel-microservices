@@ -17,8 +17,7 @@ class CreateUser extends Component {
 
   componentDidMount = async () => {
     const roles = await axios.get("roles");
-
-    this.setState({ roles });
+    this.setState({ roles: roles });
   };
 
   submit = async (e: SyntheticEvent) => {
