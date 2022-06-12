@@ -43,7 +43,7 @@ class Register extends Component {
               <div className="col-lg-6 mb-5 mb-lg-0">
                 <h1 className="my-5 display-3 fw-bold ls-tight">
                   Welcome To Be <br />
-                  <span className="text-primary">A Part Of The Team...</span>
+                  <span className="text-primary">The Part Of The Team...</span>
                 </h1>
                 <p className="para">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
