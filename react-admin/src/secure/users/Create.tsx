@@ -105,12 +105,10 @@ class CreateUser extends Component {
                 name="role_id"
                 onChange={(e) => (this.roleId = parseInt(e.target.value))}
               >
-                {this.state.roles.map((role: Role) => {
+                {this.state.roles.map((role:Role) => {
                   return (
-                    <option key={role.id} value={role.id}>
-                      {role.name}
-                    </option>
-                  );
+                    <option>{role.name}</option>
+                  )
                 })}
               </select>
             </div>
