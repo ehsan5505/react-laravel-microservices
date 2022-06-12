@@ -70,7 +70,7 @@ class UserController extends Controller
     function destroy($id)
     {
         Gate::authorize('edit','users');
-        if (User::destroy($id) == 0)
+        if (!User::destroy($id))
             return response("User Not Exist", Response::HTTP_NOT_FOUND);
         return response(null, Response::HTTP_NO_CONTENT);
     }
