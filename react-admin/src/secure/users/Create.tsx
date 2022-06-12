@@ -6,7 +6,7 @@ class CreateUser extends Component {
   lastName = "";
   email = "";
   password = "";
-  password_confirmation = "";
+  passwordConfirmation = "";
   role_id = 1;
 
   submit(e: SyntheticEvent) {
