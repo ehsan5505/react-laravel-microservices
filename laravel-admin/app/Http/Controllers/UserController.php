@@ -26,7 +26,7 @@ class UserController extends Controller
     function index()
     {
         // Did the Role has has access view | users (Gate(privilege, model?))
-        Gate::authorize('view','users');
+        Gate::authorize('users','edit');
         $users = User::paginate();
         return UserResource::collection($users);
     }
@@ -35,7 +35,7 @@ class UserController extends Controller
     // @users:id
     function show($id)
     {
-        Gate::authorize('view','users');
+        Gate::authorize('users','edit');
         $user = \Auth::user();
         return new UserResource(User::find($id));
     }
@@ -44,7 +44,7 @@ class UserController extends Controller
     // POST @users
     function store(UserCreateRequest $request)
     {
-        Gate::authorize('edit','users');
+        Gate::authorize('users','edit');
         $user =  User::create(
             $request->only('first_name', 'last_name', 'email', 'role_id')
                 + ['password'  => Hash::make(1234)] // default password, user should update
@@ -57,7 +57,7 @@ class UserController extends Controller
     // PUT @users:id
     function update($id, UserUpdateRequest $request)
     {
-        Gate::authorize('edit','users');
+        Gate::authorize('users','edit');
         $user = User::find($id);
 
         $user->update($request->only('first_name', 'last_name', 'email', 'role_id'));
@@ -69,7 +69,7 @@ class UserController extends Controller
     // DELETE @users:id
     function destroy($id)
     {
-        Gate::authorize('edit','users');
+        Gate::authorize('users','edit');
         if (User::destroy($id) == 0)
             return response("User Not Exist", Response::HTTP_NOT_FOUND);
         return response(null, Response::HTTP_NO_CONTENT);
@@ -79,14 +79,14 @@ class UserController extends Controller
     // Return the User Info
     public function user()
     {
-        Gate::authorize('view','users');
+        Gate::authorize('users','edit');
         return new UserResource(\Auth::user());
     }
 
     public function updateInfo(UserUpdateProfileRequest $request)
     {
 
-        Gate::authorize('edit','users');
+        Gate::authorize('users','edit');
         $user = \Auth::user();
         $user->update($request->only('first_name', 'last_name', 'email', 'role_id'));
         return response(new UserResource($user), Response::HTTP_ACCEPTED);
@@ -94,7 +94,7 @@ class UserController extends Controller
 
     public function updatePassword(UserPasswordUpdateRequest $request)
     {
-        Gate::authorize('edit','users');
+        Gate::authorize('users','edit');
         $user = \Auth::user();
         $user->update(['password' => Hash::make($request->input('password'))]);
         return response(new UserResource($user), Response::HTTP_ACCEPTED);
