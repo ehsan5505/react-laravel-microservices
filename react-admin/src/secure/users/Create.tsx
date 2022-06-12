@@ -12,6 +12,7 @@ class CreateUser extends Component {
   submit(e: SyntheticEvent) {
     e.preventDefault();
     
+    console.info("yes working");
     // console.info({
     //   first_name: this.firstName,
     //   last_name: this.lastName,
