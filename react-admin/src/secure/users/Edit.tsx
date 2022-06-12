@@ -50,7 +50,7 @@ class EditUser extends Component<any, any> {
     console.log({
       first_name: this.state.firstName,
       last_name: this.state.lastName,
-      email: this.state.lastName,
+      email: this.state.email,
       role_id: this.state.roleId,
     });
   };
