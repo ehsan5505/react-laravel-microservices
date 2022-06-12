@@ -2,6 +2,7 @@ import React, { Component, PropsWithRef, SyntheticEvent } from "react";
 import Role from "../classes/role";
 import Wrapper from "../Wrapper";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 class EditUser extends Component<any, any> {
   firstName = "";
@@ -17,12 +18,13 @@ class EditUser extends Component<any, any> {
     redirect: false,
   };
 
-  componentDidMount = () => {
-    console.log(this.props.params);
-    // console.log(this.props);
-    // const id = this.props.params
-    // const id = route.params.id;
-    // console.log( this.props.route.params );
+  componentDidMount = async () => {
+    const { id } = this.props.params;
+    console.warn(id);
+    const rolesData = await axios.get("roles");
+    const usersData = await axios.get(`users\{id}`);
+    console.info(rolesData);
+    console.info(usersData);
   };
 
   submit = (e: SyntheticEvent) => {
