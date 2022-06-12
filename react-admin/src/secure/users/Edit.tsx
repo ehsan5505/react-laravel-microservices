@@ -6,7 +6,7 @@ import Wrapper from "../Wrapper";
 interface EditUserProps {
   match: PropsWithRef<any>;
 }
-class EditUser extends Component<RouteProps> {
+class EditUser extends Component<any,any> {
   state = {
     firstName: "",
     lastName: "",
@@ -17,6 +17,7 @@ class EditUser extends Component<RouteProps> {
   };
 
   componentDidMount = () => {
+    console.log(this.props.match);
     // const id = this.props.params
     // const id = route.params.id;
     // console.log( this.props.route.params );
