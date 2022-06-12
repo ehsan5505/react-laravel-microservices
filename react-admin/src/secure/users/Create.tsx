@@ -32,6 +32,7 @@ class CreateUser extends Component {
           <form>
             <input
               type="text"
+              className="form-control"
               name="first_name"
               placeholder="Please Enter First Name"
               onChange={(e) => (this.firstName = e.target.value)}
@@ -39,24 +40,28 @@ class CreateUser extends Component {
             <input
               type="text"
               name="last_name"
+              className="form-control"
               placeholder="Please Enter Last Name"
               onChange={(e) => (this.lastName = e.target.value)}
             />
             <input
               type="email"
               name="email"
+              className="form-control"
               placeholder="Please Enter Email Address"
               onChange={(e) => (this.email = e.target.value)}
             />
             <input
               type="password"
               name="password"
+              className="form-control"
               placeholder="Please Enter the Password"
               onChange={(e) => (this.password = e.target.value)}
             />
             <input
               type="password"
               name="password_confirmation"
+              className="form-control"
               placeholder="Please Enter the Confirmation Password"
               onChange={(e) => (this.password_confirmation = e.target.value)}
             />
