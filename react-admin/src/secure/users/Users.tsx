@@ -5,6 +5,9 @@ import Role from "../classes/role";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
+interface Error{
+  response: [];
+}
 interface UserProps {
   id: number;
   first_name: string;
