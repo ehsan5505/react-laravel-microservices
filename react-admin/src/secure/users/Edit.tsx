@@ -1,8 +1,12 @@
 import React, { Component, PropsWithRef, SyntheticEvent } from "react";
+import { useParams } from "react-router-dom";
 import Role from "../classes/role";
 import Wrapper from "../Wrapper";
 
-class EditUser extends Component<{ match: PropsWithRef<any> }> {
+interface EditUserProps {
+  match: PropsWithRef<any>;
+}
+class EditUser extends Component {
   state = {
     firstName: "",
     lastName: "",
@@ -14,7 +18,7 @@ class EditUser extends Component<{ match: PropsWithRef<any> }> {
   id: number = 0;
 
   componentDidMount = async () => {
-    this.id = parseInt(this.props.match.params.id);
+    this.id = this.props.match.params.id;
     console.info(this.id);
   };
 
