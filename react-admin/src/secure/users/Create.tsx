@@ -29,7 +29,7 @@ class CreateUser extends Component {
     return (
       <Wrapper>
         <div className="col-md col-md-5">
-          <form>
+          <form onSubmit={this.submit}>
             <div className="form-outline form-white mb-4">
               <label htmlFor="first_name" className="form-label">
                 First Name
