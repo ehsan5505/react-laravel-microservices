@@ -1,5 +1,7 @@
 import React, { Component, SyntheticEvent } from "react";
 import Wrapper from "../Wrapper";
+import axios from "axios";
+import Role from "../classes/role";
 
 class CreateUser extends Component {
   firstName = "";
@@ -9,9 +11,19 @@ class CreateUser extends Component {
   passwordConfirmation = "";
   roleId = 1;
 
-  submit = async(e: SyntheticEvent) => {
+  state = {
+    roles: [],
+  };
+
+  componentDidMount = async () => {
+    const roles = await axios.get("roles");
+
+    this.setState({ roles });
+  };
+
+  submit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    
+
     console.info({
       first_name: this.firstName,
       last_name: this.lastName,
@@ -20,7 +32,7 @@ class CreateUser extends Component {
       password_confirmation: this.passwordConfirmation,
       role_id: this.roleId,
     });
-  }
+  };
 
   render(): React.ReactNode {
     return (
@@ -94,9 +106,13 @@ class CreateUser extends Component {
                 name="role_id"
                 onChange={(e) => (this.roleId = parseInt(e.target.value))}
               >
-                <option key="1" value="1">
-                  Admin
-                </option>
+                {this.state.roles.map((role: Role) => {
+                  return (
+                    <option key={role.id} value={role.id}>
+                      {role.name}
+                    </option>
+                  );
+                })}
               </select>
             </div>
 
