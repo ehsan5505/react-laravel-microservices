@@ -15,11 +15,10 @@ class EditUser extends Component {
     roles: [],
     redirect: false,
   };
-  id: number = 0;
-
+  id = useParams();
+  
   componentDidMount = () => {
-    let { id } = useParams();
-    console.info(id);
+    console.info(this.id);
   };
 
   submit = (e: SyntheticEvent) => {
