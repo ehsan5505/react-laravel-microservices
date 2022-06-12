@@ -100,7 +100,11 @@ class CreateUser extends Component {
               </select>
             </div>
 
-            <button className="btn btn-col-md-2">Create User</button>
+            <input
+              type="submit"
+              className="btn btn-primary float-right"
+              value="Create User"
+            />
           </form>
         </div>
       </Wrapper>
