@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 interface Error{
-  response: [];
+  response: any;
 }
 interface UserProps {
   id: number;
