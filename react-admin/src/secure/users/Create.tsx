@@ -6,7 +6,7 @@ class CreateUser extends Component {
   lastName: string = "";
   email: string = "";
   password: string = "";
-  password_confirmation: string = "";
+  passwordConfirmation: string = "";
   role_id: number = 1;
 
   submit(e: SyntheticEvent) {
@@ -20,7 +20,7 @@ class CreateUser extends Component {
         " | " +
         this.password +
         " | " +
-        this.password_confirmation +
+        this.passwordConfirmation +
         " | " +
         this.role_id
     );
@@ -88,7 +88,7 @@ class CreateUser extends Component {
                 id="password_confirmation"
                 className="form-control"
                 placeholder="Please Enter the Confirmation Password"
-                onChange={(e) => (this.password_confirmation = e.target.value)}
+                onChange={(e) => (this.passwordConfirmation = e.target.value)}
               />
             </div>
 
