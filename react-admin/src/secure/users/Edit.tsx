@@ -1,4 +1,5 @@
 import React, { Component, PropsWithRef, SyntheticEvent } from "react";
+import { RouteProps } from "react-router-dom";
 import Role from "../classes/role";
 import GetParamsId from "../function/getParamId";
 import getParamsId from "../function/getParamId";
@@ -7,7 +8,7 @@ import Wrapper from "../Wrapper";
 interface EditUserProps {
   match: PropsWithRef<any>;
 }
-class EditUser extends Component {
+class EditUser extends Component<RouteProps> {
   state = {
     firstName: "",
     lastName: "",
