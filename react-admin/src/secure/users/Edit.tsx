@@ -37,7 +37,7 @@ class EditUser extends Component<any, any> {
     this.setState({
       roles: rolesData,
       firstName: userData.first_name,
-      lastData: userData.last_name,
+      lastName: userData.last_name,
       email: userData.email,
       roleId: userData.role.id,
     });
