@@ -83,7 +83,7 @@ class EditUser extends Component<any, any> {
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-4 col-md-4">
               <select
                 className="form-select"
                 name="role_id"
