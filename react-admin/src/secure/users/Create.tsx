@@ -12,15 +12,14 @@ class CreateUser extends Component {
   submit = async(e: SyntheticEvent) => {
     e.preventDefault();
     
-    console.info("firstname"+this.lastName);
-    // console.info({
-    //   first_name: this.firstName,
-    //   last_name: this.lastName,
-    //   email: this.email,
-    //   password: this.password,
-    //   password_confirmation: this.passwordConfirmation,
-    //   role_id: this.roleId,
-    // });
+    console.info({
+      first_name: this.firstName,
+      last_name: this.lastName,
+      email: this.email,
+      password: this.password,
+      password_confirmation: this.passwordConfirmation,
+      role_id: this.roleId,
+    });
   }
 
   render(): React.ReactNode {
