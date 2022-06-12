@@ -16,8 +16,8 @@ class CreateUser extends Component {
   };
 
   componentDidMount = async () => {
-    const roles = await axios.get("roles");
-    this.setState({ roles: roles });
+    const resp = await axios.get("roles");
+    this.setState({ roles: resp.data.data });
   };
 
   submit = async (e: SyntheticEvent) => {
@@ -105,10 +105,8 @@ class CreateUser extends Component {
                 name="role_id"
                 onChange={(e) => (this.roleId = parseInt(e.target.value))}
               >
-                {this.state.roles.map((role:Role) => {
-                  return (
-                    <option>{role.name}</option>
-                  )
+                {this.state.roles.map((role: Role) => {
+                  return <option>{role.name}</option>;
                 })}
               </select>
             </div>
