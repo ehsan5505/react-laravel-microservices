@@ -30,43 +30,54 @@ class CreateUser extends Component {
       <Wrapper>
         <div className="col-md col-md-5">
           <form>
-            <input
-              type="text"
-              className="form-control"
-              name="first_name"
-              placeholder="Please Enter First Name"
-              onChange={(e) => (this.firstName = e.target.value)}
-            />
-            <input
-              type="text"
-              name="last_name"
-              className="form-control"
-              placeholder="Please Enter Last Name"
-              onChange={(e) => (this.lastName = e.target.value)}
-            />
-            <input
-              type="email"
-              name="email"
-              className="form-control"
-              placeholder="Please Enter Email Address"
-              onChange={(e) => (this.email = e.target.value)}
-            />
-            <input
-              type="password"
-              name="password"
-              className="form-control"
-              placeholder="Please Enter the Password"
-              onChange={(e) => (this.password = e.target.value)}
-            />
-            <input
-              type="password"
-              name="password_confirmation"
-              className="form-control"
-              placeholder="Please Enter the Confirmation Password"
-              onChange={(e) => (this.password_confirmation = e.target.value)}
-            />
+            <div className="form-outline form-white mb-4">
+              <input
+                type="text"
+                className="form-control"
+                name="first_name"
+                placeholder="Please Enter First Name"
+                onChange={(e) => (this.firstName = e.target.value)}
+              />
+            </div>
+            <div className="form-outline form-white mb-4">
+              <input
+                type="text"
+                name="last_name"
+                className="form-control"
+                placeholder="Please Enter Last Name"
+                onChange={(e) => (this.lastName = e.target.value)}
+              />
+            </div>
+            <div className="form-outline form-white mb-4">
+              <input
+                type="email"
+                name="email"
+                className="form-control"
+                placeholder="Please Enter Email Address"
+                onChange={(e) => (this.email = e.target.value)}
+              />
+            </div>
+            <div className="form-outline form-white mb-4">
+              <input
+                type="password"
+                name="password"
+                className="form-control"
+                placeholder="Please Enter the Password"
+                onChange={(e) => (this.password = e.target.value)}
+              />
+            </div>
+            <div className="form-outline form-white mb-4">
+              <input
+                type="password"
+                name="password_confirmation"
+                className="form-control"
+                placeholder="Please Enter the Confirmation Password"
+                onChange={(e) => (this.password_confirmation = e.target.value)}
+              />
+            </div>
 
-            <select name="role_id">
+            <select className="form-select" name="role_id">
+              <option selected>Choose the Role</option>
               <option key="1" value="1">
                 Admin
               </option>
@@ -79,6 +90,5 @@ class CreateUser extends Component {
     );
   }
 }
-
 
 export default CreateUser;
