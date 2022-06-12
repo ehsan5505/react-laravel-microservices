@@ -9,7 +9,7 @@ class CreateUser extends Component {
   password_confirmation: string = "";
   role_id: number = 1;
 
-  submit(e:SyntheticEvent) {
+  submit(e: SyntheticEvent) {
     e.preventDefault();
     console.info(
       this.firstName +
@@ -29,7 +29,7 @@ class CreateUser extends Component {
   render(): React.ReactNode {
     return (
       <Wrapper>
-        <div className="col-md col-md-5">
+        <div className="mb-4">
           <form onSubmit={this.submit}>
             <div className="form-outline form-white mb-4">
               <label htmlFor="first_name" className="form-label">
@@ -43,7 +43,7 @@ class CreateUser extends Component {
                 onChange={(e) => (this.firstName = e.target.value)}
               />
             </div>
-            <div className="form-outline form-white mb-4">
+            <div className="mb-4">
               <label htmlFor="last_name" className="form-label">
                 Last Name
               </label>
@@ -55,7 +55,7 @@ class CreateUser extends Component {
                 onChange={(e) => (this.lastName = e.target.value)}
               />
             </div>
-            <div className="form-outline form-white mb-4">
+            <div className="mb-4">
               <label htmlFor="email" className="form-label">
                 Email address
               </label>
@@ -67,7 +67,7 @@ class CreateUser extends Component {
                 onChange={(e) => (this.email = e.target.value)}
               />
             </div>
-            <div className="form-outline form-white mb-4">
+            <div className="mb-4">
               <label htmlFor="password" className="form-label">
                 Password
               </label>
@@ -79,7 +79,7 @@ class CreateUser extends Component {
                 onChange={(e) => (this.password = e.target.value)}
               />
             </div>
-            <div className="form-outline form-white mb-4">
+            <div className="mb-4">
               <label htmlFor="password_confirmation" className="form-label">
                 Confirm Password
               </label>
@@ -92,11 +92,13 @@ class CreateUser extends Component {
               />
             </div>
 
-            <select className="form-select" name="role_id">
-              <option key="1" value="1">
-                Admin
-              </option>
-            </select>
+            <div className="mb-4">
+              <select className="form-select" name="role_id">
+                <option key="1" value="1">
+                  Admin
+                </option>
+              </select>
+            </div>
 
             <button className="btn btn-col-md-2">Create User</button>
           </form>
