@@ -3,14 +3,23 @@ import { RouteProps, useParams } from "react-router-dom";
 import Role from "../classes/role";
 import Wrapper from "../Wrapper";
 
+import { useNavigate, useParams } from "react-router-dom";
+
+export const withRouter = (WrappedComponent) => (props) => {
+  const params = useParams();
+  const navigate = useNavigate();
+
+  return <WrappedComponent {...props} params={params} navigate={navigate} />;
+};
+
 interface EditUserProps {
   match: PropsWithRef<any>;
 }
-class EditUser extends Component<any,any> {
+class EditUser extends Component<any, any> {
   firstName = "";
   lastName = "";
-  email="";
-  roleId="";
+  email = "";
+  roleId = "";
   state = {
     firstName: "",
     lastName: "",
@@ -19,14 +28,15 @@ class EditUser extends Component<any,any> {
     roles: [],
     redirect: false,
   };
-  
+
   componentDidMount = () => {
+    console.log(this.props.match);
     // console.log(this.props);
     // const id = this.props.params
     // const id = route.params.id;
     // console.log( this.props.route.params );
   };
-  
+
   submit = (e: SyntheticEvent) => {
     e.preventDefault();
     console.log({
@@ -111,4 +121,4 @@ class EditUser extends Component<any,any> {
   }
 }
 
-export default EditUser;
+export default withRouter(EditUser);
