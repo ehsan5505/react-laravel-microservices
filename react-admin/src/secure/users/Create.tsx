@@ -42,7 +42,7 @@ class CreateUser extends Component {
 
       toast.success("User Created Successfully");
     } catch (err) {
-      const errors = err as Error | AxiosError;
+      const errors = err as any | AxiosError;
       if (axios.isAxiosError(err)) {
         toast.error(errors.response.data.message);
       }
