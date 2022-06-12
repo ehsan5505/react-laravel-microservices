@@ -1,8 +1,6 @@
 import React, { Component, PropsWithRef, SyntheticEvent } from "react";
-import { RouteProps, useParams } from "react-router-dom";
 import Role from "../classes/role";
 import Wrapper from "../Wrapper";
-
 import { useNavigate, useParams } from "react-router-dom";
 
 export const withRouter = (WrappedComponent) => (props) => {
