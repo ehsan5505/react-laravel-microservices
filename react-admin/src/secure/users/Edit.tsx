@@ -15,7 +15,7 @@ class EditUser extends Component {
     roles: [],
     redirect: false,
   };
-  id = 2;
+  id = useParams();
   
   componentDidMount = () => {
     console.info(this.id);
