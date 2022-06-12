@@ -17,7 +17,7 @@ class EditUser extends Component {
   };
   id: number = 0;
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
     let { id } = useParams();
     console.info(id);
   };
