@@ -2,6 +2,7 @@ import React, { Component, SyntheticEvent } from "react";
 import Wrapper from "../Wrapper";
 import axios from "axios";
 import Role from "../classes/role";
+import { toast } from "react-toastify";
 
 class CreateUser extends Component {
   firstName = "";
@@ -13,8 +14,10 @@ class CreateUser extends Component {
 
   state = {
     roles: [],
+    redirect: false,
   };
 
+  // Gather the roles detail
   componentDidMount = async () => {
     const resp = await axios.get("roles");
     this.setState({ roles: resp.data.data });
@@ -23,14 +26,27 @@ class CreateUser extends Component {
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
-    console.info({
-      first_name: this.firstName,
-      last_name: this.lastName,
-      email: this.email,
-      password: this.password,
-      password_confirmation: this.passwordConfirmation,
-      role_id: this.roleId,
-    });
+    try {
+      await axios.post("users", {
+        first_name: this.firstName,
+        last_name: this.lastName,
+        email: this.email,
+        password: this.password,
+        password_confirmation: this.passwordConfirmation,
+        role_id: this.roleId,
+      });
+
+      this.setState({
+        redirect: true,
+      });
+
+      toast.success("User Created Successfully");
+    } catch (err) {
+      const errors = err as Error | AxiosError;
+      if (axios.isAxiosError(err)) {
+        toast.error(errors.response.data.message);
+      }
+    }
   };
 
   render(): React.ReactNode {
