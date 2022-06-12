@@ -18,6 +18,7 @@ class EditUser extends Component {
   componentDidMount = () => {
     // const id = this.props.params
     console.info(this.props);
+    console.log( this.props.match.params.id );
   };
 
   submit = (e: SyntheticEvent) => {
