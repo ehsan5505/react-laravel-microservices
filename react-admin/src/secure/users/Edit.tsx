@@ -8,6 +8,9 @@ interface EditUserProps {
   match: PropsWithRef<any>;
 }
 class EditUser extends Component {
+  constructor(props) {
+    super(props);
+  }
   state = {
     firstName: "",
     lastName: "",
@@ -35,6 +38,9 @@ class EditUser extends Component {
   };
 
   render() {
+    console.log(this.props)
+      let { id } = this.props.match.params; 
+      console.info(id);
     return (
       <Wrapper>
         <div className="mb-4">
@@ -104,4 +110,4 @@ class EditUser extends Component {
   }
 }
 
-export default (EditUser);
+export default EditUser;
