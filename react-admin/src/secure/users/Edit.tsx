@@ -41,17 +41,15 @@ class EditUser extends Component<any, any> {
       email: userData.email,
       roleId: userData.role.id,
     });
-    // console.info(rolesData);
-    // console.info(usersData);
   };
 
   submit = (e: SyntheticEvent) => {
     e.preventDefault();
     console.log({
-      first_name: this.state.firstName,
-      last_name: this.state.lastName,
-      email: this.state.email,
-      role_id: this.state.roleId,
+      first_name: this.firstName,
+      last_name: this.lastName,
+      email: this.email,
+      role_id: this.roleId,
     });
   };
 
