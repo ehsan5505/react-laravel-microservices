@@ -105,7 +105,10 @@ class EditUser extends Component<any, any> {
                 className="form-select"
                 name="role_id"
                 value={this.state.roleId}
-                onChange={(e) => (this.state.roleId = parseInt(e.target.value))}
+                onChange={(e) => (
+                  (this.state.roleId = parseInt(e.target.value)),
+                  (this.roleId = e.target.value)
+                )}
               >
                 {this.state.roles.map((role: Role) => {
                   return (
