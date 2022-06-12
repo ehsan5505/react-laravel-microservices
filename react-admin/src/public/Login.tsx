@@ -2,6 +2,7 @@ import React, { Component, SyntheticEvent } from "react";
 import "./Login";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Login extends Component {
   email = "";
@@ -99,9 +100,9 @@ class Login extends Component {
                   <div>
                     <p className="mb-0">
                       Don't have an account?{" "}
-                      <a href="#!" className="text-white-50 fw-bold">
+                      <Link to={"/register"} className="text-white-50 fw-bold">
                         Sign Up
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>
