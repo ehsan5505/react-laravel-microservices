@@ -57,9 +57,7 @@ class User extends Component {
         const errors = err as Error | AxiosError;
         if (axios.isAxiosError(err)) {
           toast.error(errors.response.data.message);
-        } else {
-          toast.error(errors.message);
-        }
+        } 
       }
       // refresh the state
     }
