@@ -17,6 +17,9 @@ class Login extends Component {
       this.setState({
         redirect: true,
       });
+    axios.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${localStorage.getItem("token")}`;
   };
 
   submit = async (e: SyntheticEvent) => {
