@@ -1,5 +1,5 @@
 import React, { Component, PropsWithRef, SyntheticEvent } from "react";
-import { RouteProps } from "react-router-dom";
+import { RouteProps, useParams } from "react-router-dom";
 import Role from "../classes/role";
 import Wrapper from "../Wrapper";
 
@@ -15,14 +15,16 @@ class EditUser extends Component<any,any> {
     roles: [],
     redirect: false,
   };
-
+  
   componentDidMount = () => {
-    console.log(this.props);
+    // console.log(this.props);
+    let { id } = useParams();
+    console.info(id);
     // const id = this.props.params
     // const id = route.params.id;
     // console.log( this.props.route.params );
   };
-
+  
   submit = (e: SyntheticEvent) => {
     e.preventDefault();
     console.log({
