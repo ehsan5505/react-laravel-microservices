@@ -58,8 +58,6 @@ class EditUser extends Component<any, any> {
       this.setState({
         redirect: true,
       });
-
-      toast.success("User Record Updated.");
     } catch (err: any) {
       toast.error(err.response.data.message);
     }
