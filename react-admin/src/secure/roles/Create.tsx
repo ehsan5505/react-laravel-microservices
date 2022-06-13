@@ -12,7 +12,6 @@ class CreateRole extends Component {
   };
 
   check = (id: number) => {
-    
     console.log(`ID given in the argunment ${id}`);
     if (this.selected.filter((s) => s === id).length > 0) {
       // if the id already exist then return the exclusive (not selected ones)
@@ -69,7 +68,9 @@ class CreateRole extends Component {
                   className="form-check-input"
                   type="checkbox"
                   value={p.id}
-                  onChange={(e) => this.check(p.id)}
+                  onChange={(e) => {
+                    this.check(p.id);
+                  }}
                 />
 
                 <label className="form-check-label">{p.name}</label>
