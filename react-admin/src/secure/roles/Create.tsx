@@ -17,6 +17,7 @@ class CreateRole extends Component {
   };
 
   render() {
+    console.info(this.state.permissions);
     return (
       <Wrapper>
         <form>
