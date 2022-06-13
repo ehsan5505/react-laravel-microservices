@@ -13,7 +13,7 @@ class Role extends Component {
   componentDidMount = async () => {
     const roles = await axios.get("roles");
     this.setState({
-      roles: roles,
+      roles: roles.data.data,
     });
   };
 
