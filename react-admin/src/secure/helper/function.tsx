@@ -10,7 +10,7 @@ export const deleteRecord = async ($model: any, id: number) => {
 
       return true;
     } catch (err: any) {
-      const errors = err as Error | AxiosError;
+      const errors = err as any | AxiosError;
       if (axios.isAxiosError(err)) {
         toast.error(errors.response.data.message);
       }
