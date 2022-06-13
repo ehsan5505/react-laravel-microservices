@@ -46,7 +46,8 @@ class CreateRole extends Component {
                   className="form-check-input"
                   type="checkbox"
                   value={p.id}
-                />
+                  />
+                  <p>{p.id} | {p.name}</p>
                 <label className="form-check-label">{p.name}</label>
               </div>
             );
