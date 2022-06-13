@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Component } from "react";
+import React, { Component, SyntheticEvent } from "react";
 import PermissionProps from "../classes/permission";
 import Wrapper from "../Wrapper";
 
@@ -21,7 +21,8 @@ class CreateRole extends Component {
     this.selected.push(id);
   };
 
-  submit = async () => {
+  submit = async (e: SyntheticEvent) => {
+    e.preventDefault();
     console.log({
       name: this.name,
       permissions: this.selected,
@@ -39,7 +40,7 @@ class CreateRole extends Component {
     console.info(this.state.permissions);
     return (
       <Wrapper>
-        <form>
+        <form onSubmit={this.submit}>
           <div className="form-outline form-white mb-4">
             <label htmlFor="name" className="form-label">
               Role Name
@@ -65,7 +66,7 @@ class CreateRole extends Component {
                   className="form-check-input"
                   type="checkbox"
                   value={p.id}
-                  onChange={this.check(p.id)}
+                  onChange={(e) => this.check(p.id)}
                 />
 
                 <label className="form-check-label">{p.name}</label>
