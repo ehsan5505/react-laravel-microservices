@@ -33,8 +33,6 @@ class CreateRole extends Component {
       this.setState({
         redirect: true,
       });
-
-      toast.success("User Created Successfully");
     } catch (err: any) {
       toast.error(err.response.data.message);
     }
