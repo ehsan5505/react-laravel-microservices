@@ -13,7 +13,6 @@ class CreateRole extends Component {
 
   componentDidMount = async () => {
     const response = await axios.get("permissions");
-    console.warn(response.data);
     this.setState({
       permissions: response.data,
     });
@@ -42,11 +41,19 @@ class CreateRole extends Component {
             </label>
           </div>
 
-          {this.state.permissions.map((p: any) => {
+          {this.state.permissions.map((p: PermissionProps) => {
             return (
-              <p>
-                {p.id} | {p.name}
-              </p>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  value={p.id}
+                />
+
+                <label className="form-check-label">
+                  {p.name}
+                </label>
+              </div>
             );
           })}
 
