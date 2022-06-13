@@ -14,10 +14,10 @@ class CreateRole extends Component {
   check = (id: number) => {
     console.log(`ID given in the argunment ${id}`);
     // if (this.selected.filter((s) => s === id).length > 0) {
-      // if the id already exist then return the exclusive (not selected ones)
-      // this.selected = this.selected.filter((s) => s !== id);
-      // console.error(this.selected);
-      // return;
+    // if the id already exist then return the exclusive (not selected ones)
+    // this.selected = this.selected.filter((s) => s !== id);
+    // console.error(this.selected);
+    // return;
     // }
     // console.info(this.selected);
     // this.selected.push(id);
@@ -51,7 +51,7 @@ class CreateRole extends Component {
               type="text"
               className="form-control"
               id="name"
-              placeholder="Please Enter Roll Name"
+              placeholder="Please Enter Role Name"
               onChange={(e) => (this.name = e.target.value)}
             />
           </div>
@@ -62,16 +62,14 @@ class CreateRole extends Component {
           </div>
 
           {this.state.permissions.map((p: any) => {
-            console.info(p.id);
+            console.info(p);
             return (
               <div className="form-check form-check-inline">
                 <input
                   className="form-check-input"
                   type="checkbox"
                   value={p.id}
-                  onChange={e => 
-                    this.check(p.id)
-                  }
+                  onChange={(e) => this.check(p.id)}
                 />
 
                 <label className="form-check-label">{p.name}</label>
