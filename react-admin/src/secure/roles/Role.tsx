@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import RoleProps from "../classes/role";
 import Wrapper from "../Wrapper";
 import axios from "axios";
+import { deleteRecord } from "../helper/function";
 
 class Role extends Component {
   state = {
@@ -16,7 +17,11 @@ class Role extends Component {
     });
   };
 
-  delete = async (id) => {};
+  delete = async (id:number) => {
+
+    deleteRecord(id);
+
+  };
 
   render() {
     return (
