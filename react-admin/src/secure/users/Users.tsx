@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Wrapper from "../Wrapper";
 import axios, { AxiosError } from "axios";
-import Role from "../classes/role";
+import RoleProps from "../classes/role";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -13,7 +13,7 @@ interface UserProps {
   first_name: string;
   last_name: string;
   email: string;
-  role: Role;
+  role: RoleProps;
 }
 
 class User extends Component {

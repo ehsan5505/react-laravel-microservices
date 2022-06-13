@@ -7,6 +7,7 @@ import Login from "./public/Login";
 import Register from "./public/Register";
 import CreateUser from "./secure/users/Create";
 import EditUser from "./secure/users/Edit";
+import Role from "./secure/roles/Role";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path={"/users"} element={<User />} />
           <Route path={"/users/create"} element={<CreateUser />} />
           <Route path={`/users/:id/edit`} element={<EditUser/>} />
+          <Route path={`/roles`} element={<Role />} />
         </Routes>
       </BrowserRouter>
     </div>

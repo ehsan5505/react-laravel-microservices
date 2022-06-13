@@ -22,6 +22,12 @@ const Menu = () => (
             Users
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink to={"/roles"} className="nav-link" aria-current="page">
+            <span data-feather="home" className="align-text-bottom"></span>
+            Roles
+          </NavLink>
+        </li>
       </ul>
     </div>
   </nav>

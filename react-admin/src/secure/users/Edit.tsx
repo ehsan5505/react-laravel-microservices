@@ -1,17 +1,16 @@
 import React, { Component, PropsWithRef, SyntheticEvent } from "react";
-import Role from "../classes/role";
 import Wrapper from "../Wrapper";
 import { Navigate, useParams } from "react-router-dom";
 import axios from "axios";
-import User from "./Users";
 import { toast } from "react-toastify";
+import RoleProps from "../classes/role";
 
 interface UserProps {
   id: number;
   first_name: string;
   last_name: string;
   email: string;
-  role: Role;
+  role: RoleProps;
 }
 
 class EditUser extends Component<any, any> {
@@ -123,7 +122,7 @@ class EditUser extends Component<any, any> {
                   });
                 }}
               >
-                {this.state.roles.map((role: Role) => {
+                {this.state.roles.map((role: RoleProps) => {
                   return (
                     <option key={role.id} value={role.id}>
                       {role.name}

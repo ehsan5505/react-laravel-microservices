@@ -1,29 +1,24 @@
-import React,{Component} from 'react';
-import { Link } from 'react-router-dom';
-import { SyntheticEvent } from 'react-toastify/dist/utils';
-import RoleProps from '../classes/role';
-import Wrapper from '../Wrapper';
-import axios from 'axios';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import RoleProps from "../classes/role";
+import Wrapper from "../Wrapper";
+import axios from "axios";
 
 class Role extends Component {
+  state = {
+    roles: [],
+  };
 
-  state=({
-    roles: []
-  })
-
-  componentDidMount = async() => {
-    const roles = await axios.get('roles');
+  componentDidMount = async () => {
+    const roles = await axios.get("roles");
     this.setState({
-      roles : roles
+      roles: roles,
     });
-  }
+  };
 
-  delete = async(id) => 
-  {
+  delete = async (id) => {};
 
-  }
-
-  render(){
+  render() {
     return (
       <Wrapper>
         <h2>Roles</h2>
@@ -48,7 +43,9 @@ class Role extends Component {
                     <td>{role.id}</td>
                     <td>{role.name}</td>
                     <td>
-                      <Link to={`/users/${role.id}/edit`} className="btn">Edit</Link>
+                      <Link to={`/users/${role.id}/edit`} className="btn">
+                        Edit
+                      </Link>
                       <button
                         className="btn"
                         onClick={() => this.delete(role.id)}
@@ -61,8 +58,10 @@ class Role extends Component {
               })}
             </tbody>
           </table>
-          </div>
-          </Wrapper>
+        </div>
+      </Wrapper>
+    );
   }
-
 }
+
+export default Role;
