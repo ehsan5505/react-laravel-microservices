@@ -17,7 +17,6 @@ class CreateRole extends Component {
   };
 
   render() {
-    console.info(this.state.permissions);
     return (
       <Wrapper>
         <form>
@@ -40,7 +39,9 @@ class CreateRole extends Component {
           </div>
 
           {this.state.permissions.map((p: any) => {
+            console.info(this.state.permissions);
             return (
+
               <p>
                 {p.id} | {p.name}
               </p>
