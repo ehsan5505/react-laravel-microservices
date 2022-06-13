@@ -28,12 +28,37 @@ class CreateRole extends Component {
             <label htmlFor="permission" className="form-label-checkbpx">
               Permissions
             </label>
+          </div>
+
+          <div className="form-check form-check-inline">
             <input
+              className="form-check-input"
               type="checkbox"
-              className="form-control-checkbox"
-              id="permission"
-              value="1"
+              value="option1"
             />
+            <label className="form-check-label" htmlFor="inlineCheckbox1">
+              1
+            </label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              value="option2"
+            />
+            <label className="form-check-label" htmlFor="inlineCheckbox2">
+              2
+            </label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              value="option3"
+            />
+            <label className="form-check-label" htmlFor="inlineCheckbox3">
+              3 (disabled)
+            </label>
           </div>
         </form>
       </Wrapper>
