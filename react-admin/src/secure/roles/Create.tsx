@@ -1,18 +1,19 @@
 import axios from "axios";
 import React, { Component } from "react";
+import PermissionProps from "../classes/permission";
 import Wrapper from "../Wrapper";
 
 class CreateRole extends Component {
   name = "";
   selected: number[] = [];
-  permissions = [];
   state = {
     redirect: false,
+    permissions: []
   };
 
   componentDidMount = async() => {
     const response = await axios.get('permissions');
-    this.permissions = response.data.data;
+    this.state.permissions = response.data;
   }
 
   render() {
@@ -36,6 +37,9 @@ class CreateRole extends Component {
               Permissions
             </label>
           </div>
+          {this.state.permissions.map((p:PermissionProps) => {
+            <p>{p.id}</p>
+          })}
 
           <div className="form-check form-check-inline">
             <input
