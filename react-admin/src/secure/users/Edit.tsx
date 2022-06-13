@@ -1,9 +1,10 @@
 import React, { Component, PropsWithRef, SyntheticEvent } from "react";
 import Role from "../classes/role";
 import Wrapper from "../Wrapper";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import axios from "axios";
 import User from "./Users";
+import { toast } from "react-toastify";
 
 interface UserProps {
   id: number;
@@ -44,17 +45,26 @@ class EditUser extends Component<any, any> {
     });
   };
 
-  submit = (e: SyntheticEvent) => {
+  submit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    console.log({
+    await axios.put(`users/${this.userId}`, {
       first_name: this.firstName,
       last_name: this.lastName,
       email: this.email,
       role_id: this.roleId,
     });
+
+    this.setState({
+      redirect: true,
+    });
+
+    toast.success("User Record Updated.");
   };
 
   render() {
+    if (this.state.redirect) {
+      return <Navigate to={"/users"} />;
+    }
     return (
       <Wrapper>
         <div className="mb-4">
@@ -68,7 +78,7 @@ class EditUser extends Component<any, any> {
                 className="form-control"
                 id="first_name"
                 placeholder="Please Enter First Name"
-                defaultValue={this.firstName = this.state.firstName}
+                defaultValue={(this.firstName = this.state.firstName)}
                 onChange={(e) => (this.firstName = e.target.value)}
               />
             </div>
@@ -81,7 +91,7 @@ class EditUser extends Component<any, any> {
                 id="last_name"
                 className="form-control"
                 placeholder="Please Enter Last Name"
-                defaultValue={this.lastName = this.state.lastName}
+                defaultValue={(this.lastName = this.state.lastName)}
                 onChange={(e) => (this.lastName = e.target.value)}
               />
             </div>
@@ -94,7 +104,7 @@ class EditUser extends Component<any, any> {
                 id="email"
                 className="form-control"
                 placeholder="Please Enter Email Address"
-                defaultValue={this.email = this.state.email}
+                defaultValue={(this.email = this.state.email)}
                 onChange={(e) => (this.email = e.target.value)}
               />
             </div>
@@ -103,7 +113,7 @@ class EditUser extends Component<any, any> {
               <select
                 className="form-select"
                 name="role_id"
-                value={this.roleId = this.state.roleId}
+                value={(this.roleId = this.state.roleId)}
                 onChange={(e) => {
                   this.roleId = parseInt(e.target.value);
                   this.setState({
