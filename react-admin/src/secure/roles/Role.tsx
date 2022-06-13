@@ -19,13 +19,17 @@ class Role extends Component {
   };
 
   delete = async (id: number) => {
-    const status = await deleteRecord("roles", id);
-    if (status) {
-      this.state.roles.filter((r: RoleProps) => {
-        if (r.id != id) return r;
-      });
-      this.componentDidMount();
-      toast.success("Records Deleted Successfully");
+    if (window.confirm("Are you sure to delete the record?")) {
+      try {
+        await axios.delete(`roles/${id}`);
+        this.state.roles.filter((r: RoleProps) => {
+          if (r.id != id) return r;
+        });
+        this.componentDidMount();
+        toast.success("Records Deleted Successfully");
+      } catch (err: any) {
+        toast.error(err.response.data.message);
+      }
     }
   };
 
