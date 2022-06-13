@@ -12,24 +12,23 @@ class CreateRole extends Component {
   };
 
   check = (id: number) => {
-    console.log(`ID given in the argunment ${id}`);
-    // if (this.selected.filter((s) => s === id).length > 0) {
+    if (this.selected.filter((s) => s === id).length > 0) {
     // if the id already exist then return the exclusive (not selected ones)
-    // this.selected = this.selected.filter((s) => s !== id);
+    this.selected = this.selected.filter((s) => s !== id);
     // console.error(this.selected);
-    // return;
-    // }
+    return;
+    }
     // console.info(this.selected);
-    // this.selected.push(id);
-    // console.info(this.selected);
+    this.selected.push(id);
+    console.info(this.selected);
   };
 
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    // console.log({
-    //   name: this.name,
-    //   permissions: this.selected,
-    // });
+    console.log({
+      name: this.name,
+      permissions: this.selected,
+    });
   };
 
   componentDidMount = async () => {
@@ -62,7 +61,6 @@ class CreateRole extends Component {
           </div>
 
           {this.state.permissions.map((p: any) => {
-            console.info(p);
             return (
               <div className="form-check form-check-inline">
                 <input
