@@ -13,10 +13,14 @@ class CreateRole extends Component {
 
   componentDidMount = async () => {
     const response = await axios.get("permissions");
-    this.state.permissions = response.data;
+    console.warn(response.data);
+    this.setState({
+      permissions: response.data,
+    });
   };
 
   render() {
+    console.info(this.state.permissions);
     return (
       <Wrapper>
         <form>
@@ -39,9 +43,7 @@ class CreateRole extends Component {
           </div>
 
           {this.state.permissions.map((p: any) => {
-            console.info(this.state.permissions);
             return (
-
               <p>
                 {p.id} | {p.name}
               </p>
