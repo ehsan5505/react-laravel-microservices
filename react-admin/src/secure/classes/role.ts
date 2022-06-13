@@ -1,6 +1,6 @@
 import Permission from "./permission";
 
-class Role {
+class RoleProps {
   id: number;
   name: string;
   permission: Permission;
@@ -12,4 +12,4 @@ class Role {
   }
 }
 
-export default Role;
+export default RoleProps;

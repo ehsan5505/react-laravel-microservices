@@ -1,4 +1,4 @@
-class Permission {
+class PermissionProps {
   id: number;
   name: string;
 
@@ -7,4 +7,4 @@ class Permission {
     this.name = name;
   }
 }
-export default Permission;
+export default PermissionProps;
