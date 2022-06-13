@@ -47,18 +47,22 @@ class EditUser extends Component<any, any> {
 
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    await axios.put(`users/${this.userId}`, {
-      first_name: this.firstName,
-      last_name: this.lastName,
-      email: this.email,
-      role_id: this.roleId,
-    });
+    try {
+      await axios.put(`users/${this.userId}`, {
+        first_name: this.firstName,
+        last_name: this.lastName,
+        email: this.email,
+        role_id: this.roleId,
+      });
 
-    this.setState({
-      redirect: true,
-    });
+      this.setState({
+        redirect: true,
+      });
 
-    toast.success("User Record Updated.");
+      toast.success("User Record Updated.");
+    } catch (err: any) {
+      toast.error(err.response.data.message);
+    }
   };
 
   render() {
