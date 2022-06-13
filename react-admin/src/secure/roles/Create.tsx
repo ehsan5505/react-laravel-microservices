@@ -73,6 +73,11 @@ class CreateRole extends Component {
               </div>
             );
           })}
+          <input
+            type="submit"
+            className="btn btn-primary float-right"
+            value="Create Role"
+          />
         </form>
       </Wrapper>
     );
