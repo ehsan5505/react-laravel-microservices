@@ -11,6 +11,23 @@ class CreateRole extends Component {
     permissions: [],
   };
 
+  check = (id: number) => {
+    if (this.selected.filter((s) => s === id).length > 0) {
+      // if the id already exist then return the exclusive (not selected ones)
+      this.selected = this.selected.filter((s) => s !== id);
+      return;
+    }
+
+    this.selected.push(id);
+  };
+
+  submit = async () => {
+    console.log({
+      name: this.name,
+      permissions: this.selected,
+    });
+  };
+
   componentDidMount = async () => {
     const response = await axios.get("permissions");
     this.setState({
@@ -48,46 +65,13 @@ class CreateRole extends Component {
                   className="form-check-input"
                   type="checkbox"
                   value={p.id}
+                  onChange={this.check(p.id)}
                 />
 
-                <label className="form-check-label">
-                  {p.name}
-                </label>
+                <label className="form-check-label">{p.name}</label>
               </div>
             );
           })}
-
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              value="option1"
-            />
-
-            <label className="form-check-label" htmlFor="inlineCheckbox1">
-              1
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              value="option2"
-            />
-            <label className="form-check-label" htmlFor="inlineCheckbox2">
-              2
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              value="option3"
-            />
-            <label className="form-check-label" htmlFor="inlineCheckbox3">
-              3 (disabled)
-            </label>
-          </div>
         </form>
       </Wrapper>
     );
