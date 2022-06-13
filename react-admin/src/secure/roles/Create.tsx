@@ -62,15 +62,16 @@ class CreateRole extends Component {
           </div>
 
           {this.state.permissions.map((p: PermissionProps) => {
+            console.info(p.id);
             return (
               <div className="form-check form-check-inline">
                 <input
                   className="form-check-input"
                   type="checkbox"
                   value={p.id}
-                  onChange={(e) => {
-                    this.check(p.id);
-                  }}
+                  onChange={e => 
+                    this.check(p.id)
+                  }
                 />
 
                 <label className="form-check-label">{p.name}</label>
