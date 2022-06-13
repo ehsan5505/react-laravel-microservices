@@ -13,14 +13,11 @@ class CreateRole extends Component {
 
   check = (id: number) => {
     if (this.selected.filter((s) => s === id).length > 0) {
-    // if the id already exist then return the exclusive (not selected ones)
-    this.selected = this.selected.filter((s) => s !== id);
-    // console.error(this.selected);
-    return;
+      // if the id already exist then return the exclusive (not selected ones)
+      this.selected = this.selected.filter((s) => s !== id);
+      return;
     }
-    // console.info(this.selected);
     this.selected.push(id);
-    console.info(this.selected);
   };
 
   submit = async (e: SyntheticEvent) => {
