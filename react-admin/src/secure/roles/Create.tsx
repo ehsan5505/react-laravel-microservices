@@ -19,6 +19,7 @@ class CreateRole extends Component {
     }
 
     this.selected.push(id);
+    console.info(this.selected);
   };
 
   submit = async (e: SyntheticEvent) => {
