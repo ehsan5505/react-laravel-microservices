@@ -38,7 +38,7 @@ class CreateRole extends Component {
             </label>
           </div>
 
-          {this.state.permissions.map((p: PermissionProps) => {
+          {this.state.permissions.map((p: any) => {
             return (
               <p>
                 {p.id} | {p.name}
