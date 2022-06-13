@@ -12,7 +12,7 @@ class CreateRole extends Component {
   };
 
   componentDidMount = async () => {
-    const response = await axios.get("permissions");
+    const response = await axios.get("permission");
     this.state.permissions = response.data.data;
     console.info(response.data.data);
   };
