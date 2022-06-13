@@ -4,6 +4,7 @@ import RoleProps from "../classes/role";
 import Wrapper from "../Wrapper";
 import axios from "axios";
 import { deleteRecord } from "../helper/function";
+import { toast } from "react-toastify";
 
 class Role extends Component {
   state = {
@@ -17,10 +18,15 @@ class Role extends Component {
     });
   };
 
-  delete = async (id:number) => {
-
-    deleteRecord(id);
-
+  delete = async (id: number) => {
+    const status = await deleteRecord("roles", id);
+    if (status) {
+      this.state.roles.filter((r: RoleProps) => {
+        if (r.id != id) return r;
+      });
+      this.componentDidMount();
+      toast.success("Records Deleted Successfully");
+    }
   };
 
   render() {
