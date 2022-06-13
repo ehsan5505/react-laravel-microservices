@@ -18,6 +18,7 @@ class EditUser extends Component<any, any> {
   lastName = "";
   email = "";
   roleId = 0;
+  userId = 0;
   state = {
     firstName: "",
     lastName: "",
@@ -29,7 +30,7 @@ class EditUser extends Component<any, any> {
 
   componentDidMount = async () => {
     const { id } = this.props.params;
-    console.warn(id);
+    this.userId = id;
     const res = await axios.get("/roles");
     const rolesData = res.data.data;
     const resp = await axios.get(`/users/` + id);
@@ -67,7 +68,7 @@ class EditUser extends Component<any, any> {
                 className="form-control"
                 id="first_name"
                 placeholder="Please Enter First Name"
-                defaultValue={this.state.firstName}
+                defaultValue={this.firstName = this.state.firstName}
                 onChange={(e) => (this.firstName = e.target.value)}
               />
             </div>
@@ -80,7 +81,7 @@ class EditUser extends Component<any, any> {
                 id="last_name"
                 className="form-control"
                 placeholder="Please Enter Last Name"
-                defaultValue={this.state.lastName}
+                defaultValue={this.lastName = this.state.lastName}
                 onChange={(e) => (this.lastName = e.target.value)}
               />
             </div>
@@ -93,7 +94,7 @@ class EditUser extends Component<any, any> {
                 id="email"
                 className="form-control"
                 placeholder="Please Enter Email Address"
-                defaultValue={this.state.email}
+                defaultValue={this.email = this.state.email}
                 onChange={(e) => (this.email = e.target.value)}
               />
             </div>
