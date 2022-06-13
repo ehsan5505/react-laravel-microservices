@@ -2,8 +2,6 @@ import { toast } from "react-toastify";
 import axios, { AxiosError } from "axios";
 
 export const deleteRecord = async ($model: any, id: number) => {
-  console.log(`${id} should be removed`);
-
   if (window.confirm("Are you sure to delete the record?")) {
     try {
       await axios.delete(`users/${id}`);

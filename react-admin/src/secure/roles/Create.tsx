@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { Component, SyntheticEvent } from "react";
+import { Navigate } from "react-router";
+import { toast } from "react-toastify";
 import PermissionProps from "../classes/permission";
 import Wrapper from "../Wrapper";
 
@@ -22,10 +24,20 @@ class CreateRole extends Component {
 
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    console.log({
-      name: this.name,
-      permissions: this.selected,
-    });
+    try {
+      await axios.post("roles", {
+        name: this.name,
+        permissions: this.selected,
+      });
+
+      this.setState({
+        redirect: true,
+      });
+
+      toast.success("User Created Successfully");
+    } catch (err: any) {
+      toast.error(err.response.data.message);
+    }
   };
 
   componentDidMount = async () => {
@@ -36,6 +48,9 @@ class CreateRole extends Component {
   };
 
   render() {
+    if (this.state.redirect) {
+      return <Navigate to={"/roles"} />;
+    }
     return (
       <Wrapper>
         <form onSubmit={this.submit}>
