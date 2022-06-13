@@ -103,7 +103,7 @@ class EditUser extends Component<any, any> {
               <select
                 className="form-select"
                 name="role_id"
-                value={this.state.roleId}
+                value={this.roleId = this.state.roleId}
                 onChange={(e) => {
                   this.roleId = parseInt(e.target.value);
                   this.setState({
