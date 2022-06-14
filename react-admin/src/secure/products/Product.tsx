@@ -24,7 +24,7 @@ class Product extends Component {
     return (
       <Wrapper>
         <h2>Products</h2>
-        <div className="col-md-1 float-right">
+        <div className="col-md-2 float-right">
           <Link to={"create"} className="btn btn-primary">
             Add Product
           </Link>
@@ -46,7 +46,7 @@ class Product extends Component {
                 return (
                   <tr key={product.id}>
                     <td>{product.id}</td>
-                    <td>{product.imageUrl}</td>
+                    <td><img src="{product.imageUrl}" width={"50px"} /></td>
                     <td>{product.title}</td>
                     <td>{product.description}</td>
                     <td>{product.price}</td>
