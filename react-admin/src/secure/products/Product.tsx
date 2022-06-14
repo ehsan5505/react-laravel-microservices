@@ -46,7 +46,7 @@ class Product extends Component {
                 return (
                   <tr key={product.id}>
                     <td>{product.id}</td>
-                    <td><img src={product.imageUrl} width={"50px"} /></td>
+                    <td><img src={product.imageUrl} width="50" /></td>
                     <td>{product.title}</td>
                     <td>{product.description}</td>
                     <td>{product.price}</td>
