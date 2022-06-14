@@ -1,8 +1,45 @@
-import React, { Component } from "react";
-import './Login';
+import React, { Component, SyntheticEvent } from "react";
+import "./Login";
+import axios from "axios";
+import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Login extends Component {
+  email = "";
+  password = "";
+
+  state = {
+    redirect: false,
+  };
+
+  componentDidMount = () => {
+    const token = localStorage.getItem("token");
+    if (token)
+      this.setState({
+        redirect: true,
+      });
+    axios.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${localStorage.getItem("token")}`;
+  };
+
+  submit = async (e: SyntheticEvent) => {
+    // Prevent the Default Browser Behaviour to refresh the page on data to view
+    e.preventDefault();
+    const resp = await axios.post("login", {
+      email: this.email,
+      password: this.password,
+    });
+
+    localStorage.setItem("token", resp.data);
+    this.setState({
+      redirect: true,
+    });
+  };
+
   render() {
+    if (this.state.redirect) return <Navigate to="/" />;
+
     return (
       <section className="vh-100 gradient-custom">
         <div className="container py-5 h-100">
@@ -10,7 +47,7 @@ class Login extends Component {
             <div className="col-12 col-md-8 col-lg-6 col-xl-5">
               <div
                 className="card bg-dark text-white"
-                style={{borderRadius:"1rem"}}
+                style={{ borderRadius: "1rem" }}
               >
                 <div className="card-body p-5 text-center">
                   <div className="mb-md-5 mt-md-4 pb-5">
@@ -19,30 +56,33 @@ class Login extends Component {
                       Please enter your login and password!
                     </p>
 
-                    <div className="form-outline form-white mb-4">
-                      <input
-                        type="email"
-                        id="typeEmailX"
-                        className="form-control form-control-lg"
-                        placeholder="Email"
-                      />
-                    </div>
+                    <form onSubmit={this.submit}>
+                      <div className="form-outline form-white mb-4">
+                        <input
+                          type="email"
+                          id="typeEmailX"
+                          className="form-control form-control-lg"
+                          placeholder="Email"
+                          onChange={(e) => (this.email = e.target.value)}
+                        />
+                      </div>
 
-                    <div className="form-outline form-white mb-4">
-                      <input
-                        type="password"
-                        id="typePasswordX"
-                        className="form-control form-control-lg"
-                        placeholder="Password"
-                      />
-                    </div>
+                      <div className="form-outline form-white mb-4">
+                        <input
+                          type="password"
+                          id="typePasswordX"
+                          className="form-control form-control-lg"
+                          placeholder="Password"
+                          onChange={(e) => (this.password = e.target.value)}
+                        />
+                      </div>
 
-                    <button
-                      className="btn btn-outline-light btn-lg px-5"
-                      type="submit"
-                    >
-                      Login
-                    </button>
+                      <input
+                        className="btn btn-outline-light btn-lg px-5"
+                        type="submit"
+                        value="Login"
+                      />
+                    </form>
 
                     <div className="d-flex justify-content-center text-center mt-4 pt-1">
                       <a href="#!" className="text-white">
@@ -60,9 +100,9 @@ class Login extends Component {
                   <div>
                     <p className="mb-0">
                       Don't have an account?{" "}
-                      <a href="#!" className="text-white-50 fw-bold">
+                      <Link to={"/register"} className="text-white-50 fw-bold">
                         Sign Up
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>

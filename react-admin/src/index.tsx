@@ -3,6 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
+
+axios.defaults.baseURL = "http://192.168.22.138:8000/api/";
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

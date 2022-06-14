@@ -1,17 +1,35 @@
 import React, { Component } from "react";
 import Menu from "./components/menu";
 import Nav from "./components/nav";
-
+import axios from "axios";
+import { Navigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 interface WrapperProps {
   children: React.ReactNode;
 }
 
 class Wrapper extends Component<WrapperProps> {
+  state = {
+    redirect: false,
+  };
+
+  componentDidMount = async () => {
+    try {
+      const user = await axios.get("user");
+      console.info(user);
+    } catch (e) {
+      this.setState({ redirect: true });
+    }
+  };
+
   render() {
+    if (this.state.redirect) {
+      return <Navigate to="/login" />;
+    }
     return (
       <>
+        <ToastContainer />
         <Nav />
-
         <div className="container-fluid">
           <div className="row">
             <Menu />

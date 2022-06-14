@@ -1,5 +1,7 @@
 import React, { Component, SyntheticEvent } from "react";
 import "./Register.css";
+import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 class Register extends Component {
   firstName = "";
@@ -7,11 +9,32 @@ class Register extends Component {
   email = "";
   password = "";
   password_confirm = "";
-  submit = (e: SyntheticEvent) => {
+  state = ({
+    redirect: false
+  });
+
+  submit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    console.info(this.firstName);
+    await axios.post(
+      "register",
+      {
+        first_name: this.firstName,
+        last_name: this.lastName,
+        email: this.email,
+        password: this.password,
+        password_confirmation: this.password_confirm,
+      }
+    );
+    this.setState({
+      redirect: true
+    });
+
   };
   render() {
+    // Redirect if already registerd
+    if(this.state.redirect)
+      return <Navigate to="/login" />
+
     return (
       <section>
         <div className="px-4 py-5 px-md-5 text-center text-lg-start">
@@ -20,7 +43,7 @@ class Register extends Component {
               <div className="col-lg-6 mb-5 mb-lg-0">
                 <h1 className="my-5 display-3 fw-bold ls-tight">
                   Welcome To Be <br />
-                  <span className="text-primary">A Part Of The Team...</span>
+                  <span className="text-primary">The Part Of The Team...</span>
                 </h1>
                 <p className="para">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.

@@ -1,4 +1,7 @@
 import React from "react";
+import Dashboard from "../dashboard/Dashboard";
+import User from "../users/Users";
+import { NavLink } from "react-router-dom";
 
 const Menu = () => (
   <nav
@@ -8,10 +11,22 @@ const Menu = () => (
     <div className="position-sticky pt-3">
       <ul className="nav flex-column">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">
+          <NavLink to={"/"} className="nav-link" aria-current="page">
             <span data-feather="home" className="align-text-bottom"></span>
             Dashboard
-          </a>
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to={"/users"} className="nav-link" aria-current="page">
+            <span data-feather="home" className="align-text-bottom"></span>
+            Users
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to={"/roles"} className="nav-link" aria-current="page">
+            <span data-feather="home" className="align-text-bottom"></span>
+            Roles
+          </NavLink>
         </li>
       </ul>
     </div>

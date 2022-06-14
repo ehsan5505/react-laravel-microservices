@@ -37,3 +37,6 @@ https://stackoverflow.com/questions/59106742/typescript-error-property-children-
 
 For Login Styles we refer to 
 https://mdbootstrap.com/docs/standard/extended/login/#!
+
+<!-- Toastr -->
+npm i react-toastify
