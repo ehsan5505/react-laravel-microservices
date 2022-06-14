@@ -14,7 +14,7 @@ class EditRole extends Component<any, any> {
     redirect: false,
     permissions: [],
     selected: [],
-    name: ''
+    name: "",
   };
 
   isChecked = (id: number) => {
@@ -31,10 +31,8 @@ class EditRole extends Component<any, any> {
   componentDidMount = async () => {
     this.roleId = this.props.params;
     const permissionCall = await axios.get("permissions");
-    const roleCall = await axios.get("roles/2");
-    console.warn(roleCall);
+    const roleCall = await axios.get(`roles/${this.roleId}`);
     const role = roleCall.data;
-    console.info(`Roles ${role}`);
 
     this.selected = role.permissions.map((p: PermissionProps) => p.id);
 
@@ -81,7 +79,7 @@ class EditRole extends Component<any, any> {
               className="form-control"
               id="name"
               placeholder="Please Enter Role Name"
-              defaultValue={this.name = this.state.name}
+              defaultValue={(this.name = this.state.name)}
               onChange={(e) => (this.name = e.target.value)}
             />
           </div>
