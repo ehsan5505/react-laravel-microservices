@@ -4,11 +4,15 @@ import Wrapper from "../Wrapper";
 import { Link } from "react-router-dom";
 import { ProductProps } from "../classes/product";
 import { toast } from "react-toastify";
+import Paginate from "../components/Paginate";
 
 class Product extends Component {
+  page = 1;
+  lastPage = 0;
   state = {
     products: [],
   };
+  
 
   delete = async (id: number) => {
     if (window.confirm("Are you sure to delete the record?")) {
@@ -26,11 +30,17 @@ class Product extends Component {
   };
 
   componentDidMount = async () => {
-    const products = await axios.get("products");
+    const products = await axios.get(`products?page=${this.page}`);
     this.setState({
       products: products.data.data,
     });
+    this.lastPage = products.data.meta.last_page;
   };
+
+  handleChangePage = (page:number) => {
+    this.page = page;
+    console.info(page);
+  } 
 
   render() {
     return (
@@ -78,6 +88,7 @@ class Product extends Component {
                   </tr>
                 );
               })}
+              <Paginate lastPage={this.lastPage} handleChangePage={this.handleChangePage(page)}}
             </tbody>
           </table>
         </div>
