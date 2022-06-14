@@ -33,6 +33,7 @@ class EditRole extends Component<any, any> {
     const permissionCall = await axios.get("permissions");
     const roleCall = await axios.get(`roles/2`);
     const role = roleCall.data.data;
+    console.info(`Roles ${role}`);
 
     this.selected = role.permissions.map((p: PermissionProps) => p.id);
 
