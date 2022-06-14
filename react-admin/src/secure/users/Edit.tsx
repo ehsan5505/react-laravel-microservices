@@ -13,7 +13,7 @@ interface UserProps {
   role: RoleProps;
 }
 
-class EditUser extends Component<any, any> {
+class EditUser extends Component {
   firstName = "";
   lastName = "";
   email = "";

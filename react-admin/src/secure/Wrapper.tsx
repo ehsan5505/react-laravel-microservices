@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, PropsWithRef } from "react";
 import Menu from "./components/menu";
 import Nav from "./components/nav";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 interface WrapperProps {
   children: React.ReactNode;
@@ -44,4 +44,7 @@ class Wrapper extends Component<WrapperProps> {
   }
 }
 
-export default Wrapper;
+export default (props: PropsWithRef<any>) => (
+  <Wrapper {...props} params={useParams()} />
+);
+// export default Wrapper;
