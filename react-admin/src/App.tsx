@@ -9,6 +9,7 @@ import CreateUser from "./secure/users/Create";
 import EditUser from "./secure/users/Edit";
 import Role from "./secure/roles/Role";
 import CreateRole from "./secure/roles/Create";
+import EditRole from "./secure/roles/Edit";
 
 function App() {
   return (
@@ -20,9 +21,10 @@ function App() {
           <Route path={"/register"} element={<Register />} />
           <Route path={"/users"} element={<User />} />
           <Route path={"/users/create"} element={<CreateUser />} />
-          <Route path={`/users/:id/edit`} element={<EditUser/>} />
+          <Route path={`/users/:id/edit`} element={<EditUser />} />
           <Route path={`/roles`} element={<Role />} />
           <Route path={`/roles/create`} element={<CreateRole />} />
+          <Route path={`/roles/create`} element={<EditRole />} />
         </Routes>
       </BrowserRouter>
     </div>

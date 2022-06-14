@@ -58,7 +58,7 @@ class Role extends Component {
                     <td>{role.id}</td>
                     <td>{role.name}</td>
                     <td>
-                      <Link to={`/users/${role.id}/edit`} className="btn">
+                      <Link to={`/roles/${role.id}/edit`} className="btn">
                         Edit
                       </Link>
                       <button
