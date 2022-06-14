@@ -3,6 +3,7 @@ import axios from "axios";
 import Wrapper from "../Wrapper";
 import { Link } from "react-router-dom";
 import { ProductProps } from "../classes/product";
+import { toast } from "react-toastify";
 
 class Product extends Component {
   state = {
@@ -10,7 +11,18 @@ class Product extends Component {
   };
 
   delete = async (id: number) => {
-    console.log("Delete the record");
+    if (window.confirm("Are you sure to delete the record?")) {
+      try {
+        await axios.delete(`roles/${id}`);
+        this.state.products.filter((p: ProductProps) => {
+          if (p.id != id) return p;
+        });
+        this.componentDidMount();
+        toast.success("Records Deleted Successfully");
+      } catch (err: any) {
+        toast.error(err.response.data.message);
+      }
+    }
   };
 
   componentDidMount = async () => {
@@ -46,7 +58,9 @@ class Product extends Component {
                 return (
                   <tr key={product.id}>
                     <td>{product.id}</td>
-                    <td><img src={product.imageUrl} width="50" /></td>
+                    <td>
+                      <img src={product.imageUrl} width="50" />
+                    </td>
                     <td>{product.title}</td>
                     <td>{product.description}</td>
                     <td>{product.price}</td>
@@ -71,6 +85,5 @@ class Product extends Component {
     );
   }
 }
-
 
 export default Product;
