@@ -23,10 +23,10 @@ class Paginate extends Component<{ lastPage: number; handleChangePage: any }> {
     return (
       <ul className="pagination">
         <li className="page-item">
-          <a className="page-link btn btn-secondary" onClick={this.prev}>
+          <a className="page-link" onClick={this.prev}>
             Previous
           </a>
-          <a className="page-link btn btn-secondary" onClick={this.next}>
+          <a className="page-link" onClick={this.next}>
             Next
           </a>
         </li>
