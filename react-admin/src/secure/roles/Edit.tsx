@@ -45,8 +45,8 @@ class EditRole extends Component<any, any> {
     e.preventDefault();
     console.info({
       name: this.name,
-      permissions: this.selected
-    })
+      permissions: this.selected,
+    });
     // try {
     //   await axios.post("roles", {
     //     name: this.name,
@@ -94,7 +94,7 @@ class EditRole extends Component<any, any> {
                   className="form-check-input"
                   type="checkbox"
                   value={p.id}
-                  defaultValue={(this.selected = this.isChecked(p.id))}
+                  defaultChecked={this.isChecked(p.id)}
                   onChange={(e) => this.check(p.id)}
                 />
                 <label className="form-check-label">{p.name}</label>
