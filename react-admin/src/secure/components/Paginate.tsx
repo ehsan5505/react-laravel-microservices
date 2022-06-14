@@ -1,5 +1,6 @@
 import { Component, ReactNode } from "react";
 import Wrapper from "../Wrapper";
+import Nav from "./nav";
 
 class Paginate extends Component<{ lastPage: number; handleChangePage: any }> {
   page = 1;
@@ -20,20 +21,18 @@ class Paginate extends Component<{ lastPage: number; handleChangePage: any }> {
 
   render() {
     return (
-      <Wrapper>
-        <div className="row">
-          <div className="btn-toolbar right">
-            <div className="btn-group">
-              <a className="btn btn-secondary" onClick={this.prev}>
-                Previous
-              </a>
-              <a className="btn btn-secondary" onClick={this.next}>
-                Next
-              </a>
-            </div>
-          </div>
-        </div>
-      </Wrapper>
+      <Nav>
+        <ul className="pagination">
+          <li className="page-item">
+            <a className="page-link btn btn-secondary" onClick={this.prev}>
+              Previous
+            </a>
+            <a className="page-link btn btn-secondary" onClick={this.next}>
+              Next
+            </a>
+          </li>
+        </ul>
+      </Nav>
     );
   }
 }
