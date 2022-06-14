@@ -35,7 +35,7 @@ class RoleController extends Controller
 
     public function show($id)
     {
-        \Gate::authorize('edit','roles');
+        \Gate::authorize('view','roles');
         $role = Role::find($id);
         return response(new RoleResource($role),Response::HTTP_ACCEPTED);        
     }
