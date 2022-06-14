@@ -13,7 +13,7 @@ class Product extends Component {
   delete = async (id: number) => {
     if (window.confirm("Are you sure to delete the record?")) {
       try {
-        await axios.delete(`roles/${id}`);
+        await axios.delete(`products/${id}`);
         this.state.products.filter((p: ProductProps) => {
           if (p.id != id) return p;
         });
