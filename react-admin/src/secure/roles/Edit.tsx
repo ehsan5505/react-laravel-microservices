@@ -3,18 +3,24 @@ import React, { Component, PropsWithRef, SyntheticEvent } from "react";
 import { Navigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 import PermissionProps from "../classes/permission";
+import RoleProps from "../classes/role";
 import Wrapper from "../Wrapper";
 
 class EditRole extends Component<any, any> {
   name = "";
   selected: number[] = [];
+  roleId = 0;
   state = {
     redirect: false,
     permissions: [],
+    selected: [],
   };
 
+  isChecked = (id: number) => {
+    return this.state.selected.filter((s) => s === id).length > 0;
+  };
   check = (id: number) => {
-    if (this.selected.filter((s) => s === id).length > 0) {
+    if (this.isChecked(id)) {
       this.selected = this.selected.filter((s) => s !== id);
       return;
     }
@@ -22,15 +28,25 @@ class EditRole extends Component<any, any> {
   };
 
   componentDidMount = async () => {
-    console.info(this.props.params);
-    const response = await axios.get("permissions");
+    this.roleId = this.props.params;
+    const permissionCall = await axios.get("permissions");
+    const roleCall = await axios.get(`role/${this.roleId}`);
+    const role = roleCall.data.data;
+
+    this.selected = role.permissions.map((p: PermissionProps) => p.id);
+
     this.setState({
-      permissions: response.data,
+      permissions: permissionCall.data,
+      selected: this.selected,
     });
   };
 
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
+    console.info({
+      name: this.name,
+      permissions: this.selected
+    })
     // try {
     //   await axios.post("roles", {
     //     name: this.name,
@@ -61,6 +77,7 @@ class EditRole extends Component<any, any> {
               className="form-control"
               id="name"
               placeholder="Please Enter Role Name"
+              defaultValue={(this.name = this.state.role.name)}
               onChange={(e) => (this.name = e.target.value)}
             />
           </div>
@@ -77,6 +94,7 @@ class EditRole extends Component<any, any> {
                   className="form-check-input"
                   type="checkbox"
                   value={p.id}
+                  defaultValue={(this.selected = this.isChecked(p.id))}
                   onChange={(e) => this.check(p.id)}
                 />
                 <label className="form-check-label">{p.name}</label>
