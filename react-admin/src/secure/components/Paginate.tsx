@@ -21,16 +21,18 @@ class Paginate extends Component<{ lastPage: number; handleChangePage: any }> {
 
   render() {
     return (
-      <ul className="pagination">
-        <li className="page-item">
-          <a className="page-link" onClick={this.prev}>
-            Previous
-          </a>
-          <a className="page-link" onClick={this.next}>
-            Next
-          </a>
-        </li>
-      </ul>
+      <nav>
+        <ul className="pagination">
+          <li className="page-item">
+            <a className="page-link" onClick={this.prev}>
+              Previous
+            </a>
+            <a className="page-link" onClick={this.next}>
+              Next
+            </a>
+          </li>
+        </ul>
+      </nav>
     );
   }
 }
