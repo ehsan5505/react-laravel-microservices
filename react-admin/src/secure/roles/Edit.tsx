@@ -78,7 +78,7 @@ class EditRole extends Component<any, any> {
               className="form-control"
               id="name"
               placeholder="Please Enter Role Name"
-              defaultValue={(this.name = this.state.name)}
+              defaultValue={this.name = this.state.name}
               onChange={(e) => (this.name = e.target.value)}
             />
           </div>
