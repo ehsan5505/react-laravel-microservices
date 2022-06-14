@@ -14,6 +14,7 @@ class EditRole extends Component<any, any> {
     redirect: false,
     permissions: [],
     selected: [],
+    name: ''
   };
 
   isChecked = (id: number) => {
