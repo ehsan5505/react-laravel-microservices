@@ -131,7 +131,7 @@ class EditUser extends Component<any, any> {
                 })}
               </select>
             </div>
-
+            <br />
             <input
               type="submit"
               className="btn btn-primary float-right"

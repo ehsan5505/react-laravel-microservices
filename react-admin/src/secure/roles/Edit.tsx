@@ -87,8 +87,9 @@ class EditRole extends Component<any, any> {
 
           {this.state.permissions.map((p: any) => {
             return (
-              <div key={p.id} className="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
+                  key={p.id}
                   className="form-check-input"
                   type="checkbox"
                   value={p.id}
