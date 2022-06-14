@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { Component, SyntheticEvent } from "react";
-import { Navigate } from "react-router";
+import React, { Component, PropsWithRef, SyntheticEvent } from "react";
+import { Navigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 import PermissionProps from "../classes/permission";
 import Wrapper from "../Wrapper";
@@ -29,7 +29,6 @@ class EditRole extends Component<any, any> {
     });
   };
 
-
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
     // try {
@@ -45,7 +44,6 @@ class EditRole extends Component<any, any> {
     //   toast.error(err.response.data.message);
     // }
   };
-
 
   render() {
     if (this.state.redirect) {
@@ -74,18 +72,18 @@ class EditRole extends Component<any, any> {
 
           {this.state.permissions.map((p: any) => {
             return (
-              <div className="form-check form-check-inline">
+              <div key={p.id} className="form-check form-check-inline">
                 <input
                   className="form-check-input"
                   type="checkbox"
                   value={p.id}
                   onChange={(e) => this.check(p.id)}
                 />
-
                 <label className="form-check-label">{p.name}</label>
               </div>
             );
           })}
+          <br />
           <input
             type="submit"
             className="btn btn-primary float-right"
@@ -97,4 +95,7 @@ class EditRole extends Component<any, any> {
   }
 }
 
-export default EditRole;
+// export default EditRole;
+export default (props: PropsWithRef<any>) => (
+  <EditRole {...props} params={useParams()} />
+);
