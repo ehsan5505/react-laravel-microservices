@@ -24,7 +24,7 @@ function App() {
           <Route path={`/users/:id/edit`} element={<EditUser />} />
           <Route path={`/roles`} element={<Role />} />
           <Route path={`/roles/create`} element={<CreateRole />} />
-          <Route path={`/roles/create`} element={<EditRole />} />
+          <Route path={`/roles/:id/edit`} element={<EditRole />} />
         </Routes>
       </BrowserRouter>
     </div>
