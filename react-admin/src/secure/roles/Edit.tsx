@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import PermissionProps from "../classes/permission";
 import Wrapper from "../Wrapper";
 
-class EditRole extends Component {
+class EditRole extends Component<any, any> {
   name = "";
   selected: number[] = [];
   state = {
