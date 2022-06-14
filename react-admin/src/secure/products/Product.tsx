@@ -12,7 +12,6 @@ class Product extends Component {
   state = {
     products: [],
   };
-  
 
   delete = async (id: number) => {
     if (window.confirm("Are you sure to delete the record?")) {
@@ -37,10 +36,10 @@ class Product extends Component {
     this.lastPage = products.data.meta.last_page;
   };
 
-  handleChangePage = (page:number) => {
+  handleChangePage = (page: number) => {
     this.page = page;
     console.info(page);
-  } 
+  };
 
   render() {
     return (
@@ -88,7 +87,10 @@ class Product extends Component {
                   </tr>
                 );
               })}
-              <Paginate lastPage={this.lastPage} handleChangePage={this.handleChangePage}}
+              <Paginate
+                lastPage={this.lastPage}
+                handleChangePage={this.handleChangePage}
+              />
             </tbody>
           </table>
         </div>
