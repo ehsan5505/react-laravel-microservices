@@ -46,7 +46,7 @@ class EditRole extends Component<any, any> {
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-      await axios.put("roles", {
+      await axios.put(`roles/${this.roleId}`, {
         name: this.name,
         permissions: this.selected,
       });
