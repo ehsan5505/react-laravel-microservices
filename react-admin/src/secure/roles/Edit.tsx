@@ -45,22 +45,18 @@ class EditRole extends Component<any, any> {
 
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    console.info({
-      name: this.name,
-      permissions: this.selected,
-    });
-    // try {
-    //   await axios.post("roles", {
-    //     name: this.name,
-    //     permissions: this.selected,
-    //   });
+    try {
+      await axios.put("roles", {
+        name: this.name,
+        permissions: this.selected,
+      });
 
-    //   this.setState({
-    //     redirect: true,
-    //   });
-    // } catch (err: any) {
-    //   toast.error(err.response.data.message);
-    // }
+      this.setState({
+        redirect: true,
+      });
+    } catch (err: any) {
+      toast.error(err.response.data.message);
+    }
   };
 
   render() {
