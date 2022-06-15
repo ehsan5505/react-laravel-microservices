@@ -93,7 +93,7 @@ class CreateProduct extends Component {
                   <input
                     type="file"
                     hidden
-                    accept="image/*"
+                    // accept="image/*"
                     onChange={(e) => this.imageUpload(e.target.files)}
                   />
                 </label>
