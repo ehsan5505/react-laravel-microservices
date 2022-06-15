@@ -76,10 +76,10 @@ class CreateProduct extends Component {
           <div className="form-group">
             <label>Price</label>
             <input
-              type="number"
+              type="string"
               className="form-control"
               placeholder="Please enter the Product Price"
-              onChange={(e) => (this.price = parseInt(e.target.value))}
+              onChange={(e) => (this.price = parseFloat(e.target.value))}
             />
           </div>
           <br />
