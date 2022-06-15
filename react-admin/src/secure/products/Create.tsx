@@ -40,7 +40,8 @@ class CreateProduct extends Component {
     try{
       data.append("imageUrl", files[0]);
       console.info(data);
-      // const response = await axios.post("image", data);
+      const response = await axios.post("image", data);
+      console.log(response);
       // this.setState({
       //   imageUrl: response.data.data.url,
       // });
