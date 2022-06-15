@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { ProductProps } from "../classes/product";
 import { toast } from "react-toastify";
 import Paginate from "../components/Paginate";
+import Deleter from "../components/Deleter";
 
 class Product extends Component {
   page = 1;
@@ -14,18 +15,11 @@ class Product extends Component {
   };
 
   delete = async (id: number) => {
-    if (window.confirm("Are you sure to delete the record?")) {
-      try {
-        await axios.delete(`products/${id}`);
-        this.state.products.filter((p: ProductProps) => {
-          if (p.id != id) return p;
-        });
-        this.componentDidMount();
-        toast.success("Records Deleted Successfully");
-      } catch (err: any) {
-        toast.error(err.response.data.message);
-      }
-    }
+    this.state.products.filter((p: ProductProps) => {
+      if (p.id != id) return p;
+    });
+    this.componentDidMount();
+    toast.success("Records Deleted Successfully");
   };
 
   componentDidMount = async () => {
@@ -77,12 +71,11 @@ class Product extends Component {
                       <Link to={`/products/${product.id}/edit`} className="btn">
                         Edit
                       </Link>
-                      <button
-                        className="btn"
-                        onClick={() => this.delete(product.id)}
-                      >
-                        Delete
-                      </button>
+                      <Deleter
+                        id={product.id}
+                        endpoint={"products"}
+                        handleDelete={this.delete}
+                      />
                     </td>
                   </tr>
                 );
