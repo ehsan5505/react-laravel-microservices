@@ -22,8 +22,8 @@ class Paginate extends Component<{ lastPage: number; handleChangePage: any }> {
   render() {
     return (
       <nav>
-        <ul className="pagination pagination-lg">
-          <li className="page-item active" aria-current="page">
+        <ul className="pagination">
+          <li className="page-item" aria-current="page">
             <a className="page-link" onClick={this.prev}>
               Previous
             </a>
