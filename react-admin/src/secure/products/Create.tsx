@@ -62,7 +62,7 @@ class CreateProduct extends Component {
               type="number"
               className="form-control"
               placeholder="Please enter the Product Price"
-              onChange={(e) => (this.price = e.target.value)}
+              onChange={(e) => (this.price = parseInt(e.target.value))}
             />
           </div>
         </form>
