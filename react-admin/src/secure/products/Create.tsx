@@ -33,15 +33,17 @@ class CreateProduct extends Component {
 
           <div className="form-group">
             <label>Image</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Please enter the Product Title"
-              onChange={(e) => (this.imageUrl = e.target.value)}
-            />
-            <div className="input-group-append">
-              <label className="btn btn-primary">Upload</label>
-              <input type="file" hidden />
+            <div className="input-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Please enter the Product Title"
+                onChange={(e) => (this.imageUrl = e.target.value)}
+              />
+              <div className="input-group-append">
+                <label className="btn btn-primary">Upload</label>
+                <input type="file" hidden />
+              </div>
             </div>
           </div>
 
