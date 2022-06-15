@@ -38,7 +38,7 @@ class Product extends Component {
 
   handleChangePage = (page: number) => {
     this.page = page;
-    console.info(page);
+    this.componentDidMount();
   };
 
   render() {
