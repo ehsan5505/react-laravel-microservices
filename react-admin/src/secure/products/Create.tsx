@@ -46,6 +46,7 @@ class CreateProduct extends Component {
       //   imageUrl: response.data.data.url,
       // });
     }catch(err:any){
+      console.error(err);
       toast.error(err.response.data.message);
     }
   };
