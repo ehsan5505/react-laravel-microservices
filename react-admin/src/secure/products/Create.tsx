@@ -33,12 +33,12 @@ class CreateProduct extends Component {
     }
   };
 
-  imageUpload = async (files:FileList|null) => {
-    if(files===null) return ;
+  imageUpload = async (files: FileList | null) => {
+    if (files === null) return;
     const data = new FormData();
-    data.append('imageUrl',files[0]);
+    data.append("imageUrl", files[0]);
     console.info(data);
-  }
+  };
 
   render() {
     if (this.state.redirect) return <Navigate to={"/products"} />;
@@ -70,12 +70,18 @@ class CreateProduct extends Component {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Please enter the Product Title"
+                placeholder="Please enter the Image Url"
                 onChange={(e) => (this.imageUrl = e.target.value)}
               />
               <div className="input-group-append">
-                <label className="btn btn-primary">Upload</label>
-                <input type="file" hidden onChange={e => this.imageUpload(e.target.files)} />
+                <label className="btn btn-primary">
+                  Upload
+                  <input
+                    type="file"
+                    hidden
+                    onChange={(e) => this.imageUpload(e.target.files)}
+                  />
+                </label>
               </div>
             </div>
           </div>
