@@ -65,6 +65,8 @@ class CreateProduct extends Component {
               onChange={(e) => (this.price = parseInt(e.target.value))}
             />
           </div>
+          <br/>
+          <input type="submit" className="btn btn-primary" value="Create" />
         </form>
       </Wrapper>
     );
