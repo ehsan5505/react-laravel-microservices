@@ -21,7 +21,7 @@ class CreateProduct extends Component {
       await axios.post("products", {
         title: this.title,
         description: this.description,
-        image: this.imageUrl,
+        imageUrl: this.imageUrl,
         price: this.price,
       });
 
