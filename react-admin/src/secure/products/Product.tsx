@@ -87,12 +87,12 @@ class Product extends Component {
                   </tr>
                 );
               })}
-              <Paginate
-                lastPage={this.lastPage}
-                handleChangePage={this.handleChangePage}
-              />
             </tbody>
           </table>
+          <Paginate
+            lastPage={this.lastPage}
+            handleChangePage={this.handleChangePage}
+          />
         </div>
       </Wrapper>
     );
