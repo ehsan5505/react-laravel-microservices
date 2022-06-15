@@ -38,7 +38,7 @@ class CreateProduct extends Component {
     if (files === null) return;
     const data = new FormData();
     data.append("imageUrl", files[0]);
-    const response = await axios.post("upload", data);
+    const response = await axios.post("image", data);
     this.setState({
       imageUrl: response.data.data.url,
     });
