@@ -12,6 +12,7 @@ class CreateProduct extends Component {
 
   state = {
     redirect: false,
+    imageUrl: "",
   };
 
   submit = async (e: SyntheticEvent) => {
@@ -27,7 +28,6 @@ class CreateProduct extends Component {
 
       this.setState({
         redirect: true,
-        imageUrl: ""
       });
     } catch (err: any) {
       toast.error(err.response.data.message);
@@ -38,10 +38,10 @@ class CreateProduct extends Component {
     if (files === null) return;
     const data = new FormData();
     data.append("imageUrl", files[0]);
-    const response = await axios.post('upload',data);
+    const response = await axios.post("upload", data);
     this.setState({
-      imageUrl: response.data.data.url
-    }) 
+      imageUrl: response.data.data.url,
+    });
   };
 
   render() {
@@ -75,7 +75,7 @@ class CreateProduct extends Component {
                 type="text"
                 className="form-control"
                 placeholder="Please enter the Image Url"
-                value={this.imageUrl = this.state.imageUrl}
+                value={(this.imageUrl = this.state.imageUrl)}
                 onChange={(e) => (this.imageUrl = e.target.value)}
               />
               <div className="input-group-append">
