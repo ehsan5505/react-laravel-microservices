@@ -39,10 +39,11 @@ class CreateProduct extends Component {
     const data = new FormData();
     try{
       data.append("imageUrl", files[0]);
-      const response = await axios.post("image", data);
-      this.setState({
-        imageUrl: response.data.data.url,
-      });
+      console.info(data);
+      // const response = await axios.post("image", data);
+      // this.setState({
+      //   imageUrl: response.data.data.url,
+      // });
     }catch(err:any){
       toast.error(err.response.data.message);
     }
