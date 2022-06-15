@@ -18,6 +18,7 @@ class CreateProduct extends Component {
               type="text"
               className="form-control"
               placeholder="Please enter the Product Title"
+              onChange={(e) => (this.title = e.target.value)}
             />
           </div>
 
@@ -26,6 +27,7 @@ class CreateProduct extends Component {
             <textarea
               className="form-control"
               placeholder="Product Description"
+              onChange={(e) => (this.description = e.target.value)}
             ></textarea>
           </div>
 
@@ -35,19 +37,21 @@ class CreateProduct extends Component {
               type="text"
               className="form-control"
               placeholder="Please enter the Product Title"
+              onChange={(e) => (this.imageUrl = e.target.value)}
             />
             <div className="input-group-append">
               <label className="btn btn-primary">Upload</label>
-              <input type="file" />
+              <input type="file" hidden />
             </div>
           </div>
 
           <div className="form-group">
-            <label>Title</label>
+            <label>Price</label>
             <input
               type="text"
               className="form-control"
-              placeholder="Please enter the Product Title"
+              placeholder="Please enter the Product Price"
+              onChange={(e) => (this.price = e.target.value)}
             />
           </div>
         </form>
