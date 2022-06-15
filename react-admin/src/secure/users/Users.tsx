@@ -4,6 +4,7 @@ import axios, { AxiosError } from "axios";
 import RoleProps from "../classes/role";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import Paginate from "../components/Paginate";
 
 interface Error{
   response: any;
@@ -33,16 +34,10 @@ class User extends Component {
     this.last_page = res.data.meta.last_page;
   };
 
-  prev = async () => {
-    if (this.page == 1) return;
-    this.page--;
+  handleChangePage = async (page:number) => {
+    this.page = page;
     await this.componentDidMount();
-  };
-  next = async () => {
-    if (this.page == this.last_page) return;
-    this.page++;
-    await this.componentDidMount();
-  };
+  } 
 
   delete = async (id: number) => {
     if (window.confirm("Are you sure to delete the record?")) {
@@ -59,7 +54,6 @@ class User extends Component {
           toast.error(errors.response.data.message);
         } 
       }
-      // refresh the state
     }
   };
 
@@ -107,18 +101,8 @@ class User extends Component {
               })}
             </tbody>
           </table>
-          <div className="btn-toolbar right">
-            <div className="btn-group">
-              <a className="btn btn-secondary" onClick={this.prev}>
-                Previous
-              </a>
-              <a className="btn btn-secondary" onClick={this.next}>
-                Next
-              </a>
-            </div>
-          </div>
-        </div>
-        {/* <ToastContainer /> */}
+          <Paginate lastPage={this.last_page} handleChangePage={this.handleChangePage} />
+
       </Wrapper>
     );
   }

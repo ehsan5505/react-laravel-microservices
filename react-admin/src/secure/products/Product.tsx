@@ -36,9 +36,9 @@ class Product extends Component {
     this.lastPage = products.data.meta.last_page;
   };
 
-  handleChangePage = (page: number) => {
+  handleChangePage = async (page: number) => {
     this.page = page;
-    this.componentDidMount();
+    await this.componentDidMount();
   };
 
   render() {

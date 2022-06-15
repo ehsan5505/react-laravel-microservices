@@ -1,6 +1,5 @@
 import { Component, ReactNode } from "react";
 import Wrapper from "../Wrapper";
-import Nav from "./nav";
 
 class Paginate extends Component<{ lastPage: number; handleChangePage: any }> {
   page = 1;
