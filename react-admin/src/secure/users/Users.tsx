@@ -5,8 +5,9 @@ import RoleProps from "../classes/role";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Paginate from "../components/Paginate";
+import Deleter from "../components/Deleter";
 
-interface Error{
+interface Error {
   response: any;
 }
 interface UserProps {
@@ -34,27 +35,17 @@ class User extends Component {
     this.last_page = res.data.meta.last_page;
   };
 
-  handleChangePage = async (page:number) => {
+  handleChangePage = async (page: number) => {
     this.page = page;
     await this.componentDidMount();
-  } 
+  };
 
   delete = async (id: number) => {
-    if (window.confirm("Are you sure to delete the record?")) {
-      try {
-        await axios.delete(`users/${id}`);
-        this.state.users.filter((u: UserProps) => {
-          if (u.id != id) return u;
-        });
-        this.componentDidMount();
-        toast.success("Records Deleted Successfully");
-      } catch (err) {
-        const errors = err as Error | AxiosError;
-        if (axios.isAxiosError(err)) {
-          toast.error(errors.response.data.message);
-        } 
-      }
-    }
+    this.state.users.filter((u: UserProps) => {
+      if (u.id != id) return u;
+    });
+    this.componentDidMount();
+    toast.success("Records Deleted Successfully");
   };
 
   render() {
@@ -88,21 +79,25 @@ class User extends Component {
                     <td>{user.email}</td>
                     <td>{user.role.name}</td>
                     <td>
-                      <Link to={`/users/${user.id}/edit`} className="btn">Edit</Link>
-                      <button
-                        className="btn"
-                        onClick={() => this.delete(user.id)}
-                      >
-                        Delete
-                      </button>
+                      <Link to={`/users/${user.id}/edit`} className="btn">
+                        Edit
+                      </Link>
+                      <Deleter
+                        id={user.id}
+                        endpoint="users"
+                        handleDelete={this.delete}
+                      />
                     </td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
-          <Paginate lastPage={this.last_page} handleChangePage={this.handleChangePage} />
-
+        </div>
+        <Paginate
+          lastPage={this.last_page}
+          handleChangePage={this.handleChangePage}
+        />
       </Wrapper>
     );
   }
