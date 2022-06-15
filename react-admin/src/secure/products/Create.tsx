@@ -35,10 +35,11 @@ class CreateProduct extends Component {
               type="text"
               className="form-control"
               placeholder="Please enter the Product Title"
-            >
-              {/* <label className="btn">Upload</label>
-              <input type="file" /> */}
-            </input>
+            />
+            <div className="input-group-append">
+              <label className="btn btn-primary">Upload</label>
+              <input type="file" />
+            </div>
           </div>
 
           <div className="form-group">
