@@ -18,7 +18,7 @@ class CreateProduct extends Component {
     e.preventDefault();
 
     try {
-      await axios.post("products", {
+      await axios.post("/products", {
         title: this.title,
         description: this.description,
         imageUrl: this.imageUrl,
@@ -34,7 +34,7 @@ class CreateProduct extends Component {
   };
 
   render() {
-    if (this.state.redirect) return <Navigate to={"products"} />;
+    if (this.state.redirect) return <Navigate to={"/products"} />;
     return (
       <Wrapper>
         <form onSubmit={this.submit}>
