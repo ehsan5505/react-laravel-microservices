@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, SyntheticEvent } from "react";
 import axios from "axios";
 import Wrapper from "../Wrapper";
 
@@ -8,7 +8,8 @@ class CreateProduct extends Component {
   imageUrl = "";
   price = 0;
 
-  submit = () => {
+  submit = (e: SyntheticEvent) => {
+    e.preventDefault();
     console.info({
       title: this.title,
       description: this.description,
@@ -65,7 +66,7 @@ class CreateProduct extends Component {
               onChange={(e) => (this.price = parseInt(e.target.value))}
             />
           </div>
-          <br/>
+          <br />
           <input type="submit" className="btn btn-primary" value="Create" />
         </form>
       </Wrapper>
