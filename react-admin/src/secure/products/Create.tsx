@@ -33,6 +33,13 @@ class CreateProduct extends Component {
     }
   };
 
+  imageUpload = async (files:FileList|null) => {
+    if(files===null) return ;
+    const data = new FormData();
+    data.append('imageUrl',files[0]);
+    console.info(data);
+  }
+
   render() {
     if (this.state.redirect) return <Navigate to={"/products"} />;
     return (
@@ -68,7 +75,7 @@ class CreateProduct extends Component {
               />
               <div className="input-group-append">
                 <label className="btn btn-primary">Upload</label>
-                <input type="file" hidden />
+                <input type="file" hidden onChange={e => this.imageUpload(e.target.files)} />
               </div>
             </div>
           </div>
