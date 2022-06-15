@@ -37,11 +37,15 @@ class CreateProduct extends Component {
   imageUpload = async (files: FileList | null) => {
     if (files === null) return;
     const data = new FormData();
-    data.append("imageUrl", files[0]);
-    const response = await axios.post("image", data);
-    this.setState({
-      imageUrl: response.data.data.url,
-    });
+    try{
+      data.append("imageUrl", files[0]);
+      const response = await axios.post("image", data);
+      this.setState({
+        imageUrl: response.data.data.url,
+      });
+    }catch(err:any){
+      toast.error(err.response.data.message);
+    }
   };
 
   render() {
