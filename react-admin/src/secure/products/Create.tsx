@@ -1,6 +1,8 @@
 import { Component, SyntheticEvent } from "react";
 import axios from "axios";
 import Wrapper from "../Wrapper";
+import { toast } from "react-toastify";
+import { Navigate } from "react-router";
 
 class CreateProduct extends Component {
   title = "";
@@ -8,17 +10,31 @@ class CreateProduct extends Component {
   imageUrl = "";
   price = 0;
 
-  submit = (e: SyntheticEvent) => {
+  state = {
+    redirect: false,
+  };
+
+  submit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    console.info({
-      title: this.title,
-      description: this.description,
-      image: this.imageUrl,
-      price: this.price,
-    });
+
+    try {
+      await axios.post("products", {
+        title: this.title,
+        description: this.description,
+        image: this.imageUrl,
+        price: this.price,
+      });
+
+      this.setState({
+        redirect: true,
+      });
+    } catch (err: any) {
+      toast.error(err.response.data.message);
+    }
   };
 
   render() {
+    if (this.state.redirect) return <Navigate to={"products"} />;
     return (
       <Wrapper>
         <form onSubmit={this.submit}>
