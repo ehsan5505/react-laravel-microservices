@@ -6,12 +6,21 @@ class CreateProduct extends Component {
   title = "";
   description = "";
   imageUrl = "";
-  price = "";
+  price = 0;
+
+  submit = () => {
+    console.info({
+      title: this.title,
+      description: this.description,
+      image: this.imageUrl,
+      price: this.price,
+    });
+  };
 
   render() {
     return (
       <Wrapper>
-        <form>
+        <form onSubmit={this.submit}>
           <div className="form-group">
             <label>Title</label>
             <input
@@ -50,7 +59,7 @@ class CreateProduct extends Component {
           <div className="form-group">
             <label>Price</label>
             <input
-              type="text"
+              type="number"
               className="form-control"
               placeholder="Please enter the Product Price"
               onChange={(e) => (this.price = e.target.value)}
