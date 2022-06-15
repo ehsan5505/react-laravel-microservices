@@ -16,7 +16,7 @@ class CreateProduct extends Component {
             <label>Title</label>
             <input
               type="text"
-              className="form-control-input"
+              className="form-control"
               placeholder="Please enter the Product Title"
             />
           </div>
@@ -24,7 +24,7 @@ class CreateProduct extends Component {
           <div className="form-group">
             <label>Description</label>
             <textarea
-              className="form-control-input"
+              className="form-control"
               placeholder="Product Description"
             ></textarea>
           </div>
@@ -33,11 +33,11 @@ class CreateProduct extends Component {
             <label>Image</label>
             <input
               type="text"
-              className="form-control-input"
+              className="form-control"
               placeholder="Please enter the Product Title"
             >
-              <label className="btn">Upload</label>
-              <input type="file" />
+              {/* <label className="btn">Upload</label>
+              <input type="file" /> */}
             </input>
           </div>
 
@@ -45,7 +45,7 @@ class CreateProduct extends Component {
             <label>Title</label>
             <input
               type="text"
-              className="form-control-input"
+              className="form-control"
               placeholder="Please enter the Product Title"
             />
           </div>
