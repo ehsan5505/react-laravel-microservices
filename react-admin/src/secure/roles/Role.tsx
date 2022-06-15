@@ -5,6 +5,7 @@ import Wrapper from "../Wrapper";
 import axios from "axios";
 import { deleteRecord } from "../helper/function";
 import { toast } from "react-toastify";
+import Deleter from "../components/Deleter";
 
 class Role extends Component {
   state = {
@@ -19,18 +20,11 @@ class Role extends Component {
   };
 
   delete = async (id: number) => {
-    if (window.confirm("Are you sure to delete the record?")) {
-      try {
-        await axios.delete(`roles/${id}`);
-        this.state.roles.filter((r: RoleProps) => {
-          if (r.id != id) return r;
-        });
-        this.componentDidMount();
-        toast.success("Records Deleted Successfully");
-      } catch (err: any) {
-        toast.error(err.response.data.message);
-      }
-    }
+    this.state.roles.filter((r: RoleProps) => {
+      if (r.id != id) return r;
+    });
+    this.componentDidMount();
+    toast.success("Records Deleted Successfully");
   };
 
   render() {
@@ -61,12 +55,11 @@ class Role extends Component {
                       <Link to={`/roles/${role.id}/edit`} className="btn">
                         Edit
                       </Link>
-                      <button
-                        className="btn"
-                        onClick={() => this.delete(role.id)}
-                      >
-                        Delete
-                      </button>
+                      <Deleter
+                        id={role.id}
+                        endpoint={"roles"}
+                        handleDelete={this.delete}
+                      />
                     </td>
                   </tr>
                 );
