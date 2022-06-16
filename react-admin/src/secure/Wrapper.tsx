@@ -16,7 +16,6 @@ class Wrapper extends Component<WrapperProps> {
   componentDidMount = async () => {
     try {
       const user = await axios.get("user");
-      console.info(user);
     } catch (e) {
       this.setState({ redirect: true });
     }
