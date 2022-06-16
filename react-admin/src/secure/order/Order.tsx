@@ -11,7 +11,7 @@ class Order extends Component {
   componentDidMount = async () => {
     const resp = await axios.get("orders");
     console.info(resp.data);
-    // this.lastPage = resp.data.meta.last_page;
+    this.lastPage = resp.meta.last_page;
   };
 
   render() {
