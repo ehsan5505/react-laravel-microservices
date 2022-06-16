@@ -3,6 +3,7 @@ import axios from "axios";
 import Wrapper from "../Wrapper";
 import { toast } from "react-toastify";
 import { Navigate } from "react-router";
+import ImageUpload from "../components/ImageUpload";
 
 class CreateProduct extends Component {
   title = "";
@@ -34,21 +35,11 @@ class CreateProduct extends Component {
     }
   };
 
-  imageUpload = async (files: FileList | null) => {
-    if (files === null) return;
-    const data = new FormData();
-    try {
-      data.append("image", files[0]);
-      console.info(data);
-      const response = await axios.post("image", data, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      this.setState({
-        imageUrl: response.data.url,
-      });
-    } catch (err: any) {
-      toast.error(err.response.data.message);
-    }
+  imageUpload = async (image: string) => {
+    this.imageUrl = image;
+    this.setState({
+      imageUrl: this.imageUrl,
+    });
   };
 
   render() {
@@ -77,26 +68,10 @@ class CreateProduct extends Component {
 
           <div className="form-group">
             <label>Image</label>
-            <div className="input-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Please enter the Image Url"
-                value={(this.imageUrl = this.state.imageUrl)}
-                onChange={(e) => (this.imageUrl = e.target.value)}
-              />
-              <div className="input-group-append">
-                <label className="btn btn-primary">
-                  Upload
-                  <input
-                    type="file"
-                    hidden
-                    // accept="image/*"
-                    onChange={(e) => this.imageUpload(e.target.files)}
-                  />
-                </label>
-              </div>
-            </div>
+            <ImageUpload
+              value={(this.imageUrl = this.state.imageUrl)}
+              handleImage={this.imageUpload}
+            />
           </div>
 
           <div className="form-group">
