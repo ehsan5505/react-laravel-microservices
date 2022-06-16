@@ -19,7 +19,7 @@ class Order extends Component {
   };
 
   componentDidMount = async () => {
-    const resp = await axios.get(`orders?page=${page}`);
+    const resp = await axios.get(`orders?page=${this.page}`);
     this.setState({
       orders: resp.data.data,
     });
