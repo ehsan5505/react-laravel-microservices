@@ -43,12 +43,10 @@ class CreateProduct extends Component {
       const response = await axios.post("image", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      console.log(response);
-      // this.setState({
-      //   imageUrl: response.data.data.url,
-      // });
+      this.setState({
+        imageUrl: response.data.data.url,
+      });
     } catch (err: any) {
-      console.error(err);
       toast.error(err.response.data.message);
     }
   };
