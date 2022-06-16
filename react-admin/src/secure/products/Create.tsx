@@ -44,7 +44,7 @@ class CreateProduct extends Component {
         headers: { "Content-Type": "multipart/form-data" },
       });
       this.setState({
-        imageUrl: response.data.data.url,
+        imageUrl: response.data.url,
       });
     } catch (err: any) {
       toast.error(err.response.data.message);
