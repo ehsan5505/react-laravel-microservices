@@ -3,14 +3,22 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import Paginate from "../components/Paginate";
 import Wrapper from "../Wrapper";
+import {OrderProps} from '../classes/order';
 
 class Order extends Component {
   lastPage = 0;
   page = 1;
 
+  state = {
+    orders: []
+  }
+
   componentDidMount = async () => {
     const resp = await axios.get("orders");
     console.info(resp.data);
+    this.setState({
+      orders: resp.data,
+    });
     // this.lastPage = resp.meta.last_page;
   };
 
@@ -23,10 +31,10 @@ class Order extends Component {
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">OrderID</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
-                <th scope="col"></th>
+                <th scope="col">Email</th>
+                <th scope="col">Total</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
