@@ -109,7 +109,7 @@ class EditProduct extends Component<any> {
             />
           </div>
           <br />
-          <input type="submit" className="btn btn-primary" value="Create" />
+          <input type="submit" className="btn btn-primary" value="Update" />
         </form>
       </Wrapper>
     );
