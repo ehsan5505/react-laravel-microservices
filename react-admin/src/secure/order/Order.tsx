@@ -8,12 +8,11 @@ class Order extends Component {
   lastPage = 0;
   page = 1;
 
-  componentDidMount = async() => {
-    const resp = await axios.get('orders');
+  componentDidMount = async () => {
+    const resp = await axios.get("orders");
     console.log(resp.data.data);
     this.lastPage = resp.data.meta.last_page;
-  }
-
+  };
 
   render() {
     return (
@@ -66,3 +65,5 @@ class Order extends Component {
     );
   }
 }
+
+export default Order;

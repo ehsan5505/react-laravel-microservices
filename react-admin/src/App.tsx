@@ -13,6 +13,7 @@ import EditRole from "./secure/roles/Edit";
 import Product from "./secure/products/Product";
 import CreateProduct from "./secure/products/Create";
 import EditProduct from "./secure/products/Edit";
+import Order from "./secure/order/Order";
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
           <Route path={`/products`} element={<Product />} />
           <Route path={`/products/create`} element={<CreateProduct />} />
           <Route path={`/products/:id/edit`} element={<EditProduct />} />
+          <Route path={`/orders`} element={<Order />} />
+
         </Routes>
       </BrowserRouter>
     </div>
