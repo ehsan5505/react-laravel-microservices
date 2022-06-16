@@ -3,15 +3,15 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import Paginate from "../components/Paginate";
 import Wrapper from "../Wrapper";
-import {OrderProps} from '../classes/order';
+import { OrderProps } from "../classes/order";
 
 class Order extends Component {
   lastPage = 0;
   page = 1;
 
   state = {
-    orders: []
-  }
+    orders: [],
+  };
 
   componentDidMount = async () => {
     const resp = await axios.get("orders");
@@ -39,29 +39,22 @@ class Order extends Component {
               </tr>
             </thead>
             <tbody>
-              {/* {this.state.products.map((product: ProductProps) => {
+              {this.state.orders.map((order: OrderProps) => {
                 return (
-                  <tr key={product.id}>
-                    <td>{product.id}</td>
+                  <tr key={order.id}>
+                    <td>{order.id}</td>
+                    <td>{order.first_name}</td>
+                    <td>{order.last_name}</td>
+                    <td>{order.email}</td>
+                    <td>{order.total}</td>
                     <td>
-                      <img src={product.imageUrl} width="50" />
-                    </td>
-                    <td>{product.title}</td>
-                    <td>{product.description}</td>
-                    <td>{product.price}</td>
-                    <td>
-                      <Link to={`/products/${product.id}/edit`} className="btn">
-                        Edit
+                      <Link to={`/orders/${order.id}`} className="btn">
+                        View
                       </Link>
-                      <Deleter
-                        id={product.id}
-                        endpoint={"products"}
-                        handleDelete={this.delete}
-                      />
                     </td>
                   </tr>
                 );
-              })} */}
+              })}
             </tbody>
           </table>
           {/* <Paginate
