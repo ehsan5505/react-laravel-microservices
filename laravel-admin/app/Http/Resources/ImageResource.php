@@ -16,6 +16,6 @@ class ImageResource extends JsonResource
     {
         return [
            "url"    =>  $this->imageUrl
-        ]
+        ];
     }
 }
