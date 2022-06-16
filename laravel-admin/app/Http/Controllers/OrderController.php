@@ -13,7 +13,7 @@ class OrderController extends Controller
     public function index()
     {
         Gate::authorize('view','orders');
-        $orders=Order::paginate();
+        $orders = Order::paginate();
         return response(OrderResource::collection($orders),Response::HTTP_ACCEPTED);
     }
 
