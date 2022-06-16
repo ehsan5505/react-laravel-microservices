@@ -13,13 +13,17 @@ class Order extends Component {
     orders: [],
   };
 
+  handleChangePage = async (page: number) => {
+    this.page = page;
+    this.componentDidMount();
+  };
+
   componentDidMount = async () => {
     const resp = await axios.get("orders");
-    console.info(resp.data);
     this.setState({
-      orders: resp.data,
+      orders: resp.data.data,
     });
-    // this.lastPage = resp.meta.last_page;
+    this.lastPage = resp.data.meta.last_page;
   };
 
   render() {
@@ -57,10 +61,10 @@ class Order extends Component {
               })}
             </tbody>
           </table>
-          {/* <Paginate
+          <Paginate
             lastPage={this.lastPage}
             handleChangePage={this.handleChangePage}
-          /> */}
+          />
         </div>
       </Wrapper>
     );
