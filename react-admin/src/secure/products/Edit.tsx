@@ -37,7 +37,7 @@ class EditProduct extends Component<any> {
     e.preventDefault();
 
     try {
-      await axios.post("/products", {
+      await axios.put(`/products/${this.id}`, {
         title: this.title,
         description: this.description,
         imageUrl: this.imageUrl,
