@@ -100,7 +100,12 @@ class EditProduct extends Component<any> {
               className="form-control"
               placeholder="Please enter the Product Price"
               value={(this.price = parseFloat(this.state.price))}
-              onChange={(e) => (this.price = parseFloat(e.target.value))}
+              onChange={(e) => (
+                (this.price = parseFloat(e.target.value)),
+                this.setState({
+                  price: e.target.value,
+                })
+              )}
             />
           </div>
           <br />
