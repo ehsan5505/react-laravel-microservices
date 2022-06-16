@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ImageUploadRequest;
-use App\Http\Resources\ImageResource;
 use Illuminate\Support\Str;
 use Storage;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +21,6 @@ class ImageController extends Controller
         $url = Storage::putFileAs("images", $file, $filename);
 
         $image_url = env('IMAGE_HOST') . "/" . $url;
-        return new ImageResource($image_url);
+        return ["url" => $image_url];
     }
 }
