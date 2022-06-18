@@ -29,6 +29,7 @@ class Menu extends Component<{ user: UserProps }> {
     this.menuItems.forEach((menu) => {
       let name = menu.name.toLocaleLowerCase();
       if (this.props.user.can_test(name)) {
+        console.info(name);
         // console.info(`Menu | ${name}`);
         // items.push(
         //   <li className="nav-item">
