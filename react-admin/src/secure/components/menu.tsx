@@ -28,10 +28,8 @@ class Menu extends Component<{ user: UserProps }> {
     let items: JSX.Element[] = [];
     this.menuItems.forEach((menu) => {
       let name = menu.name.toLocaleLowerCase();
-      console.log(name + " " + this.props.user.can_view(name));
-
       if (this.props.user.can_view(name)) {
-        console.error(`Menu | ${name}`);
+        console.log(`Menu | ${name}`);
         items.push(
           <li className="nav-item">
             <NavLink to={menu.link} className="nav-link" aria-current="page">
