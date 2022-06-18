@@ -30,7 +30,7 @@ export default class UserProps {
   }
 
   can_test(page: string) {
-    console.log(page);
+    console.info(this.permissions);
     return false;
   }
   can_view(page: string) {
