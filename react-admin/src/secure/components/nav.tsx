@@ -52,7 +52,7 @@ class Nav extends Component {
           <div className="nav">
             {/* <div className="nav-item"> */}
             <Link to={"/profile"} className="nav-link text-white">
-              {this.state.user.first_name}
+              {this.state.user.first_name} {this.state.user.last_name}
             </Link>
             <a className="nav-link text-white" onClick={this.signOut}>
               Sign out
