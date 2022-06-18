@@ -38,7 +38,16 @@ class Profile extends Component<any> {
       });
 
       const user: UserProps = resp.data;
-      this.props.setUser(user);
+      this.props.setUser(
+        new UserProps(
+          user.id,
+          user.first_name,
+          user.last_name,
+          user.email,
+          user.role,
+          user.permissions
+        )
+      );
 
       toast.success("Information Updated");
     } catch (err: any) {
@@ -95,6 +104,7 @@ class Profile extends Component<any> {
               defaultValue={(this.email = this.state.email)}
             />
           </div>
+          <br />
           <input
             type="submit"
             className="btn btn-primary"
