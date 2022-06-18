@@ -27,11 +27,11 @@ class Dashboard extends Component {
     });
 
     const resp = await axios.get("chart");
-    const records: { date: string; sum: number }[] = resp.data;
+    const records: { date: string; total_sales: number }[] = resp.data;
     chart.load({
       columns: [
         ["x", ...records.map((r) => r.date)],
-        // ["Sales", ...records.map((r) => r.sum)],
+        ["Sales", ...records.map((r) => r.total_sales)],
       ],
     });
     console.info(records);
