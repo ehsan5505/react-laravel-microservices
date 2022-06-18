@@ -49,7 +49,7 @@ class Nav extends Component {
         />
         <div className="navbar-nav">
           <div className="nav-item text-nowrap">
-            <Link to={"/profile"} className="nav-link px-2">
+            <Link to={"/profile"} className="nav-link px-1">
               {this.state.user.first_name}
             </Link>
           </div>
