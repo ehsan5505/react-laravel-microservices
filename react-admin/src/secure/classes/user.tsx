@@ -29,17 +29,8 @@ export default class UserProps {
     return this.first_name + " " + this.last_name;
   }
 
-  can_test(page: string) {
-    // console.info(this.permissions);
-    return this.permissions.some((p) => p.name === `view_${page}`);
-  }
   can_view(page: string) {
-    return this.permissions.some((p) => {
-      console.log(`Inside The Can View ${p.name} === view_${page}`);
-      return p.name === `view_${page}`;
-    });
-    // return this.permissions.some(p) => p.name
-    // return this.permissions.some((p) => p. === `view_${page}`);
+    return this.permissions.some((p) => p.name === `view_${page}`);
   }
 
   can_edit(page: string) {
