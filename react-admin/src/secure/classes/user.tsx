@@ -7,7 +7,7 @@ export default class UserProps {
   last_name: string;
   email: string;
   role: RoleProps;
-  permissions: string[];
+  permissions: PermissionProps[];
 
   constructor(
     id = 0,
@@ -15,7 +15,7 @@ export default class UserProps {
     lastname = "",
     email = "",
     role: RoleProps = new RoleProps(),
-    permissions: string[] = []
+    permissions: PermissionProps[] = []
   ) {
     this.id = id;
     this.first_name = firstname;
@@ -30,8 +30,9 @@ export default class UserProps {
   }
 
   can_view(page: string) {
-    console.info(this.permissions);
-    return this.permissions.some((p) => p === `view_${page}`);
+    return this.permissions.some(p => p.name == `view_${page}`);
+    // return this.permissions.some(p) => p.name
+    // return this.permissions.some((p) => p. === `view_${page}`);
   }
 
   can_edit(page: string) {
