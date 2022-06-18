@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import UserProps from "../classes/user";
 import { connect } from "react-redux";
 
-class Menu extends Component<{ user: UserProps }> {
+class Menu extends Component<any> {
   menuItems = [
     {
       link: "/users",
