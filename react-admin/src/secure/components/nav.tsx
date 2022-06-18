@@ -49,10 +49,10 @@ class Nav extends Component {
           placeholder="Search"
           aria-label="Search"
         />
-        <div className="col-md-3">
-          <div className="navbar-nav">
-            <div className="nav-item">
-              <Link to={"/profile"} className="nav-link ">
+        <div className="col-md-2">
+          <div className="">
+            <div className="">
+              <Link to={"/profile"} className="">
                 {this.state.user.first_name}
               </Link>
               <a className="nav-link " onClick={this.signOut}>
