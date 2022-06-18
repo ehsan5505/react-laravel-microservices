@@ -49,7 +49,7 @@ class Nav extends Component {
           placeholder="Search"
           aria-label="Search"
         />
-        <div className="col-md-1">
+        <div className="col-md-2">
           <div className="nav">
             {/* <div className="nav-item"> */}
             <Link to={"/profile"} className="nav-link text-white">
