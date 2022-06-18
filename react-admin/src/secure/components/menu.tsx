@@ -31,6 +31,7 @@ class Menu extends Component<{ user: UserProps }> {
       console.log(name + " " + this.props.user.can_view(name));
 
       if (this.props.user.can_view(name)) {
+        console.error(`Menu | ${name}`);
         items.push(
           <li className="nav-item">
             <NavLink to={menu.link} className="nav-link" aria-current="page">
