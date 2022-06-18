@@ -98,9 +98,9 @@ class Profile extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Password</label>
+            <label>Password Confirmation</label>
             <input
-              type="password_confirmation"
+              type="password"
               className="form-control"
               placeholder="Please enter the confirmation password"
               onChange={(e) => (this.password_confirmation = e.target.value)}
