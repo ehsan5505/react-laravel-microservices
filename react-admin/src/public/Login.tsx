@@ -25,7 +25,8 @@ class Login extends Component {
         redirect: true,
       });
     } catch (err: any) {
-      toast.error(err.response.data.message);
+      console.error(err.response.message.data)
+      toast.error(err.response.message.data);
     }
   };
 
