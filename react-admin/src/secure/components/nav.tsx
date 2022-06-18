@@ -50,15 +50,15 @@ class Nav extends Component {
           aria-label="Search"
         />
         <div className="col-md-2">
-          <div className="">
-            <div className="">
-              <Link to={"/profile"} className="">
-                {this.state.user.first_name}
-              </Link>
-              <a className="nav-link " onClick={this.signOut}>
-                Sign out
-              </a>
-            </div>
+          <div className="nav">
+            {/* <div className="nav-item"> */}
+            <Link to={"/profile"} className="nav-link ">
+              {this.state.user.first_name}
+            </Link>
+            <a className="nav-link " onClick={this.signOut}>
+              Sign out
+            </a>
+            {/* </div> */}
           </div>
         </div>
       </header>
