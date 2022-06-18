@@ -6,8 +6,9 @@ import { toast } from "react-toastify";
 import Paginate from "../components/Paginate";
 import Deleter from "../components/Deleter";
 import UserProps from "../classes/user";
+import { connect } from "react-redux";
 
-class User extends Component {
+class User extends Component<{ user: UserProps }> {
   state = {
     users: [],
   };
@@ -37,15 +38,35 @@ class User extends Component {
     toast.success("Records Deleted Successfully");
   };
 
+  action = (id: number) => {
+    if (this.props.user.can_edit("users")) {
+      return (
+        <div>
+          <Link to={`/users/${id}/edit`} className="btn">
+            Edit
+          </Link>
+          <Deleter id={id} endpoint="users" handleDelete={this.delete} />
+        </div>
+      );
+    }
+  };
+
   render() {
-    return (
-      <Wrapper>
-        <h2>Users</h2>
+    let addBtn = null;
+    if (this.props.user.can_edit("users")) {
+      addBtn = (
         <div className="float-right">
           <Link to={"create"} className="btn btn-primary">
             Add User
           </Link>
         </div>
+      );
+    }
+
+    return (
+      <Wrapper>
+        <h2>Users</h2>
+        {addBtn}
         <div className="table-responsive">
           <table className="table table-striped table-sm">
             <thead>
@@ -67,16 +88,7 @@ class User extends Component {
                     </td>
                     <td>{user.email}</td>
                     <td>{user.role.name}</td>
-                    <td>
-                      <Link to={`/users/${user.id}/edit`} className="btn">
-                        Edit
-                      </Link>
-                      <Deleter
-                        id={user.id}
-                        endpoint="users"
-                        handleDelete={this.delete}
-                      />
-                    </td>
+                    <td>{this.action(user.id)}</td>
                   </tr>
                 );
               })}
@@ -92,4 +104,10 @@ class User extends Component {
   }
 }
 
-export default User;
+const mapStateToProps = (state = { user: UserProps }) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps)(User);
