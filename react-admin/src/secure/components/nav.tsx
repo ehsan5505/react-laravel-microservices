@@ -54,12 +54,12 @@ class Nav extends Component {
             <Link to={"/profile"} className="nav-link ">
               {this.state.user.first_name} {this.state.user.last_name}
             </Link>
-          </div>
-          <div className="nav-item text-nowrap col-md-1">
             <a className="nav-link " onClick={this.signOut}>
               Sign out
             </a>
           </div>
+          {/* <div className="nav-item text-nowrap col-md-1">
+          </div> */}
         </div>
       </header>
     );
