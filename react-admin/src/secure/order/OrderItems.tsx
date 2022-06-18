@@ -39,7 +39,7 @@ class OrderItems extends Component<any> {
                     <td>{orderItem.id}</td>
                     <td>{orderItem.product_title}</td>
                     <td>{orderItem.price}</td>
-                    <td>{orderItem.quantity}</td>
+                    <td>{orderItem.qty}</td>
                   </tr>
                 );
               })}
