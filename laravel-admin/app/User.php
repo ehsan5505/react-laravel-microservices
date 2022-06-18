@@ -57,7 +57,7 @@ class User extends Authenticatable
     }
 
     public function permissions(){
-        return $this->role->permissions();
+        return $this->role->permissions;
     }
 
     public function hasAccess($access)
