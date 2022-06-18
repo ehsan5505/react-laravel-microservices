@@ -22,7 +22,6 @@ class Nav extends Component {
     this.setState({
       user: userDetail,
     });
-    console.info(userDetail);
   };
 
   render() {
