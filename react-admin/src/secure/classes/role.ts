@@ -6,8 +6,8 @@ class RoleProps {
   permission: Permission;
 
   constructor(id=0,name="",permission=new Permission()){
-    this.id = id,
-    this.name = name,
+    this.id = id;
+    this.name = name;
     this.permission = permission; 
   }
 }

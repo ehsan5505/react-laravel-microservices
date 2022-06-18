@@ -17,10 +17,10 @@ export default class UserProps {
   role: RoleProps;
 
   constructor(id = 0, firstname = "", lastname = "", email = "", role:RoleProps = new RoleProps()) {
-      (this.id = id),
-      (this.first_name = firstname),
-      (this.last_name = lastname),
-      (this.email = email),
+      (this.id = id);
+      (this.first_name = firstname;
+      (this.last_name = lastname);
+      (this.email = email);
       (this.role = role);
   }
 }
