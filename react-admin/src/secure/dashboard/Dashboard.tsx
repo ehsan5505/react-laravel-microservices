@@ -8,14 +8,17 @@ class Dashboard extends Component {
       bindto: "#chart",
       data: {
         x: "x",
-        columns: [
-          ["x"],
-          ["Sales"],
-        ],
+        columns: [["x"], ["Sales"]],
         // types: {
         //   Sales: "line",
         // },
+        type: "bar",
+        labels: true,
+        colors: {
+          Sales: "orange",
+        },
       },
+
       axis: {
         x: {
           type: "timeseries",
