@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Wrapper from "../Wrapper";
 import c3 from "c3";
+import axios from "axios";
 class Dashboard extends Component {
   componentDidMount = async () => {
     let chart = c3.generate({
@@ -24,6 +25,9 @@ class Dashboard extends Component {
         }
       }
     });
+
+    const resp = await axios.get('chart');
+    console.info(resp);
   };
   render() {
     return (
