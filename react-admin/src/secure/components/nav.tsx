@@ -50,11 +50,11 @@ class Nav extends Component {
           aria-label="Search"
         />
         <div className="navbar-nav">
-          <div className="nav-item text-nowrap">
-            <Link to={"/profile"} className=" ">
+          <div className="nav-item">
+            <Link to={"/profile"} className="nav-link ">
               {this.state.user.first_name}
             </Link>
-            <a className="" onClick={this.signOut}>
+            <a className="nav-link " onClick={this.signOut}>
               Sign out
             </a>
           </div>
