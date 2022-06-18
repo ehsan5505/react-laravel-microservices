@@ -18,7 +18,7 @@ class Nav extends Component {
 
   componentDidMount = async () => {
     const resp = await axios.get("user");
-    const userDetail:UserProps = resp.data.data;
+    const userDetail: UserProps = resp.data.data;
     this.setState({
       user: userDetail,
     });
@@ -49,8 +49,8 @@ class Nav extends Component {
           placeholder="Search"
           aria-label="Search"
         />
-        <div className="navbar-nav col-md-2">
-          <div className="nav-item text-nowrap col-md-1">
+        <div className="navbar-nav">
+          <div className="nav-item text-nowrap">
             <Link to={"/profile"} className="nav-link ">
               {this.state.user.first_name} {this.state.user.last_name}
             </Link>
@@ -58,8 +58,6 @@ class Nav extends Component {
               Sign out
             </a>
           </div>
-          {/* <div className="nav-item text-nowrap col-md-1">
-          </div> */}
         </div>
       </header>
     );
