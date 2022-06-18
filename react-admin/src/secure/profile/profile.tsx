@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Component, ReactNode, SyntheticEvent } from "react";
+import { toast } from "react-toastify";
 import UserProps from "../classes/user";
 import Wrapper from "../Wrapper";
 
@@ -28,19 +29,29 @@ class Profile extends Component {
 
   updateInfo = async (e: SyntheticEvent) => {
     e.preventDefault();
-    console.info({
-      first_name: this.first_name,
-      last_name: this.last_name,
-      email: this.email,
-    });
+    try {
+      await axios.put("info", {
+        first_name: this.first_name,
+        last_name: this.last_name,
+        email: this.email,
+      });
+      toast.success("Information Updated");
+    } catch (err: any) {
+      toast.error(err.response.data.message);
+    }
   };
 
   updatePass = async (e: SyntheticEvent) => {
     e.preventDefault();
-    console.info({
-      password: this.password,
-      password_confirmation: this.password_confirmation,
-    });
+    try {
+      await axios.put("password", {
+        password: this.password,
+        password_confirmation: this.password_confirmation,
+      });
+      toast.success("Information Updated");
+    } catch (err: any) {
+      toast.error(err.response.data.message);
+    }
   };
 
   render() {
