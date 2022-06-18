@@ -1,17 +1,29 @@
+import axios from "axios";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import { UserProps } from "../classes/user";
 
 class Nav extends Component {
   state = {
     redirect: false,
+    user: new UserProps(),
   };
+
   signOut = () => {
     localStorage.clear();
     this.setState({
-      redirect: true
-    })
-  }
-  
+      redirect: true,
+    });
+  };
+
+  componentDidMount = async () => {
+    const userDetail: UserProps = await axios.get("user");
+    this.setState({
+      user: userDetail,
+    });
+  };
+
   render() {
     if (this.state.redirect) return <Navigate to="/login" />;
     return (
@@ -38,7 +50,12 @@ class Nav extends Component {
         />
         <div className="navbar-nav">
           <div className="nav-item text-nowrap">
-            <a className="nav-link px-3" onClick={this.signOut}>
+            <Link to={"/profile"} className="nav-link px-2">
+              {this.state.user.first_name}
+            </Link>
+          </div>
+          <div className="nav-item text-nowrap">
+            <a className="nav-link px-1" onClick={this.signOut}>
               Sign out
             </a>
           </div>

@@ -6,16 +6,10 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Paginate from "../components/Paginate";
 import Deleter from "../components/Deleter";
+import { UserProps } from "../classes/user";
 
 interface Error {
   response: any;
-}
-interface UserProps {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  role: RoleProps;
 }
 
 class User extends Component {

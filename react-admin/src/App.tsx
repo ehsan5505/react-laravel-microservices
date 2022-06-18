@@ -15,6 +15,7 @@ import CreateProduct from "./secure/products/Create";
 import EditProduct from "./secure/products/Edit";
 import Order from "./secure/order/Order";
 import OrderItems from "./secure/order/OrderItems";
+import Profile from "./secure/profile/profile";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path={"/"} element={<Dashboard />} />
           <Route path={"/login"} element={<Login />} />
+          <Route path={"/profile"} element={<Profile />} />
           <Route path={"/register"} element={<Register />} />
           <Route path={"/users"} element={<User />} />
           <Route path={"/users/create"} element={<CreateUser />} />
