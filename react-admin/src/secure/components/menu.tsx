@@ -30,8 +30,8 @@ class Menu extends Component<{ user: UserProps }> {
       if (this.props.user.can_test(name)) {
         items.push(
           <li id={name} className="nav-item">
-            <NavLink to={menu.link} className="nav-link" aria-current="page">
-              <span data-feather="home" className="align-text-bottom"></span>
+            <NavLink to={menu.link} className="nav-link">
+              <span className="align-text-bottom"></span>
               {menu.name}
             </NavLink>
           </li>
