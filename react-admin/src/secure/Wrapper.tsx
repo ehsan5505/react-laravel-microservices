@@ -15,8 +15,9 @@ class Wrapper extends Component<PropsWithChildren<any>> {
 
   componentDidMount = async () => {
     try {
-      const user = await axios.get("user");
-      this.props.setUser(user.data.data);
+      const resp = await axios.get("user");
+      const user: UserProps = resp.data.data;
+      this.props.setUser(new UserProps(user.id,user.first_name,user.last_name,user.email,user.role,user.permissions));
     } catch (e) {
       this.setState({ redirect: true });
     }
