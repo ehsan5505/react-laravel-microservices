@@ -36,6 +36,6 @@ export default class UserProps {
   }
 
   can_edit(page: string) {
-    return this.permissions.some((p) => p === `edit_${page}`);
+    return this.permissions.some((p) => p.name === `edit_${page}`);
   }
 }
