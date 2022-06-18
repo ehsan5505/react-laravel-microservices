@@ -104,7 +104,7 @@ class User extends Component<{ user: UserProps }> {
   }
 }
 
-const mapStateToProps = (state = { user: UserProps }) => {
+const mapStateToProps = (state: ({ user: UserProps })) => {
   return {
     user: state.user,
   };
