@@ -14,9 +14,9 @@ class OrderItems extends Component<any> {
     this.id = this.props.params.id;
     const resp = await axios.get(`orders/${this.id}`);
     this.setState({
-      OrderItems: resp.data.data,
+      OrderItems: resp.data.orders,
     });
-    console.info(resp.data);
+    console.info(resp.data.orders);
   };
 
   render() {
