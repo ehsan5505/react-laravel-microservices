@@ -30,16 +30,15 @@ class Dashboard extends Component {
     const records: { date: string; sum: number }[] = resp.data;
     chart.load({
       columns: [
-        ["x", ...records.map((r) => r.date)],
-        ["Sales", ...records.map((r) => r.sum)],
+        // ["x", ...records.map((r) => r.date)],
+        // ["Sales", ...records.map((r) => r.sum)],
       ],
     });
-    console.log(records);
   };
   render() {
     return (
       <Wrapper>
-        <h2>Dashboard</h2>
+        <h2>Daily Sales Performance</h2>
 
         <div id="chart" />
       </Wrapper>
