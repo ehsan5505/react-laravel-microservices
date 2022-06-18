@@ -34,6 +34,7 @@ class Dashboard extends Component {
         // ["Sales", ...records.map((r) => r.sum)],
       ],
     });
+    console.info(records);
   };
   render() {
     return (
