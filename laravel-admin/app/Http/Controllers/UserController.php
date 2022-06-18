@@ -85,7 +85,7 @@ class UserController extends Controller
     public function updateInfo(UserUpdateProfileRequest $request)
     {
 
-        Gate::authorize('edit','users');
+        Gate::authorize('view','users');
         $user = \Auth::user();
         $user->update($request->only('first_name', 'last_name', 'email', 'role_id'));
         return response(new UserResource($user), Response::HTTP_ACCEPTED);
@@ -93,7 +93,7 @@ class UserController extends Controller
 
     public function updatePassword(UserPasswordUpdateRequest $request)
     {
-        Gate::authorize('edit','users');
+        Gate::authorize('view','users');
         $user = \Auth::user();
         $user->update(['password' => Hash::make($request->input('password'))]);
         return response(new UserResource($user), Response::HTTP_ACCEPTED);
