@@ -6,8 +6,10 @@ import { ProductProps } from "../classes/product";
 import { toast } from "react-toastify";
 import Paginate from "../components/Paginate";
 import Deleter from "../components/Deleter";
+import UserProps from "../classes/user";
+import { connect } from "react-redux";
 
-class Product extends Component {
+class Product extends Component<{ user: UserProps }> {
   page = 1;
   lastPage = 0;
   state = {
@@ -35,15 +37,34 @@ class Product extends Component {
     await this.componentDidMount();
   };
 
+  action = (id: number) => {
+    if (this.props.user.can_edit("products")) {
+      return (
+        <div>
+          <Link to={`/products/${id}/edit`} className="btn">
+            Edit
+          </Link>
+          <Deleter id={id} endpoint={"products"} handleDelete={this.delete} />
+        </div>
+      );
+    }
+  };
+
   render() {
-    return (
-      <Wrapper>
-        <h2>Products</h2>
+    let addBtn = null;
+    if (this.props.user.can_edit("products")) {
+      addBtn = (
         <div className="col-md-2 float-right">
           <Link to={"create"} className="btn btn-primary">
             Add Product
           </Link>
         </div>
+      );
+    }
+    return (
+      <Wrapper>
+        <h2>Products</h2>
+        {addBtn}
         <div className="table-responsive">
           <table className="table table-striped table-sm">
             <thead>
@@ -67,16 +88,7 @@ class Product extends Component {
                     <td>{product.title}</td>
                     <td>{product.description}</td>
                     <td>{product.price}</td>
-                    <td>
-                      <Link to={`/products/${product.id}/edit`} className="btn">
-                        Edit
-                      </Link>
-                      <Deleter
-                        id={product.id}
-                        endpoint={"products"}
-                        handleDelete={this.delete}
-                      />
-                    </td>
+                    <td>{this.action(product.id)}</td>
                   </tr>
                 );
               })}
@@ -92,4 +104,10 @@ class Product extends Component {
   }
 }
 
-export default Product;
+const mapStateToProps = (state: { user: UserProps }) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps)(Product);
