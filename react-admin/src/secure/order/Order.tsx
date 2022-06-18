@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import Paginate from "../components/Paginate";
 import Wrapper from "../Wrapper";
 import { OrderProps } from "../classes/order";
+import UserProps from "../classes/user";
+import { connect } from "react-redux";
 
-class Order extends Component {
+class Order extends Component<{ user: UserProps }> {
   lastPage = 0;
   page = 1;
 
@@ -27,26 +29,40 @@ class Order extends Component {
   };
 
   export = async () => {
-    const resp = await axios.get('export',{responseType: 'blob'});
-    const blob = new Blob([resp.data],{type:'text/csv'});
+    const resp = await axios.get("export", { responseType: "blob" });
+    const blob = new Blob([resp.data], { type: "text/csv" });
 
     // Now Create the Dummy URl
     const downloadUrl = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = downloadUrl;
-    link.download = 'Orders.csv';
+    link.download = "Orders.csv";
     link.click();
-  }
+  };
+
+  action = (id: number) => {
+    if (this.props.user.can_edit("orders")) {
+      return (
+        <Link to={`/orders/${id}`} className="btn">
+          View
+        </Link>
+      );
+    }
+  };
 
   render() {
     return (
       <Wrapper>
         <h2>Orders</h2>
         <div className="btn-group me-2">
-          <a onClick={this.export} type="button" className="btn btn-sm btn-outline-secondary">
+          <a
+            onClick={this.export}
+            type="button"
+            className="btn btn-sm btn-outline-secondary"
+          >
             Export
           </a>
-        </div>        
+        </div>
 
         <div className="table-responsive">
           <table className="table table-striped table-sm">
@@ -69,11 +85,7 @@ class Order extends Component {
                     <td>{order.last_name}</td>
                     <td>{order.email}</td>
                     <td>{order.total}</td>
-                    <td>
-                      <Link to={`/orders/${order.id}`} className="btn">
-                        View
-                      </Link>
-                    </td>
+                    <td>{action(order.id)}</td>
                   </tr>
                 );
               })}
@@ -89,4 +101,9 @@ class Order extends Component {
   }
 }
 
-export default Order;
+const mapStateToProps = (state: { user: UserProps }) => {
+  return {
+    user: state.user,
+  };
+};
+export default connect(mapStateToProps)(Order);
