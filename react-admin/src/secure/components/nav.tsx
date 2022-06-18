@@ -43,7 +43,7 @@ class Nav extends Component<{ user: UserProps }> {
         <div className="col-md-2">
           <div className="nav">
             <Link to={"/profile"} className="nav-link text-white">
-              {this.props.user.first_name} {this.props.user.last_name}
+              {this.props.user.full_name}
             </Link>
             <a className="nav-link text-white" onClick={this.signOut}>
               Sign out
