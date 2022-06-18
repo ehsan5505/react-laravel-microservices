@@ -29,7 +29,7 @@ class Menu extends Component<{ user: UserProps }> {
     this.menuItems.forEach((menu) => {
       let name = menu.name.toLocaleLowerCase();
       if (this.props.user.can_view(name)) {
-        console.log(`Menu | ${name}`);
+        console.info(`Menu | ${name}`);
         items.push(
           <li className="nav-item">
             <NavLink to={menu.link} className="nav-link" aria-current="page">
@@ -39,6 +39,7 @@ class Menu extends Component<{ user: UserProps }> {
           </li>
         );
       }
+      console.log(items);
     });
 
     return (
