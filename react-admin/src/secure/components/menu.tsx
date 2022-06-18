@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import UserProps from "../classes/user";
 import { connect } from "react-redux";
 
-class Menu extends Component<any> {
+class Menu extends Component<{ user: UserProps }> {
   menuItems = [
     {
       link: "/users",
@@ -27,6 +27,7 @@ class Menu extends Component<any> {
   render() {
     let items: JSX.Element[] = [];
     this.menuItems.forEach((menu) => {
+      console.log(menu.name.toLocaleLowerCase());
       if (this.props.user.can_view(menu.name.toLowerCase())) {
         items.push(
           <li className="nav-item">
@@ -60,10 +61,11 @@ class Menu extends Component<any> {
   }
 }
 
-const mapStateToProps = (state = { user: UserProps }) => {
+const mapStateToProps = (state: { user: UserProps }) => {
   return {
     user: state.user,
   };
 };
+
 
 export default connect(mapStateToProps)(Menu);
