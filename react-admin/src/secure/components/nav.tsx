@@ -44,7 +44,7 @@ class Nav extends Component {
           <span className="navbar-toggler-icon"></span>
         </button>
         <input
-          className="form-control form-control-dark w-100 rounded-0 border-0"
+          className="form-control form-control-dark w-80 rounded-0 border-0"
           type="text"
           placeholder="Search"
           aria-label="Search"
