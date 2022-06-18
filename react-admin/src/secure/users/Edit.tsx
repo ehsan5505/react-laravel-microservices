@@ -135,7 +135,7 @@ class EditUser extends Component<any, any> {
             <input
               type="submit"
               className="btn btn-primary float-right"
-              value="Create User"
+              value="Update"
             />
           </form>
         </div>

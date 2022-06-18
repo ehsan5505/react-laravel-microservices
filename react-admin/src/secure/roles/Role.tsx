@@ -6,8 +6,10 @@ import axios from "axios";
 import { deleteRecord } from "../helper/function";
 import { toast } from "react-toastify";
 import Deleter from "../components/Deleter";
+import UserProps from "../classes/user";
+import { connect } from "react-redux";
 
-class Role extends Component {
+class Role extends Component<{ user: UserProps }> {
   state = {
     roles: [],
   };
@@ -27,15 +29,34 @@ class Role extends Component {
     toast.success("Records Deleted Successfully");
   };
 
+  action = (id: number) => {
+    if (this.props.user.can_edit("roles")) {
+      return (
+        <div>
+          <Link to={`/roles/${id}/edit`} className="btn">
+            Edit
+          </Link>
+          <Deleter id={id} endpoint={"roles"} handleDelete={this.delete} />
+        </div>
+      );
+    }
+  };
+
   render() {
-    return (
-      <Wrapper>
-        <h2>Roles</h2>
+    let addBtn = null;
+    if (this.props.user.can_edit("roles")) {
+      addBtn = (
         <div className="col-md-1 float-right">
           <Link to={"create"} className="btn btn-primary">
             Add Role
           </Link>
         </div>
+      );
+    }
+    return (
+      <Wrapper>
+        <h2>Roles</h2>
+        {addBtn}
         <div className="table-responsive">
           <table className="table table-striped table-sm">
             <thead>
@@ -51,16 +72,7 @@ class Role extends Component {
                   <tr key={role.id}>
                     <td>{role.id}</td>
                     <td>{role.name}</td>
-                    <td>
-                      <Link to={`/roles/${role.id}/edit`} className="btn">
-                        Edit
-                      </Link>
-                      <Deleter
-                        id={role.id}
-                        endpoint={"roles"}
-                        handleDelete={this.delete}
-                      />
-                    </td>
+                    <td>{this.action(role.id)}</td>
                   </tr>
                 );
               })}
@@ -72,4 +84,8 @@ class Role extends Component {
   }
 }
 
-export default Role;
+const mapStateToProps = (state: { user: UserProps }) => {
+  return { user: state.user };
+};
+
+export default connect(mapStateToProps)(Role);

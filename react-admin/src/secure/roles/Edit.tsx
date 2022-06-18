@@ -104,7 +104,7 @@ class EditRole extends Component<any, any> {
           <input
             type="submit"
             className="btn btn-primary float-right"
-            value="Create Role"
+            value="Update"
           />
         </form>
       </Wrapper>
