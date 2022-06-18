@@ -27,6 +27,7 @@ class Dashboard extends Component {
     });
 
     const resp = await axios.get("chart");
+    console.info(resp.data);
     const records: { date: string; sum: number }[] = resp.data.data;
     chart.load({
       columns: [
