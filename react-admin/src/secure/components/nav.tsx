@@ -47,13 +47,13 @@ class Nav extends Component {
           placeholder="Search"
           aria-label="Search"
         />
-        <div className="navbar-nav">
-          <div className="nav-item text-nowrap">
+        <div className="navbar-nav col-md-3">
+          <div className="nav-item text-nowrap col-md-2">
             <Link to={"/profile"} className="nav-link px-1">
               {this.state.user.first_name}
             </Link>
           </div>
-          <div className="nav-item text-nowrap">
+          <div className="nav-item text-nowrap col-md-1">
             <a className="nav-link px-1" onClick={this.signOut}>
               Sign out
             </a>
