@@ -4,7 +4,6 @@ import Nav from "./components/nav";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import User from "./users/Users";
 import UserProps from "./classes/user";
 import setUser from "../redux/actions/setUserActions";
 import { connect } from "react-redux";

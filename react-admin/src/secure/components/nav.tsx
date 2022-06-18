@@ -1,26 +1,18 @@
 import axios from "axios";
 import { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import UserProps from "../classes/user";
-class Nav extends Component {
+class Nav extends Component<{ user: UserProps }> {
   state = {
     redirect: false,
-    user: new UserProps(),
   };
 
   signOut = () => {
     localStorage.clear();
     this.setState({
       redirect: true,
-    });
-  };
-
-  componentDidMount = async () => {
-    const resp = await axios.get("user");
-    const userDetail: UserProps = resp.data.data;
-    this.setState({
-      user: userDetail,
     });
   };
 
@@ -51,7 +43,7 @@ class Nav extends Component {
         <div className="col-md-2">
           <div className="nav">
             <Link to={"/profile"} className="nav-link text-white">
-              {this.state.user.first_name} {this.state.user.last_name}
+              {this.props.user.first_name} {this.props.user.last_name}
             </Link>
             <a className="nav-link text-white" onClick={this.signOut}>
               Sign out
@@ -63,4 +55,10 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+const mapStateToProps = (state: { user: UserProps }) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps)(Nav);
