@@ -7,27 +7,33 @@ class Dashboard extends Component {
     let chart = c3.generate({
       bindto: "#chart",
       data: {
-        x: 'x',
+        x: "x",
         columns: [
-          ['x','2021-01-01','2022-01-01'],
-          ['Sales','20','30'],
+          ["x", "2021-01-01", "2022-01-01"],
+          ["Sales", "20", "30"],
         ],
         types: {
-          Sales: 'bar'
-        }
+          Sales: "bar",
+        },
       },
       axis: {
         x: {
-          type: 'timeseries',
+          type: "timeseries",
           tick: {
-            format: '%Y-%m-%d'
-          }
-        }
-      }
+            format: "%Y-%m-%d",
+          },
+        },
+      },
     });
 
-    const resp = await axios.get('chart');
-    console.info(resp);
+    const resp = await axios.get("chart");
+    const chartData: { date: string; sum: number }[] = resp.data.data;
+    chart.load({
+      columns: [
+        ["x", ...chartData.map((r) => r.date)],
+        ["Sales", ...chartData.map((r) => r.sum)],
+      ],
+    });
   };
   render() {
     return (
