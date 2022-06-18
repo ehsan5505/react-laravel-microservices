@@ -19,9 +19,8 @@ class Profile extends Component<any> {
     email: "",
   };
 
-  componentDidMount = async () => {
-    const resp = await axios.get("user");
-    const user: UserProps = resp.data.data;
+  componentDidMount = () => {
+    const user: UserProps = this.props.user;
     this.setState({
       firstName: user.first_name,
       lastName: user.last_name,
