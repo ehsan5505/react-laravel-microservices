@@ -2,8 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import { UserProps } from "../classes/user";
-
+import UserProps from "../classes/user";
 class Nav extends Component {
   state = {
     redirect: false,

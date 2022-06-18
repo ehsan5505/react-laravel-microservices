@@ -16,8 +16,8 @@ export default class UserProps {
   email: string;
   role: RoleProps;
 
-  constructor(id = 0, firstname = "", lastname = "", email = "", role:RoleProps) {
-    (this.id = id),
+  constructor(id = 0, firstname = "", lastname = "", email = "", role:RoleProps = new RoleProps()) {
+      (this.id = id),
       (this.first_name = firstname),
       (this.last_name = lastname),
       (this.email = email),
