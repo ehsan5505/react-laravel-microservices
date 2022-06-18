@@ -30,7 +30,7 @@ export default class UserProps {
   }
 
   can_view(page: string) {
-    console.info(page);
+    console.info("Page that we are rendering"+page);
     return this.permissions.some(p => p.name == `view_${page}`);
     // return this.permissions.some(p) => p.name
     // return this.permissions.some((p) => p. === `view_${page}`);
