@@ -14,6 +14,7 @@ import Product from "./secure/products/Product";
 import CreateProduct from "./secure/products/Create";
 import EditProduct from "./secure/products/Edit";
 import Order from "./secure/order/Order";
+import OrderItems from "./secure/order/OrderItems";
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
           <Route path={`/products/create`} element={<CreateProduct />} />
           <Route path={`/products/:id/edit`} element={<EditProduct />} />
           <Route path={`/orders`} element={<Order />} />
-
+          <Route path={`/orders/:id`} element={<OrderItems />} />
         </Routes>
       </BrowserRouter>
     </div>

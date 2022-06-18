@@ -29,7 +29,7 @@ class Order extends Component {
   render() {
     return (
       <Wrapper>
-        <h2>Products</h2>
+        <h2>Orders</h2>
         <div className="table-responsive">
           <table className="table table-striped table-sm">
             <thead>
