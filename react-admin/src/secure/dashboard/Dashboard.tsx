@@ -12,9 +12,9 @@ class Dashboard extends Component {
           ["x"],
           ["Sales"],
         ],
-        types: {
-          Sales: "line",
-        },
+        // types: {
+        //   Sales: "line",
+        // },
       },
       axis: {
         x: {
