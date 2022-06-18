@@ -9,11 +9,7 @@ import configureStore from "./redux/configureStore";
 import { Provider } from "react-redux";
 
 axios.defaults.baseURL = "http://192.168.22.138:8000/api/";
-axios.defaults.headers.post["Content-Type"] =
-  "application/x-www-form-urlencoded";
-axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(
-  "token"
-)}`;
+axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

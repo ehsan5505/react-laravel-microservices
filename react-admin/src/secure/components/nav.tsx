@@ -9,11 +9,15 @@ class Nav extends Component<{ user: UserProps }> {
     redirect: false,
   };
 
-  signOut = () => {
-    localStorage.clear();
-    this.setState({
-      redirect: true,
-    });
+  signOut = async () => {
+    try {
+      await axios.post("logout", {});
+      this.setState({
+        redirect: true,
+      });
+    } catch (err: any) {
+      console.warn(err.response.message.data);
+    }
   };
 
   render() {
