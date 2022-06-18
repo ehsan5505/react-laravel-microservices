@@ -85,7 +85,7 @@ class Order extends Component<{ user: UserProps }> {
                     <td>{order.last_name}</td>
                     <td>{order.email}</td>
                     <td>{order.total}</td>
-                    <td>{action(order.id)}</td>
+                    <td>{this.action(order.id)}</td>
                   </tr>
                 );
               })}
