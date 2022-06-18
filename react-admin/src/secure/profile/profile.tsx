@@ -58,6 +58,7 @@ class Profile extends Component {
     return (
       <Wrapper>
         <h2> User Profile</h2>
+        <hr />
         <form onSubmit={this.updateInfo}>
           <div className="form-group">
             <label>First Name</label>
@@ -95,6 +96,7 @@ class Profile extends Component {
             value="Update Info"
           />
         </form>
+        <br />
 
         <h4>Password Update</h4>
         <hr />
@@ -117,6 +119,7 @@ class Profile extends Component {
               onChange={(e) => (this.password_confirmation = e.target.value)}
             />
           </div>
+          <br />
           <input
             type="submit"
             className="btn btn-primary"
