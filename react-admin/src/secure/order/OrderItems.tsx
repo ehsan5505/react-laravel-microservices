@@ -16,7 +16,7 @@ class OrderItems extends Component<any> {
     this.setState({
       OrderItems: resp.data.data,
     });
-    console.info(resp.data.data);
+    console.info(resp.data);
   };
 
   render() {
