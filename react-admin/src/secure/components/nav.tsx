@@ -51,10 +51,10 @@ class Nav extends Component {
         />
         <div className="navbar-nav">
           <div className="nav-item text-nowrap">
-            <Link to={"/profile"} className="nav-link ">
+            <Link to={"/profile"} className=" ">
               {this.state.user.first_name}
             </Link>
-            <a className="nav-link " onClick={this.signOut}>
+            <a className="" onClick={this.signOut}>
               Sign out
             </a>
           </div>
