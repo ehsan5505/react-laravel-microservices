@@ -7,22 +7,22 @@ import { connect } from "react-redux";
 class Menu extends Component<{ user: UserProps }> {
   menuItems = [
     {
-      id: 1,
+      id: "1",
       link: "/users",
       name: "Users",
     },
     {
-      id: 2,
+      id: "2",
       link: "/roles",
       name: "Roles",
     },
     {
-      id: 3,
+      id: "3",
       link: "/products",
       name: "Products",
     },
     {
-      id: 4,
+      id: "4",
       link: "/orders",
       name: "Orders",
     },
@@ -33,7 +33,7 @@ class Menu extends Component<{ user: UserProps }> {
       let name = menu.name.toLocaleLowerCase();
       if (this.props.user.can_test(name)) {
         items.push(
-          <li id={name} className="nav-item">
+          <li id={menu.id} className="nav-item">
             <NavLink to={menu.link} className="nav-link">
               <span className="align-text-bottom"></span>
               {menu.name}
