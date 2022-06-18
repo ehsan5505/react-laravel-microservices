@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Paginate from "../components/Paginate";
 import Deleter from "../components/Deleter";
-import { UserProps } from "../classes/user";
+import UserProps from "../classes/user";
 
 interface Error {
   response: any;
