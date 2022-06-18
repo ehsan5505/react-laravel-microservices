@@ -1,10 +1,12 @@
 import axios from "axios";
-import { Component, ReactNode, SyntheticEvent } from "react";
+import { Component, Dispatch, ReactNode, SyntheticEvent } from "react";
+import { connect } from "react-redux";
 import { toast } from "react-toastify";
+import setUser from "../../redux/actions/setUserActions";
 import UserProps from "../classes/user";
 import Wrapper from "../Wrapper";
 
-class Profile extends Component {
+class Profile extends Component<any> {
   first_name = "";
   last_name = "";
   email = "";
@@ -30,11 +32,15 @@ class Profile extends Component {
   updateInfo = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-      await axios.put("info", {
+      const resp = await axios.put("info", {
         first_name: this.first_name,
         last_name: this.last_name,
         email: this.email,
       });
+
+      const user: UserProps = resp.data;
+      this.props.setUser(user);
+
       toast.success("Information Updated");
     } catch (err: any) {
       toast.error(err.response.data.message);
@@ -131,4 +137,16 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+const mapStateToProps = (state: { user: UserProps }) => {
+  return {
+    user: state.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch<any>) => {
+  return {
+    setUser: (user: UserProps) => dispatch(setUser(user)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
