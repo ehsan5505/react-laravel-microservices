@@ -1,4 +1,3 @@
-import Role from "../roles/Role";
 import RoleProps from "./role";
 
 

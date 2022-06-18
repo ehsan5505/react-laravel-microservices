@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import Wrapper from "../Wrapper";
 import c3 from "c3";
 import axios from "axios";
@@ -9,9 +9,6 @@ class Dashboard extends Component {
       data: {
         x: "x",
         columns: [["x"], ["Sales"]],
-        // types: {
-        //   Sales: "line",
-        // },
         type: "bar",
         labels: true,
         colors: {

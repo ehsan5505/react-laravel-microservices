@@ -1,16 +1,11 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import Wrapper from "../Wrapper";
-import axios, { AxiosError } from "axios";
-import RoleProps from "../classes/role";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Paginate from "../components/Paginate";
 import Deleter from "../components/Deleter";
 import UserProps from "../classes/user";
-
-interface Error {
-  response: any;
-}
 
 class User extends Component {
   state = {
@@ -96,10 +91,5 @@ class User extends Component {
     );
   }
 }
-// = () => (
-//   <Wrapper>
-//     <h2>Welcome To the User Portal...</h2>
-//   </Wrapper>
-// );
 
 export default User;
