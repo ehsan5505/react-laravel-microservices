@@ -27,19 +27,18 @@ class Menu extends Component<{ user: UserProps }> {
   render() {
     let items: JSX.Element[] = [];
     this.menuItems.forEach((menu) => {
-      let name = menu.name.toLocaleLowerCase();
+      let name = `view_${menu.name.toLocaleLowerCase()}`;
       if (this.props.user.can_view(name)) {
         console.info(`Menu | ${name}`);
-        items.push(
-          <li className="nav-item">
-            <NavLink to={menu.link} className="nav-link" aria-current="page">
-              <span data-feather="home" className="align-text-bottom"></span>
-              {menu.name}
-            </NavLink>
-          </li>
-        );
+        // items.push(
+        //   <li className="nav-item">
+        //     <NavLink to={menu.link} className="nav-link" aria-current="page">
+        //       <span data-feather="home" className="align-text-bottom"></span>
+        //       {menu.name}
+        //     </NavLink>
+        //   </li>
+        // );
       }
-      console.log(items);
     });
 
     return (
