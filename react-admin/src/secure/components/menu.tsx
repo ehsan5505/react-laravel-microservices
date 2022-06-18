@@ -27,8 +27,10 @@ class Menu extends Component<{ user: UserProps }> {
   render() {
     let items: JSX.Element[] = [];
     this.menuItems.forEach((menu) => {
-      console.log(menu.name.toLocaleLowerCase());
-      if (this.props.user.can_view(menu.name.toLowerCase())) {
+      let name = menu.name.toLocaleLowerCase();
+      console.log(name + " " + this.props.user.can_view(name));
+
+      if (this.props.user.can_view(name)) {
         items.push(
           <li className="nav-item">
             <NavLink to={menu.link} className="nav-link" aria-current="page">
@@ -66,6 +68,5 @@ const mapStateToProps = (state: { user: UserProps }) => {
     user: state.user,
   };
 };
-
 
 export default connect(mapStateToProps)(Menu);
