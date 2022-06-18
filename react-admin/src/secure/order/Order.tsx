@@ -26,10 +26,28 @@ class Order extends Component {
     this.lastPage = resp.data.meta.last_page;
   };
 
+  export = async () => {
+    const resp = await axios.get('export',{responseType: 'blob'});
+    const blob = new Blob([resp.data],{type:'text/csv'});
+
+    // Now Create the Dummy URl
+    const downloadUrl = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = 'Orders.csv';
+    link.click();
+  }
+
   render() {
     return (
       <Wrapper>
         <h2>Orders</h2>
+        <div className="btn-group me-2">
+          <a onClick={this.export} type="button" className="btn btn-sm btn-outline-secondary">
+            Export
+          </a>
+        </div>        
+
         <div className="table-responsive">
           <table className="table table-striped table-sm">
             <thead>
