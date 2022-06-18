@@ -10,6 +10,7 @@ class Login extends Component {
   password = "";
   state = {
     redirect: false,
+    message: ""
   };
 
   submit = async (e: SyntheticEvent) => {
@@ -25,7 +26,10 @@ class Login extends Component {
         redirect: true,
       });
     } catch (err: any) {
-      toast.error(err.response.data.error);
+      
+      this.setState({
+        message: err.response.data.error
+      });
     }
   };
 
@@ -44,6 +48,9 @@ class Login extends Component {
                 <div className="card-body p-5 text-center">
                   <div className="mb-md-5 mt-md-4 pb-5">
                     <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
+                    <strong className="text-red-50 mb-5">
+                      {this.state.message}
+                    </strong>
                     <p className="text-white-50 mb-5">
                       Please enter your login and password!
                     </p>
