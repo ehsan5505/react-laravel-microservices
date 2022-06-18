@@ -46,7 +46,7 @@ class User extends Component {
     return (
       <Wrapper>
         <h2>Users</h2>
-        <div className="col-md-1 float-right">
+        <div className="float-right">
           <Link to={"create"} className="btn btn-primary">
             Add User
           </Link>
