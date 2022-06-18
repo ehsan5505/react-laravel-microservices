@@ -9,8 +9,8 @@ class Dashboard extends Component {
       data: {
         x: "x",
         columns: [
-          ["x", "2021-01-01", "2022-01-01"],
-          ["Sales", "20", "30"],
+          ["x"],
+          ["Sales"],
         ],
         types: {
           Sales: "bar",
