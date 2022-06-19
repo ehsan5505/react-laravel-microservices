@@ -29,6 +29,11 @@ class AuthServiceProvider extends ServiceProvider
 
         Passport::routes();
 
+        Passport::tokensCan([
+            'admin'         =>  "Admin Scope",
+            'influencer'    =>  "Influencer Scope"
+        ]);
+
         Gate::define('view', function (User $user, $model) {
             return $user->hasAccess("view_{$model}") || $user->hasAccess("edit_{$model}");
         });

@@ -17,7 +17,9 @@ class AuthController
     {
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user();
-            $token = $user->createToken('admin')->accessToken;
+
+            $scope = $request->input('scope');
+            $token = $user->createToken($scope,[$scope])->accessToken;
 
             $cookie = cookie('jwt', $token, 3600);
 
