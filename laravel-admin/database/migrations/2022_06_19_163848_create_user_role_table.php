@@ -20,6 +20,15 @@ class CreateUserRoleTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('role_id')->references('id')->on('roles');
         });
+
+        // Database Seeding to fill the information already given
+        $users = \App\User::all();
+        foreach ($users as $user) {
+            DB::table('user_role')->insert([
+                "user_id"   => $user->id,
+                "role_id"   => $user->role_id
+            ]);
+        }
     }
 
     /**
