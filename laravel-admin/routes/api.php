@@ -51,3 +51,13 @@ Route::group(
         Route::apiResource('permissions', 'PermissionController')->only('index');
     }
 );
+
+Route::group(
+    [
+        'prefix'    =>  'influencer',
+        'namespace' =>  'Influencer',
+    ],
+    function () {
+        Route::get('products', 'ProductController.php@index');
+    }
+);
