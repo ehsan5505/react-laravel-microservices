@@ -12,7 +12,7 @@ class ProductController
 
         $data = Product::query();
         if ($query = $request->input('s')) {
-            echo "Yes";
+            $data->whereRaw("title LIKE '%${query}%'");
         }
 
         return $data->get();
