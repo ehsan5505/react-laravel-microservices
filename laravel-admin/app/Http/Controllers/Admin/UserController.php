@@ -10,6 +10,7 @@ use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\UserRole;
 use Gate;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -46,9 +47,14 @@ class UserController
     {
         Gate::authorize('edit', 'users');
         $user =  User::create(
-            $request->only('first_name', 'last_name', 'email', 'role_id')
+            $request->only('first_name', 'last_name', 'email')
                 + ['password'  => Hash::make(1234)] // default password, user should update
         );
+
+        UserRole::create([
+            'user_id'   => $user->id,
+            'role_id'   => $request->input('role_id')
+        ]);
 
         return response(new UserResource($user), Response::HTTP_CREATED);
     }
@@ -60,7 +66,15 @@ class UserController
         Gate::authorize('edit', 'users');
         $user = User::find($id);
 
-        $user->update($request->only('first_name', 'last_name', 'email', 'role_id'));
+        $user->update($request->only('first_name', 'last_name', 'email'));
+
+        // Delete the Record of the Rule First
+        UserRole::where('user_id', $user->id)->delete();
+        // Add the User Role then
+        UserRole::create([
+            'user_id'   =>  $user->id,
+            'role_id'   =>  $request->input('role_id')
+        ]);
 
         return response(new UserResource($user), Response::HTTP_ACCEPTED);
     }
@@ -73,5 +87,4 @@ class UserController
         User::destroy($id);
         return response(null, Response::HTTP_NO_CONTENT);
     }
-
 }
