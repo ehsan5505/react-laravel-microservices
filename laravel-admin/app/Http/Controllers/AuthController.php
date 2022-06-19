@@ -57,7 +57,9 @@ class AuthController
         $user = \Auth::user();
         // Gate::authorize('view', 'users');
         // return new UserResource(\Auth::user());
-        return (new UserResource($user));
+        return (new UserResource($user))->additional([
+            'data' => ['permissions' => $user->permissions]
+        ]);
     }
 
     public function updateInfo(UserUpdateProfileRequest $request)
