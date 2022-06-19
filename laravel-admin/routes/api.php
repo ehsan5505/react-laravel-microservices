@@ -58,6 +58,6 @@ Route::group(
         'namespace' =>  'Influencer',
     ],
     function () {
-        Route::get('products', 'ProductController.php@index');
+        Route::get('products', 'ProductController@index');
     }
 );
