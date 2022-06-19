@@ -26,9 +26,24 @@ Route::get("hello", function () {
 // Route::put("users/{id}","UserController@update");
 // Route::delete("users/{id}","UserController@destroy");
 // Active
+
+// Comon Routes
 Route::post("login", "AuthController@login");
 Route::post("register", "AuthController@register");
 
+// Common Routes | with Credentials access
+Route::group(
+    [
+        'middleware'    =>  'auth:api'
+    ],
+    function () {
+        Route::get('user', 'AuthController@user');
+        Route::put('info', 'AuthController@updateInfo');
+        Route::put('password', 'AuthController@updatePassword');
+    }
+);
+
+// Admin Routes
 Route::group(
     [
         'middleware' => 'auth:api',
@@ -38,9 +53,6 @@ Route::group(
     function () {
         Route::post('logout', 'AuthController@logout');
         Route::get('chart', 'DashboardController@chart');
-        Route::get('user', 'UserController@user');
-        Route::put('info', 'UserController@updateInfo');
-        Route::put('password', 'UserController@updatePassword');
         Route::post('image', "ImageController@upload");
         Route::get("export", "OrderController@export");
 
@@ -52,6 +64,7 @@ Route::group(
     }
 );
 
+// Influencer
 Route::group(
     [
         'prefix'    =>  'influencer',

@@ -18,7 +18,7 @@ class AuthController extends Controller
             $user = Auth::user();
             $token = $user->createToken('admin')->accessToken;
 
-            $cookie=cookie('jwt',$token,3600);
+            $cookie = cookie('jwt', $token, 3600);
 
             return response($token)->withCookie($cookie);
         }
@@ -33,7 +33,7 @@ class AuthController extends Controller
     {
         $cookie = \Cookie::forget('jwt');
 
-        return response(['message'=>'Logout successfully'])->withCookie($cookie);
+        return response(['message' => 'Logout successfully'])->withCookie($cookie);
     }
 
     public function register(AuthRegisterRequest $request)
@@ -41,10 +41,35 @@ class AuthController extends Controller
         // By Default Allocate the Subscriber Role
         $user = User::create(
             $request->only('first_name', 'last_name', 'email')
-                + ["password" => Hash::make($request->input('password')),
-                    "role_id" => 7 
-                  ]
+                + [
+                    "password" => Hash::make($request->input('password')),
+                    "role_id" => 7
+                ]
         );
-        return response($user,Response::HTTP_ACCEPTED);
+        return response($user, Response::HTTP_ACCEPTED);
+    }
+
+    // Return the User Info
+    public function user()
+    {
+        Gate::authorize('view', 'users');
+        return new UserResource(\Auth::user());
+    }
+
+    public function updateInfo(UserUpdateProfileRequest $request)
+    {
+
+        Gate::authorize('view', 'users');
+        $user = \Auth::user();
+        $user->update($request->only('first_name', 'last_name', 'email', 'role_id'));
+        return response(new UserResource($user), Response::HTTP_ACCEPTED);
+    }
+
+    public function updatePassword(UserPasswordUpdateRequest $request)
+    {
+        Gate::authorize('view', 'users');
+        $user = \Auth::user();
+        $user->update(['password' => Hash::make($request->input('password'))]);
+        return response(new UserResource($user), Response::HTTP_ACCEPTED);
     }
 }
