@@ -41,6 +41,8 @@ use Laravel\Passport\HasApiTokens;
  * @property int $role_id
  * @property-read \App\Role $role
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRoleId($value)
+ * @property int $is_fluencer
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsFluencer($value)
  */
 class User extends Authenticatable
 {
