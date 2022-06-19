@@ -33,6 +33,7 @@ Route::group(
     [
         'middleware' => 'auth:api',
         'prefix'    =>  'admin',
+        'namespace' =>  'Admin',
     ],
     function () {
         Route::post('logout', 'AuthController@logout');

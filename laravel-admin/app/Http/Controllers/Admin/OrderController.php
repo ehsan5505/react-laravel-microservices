@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Resources\OrderResource;
 use App\Order;
@@ -8,7 +8,7 @@ use Gate;
 use Symfony\Component\HttpFoundation\Response;
 
 
-class OrderController extends Controller
+class OrderController
 {
     public function index()
     {
