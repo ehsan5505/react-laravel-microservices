@@ -13,7 +13,7 @@ class CreateUserRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_role', function (Blueprint $table) {
+        Schema::create('user_roles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();
             $table->unsignedBigInteger('role_id');
@@ -24,7 +24,7 @@ class CreateUserRoleTable extends Migration
         // Database Seeding to fill the information already given
         $users = \App\User::all();
         foreach ($users as $user) {
-            DB::table('user_role')->insert([
+            DB::table('user_roles')->insert([
                 "user_id"   => $user->id,
                 "role_id"   => $user->role_id
             ]);
@@ -38,6 +38,6 @@ class CreateUserRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_role');
+        Schema::dropIfExists('user_roles');
     }
 }
