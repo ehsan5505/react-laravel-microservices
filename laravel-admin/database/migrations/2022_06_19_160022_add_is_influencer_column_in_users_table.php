@@ -14,7 +14,7 @@ class AddIsInfluencerColumnInUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->tinyInteger('is_fluencer');
         });
     }
 
@@ -26,7 +26,7 @@ class AddIsInfluencerColumnInUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            Schema::dropColumn('is_fluencer');
         });
     }
 }
