@@ -9,13 +9,12 @@ class ProductController
 {
     public function index(Request $request)
     {
-        
+
         $data = Product::query();
-        if($query = $request->s)
-        {
+        if ($query = $request->input('s')) {
             echo "Yes";
         }
 
-        return $data;
+        return $data->get();
     }
 }
