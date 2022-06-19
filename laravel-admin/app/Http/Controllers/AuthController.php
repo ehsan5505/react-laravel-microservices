@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\AuthRegisterRequest;
+use App\Http\Resources\UserResource;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -43,7 +44,7 @@ class AuthController
             $request->only('first_name', 'last_name', 'email')
                 + [
                     "password" => Hash::make($request->input('password')),
-                    "role_id" => 7
+                    "role_id" => 3
                 ]
         );
         return response($user, Response::HTTP_ACCEPTED);
@@ -53,8 +54,10 @@ class AuthController
     // Return the User Info
     public function user()
     {
+        $user = \Auth::user();
         // Gate::authorize('view', 'users');
-        return new UserResource(\Auth::user());
+        // return new UserResource(\Auth::user());
+        return (new UserResource($user));
     }
 
     public function updateInfo(UserUpdateProfileRequest $request)
