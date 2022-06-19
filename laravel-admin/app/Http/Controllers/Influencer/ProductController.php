@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Influencer;
 
-use App\Http\Controllers\Controller;
+use App\Product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProductController
 {
-    //
+    public function index()
+    {
+        return Product::all();
+    }
 }
