@@ -49,17 +49,18 @@ class AuthController
         return response($user, Response::HTTP_ACCEPTED);
     }
 
+
     // Return the User Info
     public function user()
     {
-        Gate::authorize('view', 'users');
+        // Gate::authorize('view', 'users');
         return new UserResource(\Auth::user());
     }
 
     public function updateInfo(UserUpdateProfileRequest $request)
     {
 
-        Gate::authorize('view', 'users');
+        // Gate::authorize('view', 'users');
         $user = \Auth::user();
         $user->update($request->only('first_name', 'last_name', 'email', 'role_id'));
         return response(new UserResource($user), Response::HTTP_ACCEPTED);
@@ -67,7 +68,7 @@ class AuthController
 
     public function updatePassword(UserPasswordUpdateRequest $request)
     {
-        Gate::authorize('view', 'users');
+        // Gate::authorize('view', 'users');
         $user = \Auth::user();
         $user->update(['password' => Hash::make($request->input('password'))]);
         return response(new UserResource($user), Response::HTTP_ACCEPTED);
