@@ -58,7 +58,9 @@ class AuthController
         // Gate::authorize('view', 'users');
         // return new UserResource(\Auth::user());
         return (new UserResource($user))->additional([
-            'data' => ['permissions' => $user->permissions]
+            'data' => [
+                'permissions' => $user->permissions()
+            ]
         ]);
     }
 
