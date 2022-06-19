@@ -7,8 +7,15 @@ use Illuminate\Http\Request;
 
 class ProductController
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Product::all();
+        
+        $data = Product::query();
+        if($query = $request->s)
+        {
+            echo "Yes";
+        }
+
+        return $data;
     }
 }
