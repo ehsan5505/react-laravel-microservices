@@ -44,7 +44,8 @@ class AuthController
             $request->only('first_name', 'last_name', 'email')
                 + [
                     "password" => Hash::make($request->input('password')),
-                    "role_id" => 3
+                    "role_id" => 3,
+                    "is_fluencer"   => 1 // Default if client register it would be influencer from the Web Apps
                 ]
         );
         return response($user, Response::HTTP_ACCEPTED);
@@ -57,7 +58,11 @@ class AuthController
         $user = \Auth::user();
         // Gate::authorize('view', 'users');
         // return new UserResource(\Auth::user());
-        return (new UserResource($user))->additional([
+        $resource = new UserResource($user);
+        if ($user->isInfluencer()) {
+            return $resource;
+        }
+        return ($resource)->additional([
             'data' => [
                 'permissions' => $user->permissions()
             ]

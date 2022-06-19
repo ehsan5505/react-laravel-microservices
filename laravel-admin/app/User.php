@@ -52,11 +52,13 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function role(){
+    public function role()
+    {
         return $this->belongsTo(Role::class);
     }
 
-    public function permissions(){
+    public function permissions()
+    {
         return $this->role->permissions->pluck('name');
     }
 
@@ -65,5 +67,13 @@ class User extends Authenticatable
         return $this->permissions()->contains($access);
     }
 
-   
+    public function isAdmin(): bool
+    {
+        return $this->is_fluencer === 0;
+    }
+
+    public function isInfluencer(): bool
+    {
+        return $this->is_fluencer === 1;
+    }
 }
