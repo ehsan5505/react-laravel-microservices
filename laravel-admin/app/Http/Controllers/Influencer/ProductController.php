@@ -13,6 +13,7 @@ class ProductController
         $data = Product::query();
         if ($query = $request->input('s')) {
             $data->whereRaw("title LIKE '%${query}%'");
+            $data->OrWhereRaw("description LIKE '%${query}%'");
         }
 
         return $data->get();
