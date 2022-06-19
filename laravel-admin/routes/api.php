@@ -46,6 +46,7 @@ Route::group(
 // Admin Routes
 Route::group(
     [
+        'middleware'=>  ['auth:api'],
         'prefix'    =>  'admin',
         'namespace' =>  'Admin',
     ],
