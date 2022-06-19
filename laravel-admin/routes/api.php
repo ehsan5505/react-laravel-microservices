@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get("hello",function(){
+Route::get("hello", function () {
     return "Hello World!";
 });
 // De-Active
@@ -26,21 +26,27 @@ Route::get("hello",function(){
 // Route::put("users/{id}","UserController@update");
 // Route::delete("users/{id}","UserController@destroy");
 // Active
-Route::post("login","AuthController@login");
-Route::post("register","AuthController@register");
+Route::post("login", "AuthController@login");
+Route::post("register", "AuthController@register");
 
-Route::group(['middleware'=>'auth:api'],function(){
-    Route::post('logout','AuthController@logout');
-    Route::get('chart','DashboardController@chart');
-    Route::get('user','UserController@user');
-    Route::put('info','UserController@updateInfo');
-    Route::put('password','UserController@updatePassword');
-    Route::post('image',"ImageController@upload");
-    Route::get("export","OrderController@export");
+Route::group(
+    [
+        'middleware' => 'auth:api',
+        'prefix'    =>  'admin',
+    ],
+    function () {
+        Route::post('logout', 'AuthController@logout');
+        Route::get('chart', 'DashboardController@chart');
+        Route::get('user', 'UserController@user');
+        Route::put('info', 'UserController@updateInfo');
+        Route::put('password', 'UserController@updatePassword');
+        Route::post('image', "ImageController@upload");
+        Route::get("export", "OrderController@export");
 
-    Route::apiResource("users","UserController");
-    Route::apiResource('roles','RoleController');
-    Route::apiResource('products','ProductController');
-    Route::apiResource('orders','OrderController')->only('index','show');
-    Route::apiResource('permissions','PermissionController')->only('index');
-});
+        Route::apiResource("users", "UserController");
+        Route::apiResource('roles', 'RoleController');
+        Route::apiResource('products', 'ProductController');
+        Route::apiResource('orders', 'OrderController')->only('index', 'show');
+        Route::apiResource('permissions', 'PermissionController')->only('index');
+    }
+);
