@@ -50,7 +50,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        return parent::render($request, $exception);
-        // return response([$exception->getMessage()],$exception->getCode() ? $exception->getCode() : 400);
+        if ($exception instanceof MissingScopeException && $request->wantsJson()) {
+            return response()->json([
+                'error' => 'Unauthenticated',
+            ], 403);
+        }
+        // return parent::render($request, $exception);
+        return response([$exception->getMessage()], $exception->getCode() ? $exception->getCode() : 400);
     }
 }
