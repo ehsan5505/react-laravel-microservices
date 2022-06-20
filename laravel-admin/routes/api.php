@@ -69,9 +69,16 @@ Route::group(
     [
         'prefix'    =>  'influencer',
         'namespace' =>  'Influencer',
-        'middleware' =>  ['auth:api'],
     ],
     function () {
         Route::get('products', 'ProductController@index');
+
+        Route::group(
+            [
+                'middleware' => ['auth:api', 'scope:influencer'],
+            ],
+            function () {
+            }
+        );
     }
 );
