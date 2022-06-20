@@ -23,7 +23,7 @@ class AuthController
                 return response(["error" => "Access Denied"], Response::HTTP_FORBIDDEN);
             }
             // print_r($request);
-            dd($scope,[$scope]);
+            // dd($scope,[$scope]);
             $token = $user->createToken($scope, [$scope])->accessToken;
 
             $cookie = cookie('jwt', $token, 3600);
