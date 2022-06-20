@@ -24,7 +24,8 @@ class AuthController
             }
             // print_r($request);
             // dd($scope,[$scope]);
-            $token = $user->createToken($scope, ['*'])->accessToken;
+            $token=$user->createToken('admin',['admin'])->accessToken;
+            // $token = $user->createToken($scope, ['*'])->accessToken;
 
             $cookie = cookie('jwt', $token, 3600);
 
