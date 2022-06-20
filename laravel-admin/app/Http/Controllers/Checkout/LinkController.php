@@ -17,7 +17,6 @@ class LinkController
     {
         $link = Link::where("code",$code)->first();
 
-        return $link;
-        // return new LinkResource($link);
+        return new LinkResource($link);
     }
 }
