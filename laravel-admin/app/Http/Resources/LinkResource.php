@@ -17,7 +17,7 @@ class LinkResource extends JsonResource
         return [
             'id'        =>  $this->id,
             'code'      =>  $this->code,
-            // 'user'      =>  new UserResource($this->user),
+            'user'      =>  new UserResource($this->user),
             // 'products'  =>  ProductResource::collection($this->products)
         ];
     }
