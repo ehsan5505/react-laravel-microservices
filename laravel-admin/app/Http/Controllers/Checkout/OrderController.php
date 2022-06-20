@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Influencer;
+namespace App\Http\Controllers\Checkout;
 
 use App\Link;
 use App\Order;
@@ -13,6 +13,8 @@ class OrderController
     public function store(Request $request)
     {
         $link = Link::whereCode($request->input('code'))->first();
+
+        \DB::beginTransaction();
 
         $order = new Order();
 
@@ -43,5 +45,9 @@ class OrderController
 
             $orderItem->save();
         }
+
+        \DB::commit();
+
+        return $order;
     }
 }
