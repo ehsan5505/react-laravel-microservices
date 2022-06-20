@@ -78,6 +78,7 @@ Route::group(
                 'middleware' => ['auth:api', 'scope:influencer'],
             ],
             function () {
+                Route::post('link', "LinkController@store");
             }
         );
     }

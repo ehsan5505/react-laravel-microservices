@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Influencer;
 
+use App\Http\Resources\LinkResource;
 use App\LinkProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -23,6 +24,6 @@ class LinkController
             ]);
         }
 
-        return $link;
+        return new LinkResource($link);
     }
 }
