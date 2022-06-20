@@ -43,3 +43,54 @@ We don't need the Controller.php file form the Http/App/Controller, so it should
 Create the product controller for the influencer by running the command
 `php artisan make:controller Influencer/Product`
 
+
+#### Create a UserRole and remove the Role_ID from the User
+*Create the User Role Table*
+`php artisan make:migration create_user_role_table`
+_With Migrate we need to seed the data as well to fill all the information_ 
+
+Create 2 column for user_id and role_id table, then add the foreign key on both columns
+`php artisan migrate`
+
+Create the Model of UserRole and add the Models from the IDE helper
+`php artisan make:model UserRole`
+`php artisan ide:models`
+
+In the UserRole table, timestamps is false as we don;t offer the date in table, and guarded the id
+
+In the User Table for the role function, we need to change the _BelongsTo_ to _hasOneThrough_ that will need 
+User `hasOneThrough(Role::class,UserRole::class,'user_id','<ID Column From User>','<ID Column from Role>','role_id');` 
+
+Now we can drop column of role_id from the User table
+`php artisan make:migration remove_role_id_from_the_users_table` 
+
+
+#### Scopes
+*Objective*
+To segregate the Influencer to access the Admin routes, we could introduce the Scope in Passport, for now, there would 2 types of scopes
+1. Admin
+2. Influencer
+
+Admin could access the admin routes as well influencer routes while the influence would only be allow to access the influencer routes
+
+For this we would need to do the following
+
+1. Add 2 middleware in the Kernel.php one is scope and second (CheckForAnyScope) is scopes (CheckScopes)
+2. In the route, in the middleware, we can add the scope:admin
+3. In the AuthServiceProvider, we need to add both the scope as the tokensCan
+4. In the AuthProvide in the login() with the scope as input in the createToken
+!Note: There are lot of time spend to learn in Postman cookie should be remove, cookie store will retain the old Token which cause issue while using the scope token
+
+#### Link/LinkProduct
+*Objective*
+Link and LinkProduct will return the link to the influencer that will return the product for the audience to use on checkout, influencer will earn
+
+_Steps_
+1. `php artisan make:migration create_links_table`
+2. `php artisan make:migration create_link_products_table`
+   Use the link_id that point to the links and product_id that point to id to the product table
+3. `php artisan make:model Link`
+4. `php artisan make:model LinkProduct`
+5. `php artisan ide:models`
+6. `php artisan make:controller Link`
+7. In the route of the influencer, had the post of store of LinkController table
