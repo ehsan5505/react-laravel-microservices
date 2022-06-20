@@ -15,16 +15,12 @@ class CreateLinkProductsTable extends Migration
     {
         Schema::create('link_products', function (Blueprint $table) {
             $table->id();
-<<<<<<< HEAD:laravel-admin/vendor/laravel/framework/src/Illuminate/Database/Migrations/stubs/migration.create.stub
-=======
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
->>>>>>> e762a9bb52c65e5ca5985a4f53d875d397d11933:laravel-admin/database/migrations/2014_10_12_000000_create_users_table.php
-            $table->timestamps();
+            $table->unsignedBigInteger('link_id');
+            $table->unsignedBigInteger('product_id');
+
+            $table->foreign('link_id')->references('id')->on('links');
+            $table->foreign('product_id')->references('id')->on('products');
+
         });
     }
 

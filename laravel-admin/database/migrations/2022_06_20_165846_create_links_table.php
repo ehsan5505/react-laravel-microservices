@@ -18,6 +18,7 @@ class CreateLinksTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('code');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -28,6 +29,7 @@ class CreateLinksTable extends Migration
      */
     public function down()
     {
+
         Schema::dropIfExists('links');
     }
 }
