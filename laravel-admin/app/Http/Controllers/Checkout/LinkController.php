@@ -17,6 +17,7 @@ class LinkController
     {
         $link = Link::whereCode($code);
 
-        return new LinkResource($link);
+        return $link;
+        // return new LinkResource($link);
     }
 }
