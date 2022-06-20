@@ -13,7 +13,7 @@ class LinkController
     {
         $link = Link::create([
             'user_id' => $request->user()->id,
-            'code'  =>  Str::random(8);
+            'code'  =>  Str::random(8),
         ]);
 
         foreach($request->input('products') as $product_id)
