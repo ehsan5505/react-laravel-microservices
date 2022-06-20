@@ -15,9 +15,9 @@ class LinkController
 
     public function show($code)
     {
-        $link = Link::whereCode($code);
+        $link = Link::where("code",$code);
 
-        return response($link);
+        return $link;
         // return new LinkResource($link);
     }
 }
