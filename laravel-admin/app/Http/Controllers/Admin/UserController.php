@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\UserCreateRequest;
-use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserUpdateRequest;
-use App\Http\Requests\UserUpdateProfileRequest;
 use App\Http\Resources\UserResource;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\UserRole;

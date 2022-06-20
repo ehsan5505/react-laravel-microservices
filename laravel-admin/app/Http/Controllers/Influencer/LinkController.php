@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Influencer;
 
 use App\Http\Resources\LinkResource;
+use App\Link;
 use App\LinkProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -18,7 +19,7 @@ class LinkController
 
         foreach($request->input('products') as $product_id)
         {
-            $product_link = LinkProduct::create([
+            LinkProduct::create([
                 'link_id'   =>  $link->id,
                 'product_id'    =>  $product_id
             ]);
