@@ -90,7 +90,7 @@ _Steps_
 2. `php artisan make:migration create_link_products_table`
    Use the link_id that point to the links and product_id that point to id to the product table
 3. `php artisan make:model Link`
-4. `php artisan make:model LinkProduct`
+4. `php artisan make:model Influencer/LinkProduct`
 5. `php artisan ide:models`
 6. `php artisan make:controller Link`
 7. In the route of the influencer, had the post of store of LinkController table
