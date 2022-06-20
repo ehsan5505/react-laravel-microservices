@@ -14,7 +14,14 @@ class AddFieldsToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            //
+            $table->string("code");
+            $table->unsignedBigInteger('user_id'); // Influencer ID
+            $table->string('influencer_email');
+            $table->string('address')->nullable();
+            $table->string('address2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->string('zip')->nullable();
         });
     }
 
@@ -26,7 +33,15 @@ class AddFieldsToOrdersTable extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            //
+            $table->dropColumn("code");
+            $table->dropColumn('user_id'); // Influencer ID
+            $table->dropColumn('influencer_email');
+            $table->dropColumn('address');
+            $table->dropColumn('address2');
+            $table->dropColumn('city');
+            $table->dropColumn('country');
+            $table->dropColumn('zip');
+
         });
     }
 }
