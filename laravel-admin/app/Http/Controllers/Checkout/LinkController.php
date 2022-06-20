@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers\Checkout;
 
-use App\Http\Controllers\Controller;
+use App\Http\Resources\LinkResource;
+use App\Link;
 use Illuminate\Http\Request;
 
-class LinkController extends Controller
+class LinkController
 {
-    //
+    public function show($code)
+    {
+        $link = Link::whereCode($code);
+
+        return new LinkResource($link);
+    }
 }
