@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Passport::tokensCan([
             'admin' =>  "Admin Scope",
-            'influencer'    =>  "Influencer Scope"
+            'influencer' =>  "Influencer Scope"
         ]);
         
         Passport::routes();
