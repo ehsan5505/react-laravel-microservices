@@ -92,5 +92,6 @@ Route::group(
     ],
     function () {
         Route::get("links/{code}", "LinkController@show");
+        Route::get("index","LinkController@show");
     }
 );

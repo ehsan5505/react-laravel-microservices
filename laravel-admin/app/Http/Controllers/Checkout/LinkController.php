@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class LinkController
 {
+    public function index()
+    {
+        return "Test";
+    }
+
     public function show($code)
     {
         $link = Link::whereCode($code);
