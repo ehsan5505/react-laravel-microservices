@@ -55,7 +55,7 @@ class Handler extends ExceptionHandler
                 'error' => 'Unauthenticated',
             ], 403);
         }
-        return parent::render($request, $exception);
+        // return parent::render($request, $exception);
         return response([$exception->getMessage()], $exception->getCode() ? $exception->getCode() : 400);
     }
 }

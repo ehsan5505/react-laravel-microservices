@@ -37,7 +37,7 @@ class OrderController
 
             $orderItem = new OrderItem();
             $orderItem->order_id = $order->id;
-            $orderItem->product_title = $product->title;
+            $orderItem->title = $product->title;
             $orderItem->price = $product->price;
             $orderItem->quantity = $item['quantity'];
             $orderItem->influencer_revenue = 0.1 * $product->price*$item['quantity'];
