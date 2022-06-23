@@ -64,8 +64,8 @@ class OrderController
         $source = $stripe->checkout()->sessions()->create([
             'payment_method_types'  =>  ['card'],
             'line_items'            =>  $lineItems,
-            'success_url'           =>  env('CHECKOUT_URL')."/success?source={CHECKOUT_SESSION_ID}",
-            'cancel_url'            =>  env('CHECKOUT_URL')."/error"
+            'success_url'           =>  env('CHECKOUT_URL') . "/success?source={CHECKOUT_SESSION_ID}",
+            'cancel_url'            =>  env('CHECKOUT_URL') . "/error"
         ]);
 
         $order->tranaction_id = $source['id'];
@@ -74,5 +74,20 @@ class OrderController
         \DB::commit();
 
         return $source;
+    }
+
+    public function confirm(Request $request)
+    {
+        if (!$order = Order::whereTransactionId($request->input('source'))->first()) {
+            return response([
+                'error' =>  "Order Not Found!"
+            ], 404);
+        }
+        $order->complete = 1;
+        $order->save();
+
+        return response([
+            'message' => 'success'
+        ]);
     }
 }
