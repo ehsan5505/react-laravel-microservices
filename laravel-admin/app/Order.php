@@ -44,6 +44,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereInfluencerEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereZip($value)
+ * @property string|null $transaction_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereTransactionId($value)
  */
 class Order extends Model
 {
