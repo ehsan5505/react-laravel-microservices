@@ -14,7 +14,7 @@ class AddTransactionIdToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            //
+            $table->string("transaction_id")->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddTransactionIdToOrdersTable extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            //
+            $table->dropColumn('transaction_id');
         });
     }
 }
