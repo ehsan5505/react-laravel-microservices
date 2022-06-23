@@ -32,6 +32,8 @@ class OrderController
 
         $order->save();
 
+        $lineItems = [];
+
         foreach ($request->input('items') as $item) {
             $product = Product::find($item['product_id']);
 
@@ -40,14 +42,37 @@ class OrderController
             $orderItem->title = $product->title;
             $orderItem->price = $product->price;
             $orderItem->quantity = $item['quantity'];
-            $orderItem->influencer_revenue = 0.1 * $product->price*$item['quantity'];
-            $orderItem->admin_revenue = 0.9 * $product->price*$item['quantity'];
+            $orderItem->influencer_revenue = 0.1 * $product->price * $item['quantity'];
+            $orderItem->admin_revenue = 0.9 * $product->price * $item['quantity'];
 
             $orderItem->save();
+
+            $lineItems[] = [
+                'name'          =>  $product->title,
+                'description'   =>  $product->description,
+                'images'        =>  [
+                    $product->image
+                ],
+                'amount'        =>  100 * $product->price,
+                'currency'      =>  'usd',
+                'quantity'      =>  $orderItem->quantity,
+            ];
         }
+
+        $stripe = Stripe::make(env('STRIPE_SECRET_KEY'));
+
+        $source = $stripe->checkout()->sessions()->create([
+            'payment_method_types'  =>  ['card'],
+            'line_items'            =>  $lineItems,
+            'success_url'           =>  env('CHECKOUT_URL')."/success?source={CHECKOUT_SESSION_ID}",
+            'cancel_url'            =>  env('CHECKOUT_URL')."/error"
+        ]);
+
+        $order->tranaction_id = $source['id'];
+        $order->save();
 
         \DB::commit();
 
-        return $order;
+        return $source;
     }
 }
