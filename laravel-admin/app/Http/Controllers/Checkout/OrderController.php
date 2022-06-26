@@ -63,7 +63,7 @@ class OrderController
             ];
         }
 
-        $stripe = Stripe::make(env('STRIPE_SECRET'));
+        $stripe = Stripe::make(env('STRIPE_PUBLIC'));
 
         $source = $stripe->checkout()->sessions()->create([
             'payment_method_types'  =>  ['card'],
