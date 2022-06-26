@@ -27,7 +27,7 @@ class AddFieldsToOrderItemsTable extends Migration
     public function down()
     {
         Schema::table('order_items', function (Blueprint $table) {
-            $table->dropColumn('influence_revenue');
+            $table->dropColumn('influencer_revenue');
             $table->dropColumn('admin_revenue');
         });
     }
