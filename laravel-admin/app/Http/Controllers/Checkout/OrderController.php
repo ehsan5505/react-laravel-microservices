@@ -87,6 +87,8 @@ class OrderController
         $order->complete = 1;
         $order->save();
 
+        
+
         \Mail::send('admin',['order' => $order], function(Message $message) use ($order){
             $message->to($order->email);
             $message->subject('A new order been confirmed!');
