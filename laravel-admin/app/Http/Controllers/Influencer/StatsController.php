@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Influencer;
 
+use App\Link;
 use App\Order;
 use Illuminate\Http\Request;
 
