@@ -15,10 +15,10 @@ class StatsController
         $user = $request->user();
 
         $links = Link::where('user_id', $user->id)->get();
-        return response(['code' => 'Ehsan', 'user' => $user, "link" => $links], 200);
+        $orders = Order::where('code', $link->code)->where('complete', 1)->get();
+        return response(['code' => 'Ehsan', 'user' => $user, "link" => $links, "orders" => $orders], 200);
 
         // return Response($links->map(function (Link $link) {
-        //     $orders = Order::where('code', $link->code)->where('complete', 1)->get();
         //     return [
         //         'code' => $link->code,
         //         'count' => $orders->count(),
