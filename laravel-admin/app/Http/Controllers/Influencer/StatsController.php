@@ -19,7 +19,7 @@ class StatsController
             // $orders = Order::whereCode($link->code)->whereCo('complete', 1)->get();
             return [
                 "code"          => $link->code,
-                "count"       =>  
+                // "count"       =>  $ord
             ];
             // dd($link);
             // return $orders;
