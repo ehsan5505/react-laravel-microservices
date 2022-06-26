@@ -15,8 +15,8 @@ class StatsController
         $user = $request->user();
 
         $links = Link::whereUserId($user->id)->get();
-        $orders = Order::whereCode($link->code)->where('complete', 1)->get();
-        dd($orders);
+        // $orders = Order::whereCode($link->code)->where('complete', 1)->get();
+        dd($links);
         //     return [
         //         "code"          => $link->code,
         //         "count"       =>  $orders->count
