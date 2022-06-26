@@ -82,16 +82,18 @@ class OrderController
 
     public function confirm(Request $request)
     {
-        
-        if (!$order = Order::whereTransactionId($request->input('source'))->first()) {
-            return response([
-                'error' =>  "Order Not Found!"
-            ], 404);
-        }
-        $order->complete = 1;
-        $order->save();
 
-        event(new OrderCompletedEvent($order));
+        dd($request->input('source'));
+        
+        // if (!$order = Order::whereTransactionId($request->input('source'))->first()) {
+        //     return response([
+        //         'error' =>  "Order Not Found!"
+        //     ], 404);
+        // }
+        // $order->complete = 1;
+        // $order->save();
+
+        // event(new OrderCompletedEvent($order));
 
         // return response([
         //     'message' => 'success'
