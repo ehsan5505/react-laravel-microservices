@@ -94,3 +94,18 @@ _Steps_
 5. `php artisan ide:models`
 6. `php artisan make:controller Link`
 7. In the route of the influencer, had the post of store of LinkController table
+
+#### Event / Listender
+*Objective*
+To reactor code to dispatch the event and listener separate so that when event occur listener will trigger the task
+
+We want to introduce OrderComplete event that will trigger emails to listeners for the we follow steps
+
+_Steps_
+1. Create blade views as email template in the resources/view/influencers, the files are admin.blade.php and influencer.blade.php
+2. `php artisan make:event OrderCompletedEvent`
+3. `php artisan make:listener NotifyAdminListener`
+4. `php artisan make:listener NotifyInfluencerListener`
+5. Now in the controller you can introduce the event() function the the OrderCompletedEvent as parameter
+6. In the EventServiceProvide of Provider folder, you can define the OrderCompletedEvent with the listener you want to trigger
+7. In the email ListenerClass, in handle function you can define the task you want to fullfill i.e. email 
