@@ -25,26 +25,5 @@ class StatsController
                 })
             ];
         });
-        // $orders = Order::whereCode($link->code)->where('complete', 1)->get();
-        // dd($links);
-        // return [
-        //         "code"          => $link->code,
-        //         "count"       =>  $orders->count
-        //     ];
-        //     // dd($link);
-        //     // return $orders;
-        //     // return response(['code' => 'Ehsan', 'user' => $user, "link" => $link, "orders" => $orders], 200);
-        // });
-
-        // return ($links->map(function (Link $link) {
-        //     $orders = Order::whereCode($link->code)->where('complete', 1)->get();
-        //     return [
-        //         'code' => $link->code,
-        //         'count' => $orders->count(),
-        //         'revenue' => $orders->sum(function (Order $order) {
-        //             return $order->influencer_total;
-        //         })
-        //     ];
-        // }));
     }
 }
