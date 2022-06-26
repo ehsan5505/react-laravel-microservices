@@ -71,7 +71,7 @@ class OrderController
             'cancel_url'            =>  env('CHECKOUT_URL') . "/error"
         ]);
 
-        $order->tranaction_id = $source['id'];
+        $order->transaction_id = $source['id'];
         $order->save();
 
         \DB::commit();
