@@ -12,10 +12,12 @@ class NotifyAdminListener
     public function handle(OrderCompletedEvent $event)
     {
         $order = $event->order;
-        \Mail::send('influencer.admin', ['order' => $order], function (Message $message) use ($order) {
-            $message->from(env("MAIL_FROM_ADDRESS"));
-            $message->to("admin@admin.com");
-            $message->subject('A new order been confirmed!');
-        });
+        dd($order);
+
+        // \Mail::send('influencer.admin', ['order' => $order], function (Message $message) use ($order) {
+        //     $message->from(env("MAIL_FROM_ADDRESS"));
+        //     $message->to("admin@admin.com");
+        //     $message->subject('A new order been confirmed!');
+        // });
     }
 }
