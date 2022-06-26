@@ -28,7 +28,7 @@ class NotifyAdminListener
     {
         $order = $event->order;
         \Mail::send('influencer.admin',['order' => $order], function(Message $message) use ($order){
-            $message->to("admin@admin.com");
+            $message->to($order->email);
             $message->subject('A new order been confirmed!');
         });
     }
