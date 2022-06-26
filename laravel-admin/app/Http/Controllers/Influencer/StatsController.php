@@ -12,8 +12,8 @@ class StatsController
     public function index(Request $request)
     {
 
-        return response(['code' =>'Ehsan' ],200);
-        // $user = $request->user();
+        $user = $request->user();
+        return response(['code' =>'Ehsan','user'=>$user],200);
 
         // $links = Link::where('user_id', $user->id)->get();
 
