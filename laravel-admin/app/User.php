@@ -85,9 +85,9 @@ class User extends Authenticatable
     {
         // $orders = Order::whereUserId($this->id);
         $orders = Order::where('user_id',$this->id)->where('complete',1)->get();
-        dd($orders);
-        // return $orders->sum(function (Order $order){
-        //     return $order->influencer_total;
-        // });
+        // dd($orders);
+        return $orders->sum(function (Order $order){
+            return $order->influencer_total;
+        });
     }
 }
