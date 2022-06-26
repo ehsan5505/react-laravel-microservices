@@ -5,13 +5,11 @@ namespace App\Http\Controllers\Influencer;
 use App\Link;
 use App\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Request as FacadesRequest;
-use Illuminate\Support\Facades\Response as FacadesResponse;
-use Response;
+use Illuminate\Http\Response;
 
 class StatsController
 {
-    public function index(FacadesRequest $request)
+    public function index(Request $request)
     {
         $user = $request->user();
 
