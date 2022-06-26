@@ -22,6 +22,7 @@ class AddFieldsToOrdersTable extends Migration
             $table->string('city')->nullable();
             $table->string('country')->nullable();
             $table->string('zip')->nullable();
+            $table->tinyInteger('complete')->default(0);
         });
     }
 
