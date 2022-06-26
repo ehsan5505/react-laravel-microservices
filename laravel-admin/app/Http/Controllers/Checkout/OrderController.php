@@ -63,9 +63,6 @@ class OrderController
             ];
         }
 
-        // dd(env("STRIPE_SECRET"));
-        dd(env("STRIPE_PUBLIC"));
-
         $stripe = Stripe::make(env("STRIPE_SECRET"));
 
         $source = $stripe->checkout()->sessions()->create([
