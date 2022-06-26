@@ -16,7 +16,7 @@ class StatsController
 
         $links = Link::whereUserId($user->id)->get();
         // return $links->map(function (Link $link) {
-            $orders = Order::whereCode($link->code)->where('complete', 1)->get();
+        $orders = Order::whereCode($link->code)->where('complete', 1)->get();
         //     return [
         //         "code"          => $link->code,
         //         "count"       =>  $orders->count
@@ -26,7 +26,7 @@ class StatsController
         //     // return response(['code' => 'Ehsan', 'user' => $user, "link" => $link, "orders" => $orders], 200);
         // });
 
-        return Response($links->map(function (Link $link) {
+        return ($links->map(function (Link $link) {
             $orders = Order::whereCode($link->code)->where('complete', 1)->get();
             return [
                 'code' => $link->code,
@@ -35,6 +35,6 @@ class StatsController
                     return $order->influencer_total;
                 })
             ];
-        }), 200);
+        }));
     }
 }
