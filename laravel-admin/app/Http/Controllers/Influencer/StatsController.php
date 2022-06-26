@@ -13,9 +13,9 @@ class StatsController
     {
 
         $user = $request->user();
-        return response(['code' =>'Ehsan','user'=>$user],200);
 
-        // $links = Link::where('user_id', $user->id)->get();
+        $links = Link::where('user_id', $user->id)->get();
+        return response(['code' => 'Ehsan', 'user' => $user, "link" => $links], 200);
 
         // return Response($links->map(function (Link $link) {
         //     $orders = Order::where('code', $link->code)->where('complete', 1)->get();
