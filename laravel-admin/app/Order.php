@@ -46,6 +46,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereZip($value)
  * @property string|null $transaction_id
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereTransactionId($value)
+ * @property-read mixed $admin_total
+ * @property-read mixed $influencer_total
  */
 class Order extends Model
 {

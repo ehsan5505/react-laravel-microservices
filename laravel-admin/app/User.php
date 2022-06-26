@@ -43,6 +43,7 @@ use Laravel\Passport\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRoleId($value)
  * @property int $is_fluencer
  * @method static \Illuminate\Database\Eloquent\Builder|User whereIsFluencer($value)
+ * @property-read mixed $revenue
  */
 class User extends Authenticatable
 {
