@@ -6,6 +6,7 @@ use App\Link;
 use App\Order;
 use App\OrderItem;
 use App\Product;
+use Illuminate\Mail;
 use Illuminate\Http\Request;
 
 class OrderController
@@ -85,6 +86,16 @@ class OrderController
         }
         $order->complete = 1;
         $order->save();
+
+        \Mail::send('admin',['order' => $order], function(Message $message) use ($order){
+            $message->to($order->email);
+            $message->subject('A new order been confirmed!');
+        });
+
+        \Mail::send('influencer',['order' => $order], function(Message $message) use ($order) {
+            $message->to($order->influencer_email);
+            $message->subject("Order Confirmed");
+        });
 
         return response([
             'message' => 'success'
