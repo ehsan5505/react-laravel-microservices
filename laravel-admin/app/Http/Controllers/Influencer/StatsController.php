@@ -15,19 +15,19 @@ class StatsController
         $user = $request->user();
 
         $links = Link::whereUserId($user->id)->get();
-        return $links->map(function(Link $link){
+        return $links->map(function (Link $link) {
             $orders = Order::whereCode($link->code)->whereComplete(1)->get();
             return [
                 "code"      =>  $link->code,
                 "count"     =>  $orders->count,
-                "revenue"   =>  $orders->sum(function (Order $order){
+                "revenue"   =>  $orders->sum(function (Order $order) {
                     return $order->influencer_total;
                 })
-            ]
+            ];
         });
         // $orders = Order::whereCode($link->code)->where('complete', 1)->get();
         // dd($links);
-            // return [
+        // return [
         //         "code"          => $link->code,
         //         "count"       =>  $orders->count
         //     ];
