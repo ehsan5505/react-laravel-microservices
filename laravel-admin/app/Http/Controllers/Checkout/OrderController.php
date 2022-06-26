@@ -10,6 +10,7 @@ use App\Product;
 use Illuminate\Mail;
 use Cartalyst\Stripe\Stripe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class OrderController
 {
