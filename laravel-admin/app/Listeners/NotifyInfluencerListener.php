@@ -29,7 +29,7 @@ class NotifyInfluencerListener
     {
 
         $order = $event->order;
-        \Mail::send('influencer',['order' => $order], function(Message $message) use ($order) {
+        \Mail::send('influencer.influencer',['order' => $order], function(Message $message) use ($order) {
             $message->to($order->influencer_email);
             $message->subject("Order Confirmed");
         });
