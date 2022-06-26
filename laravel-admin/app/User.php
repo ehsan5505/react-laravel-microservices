@@ -84,6 +84,7 @@ class User extends Authenticatable
     public function getRevenueAttribute()
     {
         $orders = Order::where('user_id',$this->id)->where('complete',1)->get();
+        dd($orders);
         return $orders->sum(function (Order $order){
             return $order->influencer_total;
         });
