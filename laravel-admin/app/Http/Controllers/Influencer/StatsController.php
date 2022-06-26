@@ -18,7 +18,7 @@ class StatsController
         $orders = Order::where('code', $link->code)->where('complete', 1)->get();
         $links->map(function(Link $link){
             return response(['code' => 'Ehsan', 'user' => $user, "link" => $link, "orders" => $orders], 200);
-        })
+        });
 
         // return Response($links->map(function (Link $link) {
         //     return [
