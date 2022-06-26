@@ -8,7 +8,7 @@ use App\Order;
 use App\OrderItem;
 use App\Product;
 use Illuminate\Mail;
-use Cartalyst\Stripe;
+use Cartalyst\Stripe\Stripe;
 use Illuminate\Http\Request;
 
 class OrderController
