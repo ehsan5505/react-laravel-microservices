@@ -48,6 +48,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereTransactionId($value)
  * @property-read mixed $admin_total
  * @property-read mixed $influencer_total
+ * @property int $complete
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereComplete($value)
  */
 class Order extends Model
 {
