@@ -19,7 +19,7 @@ class StatsController
             $orders = Order::whereCode($link->code)->whereComplete(1)->get();
             return [
                 "code"      =>  $link->code,
-                "count"     =>  $orders->count,
+                "count"     =>  $orders->count(),
                 "revenue"   =>  $orders->sum(function (Order $order) {
                     return $order->influencer_total;
                 })
