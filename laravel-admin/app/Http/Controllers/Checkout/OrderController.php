@@ -89,6 +89,8 @@ class OrderController
         $order->complete = 1;
         $order->save();
 
+        dd($order);
+
         event(new OrderCompletedEvent($order));
 
         return response([
