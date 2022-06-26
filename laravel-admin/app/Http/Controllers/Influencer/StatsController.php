@@ -14,11 +14,12 @@ class StatsController
 
         $user = $request->user();
 
-        $links = Link::where('user_id', $user->id)->get();
+        $links = Link::whereUserId($user->id)->get();
         return $links->map(function (Link $link) {
-            $orders = Order::where('code', $link->code)->get();
+            return $link;
+            // $orders = Order::where('code', $link->code)->get();
             // dd($link);
-            return $orders;
+            // return $orders;
             // return response(['code' => 'Ehsan', 'user' => $user, "link" => $link, "orders" => $orders], 200);
         });
 
