@@ -17,7 +17,9 @@ class StatsController
         $links = Link::whereUserId($user->id)->get();
         return response($links->map(function (Link $link) {
             $orders = Order::whereCode($link->code)->where('complete',1)->get();
-            return $orders->count;
+            return [
+                "code" => $link->code
+            ];
             // dd($link);
             // return $orders;
             // return response(['code' => 'Ehsan', 'user' => $user, "link" => $link, "orders" => $orders], 200);
