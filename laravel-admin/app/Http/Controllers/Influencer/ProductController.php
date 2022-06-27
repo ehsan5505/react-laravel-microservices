@@ -12,7 +12,7 @@ class ProductController
 
         \Cache::remember('products',5,function(){
             
-            sleep(2);
+            sleep(5);
             $data = Product::query();
             if ($query = $request->input('s')) {
                 $data->whereRaw("title LIKE '%${query}%'");
