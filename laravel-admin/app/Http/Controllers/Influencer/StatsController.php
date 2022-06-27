@@ -7,6 +7,7 @@ use App\Order;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Redis;
 
 class StatsController
 {
@@ -30,6 +31,7 @@ class StatsController
 
     public function rankings()
     {
-        return \Cache::get('rankings');
+        // return \Cache::get('rankings');
+        return Redis::zrange('rankings',0,-1);
     }
 }
