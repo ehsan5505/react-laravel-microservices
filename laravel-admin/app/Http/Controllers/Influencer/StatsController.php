@@ -40,7 +40,7 @@ class StatsController
             ];
         });
 
-        return $rankings->SortByDesc('revenue');
+        return $rankings->SortByDesc('revenue')->values();
 
 
     }
