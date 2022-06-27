@@ -2,29 +2,18 @@
 
 namespace App\Listeners;
 
+use App\Events\OrderCompletedEvent;
+use App\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
 class RankingListener
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function handle(OrderCompletedEvent $event)
     {
-        //
-    }
+        $order = $event->order;
+        $user = User::find('user_id',$order->user_id)->first();
 
-    /**
-     * Handle the event.
-     *
-     * @param  object  $event
-     * @return void
-     */
-    public function handle($event)
-    {
-        //
+        Redis::zincrby('rankings',$user->revenue,$user->full_name);
     }
 }

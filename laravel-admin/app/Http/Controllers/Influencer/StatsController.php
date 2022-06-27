@@ -32,6 +32,6 @@ class StatsController
     public function rankings()
     {
         // return \Cache::get('rankings');
-        return Redis::zrange('rankings',0,-1,'WITHSCORES');
+        return Redis::zrevrange('rankings',0,-1,'WITHSCORES');
     }
 }
