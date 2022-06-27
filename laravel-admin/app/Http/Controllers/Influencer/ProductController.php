@@ -12,16 +12,16 @@ class ProductController
     {
 
         // retain the cache for 30 mins => 60*30
-        return \Cache::remember('products',(60*30),function() use($request){
-            
-            sleep(5);
-            $data = Product::query();
-            if ($query = $request->input('s')) {
-                $data->whereRaw("title LIKE '%${query}%'");
-                $data->OrWhereRaw("description LIKE '%${query}%'");
-            }
-            
-            return ProductResource::collection($data->get());
+        $products= \Cache::remember('products',(60*30),function() use($request){
+            sleep(2);
+            return Product::All();
         });
+        if ($query = $request->input('s')) {
+            $products = $products->filter(function(Product $product) use($query){
+                return Str::contains($product,$query) || Str::contains($product,$query);
+            });
+        }
+        
+        return ProductResource::collection($products);
     }
 }
