@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Influencer;
 
+use App\Http\Resources\ProductResource;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class ProductController
                 $data->OrWhereRaw("description LIKE '%${query}%'");
             }
             
-            return $data->get();
+            return ProductResource::collection($data->get());
         });
     }
 }
