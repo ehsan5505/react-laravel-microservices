@@ -40,6 +40,8 @@ class StatsController
             ];
         });
 
+        return $rankings;
+
 
     }
 }
