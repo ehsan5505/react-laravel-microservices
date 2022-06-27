@@ -12,7 +12,7 @@ class RankingListener
     public function handle(OrderCompletedEvent $event)
     {
         $order = $event->order;
-        $user = User::find('user_id',$order->user_id)->first();
+        $user = User::find($order->user_id);
 
         Redis::zincrby('rankings',$user->revenue,$user->full_name);
     }
