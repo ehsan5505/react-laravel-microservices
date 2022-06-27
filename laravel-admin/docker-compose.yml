@@ -1,22 +1,22 @@
 version: '3.7'
 services:
-  frontend: 
+  frontend:
     image: antoniopapa1991/admin-frontend
     depends_on:
       - backend
     networks:
       - app
-  
+
   backend:
     build:
       context: .
       dockerfile: Dockerfile
     environment:
-      - DB_HOST=db
-      - DB_DATABASE=influencer
-      - DB_USERNAME=root
-      - DB_PASSWORD=root
-      - REDIS_HOST=redis
+      DB_HOST=db
+      DB_DATABASE=influencer
+      DB_USERNAME=root
+      DB_PASSWORD=root
+      REDIS_HOST=redis
     ports:
       - 8000:8000
     depends_on:
@@ -26,7 +26,7 @@ services:
       - .:/app
     networks:
       - app
-  
+
   db:
     image: mysql:5.7.22
     environment:
@@ -40,6 +40,7 @@ services:
       - 33066:3306
     networks:
       - app
+
   redis:
     image: redis:latest
 
