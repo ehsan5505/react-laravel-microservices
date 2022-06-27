@@ -88,4 +88,9 @@ class User extends Authenticatable
             return $order->influencer_total;
         });
     }
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name." ".$this->last_name;
+    }
 }

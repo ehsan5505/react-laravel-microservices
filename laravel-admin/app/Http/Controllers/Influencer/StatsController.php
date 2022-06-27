@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Influencer;
 
 use App\Link;
 use App\Order;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -25,5 +26,20 @@ class StatsController
                 })
             ];
         });
+    }
+
+    public function rankings()
+    {
+        $users = User::whereIsFluencer(1)->get();
+
+        $rankings = $users.map(function(User $user){
+
+            return [
+                'user' => $user->full_name,
+                'revenue'   => $user->revenue
+            ];
+        });
+
+
     }
 }
