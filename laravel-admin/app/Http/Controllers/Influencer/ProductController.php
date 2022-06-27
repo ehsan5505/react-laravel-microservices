@@ -11,7 +11,8 @@ class ProductController
     public function index(Request $request)
     {
 
-        return \Cache::remember('products',5,function() use($request){
+        // retain the cache for 30 mins => 60*30
+        return \Cache::remember('products',(60*30),function() use($request){
             
             sleep(5);
             $data = Product::query();
