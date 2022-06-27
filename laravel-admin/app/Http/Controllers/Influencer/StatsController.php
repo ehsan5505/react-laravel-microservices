@@ -32,7 +32,7 @@ class StatsController
     {
         $users = User::whereIsFluencer(1)->get();
 
-        $rankings = $users.map(function(User $user){
+        $rankings = $users->map(function(User $user){
 
             return [
                 'user' => $user->full_name,
