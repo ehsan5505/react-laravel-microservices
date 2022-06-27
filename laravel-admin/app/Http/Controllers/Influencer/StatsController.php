@@ -30,18 +30,6 @@ class StatsController
 
     public function rankings()
     {
-        $users = User::whereIsFluencer(1)->get();
-
-        $rankings = $users->map(function(User $user){
-
-            return [
-                'user' => $user->full_name,
-                'revenue'   => $user->revenue
-            ];
-        });
-
-        return $rankings->SortByDesc('revenue')->values();
-
-
+        return \Cache::get('rankings');
     }
 }

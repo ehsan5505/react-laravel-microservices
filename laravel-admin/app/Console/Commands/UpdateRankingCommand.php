@@ -2,7 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Order;
+use App\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Redis;
 
 class UpdateRankingCommand extends Command
 {
@@ -11,32 +14,15 @@ class UpdateRankingCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'update:rankings';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Command description';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
     public function handle()
     {
-        return 0;
+        $users = User::whereIsFluencer(1)->get();
+
+        $users->each(function (User $user) {
+
+            Redis::zadd('rankings', $user->revenue, $user->full_name);
+        });
     }
 }

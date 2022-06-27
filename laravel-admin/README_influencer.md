@@ -109,3 +109,17 @@ _Steps_
 5. Now in the controller you can introduce the event() function the the OrderCompletedEvent as parameter
 6. In the EventServiceProvide of Provider folder, you can define the OrderCompletedEvent with the listener you want to trigger
 7. In the email ListenerClass, in handle function you can define the task you want to fullfill i.e. email 
+
+
+#### Command
+*Objective*
+The command is the cli command that will trigger the function we want, in this case, we want to store the information of the revenue based on the ranking
+
+_Steps_
+1. `php artisan make:command UpdateRankingCommand`
+2. Now we have to update the UpdateRankingCommand File with the redis.zadd() information
+3. Run the command on client to calculate the ranking of every influencer
+4. `php artisan update:ranking`
+5. For the Order complete, we have to introduce a listener that will add the new revenue in the list
+6. `php artisan make:listener RankingListener`
+7. In the RankingListener handle function, we have to update the order->influencer_revenue and user->full_name using Redis::incr() 
