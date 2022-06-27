@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Influencer;
 use App\Http\Resources\ProductResource;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController
 {
@@ -18,7 +19,7 @@ class ProductController
         });
         if ($query = $request->input('s')) {
             $products = $products->filter(function(Product $product) use($query){
-                return Str::contains($product,$query) || Str::contains($product,$query);
+                return Str::contains($product->title,$query) || Str::contains($product->description,$query);
             });
         }
         
