@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
+import { ToastContainer } from "react-toastify";
 
 const Wrapper = (props:PropsWithChildren<any>) => {
   return (
@@ -11,7 +12,7 @@ const Wrapper = (props:PropsWithChildren<any>) => {
 
         {props.children}
 
-        
+        <ToastContainer />
       </main>
     </>
   )

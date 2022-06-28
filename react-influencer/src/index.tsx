@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
 
 axios.defaults.baseURL = "http://192.168.22.138:8000/api/influencer/";
 axios.defaults.withCredentials = true;
