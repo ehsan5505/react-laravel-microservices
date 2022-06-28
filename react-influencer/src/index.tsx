@@ -4,17 +4,25 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
+import { Provider } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
+import configureStore from "./redux/configureStore";
 
 axios.defaults.baseURL = "http://192.168.22.138:8000/api/influencer/";
-axios.defaults.withCredentials = true;
+axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(
+  "token"
+)}`;
+
+const store = configureStore();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 

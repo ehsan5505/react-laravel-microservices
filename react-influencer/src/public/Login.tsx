@@ -17,7 +17,7 @@ class Login extends Component {
     e.preventDefault();
 
     try {
-      await axios.post("login", {
+      const resp = await axios.post("login", {
         email: this.email,
         password: this.password,
         scope: "influencer"
@@ -26,6 +26,8 @@ class Login extends Component {
       this.setState({
         redirect: true,
       });
+
+      localStorage.setItem('token',resp.data.token);
     } catch (err: any) {
       
       this.setState({
