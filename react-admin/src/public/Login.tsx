@@ -20,6 +20,7 @@ class Login extends Component {
       await axios.post("login", {
         email: this.email,
         password: this.password,
+        scope: "admin"
       });
 
       this.setState({
