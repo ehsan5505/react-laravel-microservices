@@ -1,4 +1,4 @@
-import UserProps from "../../secure/classes/user";
+import UserProps from "../../classes/user";
 
 const setUserReducer = (
   state = { user: new UserProps() },

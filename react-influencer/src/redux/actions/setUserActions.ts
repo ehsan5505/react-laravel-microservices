@@ -1,4 +1,4 @@
-import UserProps from "../../secure/classes/user";
+import UserProps from "../../classes/user";
 
 const setUser = (user: UserProps) => {
   return {
