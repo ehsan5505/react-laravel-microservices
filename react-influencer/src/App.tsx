@@ -31,7 +31,7 @@ function App() {
                 <div className="card mb-4 box-shadow">
                   <img
                     className="card-img-top"
-                    src="https://via.placeholder.com/225"
+                    src="https://via.placeholder.com/100x225"
                     alt="Just for avoid warning"
                   />
                   <div className="card-body">
