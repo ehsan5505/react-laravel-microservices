@@ -3,7 +3,7 @@ import "./Login";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+
 
 class Login extends Component {
   email = "";
@@ -20,7 +20,7 @@ class Login extends Component {
       await axios.post("login", {
         email: this.email,
         password: this.password,
-        scope: "admin"
+        scope: "influencer"
       });
 
       this.setState({
