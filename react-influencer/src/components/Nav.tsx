@@ -19,7 +19,7 @@ const Nav = (props: PropsWithRef<any>) => {
             Logout
           </Link>
 
-        <Link to={"/profile"} className="btn btn-outline-primary">
+        <Link to={"/profile"} className="btn btn-outline-primary p-2 text-white">
           {props.user.first_name}
         </Link>
         </nav>
