@@ -8,15 +8,14 @@ const Header = (props: PropsWithRef<any>) => {
   const [description, setDescription] = useState(
     "Earn upto 10% of the product price by referring"
   );
+  const [button,setButton] = useState({});
 
-  let button;
 
   useEffect(() => {
     if (props.user?.id) {
       setTitle("$" + props.user?.revenue);
       setDescription("Total Amount Earned");
-      button = (
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+      setButton(
         <Link to={"/stats"} className="btn btn-secondary my-2">
           Statistics
         </Link>
@@ -24,7 +23,7 @@ const Header = (props: PropsWithRef<any>) => {
     } else {
       setTitle("Welcome");
       setDescription("Earn upto 10% of the product price by referring");
-      button = (
+      setButton (
         <p>
           <Link to={"/login"} className="btn btn-primary my-2">
             Login
@@ -39,11 +38,9 @@ const Header = (props: PropsWithRef<any>) => {
 
   return (
     <section className="jumbotron text-center">
-      <div className="container">
         <h1 className="jumbotron-heading">{title}</h1>
         <p className="lead text-muted">{description}</p>
         {button}
-      </div>
     </section>
   );
 };
