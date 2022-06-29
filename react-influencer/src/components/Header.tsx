@@ -1,4 +1,4 @@
-import React, { PropsWithRef, useEffect, useState } from "react";
+import React, { PropsWithRef, ReactNode, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import UserProps from "../classes/user";
@@ -38,9 +38,13 @@ const Header = (props: PropsWithRef<any>) => {
 
   return (
     <section className="jumbotron text-center">
+      <div className="container">
         <h1 className="jumbotron-heading">{title}</h1>
         <p className="lead text-muted">{description}</p>
+      </div>
+      <>
         {button}
+      </>
     </section>
   );
 };
