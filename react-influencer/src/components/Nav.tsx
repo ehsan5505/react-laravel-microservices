@@ -18,11 +18,11 @@ const Nav = (props: PropsWithRef<any>) => {
           >
             Logout
           </Link>
-        </nav>
 
         <Link to={"/profile"} className="btn btn-outline-primary">
           {props.user.first_name}
         </Link>
+        </nav>
       </>
     );
   } else {
@@ -34,8 +34,8 @@ const Nav = (props: PropsWithRef<any>) => {
   }
 
   return (
-    <div className="navbar navbar-dark bg-dark box-shadow d-flex justify-content-between">
-      {/* <div className="container "> */}
+    <div className="navbar navbar-dark bg-dark box-shadow">
+      <div className="container d-flex justify-content-between">
         <Link
           to={"/"}
           className="navbar-brand my-0 mr-md auto font-weight-normal"
@@ -43,7 +43,7 @@ const Nav = (props: PropsWithRef<any>) => {
           Influencer
         </Link>
         {menu}
-      {/* </div> */}
+      </div>
     </div>
   );
 };
