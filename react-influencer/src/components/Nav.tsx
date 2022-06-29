@@ -7,7 +7,7 @@ const Nav = (props: PropsWithRef<any>) => {
   let menu;
 
   console.info(props.user.first_name);
-  if (props.user) {
+  if (props.user.first_name) {
     menu = (
       <>
         <nav className="my-2 my-md-0 mr-md-3">
