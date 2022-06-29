@@ -42,9 +42,6 @@ const Header = (props: PropsWithRef<any>) => {
         <h1 className="jumbotron-heading">{title}</h1>
         <p className="lead text-muted">{description}</p>
       </div>
-      <>
-        {button}
-      </>
     </section>
   );
 };
