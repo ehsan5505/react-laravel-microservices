@@ -6,6 +6,7 @@ import UserProps from "../classes/user";
 const Nav = (props: PropsWithRef<any>) => {
   let menu;
 
+  console.info(props.user);
   if (props.user) {
     menu = (
       <>
