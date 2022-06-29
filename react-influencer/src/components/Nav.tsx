@@ -10,7 +10,7 @@ const Nav = (props: PropsWithRef<any>) => {
     menu = (
       <>
         
-        <nav className="my-2 my-md-0 mr-md-3">
+        <div className="my-2 my-md-0 mr-md-3">
           <Link
             to={"/login"}
             onClick={() => localStorage.clear()}
@@ -18,7 +18,7 @@ const Nav = (props: PropsWithRef<any>) => {
           >
             Logout
           </Link>
-        </nav>
+        </div>
 
         <Link to={"/profile"} className="btn btn-outline-primary">
           {props.user.first_name}
