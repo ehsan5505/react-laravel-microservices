@@ -10,8 +10,13 @@ const Header = (props: PropsWithRef<any>) => {
   );
 
   useEffect(() => {
-    setTitle("$" + props.user?.revenue);
-    setDescription("Total Amount Earned");
+    if(props.user?.id){
+      setTitle("$" + props.user?.revenue);
+      setDescription("Total Amount Earned");
+    }else{
+      setTitle('Welcome');
+      setDescription('Earn upto 10% of the product price by referring');
+    }
   },[props.user]);
   
   let button;
@@ -25,8 +30,6 @@ const Header = (props: PropsWithRef<any>) => {
       </p>
     );
   } else {
-    setTitle('Welcome');
-    setDescription('Earn upto 10% of the product price by referring');
     <p>
       <Link to={"/login"} className="btn btn-primary my-2">
         Login
