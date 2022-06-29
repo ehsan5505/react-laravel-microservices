@@ -16,6 +16,7 @@ const Header = (props: PropsWithRef<any>) => {
       setTitle("$" + props.user?.revenue);
       setDescription("Total Amount Earned");
       button = (
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         <Link to={"/stats"} className="btn btn-secondary my-2">
           Statistics
         </Link>
