@@ -12,7 +12,8 @@ const Wrapper = (props: PropsWithChildren<any>) => {
     try {
       (async () => {
         const response = await axios.get("user");
-        const user = response.data.data;
+        const user:UserProps = response.data.data;
+        console.log(user);
         props.setUser(
           new UserProps(
             user.id,
