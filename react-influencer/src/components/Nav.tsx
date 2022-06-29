@@ -33,8 +33,8 @@ const Nav = (props: PropsWithRef<any>) => {
   }
 
   return (
-    <div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm">
-      {/* <div className="container d-flex justify-content-between"> */}
+    <div className="navbar navbar-dark bg-dark box-shadow">
+      <div className="container d-flex justify-content-between">
         <Link
           to={"/"}
           className="navbar-brand my-0 mr-md auto font-weight-normal"
@@ -42,7 +42,7 @@ const Nav = (props: PropsWithRef<any>) => {
           Influencer
         </Link>
         {menu}
-      {/* </div> */}
+      </div>
     </div>
   );
 };
