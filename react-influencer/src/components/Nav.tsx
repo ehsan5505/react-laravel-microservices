@@ -10,7 +10,7 @@ const Nav = (props: PropsWithRef<any>) => {
     menu = (
       <>
         
-        {/* <nav className="my-2 my-md-0 mr-md-3"> */}
+        <nav className="my-2 my-md-0 mr-md-3">
           <Link
             to={"/login"}
             onClick={() => localStorage.clear()}
@@ -18,7 +18,7 @@ const Nav = (props: PropsWithRef<any>) => {
           >
             Logout
           </Link>
-        {/* </nav> */}
+        </nav>
 
         <Link to={"/profile"} className="btn btn-outline-primary">
           {props.user.first_name}
@@ -35,7 +35,7 @@ const Nav = (props: PropsWithRef<any>) => {
 
   return (
     <div className="navbar navbar-dark bg-dark box-shadow">
-      <div className="container d-flex justify-content-between">
+      {/* <div className="container d-flex justify-content-between"> */}
         <Link
           to={"/"}
           className="navbar-brand my-0 mr-md auto font-weight-normal"
@@ -43,7 +43,7 @@ const Nav = (props: PropsWithRef<any>) => {
           Influencer
         </Link>
         {menu}
-      </div>
+      {/* </div> */}
     </div>
   );
 };
