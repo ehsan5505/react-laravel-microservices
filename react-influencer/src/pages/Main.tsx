@@ -36,6 +36,7 @@ const Main = () => {
                       className="card-img-top"
                       src={product.imageUrl}
                       alt={product.imageUrl}
+                      height="400"
                     />
                     <div className="card-body">
                       <p className="card-title">{product.title}</p>
