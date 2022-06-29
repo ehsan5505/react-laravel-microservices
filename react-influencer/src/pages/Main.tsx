@@ -16,18 +16,19 @@ const Main = () => {
 
   return (
     <Wrapper>
-      <div className="album py-5 bg-light">
-        <div className="container">
+      {/* <div className="album py-5 bg-light"> */}
           <div className="row">
-            <div className="col-md-12 mb-4">
+            <div className="col-md-12 mb-4 input-group">
               <input
                 type="text"
+                className="form-control"
                 placeholder="Search Products"
                 onKeyUp={(e) =>
                   setSearchText((e.target as HTMLInputElement).value)
                 }
               />
             </div>
+        <div className="container">
             {products.map((product: ProductProps) => {
               return (
                 <div className="col-md-4" key={product.id}>
@@ -50,7 +51,7 @@ const Main = () => {
             })}
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </Wrapper>
   );
 };
