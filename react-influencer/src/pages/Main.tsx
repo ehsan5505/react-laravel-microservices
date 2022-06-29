@@ -18,7 +18,6 @@ const Main = () => {
     <Wrapper>
       <div className="album py-5 bg-light">
         <div className="row">
-          <div className="container">
             <div className="col-md-12 mb-4 input-group">
               <input
                 type="text"
@@ -29,6 +28,7 @@ const Main = () => {
                 }
               />
             </div>
+          <div className="container">
             {products.map((product: ProductProps) => {
               return (
                 <div className="col-md-4" key={product.id}>
