@@ -16,15 +16,21 @@ const Main = () => {
 
   return (
     <Wrapper>
-      <div className="col-md-12 mb-4">
-        <input type="text" placeholder="Search Products" onKeyUp={e => setSearchText((e.target as HTMLInputElement).value)} />
-      </div>
       <div className="album py-5 bg-light">
         <div className="container">
-          {products.map((product: ProductProps) => {
-            return (
-              <div className="row" key={product.id}>
-                <div className="col-md-4">
+          <div className="row">
+            <div className="col-md-12 mb-4">
+              <input
+                type="text"
+                placeholder="Search Products"
+                onKeyUp={(e) =>
+                  setSearchText((e.target as HTMLInputElement).value)
+                }
+              />
+            </div>
+            {products.map((product: ProductProps) => {
+              return (
+                <div className="col-md-4" key={product.id}>
                   <div className="card mb-4 box-shadow">
                     <img
                       className="card-img-top"
@@ -39,9 +45,9 @@ const Main = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </Wrapper>
