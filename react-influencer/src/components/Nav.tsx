@@ -34,8 +34,8 @@ const Nav = (props: PropsWithRef<any>) => {
   }
 
   return (
-    <div className="navbar navbar-dark bg-dark box-shadow">
-      {/* <div className="container d-flex justify-content-between"> */}
+    <div className="navbar navbar-dark bg-dark box-shadow d-flex justify-content-between">
+      {/* <div className="container "> */}
         <Link
           to={"/"}
           className="navbar-brand my-0 mr-md auto font-weight-normal"
