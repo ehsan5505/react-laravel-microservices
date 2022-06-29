@@ -17,8 +17,9 @@ const Main = () => {
   return (
     <Wrapper>
       <div className="album py-5 bg-light">
-        <div className="row">
-            <div className="col-md-12 mb-4 input-group">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12 mb-4">
               <input
                 type="text"
                 className="form-control"
@@ -28,7 +29,6 @@ const Main = () => {
                 }
               />
             </div>
-          <div className="container">
             {products.map((product: ProductProps) => {
               return (
                 <div className="col-md-4" key={product.id}>
