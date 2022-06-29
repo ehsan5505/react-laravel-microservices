@@ -17,7 +17,7 @@ const Header = (props: PropsWithRef<any>) => {
       setTitle('Welcome');
       setDescription('Earn upto 10% of the product price by referring');
     }
-  },[props.user]);
+  },[props]);
   
   let button;
 
