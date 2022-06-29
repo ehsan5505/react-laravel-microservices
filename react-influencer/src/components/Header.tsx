@@ -12,7 +12,8 @@ const Header = (props: PropsWithRef<any>) => {
   useEffect(() => {
     setTitle("$" + props.user?.revenue);
     setDescription("Total Amount Earned");
-  },[props]);
+  },[props.user?.id]);
+  
   let button;
 
   if (props.user?.id) {
