@@ -8,8 +8,16 @@ const Header = (props: PropsWithRef<any>) => {
   const [description, setDescription] = useState(
     "Earn upto 10% of the product price by referring"
   );
-  const [button,setButton] = useState({});
-
+  const [button, setButton] = useState(
+    <p>
+      <Link to={"/login"} className="btn btn-primary my-2">
+        Login
+      </Link>
+      <Link to={"/register"} className="btn btn-secondary my-2">
+        Register
+      </Link>
+    </p>
+  );
 
   useEffect(() => {
     if (props.user?.id) {
@@ -23,16 +31,6 @@ const Header = (props: PropsWithRef<any>) => {
     } else {
       setTitle("Welcome");
       setDescription("Earn upto 10% of the product price by referring");
-      setButton (
-        <p>
-          <Link to={"/login"} className="btn btn-primary my-2">
-            Login
-          </Link>
-          <Link to={"/register"} className="btn btn-secondary my-2">
-            Register
-          </Link>
-        </p>
-      );
     }
   }, [props]);
 
@@ -41,8 +39,8 @@ const Header = (props: PropsWithRef<any>) => {
       <div className="container">
         <h1 className="jumbotron-heading">{title}</h1>
         <p className="lead text-muted">{description}</p>
-        <span>{button}</span>
       </div>
+      <span>{button}</span>
     </section>
   );
 };
