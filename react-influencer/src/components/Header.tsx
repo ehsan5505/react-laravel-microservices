@@ -9,36 +9,33 @@ const Header = (props: PropsWithRef<any>) => {
     "Earn upto 10% of the product price by referring"
   );
 
-  useEffect(() => {
-    if(props.user?.id){
-      setTitle("$" + props.user?.revenue);
-      setDescription("Total Amount Earned");
-    }else{
-      setTitle('Welcome');
-      setDescription('Earn upto 10% of the product price by referring');
-    }
-  },[props]);
-  
   let button;
 
-  if (props.user?.id) {
-    button = (
-      <p>
+  useEffect(() => {
+    if (props.user?.id) {
+      setTitle("$" + props.user?.revenue);
+      setDescription("Total Amount Earned");
+      button = (
         <Link to={"/stats"} className="btn btn-secondary my-2">
           Statistics
         </Link>
-      </p>
-    );
-  } else {
-    <p>
-      <Link to={"/login"} className="btn btn-primary my-2">
-        Login
-      </Link>
-      <Link to={"/register"} className="btn btn-secondary my-2">
-        Register
-      </Link>
-    </p>;
-  }
+      );
+    } else {
+      setTitle("Welcome");
+      setDescription("Earn upto 10% of the product price by referring");
+      button = (
+        <p>
+          <Link to={"/login"} className="btn btn-primary my-2">
+            Login
+          </Link>
+          <Link to={"/register"} className="btn btn-secondary my-2">
+            Register
+          </Link>
+        </p>
+      );
+    }
+  }, [props]);
+
   return (
     <section className="jumbotron text-center">
       <div className="container">
