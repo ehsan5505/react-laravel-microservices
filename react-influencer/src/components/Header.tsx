@@ -1,4 +1,4 @@
-import React, { PropsWithRef, useState } from "react";
+import React, { PropsWithRef, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import UserProps from "../classes/user";
@@ -9,6 +9,10 @@ const Header = (props: PropsWithRef<any>) => {
     "Earn upto 10% of the product price by referring"
   );
 
+  useEffect(() => {
+    setTitle("$" + props.user?.revenue);
+    setDescription("Total Amount Earned");
+  },[props]);
   let button;
 
   if (props.user?.id) {
@@ -19,8 +23,6 @@ const Header = (props: PropsWithRef<any>) => {
         </Link>
       </p>
     );
-    setTitle("$" + props.user?.revenue);
-    setDescription("Total Amount Earned");
   } else {
     <p>
       <Link to={"/login"} className="btn btn-primary my-2">
