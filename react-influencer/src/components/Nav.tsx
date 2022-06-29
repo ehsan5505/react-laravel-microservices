@@ -18,11 +18,11 @@ const Nav = (props: PropsWithRef<any>) => {
           >
             Logout
           </Link>
+        </nav>
 
         <Link to={"/profile"} className="btn btn-outline-primary">
           {props.user.first_name}
         </Link>
-        </nav>
       </>
     );
   } else {
