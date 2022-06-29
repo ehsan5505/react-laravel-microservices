@@ -14,12 +14,12 @@ const Nav = (props: PropsWithRef<any>) => {
           <Link
             to={"/login"}
             onClick={() => localStorage.clear()}
-            className="p-2 text-dark"
+            className="btn btn-outline-primary"
           >
             Logout
           </Link>
 
-        <Link to={"/profile"} className="btn btn-outline-primary p-2 text-dark">
+        <Link to={"/profile"} className="btn btn-outline-primary">
           {props.user.first_name}
         </Link>
         </nav>
