@@ -54,12 +54,12 @@ const Main = () => {
               return (
                 <div className="col-md-4" key={product.id}>
                   <div
+                    onClick={ () => select(product.id)}
                     className={
                       isSelected(product.id)
                         ? "card mb-4 box-shadow selected"
                         : "card mb-4 box-shadow"
                     }
-                    onClick={select(product.id)}
                   >
                     <img
                       className="card-img-top"
