@@ -26,12 +26,12 @@ const Stats = () => {
                 </tr>
               </thead>
               <tbody>
-                {Object.entries(stats).map(([code, revenue], index) => {
+                {stats.map((s:{code:string, count:number, revenue:number}, index) => {
                   return (
                     <tr key={index}>
                       <td>{index + 1}</td>
-                      <td>{constant.CHECKOUT_URL+code}</td>
-                      <td>{parseInt(revenue)}</td>
+                      <td>{constant.CHECKOUT_URL+s.code}</td>
+                      <td>{(s.revenue)}</td>
                     </tr>
                   );
                 })}
