@@ -36,7 +36,7 @@ const Rankings = () => {
                 {Object.entries(rankings).map(([user, revenue], index) => {
                   return (
                     <tr key={index}>
-                      <td>{index}</td>
+                      <td>{index + 1}</td>
                       <td>{user}</td>
                       <td>{parseInt(revenue)}</td>
                     </tr>
