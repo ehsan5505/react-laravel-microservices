@@ -15,17 +15,16 @@ const Main = () => {
   const isSelected = (id: number) =>
     selected.filter((s) => s === id).length > 0;
 
-  const select = (id:number) => {
-    if(isSelected(id)){
+  const select = (id: number) => {
+    if (isSelected(id)) {
       // If click again if already selected then unselect it
-      setSelected(selected.filter(s => s !==id));
+      setSelected(selected.filter((s) => s !== id));
       return;
-    };
+    }
     // @ts-ignore
-    setSelected([...selected,id]);
+    setSelected([...selected, id]);
     console.info(selected);
-
-  }
+  };
 
   useEffect(() => {
     (async () => {
@@ -33,6 +32,16 @@ const Main = () => {
       setProducts(response.data.data);
     })();
   }, [searchText]);
+
+  let button, info;
+
+  if (selected) {
+    button = (
+      <div className="input-group-append">
+        <button className="btn btn-info">Generate Link</button>
+      </div>
+    );
+  }
 
   return (
     <Wrapper>
@@ -42,20 +51,23 @@ const Main = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12 mb-4">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search Products"
-                onKeyUp={(e) =>
-                  setSearchText((e.target as HTMLInputElement).value)
-                }
-              />
+              <div className="input-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Search Products"
+                  onKeyUp={(e) =>
+                    setSearchText((e.target as HTMLInputElement).value)
+                  }
+                />
+                {button}
+              </div>
             </div>
             {products.map((product: ProductProps) => {
               return (
                 <div className="col-md-4" key={product.id}>
                   <div
-                    onClick={ () => select(product.id)}
+                    onClick={() => select(product.id)}
                     className={
                       isSelected(product.id)
                         ? "card mb-4 box-shadow selected"
