@@ -3,6 +3,11 @@ import { useEffect, useState } from "react";
 import Wrapper from "./Wrapper";
 import constant from "../config_const";
 
+interface StatsProps {
+  code: string;
+  count: number;
+  revenue: number;
+}
 const Stats = () => {
   const [stats, setStats] = useState([]);
   useEffect(() => {
@@ -22,19 +27,26 @@ const Stats = () => {
                 <tr>
                   <th>#</th>
                   <th>Code</th>
+                  <th>Order Count</th>
                   <th>Revenue</th>
                 </tr>
               </thead>
               <tbody>
-                {stats.map((s:{code:string, count:number, revenue:number}, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>{constant.CHECKOUT_URL+s.code}</td>
-                      <td>{(s.revenue)}</td>
-                    </tr>
-                  );
-                })}
+                {stats.map(
+                  (
+                    s: StatsProps,
+                    index
+                  ) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{constant.CHECKOUT_URL + s.code}</td>
+                        <td>{s.count}</td>
+                        <td>{s.revenue}</td>
+                      </tr>
+                    );
+                  }
+                )}
               </tbody>
             </table>
           </div>
