@@ -6,6 +6,7 @@ import Wrapper from "./Wrapper";
 
 import "./styles/Main.css";
 import constant from "../config_const";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   const [products, setProducts] = useState([]);
@@ -39,33 +40,30 @@ const Main = () => {
     })();
   }, [searchText]);
 
-
-
   const generateLink = async () => {
     try {
-      // const response = await axios.post("links", {
-      //   products: selected,
-      // });
-      
-      // console.info(response);
-      
-      const url = 'test';
-      // const url = constant.CHECKOUT_URL+response.data.data.code;
-      await navigator.clipboard.writeText('url');
+      const response = await axios.post("links", {
+        products: selected,
+      });
+
+      const code = response.data.data.code;
+      const url = constant.CHECKOUT_URL + code;
+      await navigator.clipboard.writeText("url");
       setNotify({
         show: true,
         error: false,
-        message: `[Copy Clipbaord] Generate the Lnk: # ${url}`,
+        message: `Generate the Lnk: # ${(
+          <Link to={url}>{code}</Link>
+        )}`,
       });
       // copy to the clipboard
-      
     } catch (err) {
       console.info(err);
       setNotify({
         show: true,
         error: true,
         message: `Please login To Generate the Link`,
-      });      
+      });
     } finally {
       setTimeout(() => {
         setNotify({ show: false, error: false, message: "" });
