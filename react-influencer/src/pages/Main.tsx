@@ -43,14 +43,15 @@ const Main = () => {
 
   const generateLink = async () => {
     try {
-      const response = await axios.post("links", {
-        products: selected,
-      });
+      // const response = await axios.post("links", {
+      //   products: selected,
+      // });
       
-      console.info(response);
+      // console.info(response);
       
-      const url = constant.CHECKOUT_URL+response.data.data.code;
-      navigator.clipboard.writeText(url);
+      const url = 'test';
+      // const url = constant.CHECKOUT_URL+response.data.data.code;
+      navigator.clipboard.writeText('url');
       setNotify({
         show: true,
         error: false,
