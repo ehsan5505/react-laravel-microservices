@@ -39,7 +39,7 @@ const Nav = (props: PropsWithRef<any>) => {
   }
 
   return (
-    <div className="navbar navbar-dark bg-dark box-shadow">
+    <nav className="navbar navbar-light bg-light box-shadow">
       <div className="container d-flex justify-content-between">
         <Link
           to={"/"}
@@ -47,9 +47,9 @@ const Nav = (props: PropsWithRef<any>) => {
         >
           Influencer
         </Link>
-        {menu}
+        <div className="mr-auto">{menu}</div>
       </div>
-    </div>
+    </nav>
   );
 };
 
