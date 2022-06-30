@@ -35,7 +35,7 @@ const Main = () => {
 
   let button, info;
 
-  if (selected) {
+  if (selected.length>0) {
     button = (
       <div className="input-group-append">
         <button className="btn btn-info">Generate Link</button>
