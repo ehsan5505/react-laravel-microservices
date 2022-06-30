@@ -48,7 +48,6 @@ const Main = () => {
 
       const code = response.data.data.code;
       const url = constant.CHECKOUT_URL + code;
-      await navigator.clipboard.writeText("url");
       setNotify({
         show: true,
         error: false,
