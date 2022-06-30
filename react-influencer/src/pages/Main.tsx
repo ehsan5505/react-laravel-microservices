@@ -56,8 +56,8 @@ const Main = () => {
         message: `[Copy Clipbaord] Generate the Lnk: # ${url}`,
       });
       // copy to the clipboard
-      navigator.clipboard.writeText(url);
-
+      // navigator.clipboard.writeText(url);
+      
     } catch (err) {
       setNotify({
         show: true,
