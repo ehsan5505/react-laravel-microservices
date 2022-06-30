@@ -18,11 +18,11 @@ const Main = () => {
   const select = (id:number) => {
     if(isSelected(id)){
       // If click again if already selected then unselect it
-      setSelected(selected.filter((s) => s !==id));
+      setSelected(selected.filter(s => s !==id));
       return;
     };
     // @ts-ignore
-    setSelected([...select,id]);
+    setSelected([...selected,id]);
 
   }
 
