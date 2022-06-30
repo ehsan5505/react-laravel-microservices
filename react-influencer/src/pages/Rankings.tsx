@@ -12,7 +12,7 @@ const Rankings = () => {
   useEffect(() => {
     (async () => {
       const response = await axios.get("rankings");
-      console.log(response);
+      console.log(response.data);
       setRankings(response.data);
     })();
   }, []);
