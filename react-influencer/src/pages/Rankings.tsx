@@ -33,8 +33,12 @@ const Rankings = () => {
                 </tr>
               </thead>
               <tbody>
-                {Object.entries(rankings).map(([user, revenue]) => {
-                  return <td>{user}</td>;
+                {Object.entries(rankings).map(([user, revenue],index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{index}</td>
+                    </tr>
+                  );
                 })}
                 {/* {rankings.map((r:{user:string,revenue:number}) => {
                   return (<strong>{r.user}</strong>);
