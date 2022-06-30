@@ -41,10 +41,10 @@ footer p {
 }
 
 .card {
-  cursor: "pointer";
+  cursor: pointer;
 }
 
 .card .selected {
-  border: "2px solid cyan";
+  border: 2px solid cyan;
 }
 
