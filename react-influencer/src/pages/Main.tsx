@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ProductProps } from "../classes/product";
+import Header from "../components/Header";
 import Wrapper from "./Wrapper";
 
 const Main = () => {
@@ -16,6 +17,8 @@ const Main = () => {
 
   return (
     <Wrapper>
+      <Header />
+
       <div className="album py-5 bg-light">
         <div className="container">
           <div className="row">

@@ -12,7 +12,7 @@ const Wrapper = (props: PropsWithChildren<any>) => {
     try {
       (async () => {
         const response = await axios.get("user");
-        const user:UserProps = response.data.data;
+        const user: UserProps = response.data.data;
         props.setUser(
           new UserProps(
             user.id,
@@ -32,8 +32,6 @@ const Wrapper = (props: PropsWithChildren<any>) => {
     <>
       <Nav />
       <main role="main">
-        <Header />
-
         {props.children}
 
         <ToastContainer />
