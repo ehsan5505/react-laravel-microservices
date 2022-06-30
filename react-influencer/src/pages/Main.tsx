@@ -59,6 +59,7 @@ const Main = () => {
       // copy to the clipboard
       
     } catch (err) {
+      console.info(err);
       setNotify({
         show: true,
         error: true,
