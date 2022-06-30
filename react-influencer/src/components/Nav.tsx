@@ -11,17 +11,17 @@ const Nav = (props: PropsWithRef<any>) => {
       <>
         {/* <ul className="navbar-nav">
          <li className="nav-item"> */}
-        <Link to={"/stats"} className="btn">
+        <Link to={"/stats"} className="btn text-white">
           Stats
         </Link>
         {/* </li>
          <li className="nav-item"> */}
-        <Link to={"/rankings"} className="btn">
+        <Link to={"/rankings"} className="btn text-white">
           Rankings
         </Link>
         {/* </li>
          <li className="nav-item"> */}
-        <Link to={"/profile"} className="btn">
+        <Link to={"/profile"} className="btn text-white">
           {props.user.first_name}
         </Link>
         {/* </li>
@@ -29,7 +29,7 @@ const Nav = (props: PropsWithRef<any>) => {
         <Link
           to={"/login"}
           onClick={() => localStorage.clear()}
-          className="btn"
+          className="btn text-white"
         >
           Logout
         </Link>
