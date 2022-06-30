@@ -8,11 +8,11 @@ interface rank {
 }
 
 const Rankings = () => {
-  const [ranking, setRanking] = useState([]);
+  const [rankings, setRankings] = useState([]);
   useEffect(() => {
     (async () => {
       const response = await axios.get("rankings");
-      setRanking(response.data);
+      setRankings(response.data);
     })();
   }, []);
   return (
@@ -29,10 +29,10 @@ const Rankings = () => {
                 </tr>
               </thead>
               <tbody>
-                {ranking.map((r: rank, index) => {
+                {rankings.map((r: rank, index) => {
                   return (
                     <tr key={index}>
-                      <td>{index}</td>
+                      <td>{index + 1}</td>
                       <td>{r.user}</td>
                       <td>{r.revenue}</td>
                     </tr>
