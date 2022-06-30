@@ -5,3 +5,7 @@
 .card .selected {
   border: "2px solid cyan";
 }
+
+html {
+  background-color:#40403e;
+}
