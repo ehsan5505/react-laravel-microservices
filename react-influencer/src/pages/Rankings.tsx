@@ -30,6 +30,13 @@ const Rankings = () => {
                 </tr>
               </thead>
               <tbody>
+                {rankings.map((r:{user:string,revenue:number},index:number) => {
+                  return (
+                    <tr key={index}>
+                      <td>{index+1}</td>
+                    </tr>
+                  );
+                })}
                 {/* {rankings.map((r: rank, index) => {
                   return (
                     <tr key={index}>
