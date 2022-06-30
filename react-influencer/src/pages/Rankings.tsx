@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { setConstantValue } from "typescript";
 import Wrapper from "./Wrapper";
 
 interface rank {
@@ -14,7 +15,7 @@ const Rankings = () => {
         const response = await axios.get("rankings");
         // setRankings(Object.entries(response.data));
         // setRankings(response.data);
-        console.info(Object.entries(response.data).map(([key,value]) => (key) ));
+        console.info(Object.entries(response.data).map(([key,value]) => setRankings([key,value]) ));
       }
     )();
   }, []);
