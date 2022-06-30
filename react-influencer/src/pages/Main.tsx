@@ -47,6 +47,8 @@ const Main = () => {
         products: selected,
       });
 
+      console.info(response);
+
       const url = constant.CHECKOUT_URL+response.data.data.code;
       setNotify({
         show: true,
@@ -61,8 +63,7 @@ const Main = () => {
         show: true,
         error: true,
         message: `Please login To Generate the Link`,
-      });
-      console.error(response);
+      });      
     } finally {
       setTimeout(() => {
         setNotify({ show: false, error: false, message: "" });
