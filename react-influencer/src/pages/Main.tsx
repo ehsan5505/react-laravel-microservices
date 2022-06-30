@@ -62,6 +62,7 @@ const Main = () => {
         error: true,
         message: `Please login To Generate the Link`,
       });
+      console.error(response);
     } finally {
       setTimeout(() => {
         setNotify({ show: false, error: false, message: "" });
