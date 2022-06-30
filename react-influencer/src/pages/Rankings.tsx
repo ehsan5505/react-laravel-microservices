@@ -31,7 +31,9 @@ const Rankings = () => {
                 </tr>
               </thead>
               <tbody>
-                {rankings}
+                {rankings.map((r:{user:string,revenue:number}) => {
+                  return (<strong>{r.user}</strong>);
+                })}
               </tbody>
             </table>
           </div>
