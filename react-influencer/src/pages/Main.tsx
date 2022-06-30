@@ -5,11 +5,17 @@ import Header from "../components/Header";
 import Wrapper from "./Wrapper";
 
 import "./styles/Main.css";
+import constant from "../config_const";
 
 const Main = () => {
   const [products, setProducts] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [selected, setSelected] = useState([]);
+  const [notify, setNotify] = useState({
+    show: false,
+    error: false,
+    message: "",
+  });
 
   // Check if te item is selected
   const isSelected = (id: number) =>
@@ -33,12 +39,50 @@ const Main = () => {
     })();
   }, [searchText]);
 
+  generateLink = async () => {
+    try {
+      const response = await axios.post("link", {
+        products: selected,
+      });
+
+      setNotify({
+        show: true,
+        error: false,
+        message: `Generate the Lnk: # ${constant.CHECKOUT_URL}/${response.data.data.code}`,
+      });
+    } catch (err) {
+      setNotify({
+        show: true,
+        error: true,
+        message: `Please login To Generate the Link`,
+      });
+    } finally {
+      setTimeout(() => {
+        setNotify({ show: false, error: false, message: "" });
+      }, 5000);
+    }
+  };
+
   let button, info;
 
-  if (selected.length>0) {
+  if (selected.length > 0) {
     button = (
       <div className="input-group-append">
-        <button className="btn btn-info">Generate Link</button>
+        <button className="btn btn-info" onClick={() => generateLink()}>
+          Generate Link
+        </button>
+      </div>
+    );
+  }
+
+  if (notify.show) {
+    info = (
+      <div className="col-md-12 mb-4">
+        <div
+          className={notify.error ? "alert alert-danger" : "alert alert-info"}
+        >
+          {notify.message}
+        </div>
       </div>
     );
   }
@@ -63,6 +107,7 @@ const Main = () => {
                 {button}
               </div>
             </div>
+            {info}
             {products.map((product: ProductProps) => {
               return (
                 <div className="col-md-4" key={product.id}>
