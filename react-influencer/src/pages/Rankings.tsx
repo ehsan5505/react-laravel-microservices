@@ -12,6 +12,7 @@ const Rankings = () => {
   useEffect(() => {
     (async () => {
       const response = await axios.get("rankings");
+      console.log(response);
       setRankings(response.data);
     })();
   }, []);
@@ -29,7 +30,7 @@ const Rankings = () => {
                 </tr>
               </thead>
               <tbody>
-                {rankings.map((r: rank, index) => {
+                {/* {rankings.map((r: rank, index) => {
                   return (
                     <tr key={index}>
                       <td>{index + 1}</td>
@@ -37,7 +38,7 @@ const Rankings = () => {
                       <td>{r.revenue}</td>
                     </tr>
                   );
-                })}
+                })} */}
               </tbody>
             </table>
           </div>
