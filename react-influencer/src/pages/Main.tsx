@@ -39,7 +39,7 @@ const Main = () => {
     })();
   }, [searchText]);
 
-  generateLink = async () => {
+  const generateLink = async () => {
     try {
       const response = await axios.post("link", {
         products: selected,
