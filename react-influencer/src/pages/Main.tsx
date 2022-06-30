@@ -51,9 +51,7 @@ const Main = () => {
       setNotify({
         show: true,
         error: false,
-        message: `Generate the Lnk: # ${(
-          <Link to={url}>{code}</Link>
-        )}`,
+        message: `Generate the Lnk: # <a href="${url}">${code}</a>`,
       });
       // copy to the clipboard
     } catch (err) {
