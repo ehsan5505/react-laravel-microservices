@@ -15,11 +15,10 @@ const Rankings = () => {
         const response = await axios.get("rankings");
         // setRankings(Object.entries(response.data));
         setRankings(response.data);
-        let temp = response.data;
-        // console.info(Object.entries(response.data).map(([key,value]) => temp[key = value]; ));
+        console.warn(Object.entries(response.data).map(([key,value]) => value ));
+        // console.info(rankings);
       }
       )();
-      console.info(rankings);
   }, []);
   return (
     <Wrapper>
