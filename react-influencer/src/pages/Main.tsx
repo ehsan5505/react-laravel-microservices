@@ -39,12 +39,15 @@ const Main = () => {
     })();
   }, [searchText]);
 
+
+
   const generateLink = async () => {
     try {
-      const response = await axios.post("link", {
+      const response = await axios.post("links", {
         products: selected,
       });
 
+      console.info(response.data);
       setNotify({
         show: true,
         error: false,
