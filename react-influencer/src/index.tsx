@@ -7,8 +7,9 @@ import axios from "axios";
 import { Provider } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import configureStore from "./redux/configureStore";
+import constant from "./config_const";
 
-axios.defaults.baseURL = "http://192.168.22.138:8000/api/influencer/";
+axios.defaults.baseURL = constant.BASE_URL;
 axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(
   "token"
 )}`;
