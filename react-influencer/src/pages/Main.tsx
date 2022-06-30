@@ -58,8 +58,8 @@ const Main = () => {
                     onClick={ () => select(product.id)}
                     className={
                       isSelected(product.id)
-                        ? "card mb-4 box-shadow"
-                        : "card mb-4 box-shadow selected"
+                        ? "card mb-4 box-shadow selected"
+                        : "card mb-4 box-shadow"
                     }
                   >
                     <img

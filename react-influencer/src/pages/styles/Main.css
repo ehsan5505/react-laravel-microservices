@@ -2,7 +2,7 @@
   cursor: pointer;
 }
 
-.card.selected {
-  border: 2px solid green;
+.card .selected {
+  border: 3px solid cyan;
 }
 
