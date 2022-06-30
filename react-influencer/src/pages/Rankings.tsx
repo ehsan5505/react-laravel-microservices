@@ -11,10 +11,11 @@ const Rankings = () => {
   const [rankings, setRankings] = useState([]);
   useEffect(() => {
     (async () => {
-      const response = await axios.get("rankings");
-      console.log(response.data);
-      setRankings(response.data);
-    })();
+        const response = await axios.get("rankings");
+        console.info(response.data);
+        setRankings(response.data);
+      }
+    )();
   }, []);
   return (
     <Wrapper>
@@ -26,17 +27,21 @@ const Rankings = () => {
                 <tr>
                   <th>#</th>
                   <th>Name</th>
-                  <th>Revebue</th>
+                  <th>Revenue</th>
                 </tr>
               </thead>
               <tbody>
-                {rankings.map((r:{user:string,revenue:number},index:number) => {
-                  return (
-                    <tr key={index}>
-                      <td>{index+1}</td>
-                    </tr>
-                  );
-                })}
+                {rankings.map(
+                  (r: { user: string; revenue: number }, index: number) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{r.user}</td>
+                        <td>{r.revenue}</td>
+                      </tr>
+                    );
+                  }
+                )}
                 {/* {rankings.map((r: rank, index) => {
                   return (
                     <tr key={index}>
