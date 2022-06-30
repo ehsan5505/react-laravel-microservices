@@ -51,7 +51,7 @@ const Main = () => {
       
       const url = 'test';
       // const url = constant.CHECKOUT_URL+response.data.data.code;
-      navigator.clipboard.writeText('url');
+      await navigator.clipboard.writeText('url');
       setNotify({
         show: true,
         error: false,
