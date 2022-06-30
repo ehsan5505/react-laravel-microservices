@@ -38,13 +38,10 @@ const Rankings = () => {
                     <tr key={index}>
                       <td>{index}</td>
                       <td>{user}</td>
-                      <td>{revenue}</td>
+                      <td>{parseInt(revenue)}</td>
                     </tr>
                   );
                 })}
-                {/* {rankings.map((r:{user:string,revenue:number}) => {
-                  return (<strong>{r.user}</strong>);
-                })} */}
               </tbody>
             </table>
           </div>
