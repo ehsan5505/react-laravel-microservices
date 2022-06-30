@@ -47,12 +47,15 @@ const Main = () => {
         products: selected,
       });
 
-      console.info(response.data);
+      const url = constant.CHECKOUT_URL+response.data.data.code;
       setNotify({
         show: true,
         error: false,
-        message: `Generate the Lnk: # ${constant.CHECKOUT_URL}/${response.data.data.code}`,
+        message: `[Copy Clipbaord] Generate the Lnk: # ${url}`,
       });
+      // copy to the clipboard
+      navigator.clipboard.writeText(url);
+
     } catch (err) {
       setNotify({
         show: true,
