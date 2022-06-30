@@ -51,7 +51,7 @@ const Main = () => {
       setNotify({
         show: true,
         error: false,
-        message: `Generate the Lnk: # <a href="${url}">${code}</a>`,
+        message: `Generate the Lnk: ${url}`,
       });
       // copy to the clipboard
     } catch (err) {
@@ -64,7 +64,7 @@ const Main = () => {
     } finally {
       setTimeout(() => {
         setNotify({ show: false, error: false, message: "" });
-      }, 5000);
+      }, 25000);
     }
   };
 
