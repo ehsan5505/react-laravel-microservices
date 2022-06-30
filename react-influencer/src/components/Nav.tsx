@@ -8,15 +8,15 @@ const Nav = (props: PropsWithRef<any>) => {
 
   if (props.user.first_name) {
     menu = (
-      <>
+      <ul className="navbar-nav">
         {/* <nav className="my-2 my-md-0 mr-md-3"> */}
-        <Link to={"/stats"} className="btn btn-outline-primary">
+        <Link to={"/stats"} className="nav-link">
           Stats
         </Link>
-        <Link to={"/rankings"} className="btn btn-outline-primary">
+        <Link to={"/rankings"} className="nav-link">
           Rankings
         </Link>
-        <Link to={"/profile"} className="btn btn-outline-primary">
+        <Link to={"/profile"} className="nav-link">
           {props.user.first_name}
         </Link>
         {/* </nav> */}
@@ -24,15 +24,15 @@ const Nav = (props: PropsWithRef<any>) => {
         <Link
           to={"/login"}
           onClick={() => localStorage.clear()}
-          className="btn btn-outline-primary"
+          className="nav-link"
         >
           Logout
         </Link>
-      </>
+      </ul>
     );
   } else {
     menu = (
-      <Link to={"/login"} className="btn btn-outline-primary">
+      <Link to={"/login"} className="nav-link">
         Login
       </Link>
     );
