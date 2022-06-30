@@ -14,10 +14,12 @@ const Rankings = () => {
     (async () => {
         const response = await axios.get("rankings");
         // setRankings(Object.entries(response.data));
-        // setRankings(response.data);
-        console.info(Object.entries(response.data).map(([key,value]) => setRankings([key,value]) ));
+        setRankings(response.data);
+        let temp = response.data;
+        // console.info(Object.entries(response.data).map(([key,value]) => temp[key = value]; ));
       }
-    )();
+      )();
+      console.info(rankings);
   }, []);
   return (
     <Wrapper>
@@ -33,7 +35,6 @@ const Rankings = () => {
                 </tr>
               </thead>
               <tbody>
-                
                 {/* {rankings.map((r:{user:string,revenue:number}) => {
                   return (<strong>{r.user}</strong>);
                 })} */}
