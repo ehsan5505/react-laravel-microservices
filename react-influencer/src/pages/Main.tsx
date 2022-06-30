@@ -23,6 +23,7 @@ const Main = () => {
     };
     // @ts-ignore
     setSelected([...selected,id]);
+    console.info(selected);
 
   }
 
