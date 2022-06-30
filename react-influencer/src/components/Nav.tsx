@@ -9,23 +9,15 @@ const Nav = (props: PropsWithRef<any>) => {
   if (props.user.first_name) {
     menu = (
       <>
-        {/* <ul className="navbar-nav">
-         <li className="nav-item"> */}
         <Link to={"/stats"} className="btn text-white">
           Stats
         </Link>
-        {/* </li>
-         <li className="nav-item"> */}
         <Link to={"/rankings"} className="btn text-white">
           Rankings
         </Link>
-        {/* </li>
-         <li className="nav-item"> */}
         <Link to={"/profile"} className="btn text-white">
           {props.user.first_name}
         </Link>
-        {/* </li>
-         <li className="nav-item"> */}
         <Link
           to={"/login"}
           onClick={() => localStorage.clear()}
@@ -33,8 +25,6 @@ const Nav = (props: PropsWithRef<any>) => {
         >
           Logout
         </Link>
-        {/* </li>
-       </ul> */}
       </>
     );
   } else {

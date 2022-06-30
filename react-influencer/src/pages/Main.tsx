@@ -4,6 +4,8 @@ import { ProductProps } from "../classes/product";
 import Header from "../components/Header";
 import Wrapper from "./Wrapper";
 
+import "./Main.css";
+
 const Main = () => {
   const [products, setProducts] = useState([]);
   const [searchText, setSearchText] = useState("");
