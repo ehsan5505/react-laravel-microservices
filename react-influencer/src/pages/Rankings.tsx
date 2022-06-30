@@ -15,7 +15,7 @@ const Rankings = () => {
         const response = await axios.get("rankings");
         // setRankings(Object.entries(response.data));
         setRankings(response.data);
-        console.warn(Object.entries(response.data).map(([key,value]) => value ));
+        console.warn(Object.entries(response.data).map(([key,value]) => [key => value] ));
         // console.info(rankings);
       }
       )();
