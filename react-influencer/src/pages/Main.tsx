@@ -46,17 +46,17 @@ const Main = () => {
       const response = await axios.post("links", {
         products: selected,
       });
-
+      
       console.info(response);
-
+      
       const url = constant.CHECKOUT_URL+response.data.data.code;
+      navigator.clipboard.writeText(url);
       setNotify({
         show: true,
         error: false,
         message: `[Copy Clipbaord] Generate the Lnk: # ${url}`,
       });
       // copy to the clipboard
-      // navigator.clipboard.writeText(url);
       
     } catch (err) {
       setNotify({
