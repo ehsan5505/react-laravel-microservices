@@ -15,7 +15,7 @@ const Rankings = () => {
       const response = await axios.get("rankings");
       // setRankings(Object.entries(response.data));
       setRankings(response.data);
-      
+
       // console.info(rankings);
     })();
   }, []);
@@ -33,10 +33,12 @@ const Rankings = () => {
                 </tr>
               </thead>
               <tbody>
-                {Object.entries(rankings).map(([user, revenue],index) => {
+                {Object.entries(rankings).map(([user, revenue], index) => {
                   return (
                     <tr key={index}>
                       <td>{index}</td>
+                      <td>{user}</td>
+                      <td>{revenue}</td>
                     </tr>
                   );
                 })}
