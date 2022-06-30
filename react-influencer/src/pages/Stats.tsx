@@ -8,6 +8,7 @@ const Stats = () => {
   useEffect(() => {
     (async () => {
       const response = await axios.get("stats");
+      console.info(response);
       setStats(response.data);
     })();
   }, []);
@@ -29,7 +30,7 @@ const Stats = () => {
                   return (
                     <tr key={index}>
                       <td>{index + 1}</td>
-                      <td>{constant.CHECKOUT_URL+"/"+code}</td>
+                      <td>{constant.CHECKOUT_URL+code}</td>
                       <td>{parseInt(revenue)}</td>
                     </tr>
                   );
