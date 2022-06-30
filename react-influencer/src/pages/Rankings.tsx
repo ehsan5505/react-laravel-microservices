@@ -8,12 +8,13 @@ interface rank {
 }
 
 const Rankings = () => {
-  const [rankings, setRankings] = useState([]);
+  const [rankings, setRankings] = useState({});
   useEffect(() => {
     (async () => {
         const response = await axios.get("rankings");
-        console.info(Object.entries(response.data) );
-        setRankings(response.data);
+        setRankings(Object.entries(response.data));
+        // setRankings(response.data);
+        console.log(rankings);
       }
     )();
   }, []);
