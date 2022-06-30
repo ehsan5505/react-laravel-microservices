@@ -4,8 +4,7 @@ import { ProductProps } from "../classes/product";
 import Header from "../components/Header";
 import Wrapper from "./Wrapper";
 
-import './main.css';
-
+import "./Styles/MainStyle.css";
 
 const Main = () => {
   const [products, setProducts] = useState([]);
