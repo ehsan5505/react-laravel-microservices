@@ -9,14 +9,17 @@ const Nav = (props: PropsWithRef<any>) => {
   if (props.user.first_name) {
     menu = (
       <>
-        <nav className="my-2 my-md-0 mr-md-3">
-          <Link to={"/rankings"} className="btn btn-outline-primary">
-            Rankings
-          </Link>
-          <Link to={"/profile"} className="btn btn-outline-primary">
-            {props.user.first_name}
-          </Link>
-        </nav>
+        {/* <nav className="my-2 my-md-0 mr-md-3"> */}
+        <Link to={"/stats"} className="btn btn-outline-primary">
+          Stats
+        </Link>
+        <Link to={"/rankings"} className="btn btn-outline-primary">
+          Rankings
+        </Link>
+        <Link to={"/profile"} className="btn btn-outline-primary">
+          {props.user.first_name}
+        </Link>
+        {/* </nav> */}
 
         <Link
           to={"/login"}
