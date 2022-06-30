@@ -12,8 +12,8 @@ const Main = () => {
   const [selected, setSelected] = useState([]);
 
   // Check if te item is selected
-  const isSelected = (id: number) => selected.filter(s => s.id === id).length > 0;
-
+  const isSelected = (id: number) =>
+    selected.filter((s) => s === id).length > 0;
 
   useEffect(() => {
     (async () => {
@@ -42,7 +42,13 @@ const Main = () => {
             {products.map((product: ProductProps) => {
               return (
                 <div className="col-md-4" key={product.id}>
-                  <div className={isSelected(product.id) ? "card mb-4 box-shadow selected" : "card mb-4 box-shadow"} >
+                  <div
+                    className={
+                      isSelected(product.id)
+                        ? "card mb-4 box-shadow selected"
+                        : "card mb-4 box-shadow"
+                    }
+                  >
                     <img
                       className="card-img-top"
                       src={product.imageUrl}
