@@ -15,6 +15,17 @@ const Main = () => {
   const isSelected = (id: number) =>
     selected.filter((s) => s === id).length > 0;
 
+  const select = (id:number) => {
+    if(isSelected(id)){
+      // If click again if already selected then unselect it
+      setSelected(selected.filter((s) => s !==id));
+      return;
+    };
+    // @ts-ignore
+    setSelected([...select,id]);
+
+  }
+
   useEffect(() => {
     (async () => {
       const response = await axios.get(`products?s=${searchText}`);
@@ -48,6 +59,7 @@ const Main = () => {
                         ? "card mb-4 box-shadow selected"
                         : "card mb-4 box-shadow"
                     }
+                    onClick={select(product.id)}
                   >
                     <img
                       className="card-img-top"
