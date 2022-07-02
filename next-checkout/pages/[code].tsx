@@ -53,8 +53,10 @@ const Home = () => {
   };
 
   const qty = (id: number) => {
-    const q = quantities.find((q) => q.product_id === id);
-    return q ? q.quantity : 0;
+    console.info(quantities.find(q => q.product_id == id));
+    // const q = quantities.find((q) => q.product_id === id);
+    // return q ? q.quantity : 0;
+    return 0;
   };
 
   return (
