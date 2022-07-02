@@ -98,6 +98,7 @@ const Home = () => {
                       </div>
                       <input
                         type="number"
+                        min="0"
                         className="text-muted form-control"
                         style={{ width: "65px" }}
                         defaultValue={getQuantity(product.id)}
