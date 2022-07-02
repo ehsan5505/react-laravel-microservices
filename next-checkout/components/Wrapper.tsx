@@ -9,6 +9,7 @@ const Wrapper = (props: PropsWithChildren<any>) => {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
         />
+        <script src="https://js.stripe.com/v3/" async></script>
       </Head>
       {props.children}
     </div>

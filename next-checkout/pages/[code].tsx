@@ -4,6 +4,8 @@ import config from "../config_const";
 import axios from "axios/index";
 import { useRouter } from "next/router";
 
+declare var Stripe;
+
 const Home = () => {
   const router = useRouter();
   const { code } = router.query;
@@ -71,10 +73,10 @@ const Home = () => {
   };
 
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
 
-    console.info({
+    const resp = await axios.post(`${config.endpoint}/orders`,{
       first_name:     firstName,
       last_name:      lastName,
       email:          email,
@@ -86,6 +88,8 @@ const Home = () => {
       code:           code,
       items:          quantities
     });
+    console.log(resp.data);
+    
   };
 
   return (
