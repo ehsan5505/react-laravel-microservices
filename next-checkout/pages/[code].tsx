@@ -54,12 +54,12 @@ const Home = () => {
                     <li className="list-group-item d-flex justify-content-between lh-condensed">
                       <div>
                         <h6 className="my-0">Quantity</h6>
-                        <input
-                          type="number"
-                          className="text-muted form-control"
-                          style={{ width: "65px" }}
-                        />
                       </div>
+                      <input
+                        type="number"
+                        className="text-muted form-control"
+                        style={{ width: "65px" }}
+                      />
                     </li>
                   </div>
                 );
