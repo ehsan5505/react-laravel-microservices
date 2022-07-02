@@ -25,23 +25,24 @@ const Home = () => {
               quantity: 0,
             };
           })
-        );
+          );
       })();
-      console.log(quantities);
     }
   }, [code]);
 
   const changeQty = (id: number, qty: number) => {
-    setQuantities(
-      quantities.map((q) => {
-        if (q.productid == id) {
-          return {
-            product_id: id,
-            quantity: qty,
-          };
-        }
-      })
-    );
+    // setQuantities(
+      // quantities.map((q) => {
+      //   if (q.productid == id) {
+      //     return {
+      //       product_id: id,
+      //       quantity: qty,
+      //     };
+      //   }
+      // }
+      // )
+      // );
+      console.log(quantities);
   };
 
   const total = () => {
