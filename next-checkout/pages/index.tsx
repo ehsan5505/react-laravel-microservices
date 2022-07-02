@@ -1,14 +1,8 @@
-import Head from "next/head";
+import Wrapper from "../components/Wrapper";
 
 export default function Home() {
   return (
-    <div className="container bg-light">
-      <Head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-        />
-      </Head>
+    <Wrapper>
       <div className="row">
         <div className="col-md-4 order-md-2 mb-4">
           <h4 className="d-flex justify-content-between align-items-center mb-3">
@@ -107,7 +101,11 @@ export default function Home() {
 
               <div className="col-md-4 mb-3">
                 <label htmlFor="state">State</label>
-                <select className="custom-select d-block w-100 form-select" id="state" required>
+                <select
+                  className="custom-select d-block w-100 form-select"
+                  id="state"
+                  required
+                >
                   <option value="">Choose...</option>
                   <option value="SI">Sindh</option>
                   <option value="PB">Punjab</option>
@@ -157,6 +155,6 @@ export default function Home() {
           </form>
         </div>
       </div>
-    </div>
+    </Wrapper>
   );
 }
