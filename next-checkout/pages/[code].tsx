@@ -86,7 +86,7 @@ const Home = () => {
       code:           code,
       items:          quantities
     });
-  }
+  };
 
   return (
     <Wrapper>
