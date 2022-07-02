@@ -19,33 +19,29 @@ const Home = () => {
         setUser(data.user);
         setProducts(data.products);
         setQuantities(
-          data.products.map(p => {
+          data.products.map((p) => {
             return {
               product_id: p.id,
               quantity: 0,
             };
           })
-          );
+        );
       })();
     }
   }, [code]);
 
   const changeQty = (id: number, qty: number) => {
-    // setQuantities(
-      // quantities.map((q) => {
-      //   if (q.productid == id) {
-      //     return {
-      //       product_id: id,
-      //       quantity: qty,
-      //     };
-      //   }
-      // }
-      // )
-      // );
-      console.log(quantities);
-      console.log(`ProductID: ${id}`);
-      console.log(`Change Qty: ${qty}`);
-
+    setQuantities(
+      quantities.map(q => {
+        console.info(q);
+        // if (q.productid == id) {
+        //   return {
+        //     product_id: id,
+        //     quantity: qty,
+        //   };
+        // }
+      })
+    );
   };
 
   const total = () => {
@@ -58,7 +54,7 @@ const Home = () => {
   };
 
   const qty = (id: number) => {
-    const q = quantities.find(q => q.product_id === id);
+    const q = quantities.find((q) => q.product_id === id);
     return q ? q.quantity : 0;
   };
 
@@ -101,7 +97,9 @@ const Home = () => {
                         className="text-muted form-control"
                         style={{ width: "65px" }}
                         defaultValue={qty(product.id)}
-                        onChange={e => changeQty(product.id, parseInt(e.target.value))}
+                        onChange={(e) =>
+                          changeQty(product.id, parseInt(e.target.value))
+                        }
                       />
                     </li>
                   </div>
