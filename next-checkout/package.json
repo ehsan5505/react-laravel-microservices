@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
     "@types/next": "^9.0.0",
     "axios": "^0.27.2",
     "next": "12.2.0",
