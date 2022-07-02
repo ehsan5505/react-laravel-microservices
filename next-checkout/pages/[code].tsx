@@ -19,7 +19,7 @@ const Home = () => {
         setUser(data.user);
         setProducts(data.products);
         setQuantities(
-          products.map((p) => {
+          data.products.map((p) => {
             return {
               product_id: p.id,
               quantity: 0,
@@ -44,20 +44,16 @@ const Home = () => {
   };
 
   const total = () => {
-    let t,
-      temp = 0;
+    let temp = 0;
     quantities.forEach((q) => {
       const product = products.find((p) => p.id === q.product_id);
       temp += product.price * q.quantity;
     });
-
-    console.info(temp);
-
-    return (t = 0);
+    return temp;
   };
 
   const qty = (id: number) => {
-    const q = quantities.find(q => q.product_id === id);
+    const q = quantities.find((q) => q.product_id === id);
     return q ? q.quantity : 0;
   };
 
