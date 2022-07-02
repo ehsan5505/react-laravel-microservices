@@ -9,7 +9,7 @@ const Home = () => {
   const { code } = router.query;
   const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
-  const [quantities, setQuantities] = useState([]);
+  const [quantities, setQuantities] = useState({productid:0,quantity:0});
 
   useEffect(() => {
     if (code !== undefined) {
