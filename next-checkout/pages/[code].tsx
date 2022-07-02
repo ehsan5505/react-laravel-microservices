@@ -11,12 +11,12 @@ const Home = () => {
   const { code } = router.query;
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [email, setEmail]       = useState("");
-  const [address, setAddress]   = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
   const [address2, setAddress2] = useState("");
-  const [country, setCountry]   = useState("");
-  const [city,setCity]          = useState("");
-  const [zip, setZip]           = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [zip, setZip] = useState("");
 
   const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
@@ -72,24 +72,27 @@ const Home = () => {
     return temp;
   };
 
-
   const submit = async (e) => {
     e.preventDefault();
 
-    const resp = await axios.post(`${config.endpoint}/orders`,{
-      first_name:     firstName,
-      last_name:      lastName,
-      email:          email,
-      address:        address,
-      address2:       address2,
-      city:           city,
-      zip:            zip,
-      country:        country,
-      code:           code,
-      items:          quantities
+    const resp = await axios.post(`${config.endpoint}/orders`, {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      address: address,
+      address2: address2,
+      city: city,
+      zip: zip,
+      country: country,
+      code: code,
+      items: quantities,
     });
-    console.log(resp.data);
-    
+
+    const stripe = new Stripe(config.stripe_key);
+
+    stripe.redirectToCheckout({
+      sessionId: resp.data.id,
+    });
   };
 
   return (
@@ -150,7 +153,6 @@ const Home = () => {
           <div className="col-md-8 order-md-1">
             <h4 className="mb-3">Billing address</h4>
             <form className="needs-validation" onSubmit={submit}>
-
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label htmlFor="firstName">First name</label>
@@ -159,7 +161,7 @@ const Home = () => {
                     className="form-control"
                     id="firstName"
                     placeholder="First Name"
-                    onChange={e => setFirstName(e.target.value)}
+                    onChange={(e) => setFirstName(e.target.value)}
                     required
                   />
                 </div>
@@ -170,7 +172,7 @@ const Home = () => {
                     className="form-control"
                     id="lastName"
                     placeholder="Last Name"
-                    onChange={e => setLastName(e.target.value)}
+                    onChange={(e) => setLastName(e.target.value)}
                     required
                   />
                 </div>
@@ -185,7 +187,7 @@ const Home = () => {
                   className="form-control"
                   id="email"
                   placeholder="you@example.com"
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
                 <div className="invalid-feedback">
@@ -200,7 +202,7 @@ const Home = () => {
                   className="form-control"
                   id="address"
                   placeholder="1234 Main St"
-                  onChange={e => setAddress(e.target.value)}
+                  onChange={(e) => setAddress(e.target.value)}
                   required
                 />
               </div>
@@ -214,7 +216,7 @@ const Home = () => {
                   className="form-control"
                   id="address2"
                   placeholder="Apartment or suite"
-                  onChange={e => setAddress2(e.target.value)}
+                  onChange={(e) => setAddress2(e.target.value)}
                 />
               </div>
 
@@ -226,7 +228,7 @@ const Home = () => {
                     name="country"
                     className="form-control"
                     placeholder="Country"
-                    onChange={e => setCountry(e.target.value)}
+                    onChange={(e) => setCountry(e.target.value)}
                     required
                   />
                 </div>
@@ -238,7 +240,7 @@ const Home = () => {
                     name="city"
                     className="form-control"
                     placeholder="City"
-                    onChange={e => setCity(e.target.value)}
+                    onChange={(e) => setCity(e.target.value)}
                     required
                   />
                 </div>
@@ -250,7 +252,7 @@ const Home = () => {
                     className="form-control"
                     id="zip"
                     placeholder="Zip"
-                    onChange={e => setZip(e.target.value)}
+                    onChange={(e) => setZip(e.target.value)}
                     required
                   />
                 </div>
@@ -258,10 +260,10 @@ const Home = () => {
 
               <hr className="mb-4" />
               <input
-                type='submit'
+                type="submit"
                 className="btn btn-primary btn-lg btn-block"
                 value="Checkout"
-                />
+              />
             </form>
           </div>
         </div>
