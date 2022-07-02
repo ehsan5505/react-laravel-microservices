@@ -1,12 +1,11 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductProps } from "../classes/product";
 import Header from "../components/Header";
 import Wrapper from "./Wrapper";
 
 import "./styles/Main.css";
 import constant from "../config_const";
-import { Link } from "react-router-dom";
 
 const Main = () => {
   const [products, setProducts] = useState([]);
