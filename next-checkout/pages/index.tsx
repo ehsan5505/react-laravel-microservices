@@ -93,13 +93,13 @@ export default function Home() {
               <div className="col-md-5 mb-3">
                 <label htmlFor="country">Country</label>
                 <select
-                  className="custom-select select d-block w-100"
+                  className="custom-select form-select d-block w-100"
                   id="country"
                   required
                 >
                   <option value="">Choose...</option>
-                  <option value="PK">Pakistan</option>
                   <option value="IN">India</option>
+                  <option value="PK">Pakistan</option>
                   <option value="US">United States</option>
                   <option value="UK">United Kingdom</option>
                 </select>
