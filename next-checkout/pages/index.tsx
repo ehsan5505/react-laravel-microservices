@@ -25,10 +25,10 @@ export default function Home() {
         </div>
         <div class="col-md-8 order-md-1">
           <h4 class="mb-3">Billing address</h4>
-          <form class="needs-validation" novalidate>
+          <form class="needs-validation">
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="firstName">First name</label>
+                <label htmlFor="firstName">First name</label>
                 <input
                   type="text"
                   class="form-control"
@@ -38,7 +38,7 @@ export default function Home() {
                 />
               </div>
               <div class="col-md-6 mb-3">
-                <label for="lastName">Last name</label>
+                <label htmlFor="lastName">Last name</label>
                 <input
                   type="text"
                   class="form-control"
@@ -50,7 +50,7 @@ export default function Home() {
             </div>
 
             <div class="mb-3">
-              <label for="email">
+              <label htmlFor="email">
                 Email <span class="text-muted">(Optional)</span>
               </label>
               <input
@@ -65,7 +65,7 @@ export default function Home() {
             </div>
 
             <div class="mb-3">
-              <label for="address">Address</label>
+              <label htmlFor="address">Address</label>
               <input
                 type="text"
                 class="form-control"
@@ -76,7 +76,7 @@ export default function Home() {
             </div>
 
             <div class="mb-3">
-              <label for="address2">
+              <label htmlFor="address2">
                 Address 2 <span class="text-muted">(Optional)</span>
               </label>
               <input
@@ -89,7 +89,7 @@ export default function Home() {
 
             <div class="row">
               <div class="col-md-5 mb-3">
-                <label for="country">Country</label>
+                <label htmlFor="country">Country</label>
                 <select
                   class="custom-select d-block w-100"
                   id="country"
@@ -101,7 +101,7 @@ export default function Home() {
               </div>
 
               <div class="col-md-4 mb-3">
-                <label for="state">State</label>
+                <label htmlFor="state">State</label>
                 <select class="custom-select d-block w-100" id="state" required>
                   <option value="">Choose...</option>
                   <option>California</option>
@@ -109,7 +109,7 @@ export default function Home() {
               </div>
 
               <div class="col-md-3 mb-3">
-                <label for="zip">Zip</label>
+                <label htmlFor="zip">Zip</label>
                 <input
                   type="text"
                   class="form-control"
