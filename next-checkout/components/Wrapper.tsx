@@ -3,7 +3,7 @@ import Head from "next/head";
 
 const Wrapper = (props: PropsWithChildren<any>) => {
   return (
-    <div className="container bg-light">
+    <div className="bg-light">
       <Head>
         <link
           rel="stylesheet"

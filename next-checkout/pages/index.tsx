@@ -3,7 +3,16 @@ import Wrapper from "../components/Wrapper";
 export default function Home() {
   return (
     <Wrapper>
-      <div className="row">
+      <div className="container">
+        <div className="py-5 text-center">
+          <h2>Checkout form</h2>
+          <p className="lead">
+            Below is an example form built entirely with Bootstrap's form
+            controls. Each required form group has a validation state that can
+            be triggered by attempting to submit the form without completing it.
+          </p>
+        </div>
+
         <div className="col-md-4 order-md-2 mb-4">
           <h4 className="d-flex justify-content-between align-items-center mb-3">
             <span className="text-muted">Your cart</span>
@@ -16,6 +25,11 @@ export default function Home() {
                 <small className="text-muted">Brief description</small>
               </div>
               <span className="text-muted">$12</span>
+            </li>
+
+            <li className="list-group-item d-flex justify-content-between">
+              <span>Total (USD)</span>
+              <strong>$20</strong>
             </li>
           </ul>
         </div>
@@ -127,27 +141,6 @@ export default function Home() {
               </div>
             </div>
 
-            <hr className="mb-4" />
-            <div className="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                className="form-control-input"
-                id="same-address"
-              />
-              <label className="custom-control-label" htmlFor="same-address">
-                Shipping address is the same as my billing address
-              </label>
-            </div>
-            <div className="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                className="form-control-input"
-                id="save-info"
-              />
-              <label className="custom-control-label" htmlFor="save-info">
-                Save this information for next time
-              </label>
-            </div>
             <hr className="mb-4" />
             <button className="btn btn-primary btn-lg btn-block" type="submit">
               Continue to checkout
