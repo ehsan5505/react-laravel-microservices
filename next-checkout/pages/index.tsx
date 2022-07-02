@@ -131,7 +131,7 @@ export default function Home() {
             <div className="custom-control custom-checkbox">
               <input
                 type="checkbox"
-                className="custom-control-input"
+                className="form-control-input"
                 id="same-address"
               />
               <label className="custom-control-label" htmlFor="same-address">
@@ -141,7 +141,7 @@ export default function Home() {
             <div className="custom-control custom-checkbox">
               <input
                 type="checkbox"
-                className="custom-control-input"
+                className="form-control-input"
                 id="save-info"
               />
               <label className="custom-control-label" htmlFor="save-info">
