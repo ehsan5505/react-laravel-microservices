@@ -27,7 +27,8 @@ const Home = () => {
         <div className="py-5 text-center">
           <h2>Welcome</h2>
           <p className="lead">
-            {user?.first_name} {user?.last_name} has invited you to Buy the item(s)!
+            {user?.first_name} {user?.last_name} has invited you to Buy the
+            item(s)!
           </p>
         </div>
 
@@ -40,18 +41,27 @@ const Home = () => {
             <ul className="list-group mb-3">
               {products.map((product) => {
                 return (
-                  <li
-                    key={product.id}
-                    className="list-group-item d-flex justify-content-between lh-condensed"
-                  >
-                    <div>
-                      <h6 className="my-0">{product.title}</h6>
-                      <small className="text-muted">
-                        {product.description}
-                      </small>
-                    </div>
-                    <span className="text-muted">${product.price}</span>
-                  </li>
+                  <div key={product.id}>
+                    <li className="list-group-item d-flex justify-content-between lh-condensed">
+                      <div>
+                        <h6 className="my-0">{product.title}</h6>
+                        <small className="text-muted">
+                          {product.description}
+                        </small>
+                      </div>
+                      <span className="text-muted">${product.price}</span>
+                    </li>
+                    <li className="list-group-item d-flex justify-content-between lh-condensed">
+                      <div>
+                        <h6 className="my-0">Quantity</h6>
+                        <input
+                          type="number"
+                          className="text-muted form-control"
+                          style={{ width: "65px" }}
+                        />
+                      </div>
+                    </li>
+                  </div>
                 );
               })}
 
