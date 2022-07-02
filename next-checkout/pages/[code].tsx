@@ -27,8 +27,7 @@ const Home = () => {
         <div className="py-5 text-center">
           <h2>Welcome</h2>
           <p className="lead">
-            {user?.firstName} {user?.lastName} has invited you to Buy those
-            item(s)!
+            {user?.first_name} {user?.last_name} has invited you to Buy the item(s)!
           </p>
         </div>
 
