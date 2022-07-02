@@ -19,7 +19,7 @@ const Home = () => {
         setUser(data.user);
         setProducts(data.products);
         setQuantities(
-          data.products.map((p) => {
+          data.products.map(p => {
             return {
               product_id: p.id,
               quantity: 0,
@@ -27,6 +27,7 @@ const Home = () => {
           })
         );
       })();
+      console.log(quantities);
     }
   }, [code]);
 
