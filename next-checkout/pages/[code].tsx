@@ -43,6 +43,9 @@ const Home = () => {
       // )
       // );
       console.log(quantities);
+      console.log(`ProductID: ${id}`);
+      console.log(`Change Qty: ${qty}`);
+
   };
 
   const total = () => {
