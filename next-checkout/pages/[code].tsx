@@ -1,9 +1,26 @@
+import { useEffect, useState } from "react";
 import Wrapper from "../components/Wrapper";
-import { useRouter } from "../node_modules/next/router";
+import config from "../config_const";
+import axios from "axios/index";
+import { useRouter } from "next/router";
 
 const Home = () => {
   const router = useRouter();
   const {code} = router.query;
+  const [user,setUser] = useState();
+
+  useEffect(()=> {
+    if(code !== undefined)
+    {
+      (
+        async() => {
+          const resp = await axios.get(config.endpoint+{code});
+          console.info(resp);
+        }
+      )();
+    }
+
+  },[code]);
 
   return (
     <Wrapper>
