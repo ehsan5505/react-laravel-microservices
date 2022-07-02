@@ -127,7 +127,7 @@ export default function Home() {
                 class="custom-control-input"
                 id="same-address"
               />
-              <label class="custom-control-label" for="same-address">
+              <label class="custom-control-label" htmlFor="same-address">
                 Shipping address is the same as my billing address
               </label>
             </div>
@@ -137,7 +137,7 @@ export default function Home() {
                 class="custom-control-input"
                 id="save-info"
               />
-              <label class="custom-control-label" for="save-info">
+              <label class="custom-control-label" htmlFor="save-info">
                 Save this information for next time
               </label>
             </div>
