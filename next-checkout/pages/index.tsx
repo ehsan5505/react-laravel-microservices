@@ -2,7 +2,7 @@ import Head from "next/head";
 
 export default function Home() {
   return (
-    <div>
+    <div className="container bg-light">
       <Head>
         <link
           rel="stylesheet"
