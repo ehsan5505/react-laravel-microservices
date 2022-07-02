@@ -7,9 +7,20 @@ import { useRouter } from "next/router";
 const Home = () => {
   const router = useRouter();
   const { code } = router.query;
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail]       = useState("");
+  const [address, setAddress]   = useState("");
+  const [address2, setAddress2] = useState("");
+  const [country, setCountry]   = useState("");
+  const [city,setCity]          = useState("");
+  const [zip, setZip]           = useState("");
+
   const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
-  const [quantities, setQuantities] = useState([{ product_id: 0, quantity: 0 }]);
+  const [quantities, setQuantities] = useState([
+    { product_id: 0, quantity: 0 },
+  ]);
 
   useEffect(() => {
     if (code !== undefined) {
@@ -31,21 +42,18 @@ const Home = () => {
   }, [code]);
 
   const getQuantity = (id: number) => {
-    console.info(`${id} => Quantity = ${quantities}`);
-    // const q = quantities.find((q) => q.product_id === id);
-    // return q ? q.quantity : 0;
-    return 0;
+    const q = quantities.find((q) => q?.product_id === id);
+    return q ? q?.quantity : 0;
   };
 
   const changeQty = (id: number, qty: number) => {
     setQuantities(
-      quantities.map(q => {
-        if(q.product_id === id)
-        {
+      quantities.map((q) => {
+        if (q?.product_id === id) {
           return {
             product_id: id,
-            quantity: qty
-          }
+            quantity: qty,
+          };
         }
 
         return q;
@@ -57,10 +65,28 @@ const Home = () => {
     let temp = 0;
     quantities.forEach((q) => {
       const product = products.find((p) => p.id === q.product_id);
-      temp += (q?.quantity * product?.price);
+      temp += q?.quantity * product?.price;
     });
     return temp;
   };
+
+
+  const submit = (e) => {
+    e.preventDefault();
+
+    console.info({
+      first_name:     firstName,
+      last_name:      lastName,
+      email:          email,
+      address:        address,
+      address2:       address2,
+      city:           city,
+      zip:            zip,
+      country:        country,
+      code:           code,
+      items:          quantities
+    });
+  }
 
   return (
     <Wrapper>
@@ -119,7 +145,7 @@ const Home = () => {
           </div>
           <div className="col-md-8 order-md-1">
             <h4 className="mb-3">Billing address</h4>
-            <form className="needs-validation">
+            <form className="needs-validation" onSubmit={submit)}>
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label htmlFor="firstName">First name</label>
@@ -128,6 +154,7 @@ const Home = () => {
                     className="form-control"
                     id="firstName"
                     placeholder="First Name"
+                    onChange={e => setFirstName(e.target.value)}
                     required
                   />
                 </div>
@@ -138,6 +165,7 @@ const Home = () => {
                     className="form-control"
                     id="lastName"
                     placeholder="Last Name"
+                    onChange={e => setLastName(e.target.value)}
                     required
                   />
                 </div>
@@ -152,6 +180,8 @@ const Home = () => {
                   className="form-control"
                   id="email"
                   placeholder="you@example.com"
+                  onChange={e => setEmail(e.target.value)}
+                  required
                 />
                 <div className="invalid-feedback">
                   Please enter a valid email address for shipping updates.
@@ -165,6 +195,7 @@ const Home = () => {
                   className="form-control"
                   id="address"
                   placeholder="1234 Main St"
+                  onChange={e => setAddress(e.target.value)}
                   required
                 />
               </div>
@@ -178,39 +209,33 @@ const Home = () => {
                   className="form-control"
                   id="address2"
                   placeholder="Apartment or suite"
+                  onChange={e => setAddress2(e.target.value)}
                 />
               </div>
 
               <div className="row">
                 <div className="col-md-5 mb-3">
                   <label htmlFor="country">Country</label>
-                  <select
-                    className="custom-select form-select d-block w-100"
-                    id="country"
+                  <input
+                    type="text"
+                    name="country"
+                    className="form-control"
+                    placeholder="Country"
+                    onChange={e => setCountry(e.target.value)}
                     required
-                  >
-                    <option value="">Choose...</option>
-                    <option value="IN">India</option>
-                    <option value="PK">Pakistan</option>
-                    <option value="US">United States</option>
-                    <option value="UK">United Kingdom</option>
-                  </select>
+                  />
                 </div>
 
                 <div className="col-md-4 mb-3">
-                  <label htmlFor="state">State</label>
-                  <select
-                    className="custom-select d-block w-100 form-select"
-                    id="state"
+                  <label htmlFor="city">City</label>
+                  <input
+                    type="text"
+                    name="city"
+                    className="form-control"
+                    placeholder="City"
+                    onChange={e => setCity(e.target.value)}
                     required
-                  >
-                    <option value="">Choose...</option>
-                    <option value="SI">Sindh</option>
-                    <option value="PB">Punjab</option>
-                    <option value="BA">Balochistan</option>
-                    <option value="KP">Khyber Paktuwan</option>
-                    <option value="BL">Balitistan</option>
-                  </select>
+                  />
                 </div>
 
                 <div className="col-md-3 mb-3">
@@ -220,18 +245,18 @@ const Home = () => {
                     className="form-control"
                     id="zip"
                     placeholder="Zip"
+                    onChange={e => setZip(e.target.value)}
                     required
                   />
                 </div>
               </div>
 
               <hr className="mb-4" />
-              <button
+              <input
+                type='submit'
                 className="btn btn-primary btn-lg btn-block"
-                type="submit"
-              >
-                Continue to checkout
-              </button>
+                value="Checkout"
+              />
             </form>
           </div>
         </div>
