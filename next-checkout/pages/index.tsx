@@ -93,20 +93,27 @@ export default function Home() {
               <div className="col-md-5 mb-3">
                 <label htmlFor="country">Country</label>
                 <select
-                  className="custom-select d-block w-100"
+                  className="custom-select select d-block w-100"
                   id="country"
                   required
                 >
                   <option value="">Choose...</option>
-                  <option>United States</option>
+                  <option value="PK">Pakistan</option>
+                  <option value="IN">India</option>
+                  <option value="US">United States</option>
+                  <option value="UK">United Kingdom</option>
                 </select>
               </div>
 
               <div className="col-md-4 mb-3">
                 <label htmlFor="state">State</label>
-                <select className="custom-select d-block w-100" id="state" required>
+                <select className="custom-select d-block w-100 form-select" id="state" required>
                   <option value="">Choose...</option>
-                  <option>California</option>
+                  <option value="SI">Sindh</option>
+                  <option value="PB">Punjab</option>
+                  <option value="BA">Balochistan</option>
+                  <option value="KP">Khyber Paktuwan</option>
+                  <option value="BL">Balitistan</option>
                 </select>
               </div>
 
@@ -116,7 +123,7 @@ export default function Home() {
                   type="text"
                   className="form-control"
                   id="zip"
-                  placeholder=""
+                  placeholder="Zip"
                   required
                 />
               </div>
