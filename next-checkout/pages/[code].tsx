@@ -33,7 +33,6 @@ const Home = () => {
   const changeQty = (id: number, qty: number) => {
     setQuantities(
       quantities.map(q => {
-        console.info(q);
         if (q.product_id == id) {
           return {
             product_id: id,
