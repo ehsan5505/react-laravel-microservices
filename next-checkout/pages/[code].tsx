@@ -9,7 +9,7 @@ const Home = () => {
   const { code } = router.query;
   const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
-  const [quantities, setQuantities] = useState({productid:0,quantity:0});
+  const [quantities, setQuantities] = useState([{ product_id: 0, quantity: 0 }]);
 
   useEffect(() => {
     if (code !== undefined) {
@@ -30,17 +30,38 @@ const Home = () => {
     }
   }, [code]);
 
+  const getQuantity = (id: number) => {
+    console.info(`${id} => Quantity = ${quantities}`);
+    // const q = quantities.find((q) => q.product_id === id);
+    // return q ? q.quantity : 0;
+    return 0;
+  };
+
   const changeQty = (id: number, qty: number) => {
     setQuantities(
-      quantities.map((q) => {
-        if (q.product_id == id) {
+      quantities.map(q => {
+        if(q.product_id === id)
+        {
           return {
             product_id: id,
-            quantity: qty,
-          };
+            quantity: qty
+          }
         }
+
+        return q;
       })
     );
+    // setQuantities(
+    //   quantities.map((q) => {
+    //     if (q.product_id === id) {
+    //       return {
+    //         product_id: id,
+    //         quantity: qty,
+    //       }
+    //     }
+
+    //     return q;
+    //   }));
   };
 
   const total = () => {
@@ -51,13 +72,6 @@ const Home = () => {
     //   temp += product.price * q.quantity;
     // });
     return temp;
-  };
-
-  const qty = (id: number) => {
-    console.info(quantities);
-    // const q = quantities.find((q) => q.product_id === id);
-    // return q ? q.quantity : 0;
-    return 0;
   };
 
   return (
@@ -98,7 +112,7 @@ const Home = () => {
                         type="number"
                         className="text-muted form-control"
                         style={{ width: "65px" }}
-                        defaultValue={qty(product.id)}
+                        defaultValue={getQuantity(product.id)}
                         onChange={(e) =>
                           changeQty(product.id, parseInt(e.target.value))
                         }
