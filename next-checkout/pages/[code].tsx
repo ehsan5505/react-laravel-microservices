@@ -32,7 +32,7 @@ const Home = () => {
 
   const changeQty = (id: number, qty: number) => {
     setQuantities(
-      quantities.map(q => {
+      quantities.map((q) => {
         if (q.product_id == id) {
           return {
             product_id: id,
