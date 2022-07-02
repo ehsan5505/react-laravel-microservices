@@ -6,21 +6,18 @@ import { useRouter } from "next/router";
 
 const Home = () => {
   const router = useRouter();
-  const {code} = router.query;
-  const [user,setUser] = useState();
+  const { code } = router.query;
+  const [user, setUser] = useState();
 
-  useEffect(()=> {
-    if(code !== undefined)
-    {
-      (
-        async() => {
-          const resp = await axios.get(config.endpoint+{code});
-          console.info(resp);
-        }
-      )();
+  useEffect(() => {
+    if (code !== undefined) {
+      (async () => {
+        console.log(`${config.endpoint}+"links/"+${code}`);
+        const resp = await axios.get(`${config.endpoint}+"links/"+${code}`);
+        console.info(resp);
+      })();
     }
-
-  },[code]);
+  }, [code]);
 
   return (
     <Wrapper>
@@ -176,6 +173,6 @@ const Home = () => {
       </div>
     </Wrapper>
   );
-}
+};
 
 export default Home;
