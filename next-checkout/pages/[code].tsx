@@ -13,7 +13,7 @@ const Home = () => {
     if (code !== undefined) {
       (async () => {
         console.log(`${config.endpoint}links/${code}`);
-        const resp = await axios.get(`${config.endpoint}+"links/"+${code}`);
+        const resp = await axios.get(`${config.endpoint}links/${code}`);
         console.info(resp);
       })();
     }
