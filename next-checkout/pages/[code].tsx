@@ -145,7 +145,8 @@ const Home = () => {
           </div>
           <div className="col-md-8 order-md-1">
             <h4 className="mb-3">Billing address</h4>
-            <form className="needs-validation" onSubmit={submit)}>
+            <form className="needs-validation" onSubmit={submit}>
+
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label htmlFor="firstName">First name</label>
@@ -256,7 +257,7 @@ const Home = () => {
                 type='submit'
                 className="btn btn-primary btn-lg btn-block"
                 value="Checkout"
-              />
+                />
             </form>
           </div>
         </div>
