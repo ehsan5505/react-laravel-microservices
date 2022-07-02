@@ -10,11 +10,11 @@ const Success = () => {
 
   useEffect(() => {
     if (source !== undefined) {
-      async () => {
+      (async () => {
         await axios.post(`${config.endpoint}/orders/confirm`, {
           source: source,
         });
-      };
+      })();
     }
   }, [source]);
 
