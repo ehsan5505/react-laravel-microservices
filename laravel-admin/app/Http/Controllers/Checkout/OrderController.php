@@ -95,8 +95,8 @@ class OrderController
 
         event(new OrderCompletedEvent($order));
 
-        // return response([
-        //     'message' => 'success'
-        // ]);
+        return response([
+            'message' => 'success'
+        ]);
     }
 }
