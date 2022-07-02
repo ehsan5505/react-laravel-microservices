@@ -7,14 +7,16 @@ import { useRouter } from "next/router";
 const Home = () => {
   const router = useRouter();
   const { code } = router.query;
-  const [user, setUser] = useState();
+  const [user, setUser] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     if (code !== undefined) {
       (async () => {
-        console.log(`${config.endpoint}links/${code}`);
         const resp = await axios.get(`${config.endpoint}/links/${code}`);
-        console.info(resp);
+        const data = resp.data.data;
+        setUser(data.user);
+        setProducts(data.products);
       })();
     }
   }, [code]);
@@ -23,11 +25,10 @@ const Home = () => {
     <Wrapper>
       <div className="container">
         <div className="py-5 text-center">
-          <h2>{code}</h2>
+          <h2>Welcome</h2>
           <p className="lead">
-            Below is an example form built entirely with Bootstrap's form
-            controls. Each required form group has a validation state that can
-            be triggered by attempting to submit the form without completing it.
+            {user?.firstName} {user?.lastName} has invited you to Buy those
+            item(s)!
           </p>
         </div>
 
@@ -38,13 +39,22 @@ const Home = () => {
               <span className="badge badge-secondary badge-pill">3</span>
             </h4>
             <ul className="list-group mb-3">
-              <li className="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 className="my-0">Product name</h6>
-                  <small className="text-muted">Brief description</small>
-                </div>
-                <span className="text-muted">$12</span>
-              </li>
+              {products.map((product) => {
+                return (
+                  <li
+                    key={product.id}
+                    className="list-group-item d-flex justify-content-between lh-condensed"
+                  >
+                    <div>
+                      <h6 className="my-0">{product.title}</h6>
+                      <small className="text-muted">
+                        {product.description}
+                      </small>
+                    </div>
+                    <span className="text-muted">${product.price}</span>
+                  </li>
+                );
+              })}
 
               <li className="list-group-item d-flex justify-content-between">
                 <span>Total (USD)</span>
