@@ -1,11 +1,15 @@
 import Wrapper from "../components/Wrapper";
+import { useRouter } from "../node_modules/next/router";
 
-export default function Home() {
+const Home = () => {
+  const router = useRouter();
+  const {code} = router.query;
+
   return (
     <Wrapper>
       <div className="container">
         <div className="py-5 text-center">
-          <h2>Checkout form</h2>
+          <h2>{code}</h2>
           <p className="lead">
             Below is an example form built entirely with Bootstrap's form
             controls. Each required form group has a validation state that can
@@ -156,3 +160,5 @@ export default function Home() {
     </Wrapper>
   );
 }
+
+export default Home;
