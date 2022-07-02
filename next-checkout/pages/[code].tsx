@@ -45,10 +45,11 @@ const Home = () => {
 
   const total = () => {
     let temp = 0;
-    quantities.forEach((q) => {
-      const product = products.find((p) => p.id === q.product_id);
-      temp += product.price * q.quantity;
-    });
+    console.warn(quantities);
+    // quantities.forEach((q) => {
+    //   const product = products.find((p) => p.id === q.product_id);
+    //   temp += product.price * q.quantity;
+    // });
     return temp;
   };
 
