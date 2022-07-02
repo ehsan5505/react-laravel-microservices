@@ -51,26 +51,14 @@ const Home = () => {
         return q;
       })
     );
-    // setQuantities(
-    //   quantities.map((q) => {
-    //     if (q.product_id === id) {
-    //       return {
-    //         product_id: id,
-    //         quantity: qty,
-    //       }
-    //     }
-
-    //     return q;
-    //   }));
   };
 
   const total = () => {
     let temp = 0;
-    console.warn(quantities);
-    // quantities.forEach((q) => {
-    //   const product = products.find((p) => p.id === q.product_id);
-    //   temp += product.price * q.quantity;
-    // });
+    quantities.forEach((q) => {
+      const product = products.find((p) => p.id === q.product_id);
+      temp += product.price * q.quantity;
+    });
     return temp;
   };
 
