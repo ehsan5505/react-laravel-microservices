@@ -111,7 +111,7 @@ const Home = () => {
 
               <li className="list-group-item d-flex justify-content-between">
                 <span>Total (USD)</span>
-                <strong>${total}</strong>
+                <strong>${total()}</strong>
               </li>
             </ul>
           </div>
