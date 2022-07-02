@@ -34,12 +34,12 @@ const Home = () => {
     setQuantities(
       quantities.map(q => {
         console.info(q);
-        // if (q.productid == id) {
-        //   return {
-        //     product_id: id,
-        //     quantity: qty,
-        //   };
-        // }
+        if (q.product_id == id) {
+          return {
+            product_id: id,
+            quantity: qty,
+          };
+        }
       })
     );
   };
@@ -55,7 +55,7 @@ const Home = () => {
 
   const qty = (id: number) => {
     // console.info(id);
-    console.info(quantities.find(q => q.product_id = id));
+    console.info(quantities.find(q => q.product_id === id));
     // const q = quantities.find((q) => q.product_id === id);
     // return q ? q.quantity : 0;
     return 0;
