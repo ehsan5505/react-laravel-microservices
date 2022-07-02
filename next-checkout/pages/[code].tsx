@@ -58,7 +58,7 @@ const Home = () => {
 
   const qty = (id: number) => {
     const q = quantities.find((q) => q.product_id === id);
-    return q.quantity;
+    return q ? q.quantity : 0;
   };
 
   return (
