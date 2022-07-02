@@ -57,7 +57,8 @@ const Home = () => {
     let temp = 0;
     quantities.forEach((q) => {
       const product = products.find((p) => p.id === q.product_id);
-      temp += product.price * q.quantity;
+      console.info(product);
+      // temp += product.price * q.quantity;
     });
     return temp;
   };
