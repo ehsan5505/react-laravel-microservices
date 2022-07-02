@@ -7,8 +7,9 @@ import { useRouter } from "next/router";
 const Home = () => {
   const router = useRouter();
   const { code } = router.query;
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
+  const [quantities, setQuantities] = useState([]);
 
   useEffect(() => {
     if (code !== undefined) {
@@ -17,9 +18,48 @@ const Home = () => {
         const data = resp.data.data;
         setUser(data.user);
         setProducts(data.products);
+        setQuantities(
+          products.map((p) => {
+            return {
+              product_id: p.id,
+              quantity: 0,
+            };
+          })
+        );
       })();
     }
   }, [code]);
+
+  const changeQty = (id: number, qty: number) => {
+    setQuantities(
+      quantities.map((q) => {
+        if (q.productid == id) {
+          return {
+            product_id: id,
+            quantity: qty,
+          };
+        }
+      })
+    );
+  };
+
+  const total = () => {
+    let t,
+      temp = 0;
+    quantities.forEach((q) => {
+      const product = products.find((p) => p.id === q.product_id);
+      temp += product.price * product.quantity;
+    });
+
+    console.info(temp);
+
+    return (t = 0);
+  };
+
+  const qty = (id: number) => {
+    const q = quantities.find((q) => q.product_id === id);
+    return q.quantity;
+  };
 
   return (
     <Wrapper>
@@ -59,6 +99,10 @@ const Home = () => {
                         type="number"
                         className="text-muted form-control"
                         style={{ width: "65px" }}
+                        defaultValue={qty(product.id)}
+                        onChange={(e) => {
+                          changeQty(product.id, parseInt(e.target.value));
+                        }}
                       />
                     </li>
                   </div>
@@ -67,7 +111,7 @@ const Home = () => {
 
               <li className="list-group-item d-flex justify-content-between">
                 <span>Total (USD)</span>
-                <strong>$20</strong>
+                <strong>${total}</strong>
               </li>
             </ul>
           </div>
