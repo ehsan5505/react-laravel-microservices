@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Wrapper from "../components/Wrapper";
+import config from "../config_const";
+import axios from "../node_modules/axios/index";
 import { useRouter } from "../node_modules/next/router";
 
 const Success = () => {
-
   const router = useRouter();
-  const {source} = router.query;
-  console.info(source);
+  const { source } = router.query;
+
+  useEffect(() => {
+    if (source !== undefined) {
+      async () => {
+        await axios.post(`${config.endpoint}/orders/confirm`, {
+          source: source,
+        });
+      };
+    }
+  }, [source]);
 
   return (
     <Wrapper>
