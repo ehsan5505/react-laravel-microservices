@@ -24,12 +24,12 @@ class OrderCompleted implements ShouldQueue
     {
         \Mail::send('influencer.admin', ['id' => $this->data['id'], 'admin_total' => $this->data['admin_total']], function (Message $message) {
             $message->to($this->data['email']);
-            $message->subject('A new order been confirmed!');
+            $message->subject('[Test MicroService] | A new order been confirmed!');
         });
 
         \Mail::send('influencer.influencer', ['code' => $this->data['code'], 'influencer_total' => $this->data['influencer_total']], function (Message $message) {
             $message->to($this->data['influencer_email']);
-            $message->subject("Order Confirmed");
+            $message->subject("[Test MicroService] | Order Confirmed");
         });
     }
 }
