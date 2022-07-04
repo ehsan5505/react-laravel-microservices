@@ -12,6 +12,6 @@ class FireEventCommand extends Command
     public function handle()
     {
         // return "Pakistan";
-        AdminAdded::dispatch();
+        AdminAdded::dispatch("john@cena.com");
     }
 }

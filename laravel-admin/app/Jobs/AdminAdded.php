@@ -12,9 +12,10 @@ class AdminAdded implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct()
+    public $email;
+    public function __construct($email)
     {
-        //
+        $this->email = $email;
     }
 
     public function handle()
