@@ -1,1 +1,1 @@
-Order #{{$order->id}} with a total of ${{$order->admin_total}} has been completed
+Order #{{$id}} with a total of ${{$admin_total}} has been completed

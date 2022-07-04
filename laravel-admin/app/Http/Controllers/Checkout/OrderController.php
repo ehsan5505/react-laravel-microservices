@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Checkout;
 
 use App\Events\OrderCompletedEvent;
+use App\Jobs\OrderCompleted;
 use App\Link;
 use App\Order;
 use App\OrderItem;
@@ -94,6 +95,11 @@ class OrderController
         $order->save();
 
         event(new OrderCompletedEvent($order));
+        
+        $data = $order->toArray();
+        $data['influencer_total'] = $order->influencer_total;
+        $data['admin_total']    =   $order->admin_total;
+        OrderCompleted::dispatch($data);
 
         return response([
             'message' => 'success'

@@ -26,8 +26,6 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         OrderCompletedEvent::class => [
-            NotifyAdminListener::class,
-            NotifyInfluencerListener::class,
             RankingListener::class
 
         ],

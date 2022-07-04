@@ -8,28 +8,28 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Message;
 
 class OrderCompleted implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $data;
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
-    /**
-     * Execute the job.
-     *
-     * @return void
-     */
     public function handle()
     {
-        //
+        \Mail::send('influencer.admin', ['id' => $this->data['id'], 'admin_total' => $this->data['admin_total']], function (Message $message) {
+            $message->to($this->data['email']);
+            $message->subject('A new order been confirmed!');
+        });
+
+        \Mail::send('influencer.influencer', ['code' => $this->data['code'], 'influencer_total' => $this->data['influencer_total']], function (Message $message) {
+            $message->to($this->data['influencer_email']);
+            $message->subject("Order Confirmed");
+        });
     }
 }

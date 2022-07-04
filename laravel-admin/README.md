@@ -265,3 +265,14 @@ using this token you can do, $request->headers->set('Authorization' , "Bearer ".
 [Note]! This function should come before the authentication so that header will have the information while authenticating....
 
 For Logout, create the logout function tht would do the Cookie::forget(name) and return with [message: 'logout successfully'])->withCookie($cookie), where cookie is the forget one (i.e. $cookie = Cookie::forget(name))
+
+## Queue [Rabbit MQ]
+_Steps_
+1. [cloudamqp.com] to create the Cloud Rabbit MQ PaaS 
+2. install the plugin `composer require vladimir-yuldashev/laravel-queue-rabbitmq` for lower version (i.e. for laravel 7 append :10.*)
+3. update the rabbit service in the <code>config/queue.php</code>
+4. Create the Command `php artisan make:command FireEventCommand`
+5. Create the Job `php artisan make:job AdminAdded` (This will trigger the action in the queue/RabbitMQ), you find the RabbitMQ app is ready state (high graph)
+6. To Consume the Queue, we have to create the job on email api `php artisan make:job AdminAdded`
+7. Goto the app/Provider/EventServiceProvider, leave only the boot to listen the AdminAdded.'@handle' and to trigger the handle job
+8. On the command line activate the `php artisan queue:work` this will consume the event and you will notice rabbitMQ state low down
