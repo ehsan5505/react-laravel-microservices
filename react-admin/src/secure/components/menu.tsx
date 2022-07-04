@@ -29,7 +29,6 @@ class Menu extends Component<{ user: UserProps }> {
   ];
   render() {
     let items: JSX.Element[] = [];
-    console.info(this.props.user);
     this.menuItems.forEach((menu) => {
       let name = menu.name.toLocaleLowerCase();
       if (this.props.user.can_view(name)) {
