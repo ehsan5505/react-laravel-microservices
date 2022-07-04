@@ -22,7 +22,9 @@ class OrderCompleted implements ShouldQueue
 
     public function handle()
     {
+        echo "Start";
         print_r($this->data);
+        echo "End";
         // \Mail::send('influencer.admin', [
         //     'id' => $this->data['id'],
         //     'admin_total' => $this->data['admin_total']
