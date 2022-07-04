@@ -27,7 +27,8 @@ class User extends Component<{ user: UserProps }> {
 
   handleChangePage = async (page: number) => {
     this.page = page;
-    await this.componentDidMount();
+    console.log(`page: ${page}`);
+    // await this.componentDidMount();
   };
 
   delete = async (id: number) => {
