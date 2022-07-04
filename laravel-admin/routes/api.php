@@ -30,6 +30,7 @@ Route::get("hello", function () {
 // Admin Routes
 Route::prefix("admin")->group(function () {
     Route::post("login", "AuthController@login");
+    Route::post("logout", "AuthController@logout");
     Route::post("register", "AuthController@register");
 
     Route::middleware(['auth:api', 'scope:admin'])->group(function () {
@@ -54,6 +55,7 @@ Route::prefix("admin")->group(function () {
 // Influencer Routes
 Route::prefix("influencer")->group(function () {
     Route::post("login", "AuthController@login");
+    Route::post("logout", "AuthController@logout");
     Route::post("register", "AuthController@register");
 
     Route::get('products', 'Influencer\ProductController@index');
