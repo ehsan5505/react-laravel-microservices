@@ -16,7 +16,8 @@
         "laravel/framework": "^7.29",
         "laravel/passport": "^9",
         "laravel/tinker": "^2.5",
-        "predis/predis": "^2.0"
+        "predis/predis": "^2.0",
+        "vladimir-yuldashev/laravel-queue-rabbitmq": "10.*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "2.8",
