@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\AdminAdded;
+// use App\Jobs\AdminAdded;
+
+use App\Jobs\OrderCompleted;
 use App\Order;
 use Illuminate\Console\Command;
 
