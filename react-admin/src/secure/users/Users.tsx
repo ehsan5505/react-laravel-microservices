@@ -19,16 +19,17 @@ class User extends Component<{ user: UserProps }> {
   componentDidMount = async () => {
     const res = await axios.get(`users?page=${this.page}`);
 
-    this.setState({
-      users: res.data.data,
-    });
+    console.log(res);
+
+    // this.setState({
+    //   users: res.data.data,
+    // });
     this.last_page = res.data.meta.last_page;
   };
 
   handleChangePage = async (page: number) => {
     this.page = page;
-    console.log(`page: ${page}`);
-    // await this.componentDidMount();
+    await this.componentDidMount();
   };
 
   delete = async (id: number) => {
