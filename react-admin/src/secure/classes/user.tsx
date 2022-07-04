@@ -23,6 +23,7 @@ export default class UserProps {
     this.email = email;
     this.role = role;
     this.permissions = permissions;
+    console.error(permissions);
   }
 
   get full_name() {
