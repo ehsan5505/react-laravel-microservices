@@ -83,8 +83,6 @@ class OrderController
 
     public function confirm(Request $request)
     {
-
-        // dd($request->input('source'));
         
         if (!$order = Order::whereTransactionId($request->input('source'))->first()) {
             return response([
