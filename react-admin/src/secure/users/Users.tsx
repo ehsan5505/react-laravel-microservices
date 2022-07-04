@@ -19,11 +19,9 @@ class User extends Component<{ user: UserProps }> {
   componentDidMount = async () => {
     const res = await axios.get(`users?page=${this.page}`);
 
-    console.log(res.data.data);
-
-    // this.setState({
-    //   users: res.data.data,
-    // });
+    this.setState({
+      users: res.data.data,
+    });
     this.last_page = res.data.meta.last_page;
   };
 
