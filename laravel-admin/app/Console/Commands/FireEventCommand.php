@@ -16,10 +16,10 @@ class FireEventCommand extends Command
     {
         // return "Pakistan";
         // AdminAdded::dispatch("john@cena.com");
-        $order = Order::find(1);
+        $order = Order::find(71);
         $data = $order->toArray();
-        $data['influencer_total'] = $order->influencer_total;
         $data['admin_total']    =   $order->admin_total;
+        $data['influencer_total'] = $order->influencer_total;
         OrderCompleted::dispatch($data);
     }
 }
