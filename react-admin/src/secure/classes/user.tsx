@@ -23,7 +23,6 @@ export default class UserProps {
     this.email = email;
     this.role = role;
     this.permissions = permissions;
-    console.error(permissions);
   }
 
   get full_name() {
@@ -31,7 +30,9 @@ export default class UserProps {
   }
 
   can_view(page: string) {
-    return this.permissions.some((p) => {console.warn(`Name ${p.name} | Page ${page} | ${p.name === `view_${page}`}`);});
+    console.info(this.permissions);
+
+    // return this.permissions.some((p) => {console.warn(`Name ${p.name} | Page ${page} | ${p.name === `view_${page}`}`);});
     
   }
 
