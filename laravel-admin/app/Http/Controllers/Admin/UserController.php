@@ -6,6 +6,7 @@ use App\Events\AdminAddedEvent;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
+use App\Jobs\AdminAdded;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\UserRole;
@@ -54,7 +55,8 @@ class UserController
             'role_id'   => $request->input('role_id')
         ]);
 
-        event(new AdminAddedEvent($user));
+        AdminAdded::dispatch($user->email);
+        // event(new AdminAddedEvent($user));
 
         return response(new UserResource($user), Response::HTTP_CREATED);
     }

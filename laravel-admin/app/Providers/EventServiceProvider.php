@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Events\AdminAddedEvent;
 use App\Events\OrderCompletedEvent;
 use App\Events\ProductUpdatedEvent;
-use App\Listeners\NotifyAdminAdded;
 use App\Listeners\NotifyAdminListener;
 use App\Listeners\NotifyInfluencerListener;
 use App\Listeners\ProductCacheFlush;
@@ -31,9 +30,6 @@ class EventServiceProvider extends ServiceProvider
             NotifyInfluencerListener::class,
             RankingListener::class
 
-        ],
-        AdminAddedEvent::class => [
-            NotifyAdminAdded::class
         ],
         ProductUpdatedEvent::class => [
             ProductCacheFlush::class
