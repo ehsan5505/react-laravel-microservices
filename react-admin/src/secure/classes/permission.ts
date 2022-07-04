@@ -1,9 +1,9 @@
 class PermissionProps {
-  id: number;
+  // id: number;
   name: string;
 
-  constructor(id=0,name=""){
-    this.id = id;
+  constructor(name=""){
+    // this.id = id;
     this.name = name;
   }
 }
