@@ -32,7 +32,6 @@ class Menu extends Component<{ user: UserProps }> {
     console.info(this.props.user);
     this.menuItems.forEach((menu) => {
       let name = menu.name.toLocaleLowerCase();
-      console.log(`Menu name: ${name} | ${this.props.user.can_view(name)}`);
       if (this.props.user.can_view(name)) {
         items.push(
           <li key={menu.id} className="nav-item">
