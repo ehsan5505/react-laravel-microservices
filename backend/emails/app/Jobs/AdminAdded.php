@@ -26,7 +26,7 @@ class AdminAdded implements ShouldQueue
         \Mail::send('admin.adminAdded',[],function(Message $message){
             $message->to($this->email);
             $message->subject("[Test Microservice] | Order Confirmed");
-        })
+        });
         // \Mail::send('admin.adminAdded',[], function(Message $message) {
         //     $message->to($this->email);
         //     $message->subject("Order Confirmed");
