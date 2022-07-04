@@ -56,7 +56,6 @@ class UserController
         ]);
 
         AdminAdded::dispatch($user->email);
-        // event(new AdminAddedEvent($user));
 
         return response(new UserResource($user), Response::HTTP_CREATED);
     }
