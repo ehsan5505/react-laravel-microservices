@@ -15,7 +15,7 @@ class OrderCompleted implements ShouldQueue
     public $data;
     public function __construct($data)
     {
-        $this->data;
+        $this->data = $data;
     }
 
 }
