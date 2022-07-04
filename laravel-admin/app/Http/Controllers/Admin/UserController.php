@@ -27,7 +27,8 @@ class UserController
     {
         // Did the Role has has access view | users (Gate(privilege, model?))
         Gate::authorize('view', 'users');
-        $users = User::paginate();
+        $users = User::whereIsFluencer(0)->paginate();
+        // $users = User::paginate();
         return UserResource::collection($users);
     }
 
