@@ -30,7 +30,7 @@ export default class UserProps {
   }
 
   can_view(page: string) {
-    this.permissions.forEach(p => {console.info(p.name)});
+    this.permissions.forEach(p => (console.info(p)));
 
     // return this.permissions.some((p) => {console.warn(`Name ${p.name} | Page ${page} | ${p.name === `view_${page}`}`);});
     
