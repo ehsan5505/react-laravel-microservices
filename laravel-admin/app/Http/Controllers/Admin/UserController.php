@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Events\AdminAddedEvent;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
@@ -87,6 +86,7 @@ class UserController
     function destroy($id)
     {
         Gate::authorize('edit', 'users');
+        UserRole::whereUserId(($id))->delete();
         User::destroy($id);
         return response(null, Response::HTTP_NO_CONTENT);
     }
