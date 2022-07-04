@@ -13,7 +13,7 @@ class AdminAdded implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $email;
+    public $email = "";
 
     public function __construct($email)
     {
@@ -23,6 +23,9 @@ class AdminAdded implements ShouldQueue
 
     public function handle()
     {
-        echo "Email is trigger on behalf of ".$this->email.PHP_EOL;
+        \Mail::send('admin.adminAdded',[], function(Message $message) {
+            $message->to($this->email);
+            $message->subject("Order Confirmed");
+        });
     }
 }
