@@ -13,14 +13,15 @@ services:
     command: 'php artisan queue:work'
     depends_on:
       - db
+
   db:
     image: mysql:5.7.22
     environment:
-      - MYSQL_DATABASE=emails
       - MYSQL_USER=root
       - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=emails
       - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - .storage/dbdata:/var/lib/mysql
+      - .storage/dbdata:/var/lib/mysql/
     ports:
       - 33067:3306
