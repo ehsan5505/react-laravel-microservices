@@ -13,7 +13,6 @@ services:
     command: 'php artisan queue:work'
     depends_on:
       - db
-
   db:
     image: mysql:5.7.22
     environment:
