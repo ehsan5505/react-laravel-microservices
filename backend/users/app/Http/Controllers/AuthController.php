@@ -11,6 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AuthController
 {
+
+    public function index(Request $request)
+    {
+        return response("Thank You");
+    }
+
     // login
     public function login(Request $request)
     {
