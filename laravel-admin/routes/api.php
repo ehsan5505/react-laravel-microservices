@@ -27,43 +27,37 @@ Route::get("hello", function () {
 // Route::delete("users/{id}","UserController@destroy");
 // Active
 
+// User Route
+Route::group([
+    'middleware'    =>  'auth:api'
+], function () {
+    Route::get('user', 'AuthController@user');
+});
+
+
 // Admin Routes
-Route::prefix("admin")->group(function () {
-    Route::post("login", "AuthController@login");
-    Route::post("logout", "AuthController@logout");
-    Route::post("register", "AuthController@register");
+Route::group([
+    'middleware' => ['auth:api', 'scope:admin'],
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
+], function () {
+    Route::get('chart', 'DashboardController@chart');
+    Route::post('image', "ImageController@upload");
+    Route::get("export", "OrderController@export");
 
-    Route::middleware(['auth:api', 'scope:admin'])->group(function () {
-        Route::get('user', 'AuthController@user');
-        Route::put('info', 'AuthController@updateInfo');
-        Route::put('password', 'AuthController@updatePassword');
-
-        Route::namespace('Admin')->group(function () {
-            Route::get('chart', 'DashboardController@chart');
-            Route::post('image', "ImageController@upload");
-            Route::get("export", "OrderController@export");
-
-            Route::apiResource("users", "UserController");
-            Route::apiResource('roles', 'RoleController');
-            Route::apiResource('products', 'ProductController');
-            Route::apiResource('orders', 'OrderController')->only('index', 'show');
-            Route::apiResource('permissions', 'PermissionController')->only('index');
-        });
-    });
+    Route::apiResource("users", "UserController");
+    Route::apiResource('roles', 'RoleController');
+    Route::apiResource('products', 'ProductController');
+    Route::apiResource('orders', 'OrderController')->only('index', 'show');
+    Route::apiResource('permissions', 'PermissionController')->only('index');
 });
 
 // Influencer Routes
 Route::prefix("influencer")->group(function () {
-    Route::post("login", "AuthController@login");
-    Route::post("logout", "AuthController@logout");
-    Route::post("register", "AuthController@register");
 
     Route::get('products', 'Influencer\ProductController@index');
 
     Route::middleware(['auth:api', 'scope:influencer'])->group(function () {
-        Route::get('user', 'AuthController@user');
-        Route::put('info', 'AuthController@updateInfo');
-        Route::put('password', 'AuthController@updatePassword');
 
         Route::namespace('Influencer')->group(function () {
             Route::post('links', "LinkController@store");
