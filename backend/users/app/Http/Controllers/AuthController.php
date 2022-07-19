@@ -73,7 +73,6 @@ class AuthController
 
     public function updateInfo(UserUpdateProfileRequest $request)
     {
-
         // Gate::authorize('view', 'users');
         $user = \Auth::user();
         $user->update($request->only('first_name', 'last_name', 'email', 'role_id'));

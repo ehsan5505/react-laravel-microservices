@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get("test",[AuthController::class,"index"]);
 
 Route::post("login", [AuthController::class, "login"]);
 Route::post("logout", [AuthController::class, "logout"]);
 Route::post("register", [AuthController::class, "register"]);
-Route::get("test",[AuthController::class,"index"]);
 
 
 Route::middleware(['auth:api', 'scope:admin'])->group(function () {
