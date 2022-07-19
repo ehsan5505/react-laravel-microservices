@@ -29,7 +29,7 @@ services:
       - ./storage/dbdata:/var/lib/mysql/
     ports:
       - "33068:3306"
-    network:
+    networks:
       - app
 
 networks:
