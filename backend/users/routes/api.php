@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get("test",[AuthController::class,"index"]);
+Route::get("hello", function () {
+    return "Hello World!";
+});
+
 
 Route::post("login", [AuthController::class, "login"]);
 Route::post("logout", [AuthController::class, "logout"]);
