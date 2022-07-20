@@ -16,8 +16,6 @@ services:
       - 8050:8000
     depends_on:
       - users_db
-    networks:
-      - user_network
       
   users_db:
     image: mysql:5.7.22
@@ -29,10 +27,3 @@ services:
       - ./storage/dbdata:/var/lib/mysql/
     ports:
       - 33068:3306
-    networks:
-      - user_network
-
-networks:
-  user_network:
-    driver: host
-    
