@@ -3,6 +3,7 @@ import "./Login";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import constant from "../config_const";
 
 
 class Login extends Component {
@@ -17,7 +18,7 @@ class Login extends Component {
     e.preventDefault();
 
     try {
-      const resp = await axios.post("login", {
+      const resp = await axios.post(`${constant.USER_URL}/login`, {
         email: this.email,
         password: this.password,
         scope: "influencer"

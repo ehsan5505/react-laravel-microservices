@@ -2,6 +2,7 @@ import React, { Component, SyntheticEvent } from "react";
 import "./Register.css";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import constant from "../config_const";
 
 class Register extends Component {
   firstName = "";
@@ -16,7 +17,7 @@ class Register extends Component {
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
     await axios.post(
-      "register",
+      `${constant.USER_URL}/register`,
       {
         first_name: this.firstName,
         last_name: this.lastName,

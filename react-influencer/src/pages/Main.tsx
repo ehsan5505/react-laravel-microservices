@@ -34,14 +34,14 @@ const Main = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await axios.get(`products?s=${searchText}`);
+      const response = await axios.get(`${constant.BASE_URL}/products?s=${searchText}`);
       setProducts(response.data.data);
     })();
   }, [searchText]);
 
   const generateLink = async () => {
     try {
-      const response = await axios.post("links", {
+      const response = await axios.post(`${constant.BASE_URL}/links`, {
         products: selected,
       });
 

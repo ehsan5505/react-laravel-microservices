@@ -12,7 +12,7 @@ const Stats = () => {
   const [stats, setStats] = useState([]);
   useEffect(() => {
     (async () => {
-      const response = await axios.get("stats");
+      const response = await axios.get(`${constant.BASE_URL}/stats`);
       console.info(response);
       setStats(response.data);
     })();

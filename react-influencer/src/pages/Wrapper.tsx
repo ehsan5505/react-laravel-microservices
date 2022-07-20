@@ -6,12 +6,13 @@ import axios from "axios";
 import UserProps from "../classes/user";
 import setUser from "../redux/actions/setUserActions";
 import { connect } from "react-redux";
+import constant from "../config_const";
 
 const Wrapper = (props: PropsWithChildren<any>) => {
   useEffect(() => {
     try {
       (async () => {
-        const response = await axios.get("user");
+        const response = await axios.get(`${constant.BASE_URL}/user`);
         const user: UserProps = response.data.data;
         props.setUser(
           new UserProps(
