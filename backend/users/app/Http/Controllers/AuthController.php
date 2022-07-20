@@ -53,17 +53,15 @@ class AuthController
     public function register(AuthRegisterRequest $request)
     {
         // By Default Allocate the Subscriber Role
-        // $user = User::create(
-        //     $request->only('first_name', 'last_name', 'email')
-        //         + [
-        //             "password" => Hash::make($request->input('password')),
-        //             "role_id" => 3,
-        //             "is_fluencer"   => 1 // Default if client register it would be influencer from the Web Apps
-        //         ]
-        // );
-        print(`Welcome to ${$request->only('first_name')}`);
-        return response("Thank You");
-        // return response($user, Response::HTTP_ACCEPTED);
+        $user = User::create(
+            $request->only('first_name', 'last_name', 'email')
+                + [
+                    "password" => Hash::make($request->input('password')),
+                    "role_id" => 3,
+                    "is_fluencer"   => 1 // Default if client register it would be influencer from the Web Apps
+                ]
+        );
+        return response($user, Response::HTTP_ACCEPTED);
     }
 
 
