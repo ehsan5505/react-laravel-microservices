@@ -19,7 +19,7 @@ services:
       - REDIS_HOST=redis
       - REDIS_CLIENT=predis
     ports:
-      - 8000:8000
+      - 8005:8000
     depends_on:
       - db
       - redis
