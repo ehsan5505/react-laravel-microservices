@@ -7,4 +7,4 @@ WORKDIR /app
 COPY . .
 RUN composer install --ignore-platform-req=ext-sockets
 CMD php artisan serve --host=0.0.0.0
-EXPOSE 8000
+EXPOSE 8080
