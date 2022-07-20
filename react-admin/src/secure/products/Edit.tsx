@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { Navigate, useParams } from "react-router";
 import ImageUpload from "../components/ImageUpload";
 import { ProductProps } from "../classes/product";
+import constant from "../../config_const";
 
 class EditProduct extends Component<any> {
   title = "";
@@ -23,7 +24,7 @@ class EditProduct extends Component<any> {
 
   componentDidMount = async () => {
     this.id = this.props.params.id;
-    const res = await axios.get(`/products/${this.id}`);
+    const res = await axios.get(`${constant.BASE_URL}/products/${this.id}`);
     const product: ProductProps = res.data.data;
     this.setState({
       title: product.title,
@@ -37,7 +38,7 @@ class EditProduct extends Component<any> {
     e.preventDefault();
 
     try {
-      await axios.put(`/products/${this.id}`, {
+      await axios.put(`${constant.BASE_URL}/products/${this.id}`, {
         title: this.title,
         description: this.description,
         imageUrl: this.imageUrl,

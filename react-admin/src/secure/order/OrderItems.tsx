@@ -3,6 +3,7 @@ import axios from "axios";
 import Wrapper from "../Wrapper";
 import { OrderItemProps } from "../classes/order_item";
 import { useParams } from "react-router";
+import constant from "../../config_const";
 
 class OrderItems extends Component<any> {
   id = 0;
@@ -12,7 +13,7 @@ class OrderItems extends Component<any> {
 
   componentDidMount = async () => {
     this.id = this.props.params.id;
-    const resp = await axios.get(`orders/${this.id}`);
+    const resp = await axios.get(`${constant.BASE_URL}/orders/${this.id}`);
     this.setState({
       orderItems: resp.data.orders,
     });

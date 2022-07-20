@@ -8,6 +8,7 @@ import Paginate from "../components/Paginate";
 import Deleter from "../components/Deleter";
 import UserProps from "../classes/user";
 import { connect } from "react-redux";
+import constant from "../../config_const";
 
 class Product extends Component<{ user: UserProps }> {
   page = 1;
@@ -25,7 +26,7 @@ class Product extends Component<{ user: UserProps }> {
   };
 
   componentDidMount = async () => {
-    const products = await axios.get(`products?page=${this.page}`);
+    const products = await axios.get(`${constant.BASE_URL}/products?page=${this.page}`);
     this.setState({
       products: products.data.data,
     });

@@ -4,6 +4,7 @@ import Wrapper from "../Wrapper";
 import { toast } from "react-toastify";
 import { Navigate } from "react-router";
 import ImageUpload from "../components/ImageUpload";
+import constant from "../../config_const";
 
 class CreateProduct extends Component {
   title = "";
@@ -20,7 +21,7 @@ class CreateProduct extends Component {
     e.preventDefault();
 
     try {
-      await axios.post("/products", {
+      await axios.post(`${constant.BASE_URL}/products`, {
         title: this.title,
         description: this.description,
         imageUrl: this.imageUrl,

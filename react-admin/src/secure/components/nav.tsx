@@ -3,6 +3,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import constant from "../../config_const";
 import UserProps from "../classes/user";
 class Nav extends Component<{ user: UserProps }> {
   state = {
@@ -11,7 +12,7 @@ class Nav extends Component<{ user: UserProps }> {
 
   signOut = async () => {
     try {
-      await axios.post("logout", {});
+      await axios.post(`${constant.USER_URL}/logout`, {});
       this.setState({
         redirect: true,
       });

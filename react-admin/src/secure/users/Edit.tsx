@@ -4,6 +4,7 @@ import { Navigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import RoleProps from "../classes/role";
+import constant from "../../config_const";
 
 interface UserProps {
   id: number;
@@ -31,9 +32,9 @@ class EditUser extends Component<any, any> {
   componentDidMount = async () => {
     const { id } = this.props.params;
     this.userId = id;
-    const res = await axios.get("/roles");
+    const res = await axios.get(`${constant.BASE_URL}/roles`);
     const rolesData = res.data.data;
-    const resp = await axios.get(`/users/` + id);
+    const resp = await axios.get(`${constant.BASE_URL}/users/` + id);
     const userData: UserProps = resp.data.data;
     this.setState({
       roles: rolesData,
@@ -47,7 +48,7 @@ class EditUser extends Component<any, any> {
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-      await axios.put(`users/${this.userId}`, {
+      await axios.put(`${constant.BASE_URL}/users/${this.userId}`, {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,

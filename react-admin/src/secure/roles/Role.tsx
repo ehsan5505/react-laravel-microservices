@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import Deleter from "../components/Deleter";
 import UserProps from "../classes/user";
 import { connect } from "react-redux";
+import constant from "../../config_const";
 
 class Role extends Component<{ user: UserProps }> {
   state = {
@@ -15,7 +16,7 @@ class Role extends Component<{ user: UserProps }> {
   };
 
   componentDidMount = async () => {
-    const roles = await axios.get("roles");
+    const roles = await axios.get(`${constant.BASE_URL}/roles`);
     this.setState({
       roles: roles.data.data,
     });

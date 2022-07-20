@@ -4,6 +4,7 @@ import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import constant from "../config_const";
 
 class Login extends Component {
   email = "";
@@ -17,7 +18,7 @@ class Login extends Component {
     e.preventDefault();
 
     try {
-      await axios.post("login", {
+      await axios.post(`${constant.USER_URL}/login`, {
         email: this.email,
         password: this.password,
         scope: "admin"

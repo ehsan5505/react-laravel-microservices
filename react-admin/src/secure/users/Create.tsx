@@ -4,6 +4,7 @@ import axios, { AxiosError } from "axios";
 import RoleProps from "../classes/role";
 import { toast } from "react-toastify";
 import { Navigate } from "react-router-dom";
+import constant from "../../config_const";
 
 class CreateUser extends Component {
   firstName = "";
@@ -20,7 +21,7 @@ class CreateUser extends Component {
 
   // Gather the roles detail
   componentDidMount = async () => {
-    const resp = await axios.get("roles");
+    const resp = await axios.get(`${constant.BASE_URL}/roles`);
     this.setState({ roles: resp.data.data });
   };
 
@@ -28,7 +29,7 @@ class CreateUser extends Component {
     e.preventDefault();
 
     try {
-      await axios.post("users", {
+      await axios.post(`${constant.BASE_URL}/users`, {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,

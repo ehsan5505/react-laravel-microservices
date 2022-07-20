@@ -2,6 +2,7 @@ import axios from "axios";
 import { Component, Dispatch, ReactNode, SyntheticEvent } from "react";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
+import constant from "../../config_const";
 import setUser from "../../redux/actions/setUserActions";
 import UserProps from "../classes/user";
 import Wrapper from "../Wrapper";
@@ -31,7 +32,7 @@ class Profile extends Component<any> {
   updateInfo = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-      const resp = await axios.put("info", {
+      const resp = await axios.put(`${constant.USER_URL}/info`, {
         first_name: this.first_name,
         last_name: this.last_name,
         email: this.email,
@@ -58,7 +59,7 @@ class Profile extends Component<any> {
   updatePass = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-      await axios.put("password", {
+      await axios.put(`${constant.USER_URL}/password`, {
         password: this.password,
         password_confirmation: this.password_confirmation,
       });

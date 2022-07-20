@@ -6,6 +6,7 @@ import Wrapper from "../Wrapper";
 import { OrderProps } from "../classes/order";
 import UserProps from "../classes/user";
 import { connect } from "react-redux";
+import constant from "../../config_const";
 
 class Order extends Component<{ user: UserProps }> {
   lastPage = 0;
@@ -21,7 +22,7 @@ class Order extends Component<{ user: UserProps }> {
   };
 
   componentDidMount = async () => {
-    const resp = await axios.get(`orders?page=${this.page}`);
+    const resp = await axios.get(`${constant.BASE_URL}/orders?page=${this.page}`);
     this.setState({
       orders: resp.data.data,
     });
@@ -29,7 +30,7 @@ class Order extends Component<{ user: UserProps }> {
   };
 
   export = async () => {
-    const resp = await axios.get("export", { responseType: "blob" });
+    const resp = await axios.get(`${constant.BASE_URL}/export`, { responseType: "blob" });
     const blob = new Blob([resp.data], { type: "text/csv" });
 
     // Now Create the Dummy URl

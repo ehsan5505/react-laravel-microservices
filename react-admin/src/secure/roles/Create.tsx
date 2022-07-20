@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component, SyntheticEvent } from "react";
 import { Navigate } from "react-router";
 import { toast } from "react-toastify";
+import constant from "../../config_const";
 import PermissionProps from "../classes/permission";
 import Wrapper from "../Wrapper";
 
@@ -25,7 +26,7 @@ class CreateRole extends Component {
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-      await axios.post("roles", {
+      await axios.post(`${constant.BASE_URL}/roles`, {
         name: this.name,
         permissions: this.selected,
       });
@@ -39,7 +40,7 @@ class CreateRole extends Component {
   };
 
   componentDidMount = async () => {
-    const response = await axios.get("permissions");
+    const response = await axios.get(`${constant.BASE_URL}/permissions`);
     this.setState({
       permissions: response.data,
     });

@@ -2,6 +2,7 @@ import { Component } from "react";
 import Wrapper from "../Wrapper";
 import c3 from "c3";
 import axios from "axios";
+import constant from "../../config_const";
 class Dashboard extends Component {
   componentDidMount = async () => {
     let chart = c3.generate({
@@ -26,7 +27,7 @@ class Dashboard extends Component {
       },
     });
 
-    const resp = await axios.get("chart");
+    const resp = await axios.get(`${constant.BASE_URL}/chart`);
     const records: { date: string; total_sales: number }[] = resp.data;
     chart.load({
       columns: [

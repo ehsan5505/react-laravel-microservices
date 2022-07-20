@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component, PropsWithRef, SyntheticEvent } from "react";
 import { Navigate, useParams } from "react-router";
 import { toast } from "react-toastify";
+import constant from "../../config_const";
 import PermissionProps from "../classes/permission";
 import RoleProps from "../classes/role";
 import Wrapper from "../Wrapper";
@@ -30,8 +31,8 @@ class EditRole extends Component<any, any> {
 
   componentDidMount = async () => {
     this.roleId = this.props.params.id;
-    const permissionCall = await axios.get("permissions");
-    const roleCall = await axios.get(`roles/${this.roleId}`);
+    const permissionCall = await axios.get(`${constant.BASE_URL}/permissions`);
+    const roleCall = await axios.get(`${constant.BASE_URL}/roles/${this.roleId}`);
     const role = roleCall.data;
 
     this.selected = role.permissions.map((p: PermissionProps) => p.id);
@@ -46,7 +47,7 @@ class EditRole extends Component<any, any> {
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-      await axios.put(`roles/${this.roleId}`, {
+      await axios.put(`${constant.BASE_URL}/roles/${this.roleId}`, {
         name: this.name,
         permissions: this.selected,
       });

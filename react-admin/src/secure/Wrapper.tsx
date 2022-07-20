@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import UserProps from "./classes/user";
 import setUser from "../redux/actions/setUserActions";
 import { connect } from "react-redux";
+import constant from "../config_const";
 
 class Wrapper extends Component<PropsWithChildren<any>> {
   state = {
@@ -15,7 +16,7 @@ class Wrapper extends Component<PropsWithChildren<any>> {
 
   componentDidMount = async () => {
     try {
-      const resp = await axios.get("user");
+      const resp = await axios.get(`${constant.BASE_URL}/user`);
       const user: UserProps = resp.data.data;
       this.props.setUser(new UserProps(user.id,user.first_name,user.last_name,user.email,user.role,user.permissions));
     } catch (e) {

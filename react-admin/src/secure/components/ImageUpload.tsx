@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Component } from "react";
 import { toast } from "react-toastify";
+import constant from "../../config_const";
 
 class ImageUpload extends Component<{ value: string; handleImage: any }> {
   imageUrl = "";
@@ -13,7 +14,7 @@ class ImageUpload extends Component<{ value: string; handleImage: any }> {
     try {
       data.append("image", files[0]);
       console.info(data);
-      const response = await axios.post("image", data, {
+      const response = await axios.post(`${constant.BASE_URL}/image`, data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       this.imageUrl = response.data.url;
