@@ -61,7 +61,7 @@ class AuthController
         //             "is_fluencer"   => 1 // Default if client register it would be influencer from the Web Apps
         //         ]
         // );
-        print(`Welcome to ${$request->input('first_name')}`);
+        print(`Welcome to ${$request->only('first_name')}`);
         return response("Thank You");
         // return response($user, Response::HTTP_ACCEPTED);
     }
