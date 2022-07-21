@@ -26,6 +26,7 @@ class AuthController
         // return $response->json();
 
         $user = \Auth::user();
+        dd($user);
         // Gate::authorize('view', 'users');
         // return new UserResource(\Auth::user());
         $resource = new UserResource($user);
