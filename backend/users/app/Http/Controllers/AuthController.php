@@ -32,7 +32,7 @@ class AuthController
             $token=$user->createToken($scope,[$scope])->accessToken;
             
             $cookie = cookie('jwt', $token, 3600);
-            dd($cookie);
+            dd($token);
             
             // return response(['token' => $token])->withCookie($cookie);
             // return [
