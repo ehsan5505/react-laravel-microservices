@@ -18,7 +18,7 @@ class AuthController
     {
 
         $headers = [
-            'Authorization' => $request->headers->get("Authorization");
+            'Authorization' => $request->headers->get("Authorization")
         ];
 
         $response = \Http::withHeaders($heders)->get("http://localhost:8001/api/user");
