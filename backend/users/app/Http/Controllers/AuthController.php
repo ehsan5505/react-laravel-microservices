@@ -21,9 +21,9 @@ class AuthController
     public function login(Request $request)
     {
         if (Auth::attempt($request->only('email', 'password'))) {
-            dd(Auth::user());
-            //     $user = Auth::user();
-
+            $user = Auth::user();
+            dd($user);
+            
         //     $scope = $request->input('scope');
         //     if ($user->isInfluencer() && $scope !== "influencer") {
         //         return response(["error" => "Access Denied"], Response::HTTP_FORBIDDEN);
