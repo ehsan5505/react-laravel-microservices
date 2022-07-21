@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Passport\HasApiToken;
+use Laravel\Passport\HasApiTokens;
+
 
 /**
  * App\Models\User
@@ -40,6 +41,7 @@ use Laravel\Passport\HasApiToken;
  */
 class User extends Authenticatable
 {
+
     use HasApiTokens, Notifiable;
 
     protected $guarded = ['id'];
