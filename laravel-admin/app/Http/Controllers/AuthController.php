@@ -16,6 +16,15 @@ class AuthController
     // Return the User Info
     public function user()
     {
+
+        $headers = [
+            'Authorization' => $request->headers->get("Authorization");
+        ];
+
+        $response = \Http::withHeaders($heders)->get("http://localhost:8001/api/user");
+
+        return $response->json();
+
         $user = \Auth::user();
         // Gate::authorize('view', 'users');
         // return new UserResource(\Auth::user());

@@ -15,24 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get("hello", function () {
-    return "Hello World!";
-});
-// De-Active
-// Route::get("index",'UserController@hello');
-// Route::get("users",'UserController@index');
-// Route::get("users/{id}","UserController@show");
-// Route::post("users","UserController@create");
-// Route::put("users/{id}","UserController@update");
-// Route::delete("users/{id}","UserController@destroy");
-// Active
-
-// User Route
-Route::group([
-    'middleware'    =>  'auth:api'
-], function () {
-    Route::get('user', 'AuthController@user');
-});
+Route::get('user', 'AuthController@user');
 
 
 // Admin Routes
@@ -53,19 +36,26 @@ Route::group([
 });
 
 // Influencer Routes
-Route::prefix("influencer")->group(function () {
+Route::group(
+    [
+        "prefix" => "influencer",
+        "namespace" => "Influencer"
+    ],
+    function () {
 
-    Route::get('products', 'Influencer\ProductController@index');
+        Route::get('products', 'Influencer\ProductController@index');
 
-    Route::middleware(['auth:api', 'scope:influencer'])->group(function () {
+        Route::group(["middleware" => ['auth:api', 'scope:influencer']],
+        function () {
 
-        Route::namespace('Influencer')->group(function () {
-            Route::post('links', "LinkController@store");
-            Route::get('stats', "StatsController@index");
-            Route::get('rankings', "StatsController@rankings");
+            Route::namespace('Influencer')->group(function () {
+                Route::post('links', "LinkController@store");
+                Route::get('stats', "StatsController@index");
+                Route::get('rankings', "StatsController@rankings");
+            });
         });
-    });
-});
+    }
+);
 
 
 // Checkout Routes
