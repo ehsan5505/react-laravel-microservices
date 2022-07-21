@@ -17,13 +17,13 @@ class AuthController
     public function user(Request $request)
     {
 
-        // $headers = [
-        //     'Authorization' => $request->headers->get("Authorization")
-        // ];
+        $headers = [
+            'Authorization' => $request->headers->get("Authorization")
+        ];
 
-        // $response = \Http::withHeaders($headers)->get("localhost:8001/api/user");
+        $response = \Http::withHeaders($headers)->get("localhost:8001/api/user");
 
-        // return $response->json();
+        return $response->json();
 
         $user = \Auth::user();
         dd($user);
