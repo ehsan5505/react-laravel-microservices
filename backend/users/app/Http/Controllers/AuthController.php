@@ -20,9 +20,9 @@ class AuthController
     // login
     public function login(Request $request)
     {
-        dd(Auth::attempt($request->only('email', 'password')));
-        // if (Auth::attempt($request->only('email', 'password'))) {
-        //     $user = Auth::user();
+        if (Auth::attempt($request->only('email', 'password'))) {
+            dd(Auth::user());
+            //     $user = Auth::user();
 
         //     $scope = $request->input('scope');
         //     if ($user->isInfluencer() && $scope !== "influencer") {
@@ -38,7 +38,7 @@ class AuthController
             // return [
             //     'token' => $token,
             // ];
-        // }
+        }
 
         // return response(
         //     ['error' => "Could not authenticate the user"],
