@@ -68,6 +68,7 @@ class AuthController
     // Return the User Info
     public function user()
     {
+        return response("Response is getting me frustrated");
         return \Auth::user();
     }
 
