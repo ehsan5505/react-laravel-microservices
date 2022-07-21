@@ -32,18 +32,14 @@ class AuthController
             $token=$user->createToken($scope,[$scope])->accessToken;
             
             $cookie = cookie('jwt', $token, 3600);
-            dd($token->token);
             
-            // return response(['token' => $token])->withCookie($cookie);
-            // return [
-            //     'token' => $token,
-            // ];
+            return response(['token' => $token->token])->withCookie($cookie);
         }
 
-        // return response(
-        //     ['error' => "Could not authenticate the user"],
-        //     Response::HTTP_UNAUTHORIZED
-        // );
+        return response(
+            ['error' => "Could not authenticate the user"],
+            Response::HTTP_UNAUTHORIZED
+        );
     }
 
     public function logout()
