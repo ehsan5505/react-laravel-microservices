@@ -16,17 +16,19 @@ class AuthController
     // Return the User Info
     public function user()
     {
-        $user = \Auth::user();
-        // Gate::authorize('view', 'users');
-        // return new UserResource(\Auth::user());
-        $resource = new UserResource($user);
-        if ($user->isInfluencer()) {
-            return $resource;
-        }
-        return ($resource)->additional([
-            'data' => [
-                'permissions' => $user->permissions()
-            ]
-        ]);
+        dd("Request is triggered");
+        return response("Good Morning");
+        // $user = \Auth::user();
+        // // Gate::authorize('view', 'users');
+        // // return new UserResource(\Auth::user());
+        // $resource = new UserResource($user);
+        // if ($user->isInfluencer()) {
+        //     return $resource;
+        // }
+        // return ($resource)->additional([
+        //     'data' => [
+        //         'permissions' => $user->permissions()
+        //     ]
+        // ]);
     }
 }
