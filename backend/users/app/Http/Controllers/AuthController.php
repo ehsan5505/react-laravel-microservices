@@ -33,7 +33,7 @@ class AuthController
             
             $cookie = cookie('jwt', $token, 3600);
             
-            return response(['token' => $token->token])->withCookie($cookie);
+            return response(['token' => $token])->withCookie($cookie);
         }
 
         return response(
