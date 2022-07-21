@@ -69,8 +69,8 @@ class AuthController
     public function user()
     {
         dd("World we are learning");
-        return response("Response is getting me frustrated");
-        return \Auth::user();
+        // return response("Response is getting me frustrated");
+        // return \Auth::user();
     }
 
     public function updateInfo(UserUpdateProfileRequest $request)
