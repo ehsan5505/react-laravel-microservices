@@ -19,17 +19,17 @@ class Authenticate extends Middleware
         }
     }
 
-    public function handle($request,Closure $next,...$guards)
-    {
-        // Intercept the Cookie and set it in the header as Authorization 
-        if($token = $request->cookie('jwt')){
-            $request->headers->set('Authorization','Bearer '.$token);
-        }
+    // public function handle($request,Closure $next,...$guards)
+    // {
+    //     // Intercept the Cookie and set it in the header as Authorization 
+    //     if($token = $request->cookie('jwt')){
+    //         $request->headers->set('Authorization','Bearer '.$token);
+    //     }
         
-        $this->authenticate($request,$guards);
+    //     $this->authenticate($request,$guards);
 
-        return $next($request);
+    //     return $next($request);
 
-    }
+    // }
 
 }
