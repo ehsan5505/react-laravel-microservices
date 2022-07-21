@@ -21,7 +21,7 @@ class AuthController
             'Authorization' => $request->headers->get("Authorization")
         ];
 
-        $response = \Http::withHeaders($headers)->get("http://localhost:8001/api/user");
+        $response = \Http::withHeaders($headers)->get("localhost:8001/api/user");
 
         return $response->json();
 
