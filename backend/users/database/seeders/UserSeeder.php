@@ -13,7 +13,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $users = \DB::connection("mysql_migrate");
+        $users = \DB::connection("mysql_migrate")->table('users');
+        
 
         dump($users);
     }
