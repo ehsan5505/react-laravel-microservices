@@ -67,9 +67,7 @@ class AuthController
     // Return the User Info
     public function user()
     {
-        dd("World we are learning");
-        // return response("Response is getting me frustrated");
-        // return \Auth::user();
+        return \Auth::user();
     }
 
     public function updateInfo(UserUpdateProfileRequest $request)
