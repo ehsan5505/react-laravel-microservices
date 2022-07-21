@@ -14,14 +14,14 @@ class AuthController
 {
 
     // Return the User Info
-    public function user()
+    public function user(Request $request)
     {
 
         $headers = [
             'Authorization' => $request->headers->get("Authorization")
         ];
 
-        $response = \Http::withHeaders($heders)->get("http://localhost:8001/api/user");
+        $response = \Http::withHeaders($headers)->get("http://localhost:8001/api/user");
 
         return $response->json();
 
