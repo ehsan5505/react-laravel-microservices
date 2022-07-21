@@ -27,6 +27,8 @@ class AuthController
             if ($user->isInfluencer() && $scope !== "influencer") {
                 return response(["error" => "Access Denied"], Response::HTTP_FORBIDDEN);
             }
+
+            dd($user);
             $token=$user->createToken($scope,[$scope])->accessToken;
 
             $cookie = cookie('jwt', $token, 3600);
