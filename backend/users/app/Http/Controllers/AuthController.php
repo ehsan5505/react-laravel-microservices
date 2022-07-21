@@ -38,12 +38,12 @@ class AuthController
             // return [
             //     'token' => $token,
             // ];
-        }
+        // }
 
-        return response(
-            ['error' => "Could not authenticate the user"],
-            Response::HTTP_UNAUTHORIZED
-        );
+        // return response(
+        //     ['error' => "Could not authenticate the user"],
+        //     Response::HTTP_UNAUTHORIZED
+        // );
     }
 
     public function logout()
