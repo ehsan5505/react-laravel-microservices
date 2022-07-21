@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get("hello", function () {
     return "Hello World!";
 });
+Route::get("test", [AuthController::class, "index"]);
 
 
 Route::post("login", [AuthController::class, "login"]);
@@ -24,11 +25,10 @@ Route::post("logout", [AuthController::class, "logout"]);
 Route::post("register", [AuthController::class, "register"]);
 
 // middleware(['auth:api','scope:admin'])
-Route::get('user', [AuthController::class, "user"]);
 Route::group([
     'middleware' => 'auth:api'
 ], function () {
-    Route::get("test", [AuthController::class, "index"]);
+    Route::get('user', [AuthController::class, "user"]);
     Route::put('info', [AuthController::class, "updateInfo"]);
     Route::put('password', [AuthController::class, "updatePassword"]);
 });
