@@ -76,10 +76,10 @@ class User extends Authenticatable
         return $this->is_fluencer === 0;
     }
 
-    public function isInfluencer(): bool
-    {
-        return $this->is_fluencer === 1;
-    }
+    // public function isInfluencer(): bool
+    // {
+    //     return $this->is_fluencer === 1;
+    // }
 
     public function getRevenueAttribute()
     {

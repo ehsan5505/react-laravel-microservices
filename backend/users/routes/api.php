@@ -25,7 +25,9 @@ Route::post("register", [AuthController::class, "register"]);
 
 // middleware(['auth:api','scope:admin'])
 Route::get('user', [AuthController::class, "user"]);
-Route::middleware('auth:api')->group(function () {
+Route::group([
+    'middleware' => 'auth:api'
+], function () {
     Route::get("test", [AuthController::class, "index"]);
     Route::put('info', [AuthController::class, "updateInfo"]);
     Route::put('password', [AuthController::class, "updatePassword"]);

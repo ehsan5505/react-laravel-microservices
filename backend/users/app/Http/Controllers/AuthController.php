@@ -30,9 +30,10 @@ class AuthController
             
             $token=$user->createToken($scope,[$scope])->accessToken;
             
-            $cookie = cookie('jwt', $token, 3600);
+            // $cookie = cookie('jwt', $token, 3600);
             
-            return response(['token' => $token])->withCookie($cookie);
+            return ['token' => $token];
+            // return response(['token' => $token])->withCookie($cookie);
         }
 
         return response(
@@ -55,7 +56,7 @@ class AuthController
             $request->only('first_name', 'last_name', 'email')
                 + [
                     "password" => Hash::make($request->input('password')),
-                    "role_id" => 3,
+                    // "role_id" => 3,
                     "is_fluencer"   => 1 // Default if client register it would be influencer from the Web Apps
                 ]
         );
