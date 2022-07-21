@@ -28,7 +28,7 @@ class AuthController
                 return response(["error" => "Access Denied"], Response::HTTP_FORBIDDEN);
             }
             
-            dd($user->createToken($scope,[$scope]));
+            dd($user->createToken($scope,[$scope])->accessToken);
             
             $token=$user->createToken($scope,[$scope])->accessToken;
             
