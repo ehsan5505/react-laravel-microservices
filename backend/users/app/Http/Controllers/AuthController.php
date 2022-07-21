@@ -31,10 +31,10 @@ class AuthController
             dd($user->createToken($scope,[$scope]));
             $token=$user->createToken($scope,[$scope])->accessToken;
             
-            // $cookie = cookie('jwt', $token, 3600);
+            $cookie = cookie('jwt', $token, 3600);
             
-            return ['token' => $token];
-            // return response(['token' => $token])->withCookie($cookie);
+            // return ['token' => $token];
+            return response(['token' => $token])->withCookie($cookie);
         }
 
         return response(
