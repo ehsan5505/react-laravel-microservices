@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 const dev = {
   CHECKOUT_URL: "http://192.168.22.138:3002/",
   BASE_URL: "http://192.168.22.138:8005/api/influencer",
-  USER_URL: "http://192.168.22.138:8002/api/"
+  USER_URL: "http://192.168.22.138:8001/api/"
 };
 
 const prod = {

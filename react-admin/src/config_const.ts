@@ -1,6 +1,6 @@
 const dev = {
   BASE_URL: "http://192.168.22.138:8005/api/influencer",
-  USER_URL: "http://192.168.22.138:8001/api/"
+  USER_URL: "http://192.168.22.138:8001/api"
 };
 
 const prod = {
