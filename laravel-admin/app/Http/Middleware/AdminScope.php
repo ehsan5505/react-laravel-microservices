@@ -22,6 +22,7 @@ class AdminScope
         if ($this->userService->isAdmin()) {
             return $next($request);
         }
+        print("Something is wrong and I can feel it");
         // throw new AuthenticationException;
     }
 }
