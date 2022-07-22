@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('user', 'AuthController@user');
 
 
 // Admin Routes
@@ -24,6 +23,7 @@ Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',
 ], function () {
+    Route::get('user', 'AuthController@user');
     Route::get('chart', 'DashboardController@chart');
     Route::post('image', "ImageController@upload");
     Route::get("export", "OrderController@export");
