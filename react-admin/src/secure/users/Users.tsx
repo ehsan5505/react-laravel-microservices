@@ -80,7 +80,7 @@ class User extends Component<{ user: UserProps }> {
               </tr>
             </thead>
             <tbody>
-              {this.state.users.map((user: any) => {
+              {this.state.users.map((user: UserProps) => {
                 return (
                   <tr key={user.id}>
                     <td>{user.id}</td>
