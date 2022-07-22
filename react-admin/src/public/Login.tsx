@@ -17,10 +17,7 @@ class Login extends Component {
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
-    console.log("Receive the request of the Login");
-
     try {
-      console.info(` Make a Post Request to "${constant.USER_URL}/login"`)
       await axios.post(`${constant.USER_URL}/login`, 
       {
         email: this.email,
@@ -33,10 +30,9 @@ class Login extends Component {
       });
       console.info("Make a success in the login request");
     } catch (err: any) {
-        console.error(`Someone has todo something...${err.response.data.error}`);
-      // this.setState({
-        // message: err.response.data.error
-      // });
+      this.setState({
+        message: err.response.data.error
+      });
     }
   };
 
