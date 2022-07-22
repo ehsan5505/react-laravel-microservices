@@ -9,7 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
-use UserService;
+use Services\UserService;
 
 class AuthController
 {

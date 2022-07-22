@@ -4,15 +4,17 @@ use App\Models\User;
 
 class UserService {
 
-  private $endpoint = "http://192.168.22.138:8001/api/user";
+  private $endpoint = "http://192.168.22.138:8001/api";
 
-  private function header(){
-    return request()->headers()->get('Authorization');
+  public function headers(){
+    return [
+      'Authorization' => request()->headers()->get('Authorization')
+    ];
   }
 
 
   public function getUser(){
-    $response = Http::withHeaders($this->header())->get($this->endpoint);
+    $response = \Http::withHeaders($this->headers())->get(`{$this->endpoint}/user`);
     $json = $response->json();
 
     $user = new User();
