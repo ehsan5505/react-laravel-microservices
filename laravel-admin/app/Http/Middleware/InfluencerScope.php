@@ -9,6 +9,8 @@ use Illuminate\Auth\AuthenticationException;
 class InfluencerScope
 {
 
+    private $userService;
+    
     public function __construct(UserService $userService)
     {
         $this->userService = $userService;
