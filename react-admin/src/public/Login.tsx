@@ -24,8 +24,9 @@ class Login extends Component {
         scope: "admin"
       });
 
-      localStorage.setItem('token',resp.data.token);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${resp.data.token}`;
+      console.info(resp);
+      // localStorage.setItem('token',resp.data.token);
+      // axios.defaults.headers.common['Authorization'] = `Bearer ${resp.data.token}`;
 
       this.setState({
         redirect: true,
