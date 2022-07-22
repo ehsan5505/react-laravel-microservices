@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\UserRole;
 use App\Services\UserService;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController
@@ -29,7 +30,7 @@ class UserController
 
     // Return all the users
     // @users
-    function index()
+    function index(Request $request)
     {
 
         dd($this->userService->all($request->input("page",1)));
