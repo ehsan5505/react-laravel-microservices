@@ -20,6 +20,7 @@ class AuthController
     // login
     public function login(Request $request)
     {
+        echo "CLI > Received the request";
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user();
             
