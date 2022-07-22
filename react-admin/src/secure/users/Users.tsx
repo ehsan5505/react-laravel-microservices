@@ -20,7 +20,6 @@ class User extends Component<{ user: UserProps }> {
   componentDidMount = async () => {
     const res = await axios.get(`${constant.BASE_URL}/users?page=${this.page}`);
 
-    console.info(res.data.data);
     this.setState({
       users: res.data.data,
     });
@@ -81,7 +80,7 @@ class User extends Component<{ user: UserProps }> {
               </tr>
             </thead>
             <tbody>
-              {/* {this.state.users.map((user: UserProps) => {
+              {this.state.users.map((user: any) => {
                 return (
                   <tr key={user.id}>
                     <td>{user.id}</td>
@@ -89,11 +88,11 @@ class User extends Component<{ user: UserProps }> {
                       {user.first_name} {user.last_name}
                     </td>
                     <td>{user.email}</td>
-                    <td>{user.role.name}</td>
-                    <td>{this.action(user.id)}</td>
+                    {/* <td>{user.role.name}</td>
+                    <td>{this.action(user.id)}</td> */}
                   </tr>
                 );
-              })} */}
+              })}
             </tbody>
           </table>
         </div>
