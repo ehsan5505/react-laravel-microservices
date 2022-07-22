@@ -18,7 +18,7 @@ class User extends Component<{ user: UserProps }> {
   last_page = 1;
 
   componentDidMount = async () => {
-    const res = await axios.get(`${constant.BASE_USER}/users?page=${this.page}`);
+    const res = await axios.get(`${constant.BASE_URL}/users?page=${this.page}`);
 
     this.setState({
       users: res.data.data,
