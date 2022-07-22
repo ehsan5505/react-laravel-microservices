@@ -48,12 +48,9 @@ Route::group(
         Route::group(
             ["middleware" => ['scope.influencer']],
             function () {
-
-                Route::namespace('Influencer')->group(function () {
-                    Route::post('links', "LinkController@store");
-                    Route::get('stats', "StatsController@index");
-                    Route::get('rankings', "StatsController@rankings");
-                });
+                Route::post('links', "LinkController@store");
+                Route::get('stats', "StatsController@index");
+                Route::get('rankings', "StatsController@rankings");
             }
         );
     }
