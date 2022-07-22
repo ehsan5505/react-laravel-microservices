@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use UserService;
+use \App\Services\UserService;
 use Illuminate\Auth\AuthenticationException;
 
 class AdminScope
