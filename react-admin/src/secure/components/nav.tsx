@@ -16,6 +16,7 @@ class Nav extends Component<{ user: UserProps }> {
       this.setState({
         redirect: true,
       });
+      localStorage.clear();
     } catch (err: any) {
       console.warn(err.response.message.data);
     }
