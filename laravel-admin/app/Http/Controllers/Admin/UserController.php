@@ -33,8 +33,8 @@ class UserController
     {
         // Did the Role has has access view | users (Gate(privilege, model?))
         $this->userService->allows('view', 'users');
-        // $users = User::whereIsFluencer(0)->paginate();
-        $users = User::paginate();
+        $users = User::whereIsFluencer(0)->paginate();
+        // $users = User::paginate();
         return response($users);
         // return UserResource::collection($users);
     }
