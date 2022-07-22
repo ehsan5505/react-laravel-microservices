@@ -10,7 +10,6 @@ class UserController extends Controller
 {
     function index(Request $request)
     {
-        return "Good Morning";
-        // return PaginateResource::collection(User::paginate($request->input('page')));
+        return PaginateResource::collection(User::paginate($request->input('page')));
     }
 }
