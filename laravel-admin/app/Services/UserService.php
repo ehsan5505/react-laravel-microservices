@@ -9,7 +9,7 @@ class UserService {
 
   public function headers(){
     return [
-      'Authorization' => request()->headers()->get('Authorization')
+      'Authorization' => request()->get('Authorization')
     ];
   }
 
