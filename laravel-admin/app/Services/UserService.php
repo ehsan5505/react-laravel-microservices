@@ -49,5 +49,10 @@ class UserService {
     return \Gate::forUser($this->getUser())->authorize($action,$model);
   }
 
+  public function all($page)
+  {
+    return \Http::withHeaders($this->headers())->get("{$this->endpoint}/users?page={$page}");
+  }
+
 
 }
