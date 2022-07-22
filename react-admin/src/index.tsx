@@ -8,7 +8,7 @@ import configureStore from "./redux/configureStore";
 import { Provider } from "react-redux";
 
 // axios.defaults.baseURL = "http://192.168.22.138:8000/api/admin/";
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
