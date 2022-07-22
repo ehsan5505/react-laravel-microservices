@@ -36,13 +36,17 @@ class AuthController
         // // return new UserResource(\Auth::user());
         $resource = new UserResource($user);
         if ($user->isInfluencer()) {
-            return $resource;
+            return ($resource)->additional([
+                'data' => [
+                    'revenue' => $user->revenue
+                ]
+            ]);
         }
-        dd($resource);
-        // return ($resource)->additional([
-        //     'data' => [
-        //         'permissions' => $user->permissions()
-        //     ]
-        // ]);
+        return ($resource)->additional([
+            'data' => [
+                'role'        => $user->role,
+                'permissions' => $user->permissions()
+            ]
+        ]);
     }
 }
