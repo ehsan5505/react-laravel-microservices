@@ -16,7 +16,7 @@ class InfluencerScope
     public function handle($request, Closure $next)
     {
 
-        if ($this->userService->isInfluencer()) {
+        if ($this->userService->IsInfluencer()) {
             return $next($request);
         }
         throw new AuthenticationException;
