@@ -38,5 +38,10 @@ class UserService {
     return \Http::withHeaders($this->headers())->get("{$this->endpoint}/admin")->successful();
   }
 
+  public function isInfluencer()
+  {
+    return \Http::withHeaders($this->headers())->get("{$this->endpoint}/influencer")->successful();
+  }
+
 
 }
