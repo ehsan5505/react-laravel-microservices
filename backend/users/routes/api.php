@@ -35,5 +35,6 @@ Route::group([
 
     Route::get('admin', [AuthController::class, "authenticated"])->middleware('scope:admin');
     Route::get('influencer', [AuthController::class, "authenticated"])->middleware('scope:influencer');
-    Route::apiResource('users', UserController::class);
+    
+    Route::apiResource('users', [UserController::class]);
 });
