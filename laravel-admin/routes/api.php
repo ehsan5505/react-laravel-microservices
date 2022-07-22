@@ -43,7 +43,7 @@ Route::group(
     ],
     function () {
 
-        Route::get('products', 'Influencer\ProductController@index');
+        Route::get('products', 'ProductController@index');
 
         Route::group(
             ["middleware" => ['scope.influencer']],
