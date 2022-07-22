@@ -21,20 +21,21 @@ class Login extends Component {
 
     try {
       console.info(` Make a Post Request to "${constant.USER_URL}/login"`)
-      // await axios.post(`${constant.USER_URL}/login`, {
-    //     email: this.email,
-    //     password: this.password,
-    //     scope: "admin"
-    //   });
+      await axios.post(`${constant.USER_URL}/login`, {
+        email: this.email,
+        password: this.password,
+        scope: "admin"
+      });
 
-    //   this.setState({
-    //     redirect: true,
-    //   });
+      this.setState({
+        redirect: true,
+      });
+      console.info("Make a success in the login request");
     } catch (err: any) {
         console.error("Someone has todo something...");
-    //   this.setState({
-    //     message: err.response.data.error
-      // });
+      this.setState({
+        message: err.response.data.error
+      });
     }
   };
 
