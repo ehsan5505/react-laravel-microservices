@@ -18,16 +18,16 @@ class UserService {
     // $response = \Http::withHeaders($this->headers())->get(`{$this->endpoint}/user`);
     $response = \Http::withHeaders($this->headers())->get("{$this->endpoint}/user");
 
-    dd($response->json());
-    // $json = $response->json();
-
-    // $user = new User();
-    // $user->id           = $json['id'];
-    // $user->first_name   = $json['first_name'];
-    // $user->last_name    = $json['last_name'];
-    // $user->email        = $json['email'];
-    // $user->is_fluencer  = $json['is_fluencer'];
-
+    $json = $response->json();
+    
+    $user = new User();
+    $user->id           = $json['id'];
+    $user->first_name   = $json['first_name'];
+    $user->last_name    = $json['last_name'];
+    $user->email        = $json['email'];
+    $user->is_fluencer  = $json['is_fluencer'];
+    
+    dd($user);
     // return $user;
 
   }
