@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Resources\RoleResource;
 use App\Role;
 use Illuminate\Http\Request;
+use App\Services\UserService;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -19,13 +20,13 @@ class RoleController
 
     public function index()
     {
-        \$this->userService->allows('view','roles');
+        $this->userService->allows('view','roles');
         return RoleResource::collection(Role::all());
     }
 
     public function store(Request $request)
     {
-        \$this->userService->allows('edit','roles');
+        $this->userService->allows('edit','roles');
         $role = Role::create($request->only('name'));
         $permissions = $request->input('permissions');
 
@@ -42,14 +43,14 @@ class RoleController
 
     public function show($id)
     {
-        \$this->userService->allows('view','roles');
+        $this->userService->allows('view','roles');
         $role = Role::find($id);
         return response(new RoleResource($role),Response::HTTP_ACCEPTED);        
     }
 
     public function update(Request $request, $id)
     {
-        \$this->userService->allows('edit','roles');
+        $this->userService->allows('edit','roles');
         $role = Role::find($id);
         // Delete the Old Permission Relationship from the Pivot
         \DB::table('role_permission')->where('role_id',$role->id)->delete();
@@ -70,7 +71,7 @@ class RoleController
 
     public function destroy($id)
     {
-        \$this->userService->allows('edit','roles');
+        $this->userService->allows('edit','roles');
         // Delete the Old Permission Relationship from the Pivot
         \DB::table('role_permission')->where('role_id',$id)->delete();
         // Delete the Role

@@ -9,7 +9,7 @@ use App\Jobs\AdminAdded;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\UserRole;
-use Gate;
+use App\Services\UserService;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController

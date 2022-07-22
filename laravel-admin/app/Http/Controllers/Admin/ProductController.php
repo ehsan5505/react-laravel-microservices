@@ -6,10 +6,8 @@ use App\Events\ProductUpdatedEvent;
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Resources\ProductResource;
 use App\Product;
-use Gate;
+use App\Services\UserService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Storage;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProductController

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Resources\OrderResource;
 use App\Order;
-use Gate;
+use App\Services\UserService;
 use Symfony\Component\HttpFoundation\Response;
 
 
