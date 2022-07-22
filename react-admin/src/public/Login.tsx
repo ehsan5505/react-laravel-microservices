@@ -31,10 +31,10 @@ class Login extends Component {
     //     redirect: true,
     //   });
     } catch (err: any) {
-      console.error("Someone has todo something...");
+        console.error("Someone has todo something...");
     //   this.setState({
     //     message: err.response.data.error
-      });
+      // });
     }
   };
 
