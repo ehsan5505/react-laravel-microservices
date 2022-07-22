@@ -14,14 +14,14 @@ export default class UserProps {
     firstname = "",
     lastname = "",
     email = "",
-    role: RoleProps = new RoleProps(),
+    roles: RoleProps = new RoleProps(),
     permissions: string[] = []
   ) {
     this.id = id;
     this.first_name = firstname;
     this.last_name = lastname;
     this.email = email;
-    this.roles = role;
+    this.roles = roles;
     this.permissions = permissions;
   }
 
