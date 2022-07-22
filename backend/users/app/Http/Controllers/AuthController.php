@@ -14,13 +14,13 @@ class AuthController
 
     public function index(Request $request)
     {
+        echo "CLI > Received the request";
         return response("Thank You");
     }
 
     // login
     public function login(Request $request)
     {
-        echo "CLI > Received the request";
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user();
             
