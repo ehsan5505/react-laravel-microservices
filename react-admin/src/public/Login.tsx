@@ -17,12 +17,15 @@ class Login extends Component {
     e.preventDefault();
 
     try {
-      await axios.post(`${constant.USER_URL}/login`, 
+      const resp = await axios.post(`${constant.USER_URL}/login`, 
       {
         email: this.email,
         password: this.password,
         scope: "admin"
       });
+
+      localStorage.setItem('token',resp.data.token);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${resp.data.token}`;
 
       this.setState({
         redirect: true,
