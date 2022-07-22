@@ -29,11 +29,11 @@ Route::post("register", [AuthController::class, "register"]);
 Route::group([
     'middleware' => 'auth:api'
 ], function () {
-    Route::get('user', [AuthController::class, "user"]);
+    // Route::get('user', [AuthController::class, "user"]);
     Route::put('info', [AuthController::class, "updateInfo"]);
     Route::put('password', [AuthController::class, "updatePassword"]);
     
-    Route::apiResource("users", [UserController::class]);
+    Route::apiResource("users", UserController::class);
     
     Route::get('admin', [AuthController::class, "authenticated"])->middleware('scope:admin');
     Route::get('influencer', [AuthController::class, "authenticated"])->middleware('scope:influencer');
