@@ -6,7 +6,7 @@ export default class UserProps {
   first_name: string;
   last_name: string;
   email: string;
-  role: RoleProps;
+  roles: RoleProps;
   permissions: string[];
 
   constructor(
@@ -21,7 +21,7 @@ export default class UserProps {
     this.first_name = firstname;
     this.last_name = lastname;
     this.email = email;
-    this.role = role;
+    this.roles = role;
     this.permissions = permissions;
   }
 
