@@ -20,7 +20,8 @@ class AdminScope
     {
 
         if ($this->userService->isAdmin()) {
-            return $next($request);
+            dd("Access is allowed");
+            // return $next($request);
         }
         throw new AuthenticationException;
     }
