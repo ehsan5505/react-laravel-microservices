@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Services\UserService;
+use Illuminate\Auth\AuthenticationException;
 
 class InfluencerScope
 {
