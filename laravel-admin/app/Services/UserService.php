@@ -2,6 +2,7 @@
 
 use App\Models\User;
 
+namespace App\Services;
 class UserService {
 
   private $endpoint = "http://192.168.22.138:8001/api";
