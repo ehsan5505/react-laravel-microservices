@@ -12,7 +12,7 @@ const Wrapper = (props: PropsWithChildren<any>) => {
   useEffect(() => {
     try {
       (async () => {
-        const response = await axios.get(`${constant.USER_URL}/user`);
+        const response = await axios.get(`${constant.BASE_USER}/user`);
         const user: UserProps = response.data.data;
         props.setUser(
           new UserProps(
