@@ -17,22 +17,24 @@ class Login extends Component {
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
-    try {
-      await axios.post(`${constant.USER_URL}/login`, {
-        email: this.email,
-        password: this.password,
-        scope: "admin"
-      });
+    console.log("Receive the request of the Login");
 
-      this.setState({
-        redirect: true,
-      });
-    } catch (err: any) {
+    // try {
+    //   await axios.post(`${constant.USER_URL}/login`, {
+    //     email: this.email,
+    //     password: this.password,
+    //     scope: "admin"
+    //   });
+
+    //   this.setState({
+    //     redirect: true,
+    //   });
+    // } catch (err: any) {
       
-      this.setState({
-        message: err.response.data.error
-      });
-    }
+    //   this.setState({
+    //     message: err.response.data.error
+    //   });
+    // }
   };
 
   render() {
