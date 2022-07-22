@@ -33,10 +33,10 @@ class Login extends Component {
       });
       console.info("Make a success in the login request");
     } catch (err: any) {
-        console.error("Someone has todo something...");
-      this.setState({
-        message: err.response.data.error
-      });
+        console.error(`Someone has todo something...${err.response.data.error}`);
+      // this.setState({
+        // message: err.response.data.error
+      // });
     }
   };
 
