@@ -16,6 +16,7 @@ class StatsController
 
         $user = $request->user();
 
+        $user = \Auth::user();
         dd($user);
         $links = Link::whereUserId($user->id)->get();
         return $links->map(function (Link $link) {
