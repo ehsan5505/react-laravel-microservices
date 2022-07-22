@@ -21,9 +21,6 @@ class AuthController
     // Return the User Info
     public function user(Request $request)
     {
-
-        dd($this->userService->getUser());
-
         // $headers = [
         //     'Authorization' => $request->headers->get("Authorization")
         // ];
@@ -34,9 +31,11 @@ class AuthController
 
         // $user = \Auth::user();
         // dd($user);
+        $user = $this->userService->getUser();
         // // Gate::authorize('view', 'users');
         // // return new UserResource(\Auth::user());
-        // $resource = new UserResource($user);
+        $resource = new UserResource($user);
+        dd($resource);
         // if ($user->isInfluencer()) {
         //     return $resource;
         // }
