@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('user', 'AuthController@user');
 
 
-Route::get('user', 'AuthController@user')->prefix("admin");
 // Admin Routes
 Route::group([
     'middleware' => 'scope.admin',
