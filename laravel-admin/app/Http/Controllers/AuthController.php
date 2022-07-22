@@ -9,34 +9,44 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
+use UserService;
 
 class AuthController
 {
+
+    public $userService = "";
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
 
     // Return the User Info
     public function user(Request $request)
     {
 
-        $headers = [
-            'Authorization' => $request->headers->get("Authorization")
-        ];
+        dd($this->userService);
 
-        $response = \Http::withHeaders($headers)->get("http://192.168.22.138:8001/api/user");
+        // $headers = [
+        //     'Authorization' => $request->headers->get("Authorization")
+        // ];
 
-        return $response->json();
+        // $response = \Http::withHeaders($headers)->get("http://192.168.22.138:8001/api/user");
 
-        $user = \Auth::user();
-        dd($user);
-        // Gate::authorize('view', 'users');
-        // return new UserResource(\Auth::user());
-        $resource = new UserResource($user);
-        if ($user->isInfluencer()) {
-            return $resource;
-        }
-        return ($resource)->additional([
-            'data' => [
-                'permissions' => $user->permissions()
-            ]
-        ]);
+        // return $response->json();
+
+        // $user = \Auth::user();
+        // dd($user);
+        // // Gate::authorize('view', 'users');
+        // // return new UserResource(\Auth::user());
+        // $resource = new UserResource($user);
+        // if ($user->isInfluencer()) {
+        //     return $resource;
+        // }
+        // return ($resource)->additional([
+        //     'data' => [
+        //         'permissions' => $user->permissions()
+        //     ]
+        // ]);
     }
 }
