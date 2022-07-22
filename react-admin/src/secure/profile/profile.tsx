@@ -45,7 +45,7 @@ class Profile extends Component<any> {
           user.first_name,
           user.last_name,
           user.email,
-          user.role,
+          user.roles,
           user.permissions
         )
       );
