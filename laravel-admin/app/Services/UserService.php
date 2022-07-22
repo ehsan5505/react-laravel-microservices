@@ -30,8 +30,7 @@ class UserService {
     $user->email        = $json['email'];
     $user->is_fluencer  = $json['is_fluencer'];
     
-    dd($user);
-    // return $user;
+    return $user;
 
   }
 
