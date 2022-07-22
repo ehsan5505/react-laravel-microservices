@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PermissionController
 {
+    
     public function index(Request $request)
     {
         return response(PermissionResource::collection(Permission::all()), Response::HTTP_ACCEPTED);

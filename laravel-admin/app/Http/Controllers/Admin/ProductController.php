@@ -14,22 +14,31 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ProductController
 {
+
+    private $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
+
     public function index()
     {
-        Gate::authorize('view', 'products');
+        $this->userService->allows('view', 'products');
         $products = Product::paginate();
         return ProductResource::collection($products);
     }
 
     public function show($id)
     {
-        Gate::authorize('view', 'products');
+        $this->userService->allows('view', 'products');
         return new ProductResource(Product::find($id));
     }
 
     public function store(ProductCreateRequest $request)
     {
-        Gate::authorize('edit', 'products');
+        $this->userService->allows('edit', 'products');
         $product = Product::create($request->only(['title', 'description', 'imageUrl', 'price']));
         event(new ProductUpdatedEvent());
         return response(new ProductResource($product), Response::HTTP_CREATED);
@@ -37,7 +46,7 @@ class ProductController
 
     public function update(Request $request, $id)
     {
-        Gate::authorize('edit', 'products');
+        $this->userService->allows('edit', 'products');
         $product = Product::find($id);
         $product->update($request->only(['title', 'description', 'imageUrl', 'price']));
         event(new ProductUpdatedEvent());
@@ -46,7 +55,7 @@ class ProductController
 
     public function destroy($id)
     {
-        Gate::authorize('edit', 'products');
+        $this->userService->allows('edit', 'products');
         Product::destroy($id);
         return response(null, Response::HTTP_NO_CONTENT);
     }

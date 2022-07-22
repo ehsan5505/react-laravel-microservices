@@ -10,9 +10,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 class OrderController
 {
+
+    private $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
+
     public function index()
     {
-        Gate::authorize('view','orders');
+        $this->userService->allows('view','orders');
         $orders = Order::paginate();
         return OrderResource::collection($orders);
         // return response(OrderResource::collection($orders),Response::HTTP_ACCEPTED);
@@ -20,13 +29,13 @@ class OrderController
 
     public function show($id)
     {
-        Gate::authorize('view','orders');
+        $this->userService->allows('view','orders');
         return response(new OrderResource(Order::find($id)),Response::HTTP_ACCEPTED);
     }
 
     public function export()
     {
-        Gate::authorize('view','orders');
+        $this->userService->allows('view','orders');
         $headers = [
             "Content-Type"      =>  "text/csv",
             "Content-Disposition"=> "attachment; filename=orders.csv",

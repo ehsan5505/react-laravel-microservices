@@ -14,6 +14,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserController
 {
+    private $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     //
     function hello()
     {
@@ -25,7 +32,7 @@ class UserController
     function index()
     {
         // Did the Role has has access view | users (Gate(privilege, model?))
-        Gate::authorize('view', 'users');
+        $this->userService->allows('view', 'users');
         $users = User::whereIsFluencer(0)->paginate();
         // $users = User::paginate();
         return UserResource::collection($users);
@@ -35,7 +42,7 @@ class UserController
     // @users:id
     function show($id)
     {
-        Gate::authorize('view', 'users');
+        $this->userService->allows('view', 'users');
         $user = \Auth::user();
         return new UserResource(User::find($id));
     }
@@ -44,7 +51,7 @@ class UserController
     // POST @users
     function store(UserCreateRequest $request)
     {
-        Gate::authorize('edit', 'users');
+        $this->userService->allows('edit', 'users');
         $user =  User::create(
             $request->only('first_name', 'last_name', 'email')
                 + ['password'  => Hash::make(1234)] // default password, user should update
@@ -64,7 +71,7 @@ class UserController
     // PUT @users:id
     function update($id, UserUpdateRequest $request)
     {
-        Gate::authorize('edit', 'users');
+        $this->userService->allows('edit', 'users');
         $user = User::find($id);
 
         $user->update($request->only('first_name', 'last_name', 'email'));
@@ -84,7 +91,7 @@ class UserController
     // DELETE @users:id
     function destroy($id)
     {
-        Gate::authorize('edit', 'users');
+        $this->userService->allows('edit', 'users');
         UserRole::whereUserId(($id))->delete();
         User::destroy($id);
         return response(null, Response::HTTP_NO_CONTENT);
