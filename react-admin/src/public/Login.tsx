@@ -19,8 +19,9 @@ class Login extends Component {
 
     console.log("Receive the request of the Login");
 
-    // try {
-    //   await axios.post(`${constant.USER_URL}/login`, {
+    try {
+      console.info(` Make a Post Request to "${constant.USER_URL}/login"`)
+      // await axios.post(`${constant.USER_URL}/login`, {
     //     email: this.email,
     //     password: this.password,
     //     scope: "admin"
@@ -29,12 +30,12 @@ class Login extends Component {
     //   this.setState({
     //     redirect: true,
     //   });
-    // } catch (err: any) {
-      
+    } catch (err: any) {
+      console.error("Someone has todo something...");
     //   this.setState({
     //     message: err.response.data.error
-    //   });
-    // }
+      });
+    }
   };
 
   render() {
