@@ -20,7 +20,7 @@ Route::get('user', 'AuthController@user');
 
 // Admin Routes
 Route::group([
-    'middleware' => 'scope.influencer',
+    'middleware' => 'scope.admin',
     'prefix' => 'admin',
     'namespace' => 'Admin',
 ], function () {
