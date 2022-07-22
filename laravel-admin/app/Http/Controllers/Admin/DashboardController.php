@@ -10,7 +10,7 @@ class DashboardController
 {
     public function chart()
     {
-        \Gate::authorize('view','users');
+        // \Gate::authorize('view','users');
 
         $orders = Order::query()
         ->join("order_items","order_items.order_id", "=", "orders.id")
