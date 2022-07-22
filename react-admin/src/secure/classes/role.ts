@@ -3,7 +3,8 @@ import Permission from "./permission";
 class RoleProps {
   id: number;
   name: string;
-  permission: Permission;
+  laravel_through_key?: number;
+  permission?: Permission;
 
   constructor(id = 0, name = "", permission = new Permission()) {
     this.id = id;
