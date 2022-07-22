@@ -35,8 +35,8 @@ class UserController
         $this->userService->allows('view', 'users');
         $users = User::whereIsFluencer(0)->paginate();
         // $users = User::paginate();
-        return response($users);
-        // return UserResource::collection($users);
+        // return response($users);
+        return UserResource::collection($users);
     }
 
     // Return Particular user
