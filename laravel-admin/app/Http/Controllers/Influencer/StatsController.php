@@ -14,10 +14,9 @@ class StatsController
     public function index(Request $request)
     {
 
-        // $user = $request->user();
+        $user = $request->user();
 
-        $user = \Auth::user();
-        dd($user);
+        dd($request);
         $links = Link::whereUserId($user->id)->get();
         return $links->map(function (Link $link) {
             $orders = Order::whereCode($link->code)->whereComplete(1)->get();
