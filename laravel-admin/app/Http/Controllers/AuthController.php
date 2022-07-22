@@ -25,7 +25,7 @@ class AuthController
     public function user(Request $request)
     {
 
-        dd($this->userService);
+        dd($this->userService->getUser());
 
         // $headers = [
         //     'Authorization' => $request->headers->get("Authorization")
