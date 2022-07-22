@@ -20,7 +20,7 @@ Route::get('user', 'AuthController@user');
 
 // Admin Routes
 Route::group([
-    'middleware' => ['auth:api', 'scope:admin'],
+    'middleware' => 'scope.admin',
     'prefix' => 'admin',
     'namespace' => 'Admin',
 ], function () {

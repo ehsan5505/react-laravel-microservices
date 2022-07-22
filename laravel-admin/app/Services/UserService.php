@@ -19,9 +19,7 @@ class UserService {
 
   public function getUser(){
     // $response = \Http::withHeaders($this->headers())->get(`{$this->endpoint}/user`);
-    $response = \Http::withHeaders($this->headers())->get("{$this->endpoint}/user");
-
-    $json = $response->json();
+    $json = \Http::withHeaders($this->headers())->get("{$this->endpoint}/user")->json();
     
     $user = new User();
     $user->id           = $json['id'];
@@ -35,7 +33,10 @@ class UserService {
   }
 
 
+  public function isAdmin()
+  {
+    return \Http::withHeaders($this->headers())->get("{$this->endpoint}/admin")->successful();
+  }
+
+
 }
-
-
-?>

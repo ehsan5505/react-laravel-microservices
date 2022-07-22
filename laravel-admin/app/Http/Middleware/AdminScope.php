@@ -3,18 +3,25 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use UserService;
+use Illuminate\Auth\AuthenticationException;
 
 class AdminScope
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
+
+    private $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function handle($request, Closure $next)
     {
-        return $next($request);
+
+        if ($this->userService->isAdmin()) {
+            return $next($request);
+        }
+        throw new AuthenticationException;
     }
 }

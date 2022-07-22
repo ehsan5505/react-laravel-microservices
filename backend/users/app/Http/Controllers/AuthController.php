@@ -85,4 +85,9 @@ class AuthController
         $user->update(['password' => Hash::make($request->input('password'))]);
         return response($user, Response::HTTP_ACCEPTED);
     }
+
+    public function authenticated()
+    {
+        return 1;
+    }
 }
