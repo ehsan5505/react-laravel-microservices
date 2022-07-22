@@ -14,7 +14,7 @@ class StatsController
     public function index(Request $request)
     {
 
-        $user = $request->user();
+        // $user = $request->user();
 
         $user = \Auth::user();
         dd($user);
