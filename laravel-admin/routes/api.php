@@ -17,13 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 
 
+Route::get('user', 'AuthController@user')->prefix("admin");
 // Admin Routes
 Route::group([
     'middleware' => 'scope.admin',
     'prefix' => 'admin',
     'namespace' => 'Admin',
 ], function () {
-    Route::get('user', 'AuthController@user');
     Route::get('chart', 'DashboardController@chart');
     Route::post('image', "ImageController@upload");
     Route::get("export", "OrderController@export");
