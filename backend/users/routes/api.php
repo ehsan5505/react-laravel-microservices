@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,5 +35,5 @@ Route::group([
 
     Route::get('admin', [AuthController::class, "authenticated"])->middleware('scope:admin');
     Route::get('influencer', [AuthController::class, "authenticated"])->middleware('scope:influencer');
-    Route::apiResource('users', AuthController::class);
+    Route::apiResource('users', UserController::class);
 });
