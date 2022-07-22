@@ -35,10 +35,10 @@ class AuthController
         // // Gate::authorize('view', 'users');
         // // return new UserResource(\Auth::user());
         $resource = new UserResource($user);
+        if ($user->isInfluencer()) {
+            return $resource;
+        }
         dd($resource);
-        // if ($user->isInfluencer()) {
-        //     return $resource;
-        // }
         // return ($resource)->additional([
         //     'data' => [
         //         'permissions' => $user->permissions()
