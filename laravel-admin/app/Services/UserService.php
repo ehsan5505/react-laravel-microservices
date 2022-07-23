@@ -75,7 +75,7 @@ class UserService {
 
   public function update($id,$data)
   {
-    return $this->request()->put("{$this->endpoint}/users/{$id}",$data)->json();
+    return $this->jsonParse($this->request()->put("{$this->endpoint}/users/{$id}",$data)->json());
   }
 
   public function delete($id)
