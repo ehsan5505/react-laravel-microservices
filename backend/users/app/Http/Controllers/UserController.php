@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    function index(Request $request)
+    function index()
     {
-        return PaginateResource::collection(User::paginate($request->input('page')));
+        return PaginateResource::collection(User::paginate());
     }
 }
