@@ -21,10 +21,6 @@ class UserController extends Controller
         return response(User::find($id),Response::HTTP_ACCEPTED);
     }
 
-    function create()
-    {
-        dd("WORKING>>>>");
-    }
     function store()
     {
 
