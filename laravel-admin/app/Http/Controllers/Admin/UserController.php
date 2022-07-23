@@ -46,8 +46,9 @@ class UserController
     function show($id)
     {
         $this->userService->allows('view', 'users');
-        $user = \Auth::user();
-        return new UserResource(User::find($id));
+        // $user = \Auth::user();
+        // return new UserResource(User::find($id));
+        return $this->userService->find($id);
     }
 
     // Create new user
@@ -55,10 +56,13 @@ class UserController
     function store(UserCreateRequest $request)
     {
         $this->userService->allows('edit', 'users');
-        $user =  User::create(
-            $request->only('first_name', 'last_name', 'email')
-                + ['password'  => Hash::make(1234)] // default password, user should update
-        );
+
+        $data = $request->only('first_name', 'last_name', 'email') + ['password'  => 'password'];
+        $user = $this->userService->create($data);
+        // $user =  User::create(
+        //     $request->only('first_name', 'last_name', 'email')
+        //         + ['password'  => Hash::make(1234)] // default password, user should update
+        // );
 
         UserRole::create([
             'user_id'   => $user->id,
