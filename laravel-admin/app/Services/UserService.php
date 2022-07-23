@@ -65,8 +65,7 @@ class UserService {
 
   public function find($id)
   {
-    dd($this->request()->get("{$this->endpoint}/users/{$id}"));
-    // return $this->jsonParse($this->request()->get("{$this->endpoint}/users/{$id}")->json());
+    return $this->jsonParse($this->request()->get("{$this->endpoint}/users/{$id}")->json());
   }
 
   public function create($data)
