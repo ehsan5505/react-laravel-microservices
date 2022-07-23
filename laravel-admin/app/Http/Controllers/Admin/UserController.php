@@ -57,7 +57,7 @@ class UserController
     {
         
         
-        $this->userService->allows('edit', 'users');
+        // $this->userService->allows('edit', 'users');
         return "Good Morning";
 
         // $data = $request->only('first_name', 'last_name', 'email') + ['password'  => 'password'];
