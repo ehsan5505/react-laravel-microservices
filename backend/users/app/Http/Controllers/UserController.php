@@ -21,13 +21,13 @@ class UserController extends Controller
         return response(User::find($id),Response::HTTP_ACCEPTED);
     }
 
-    function store(Request $request)
+    function store()
     {
 
         dd("Working");
 
-        $data = $request->only('first_name', 'last_name', 'email')
-        + ['password'  => Hash::make('password')];
+        // $data = $request->only('first_name', 'last_name', 'email')
+        // + ['password'  => Hash::make('password')];
         
         // return response($data);
         // return User::create($data, Response::HTTP_CREATED);
