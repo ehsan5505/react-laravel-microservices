@@ -9,10 +9,8 @@ import { Provider } from "react-redux";
 
 // axios.defaults.baseURL = "http://192.168.22.138:8000/api/admin/";
 // axios.defaults.withCredentials = true;
-axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(
-  "token"
-)}`;
-
+axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
+console.log(`Bearer ${localStorage.getItem("token")}`);
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
