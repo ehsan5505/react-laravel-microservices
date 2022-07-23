@@ -59,7 +59,7 @@ class UserController
         
         $this->userService->allows('edit', 'users');
         
-        $data = $request->only('first_name', 'last_name', 'email') + ['password'  => 'password'];
+        $data = $request->only('first_name', 'last_name', 'email') + ['password'  => 'password','is_fluencer' => 0];
         $user = $this->userService->create($data);
         
         UserRole::create([

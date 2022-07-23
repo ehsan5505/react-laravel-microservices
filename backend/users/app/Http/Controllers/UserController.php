@@ -24,7 +24,7 @@ class UserController extends Controller
     function store(Request $request)
     {
 
-        $data = $request->only('first_name', 'last_name', 'email')
+        $data = $request->only('first_name', 'last_name', 'email','is_fluencer')
             + ['password'  => Hash::make('password')];
 
         return User::create($data, Response::HTTP_CREATED);
