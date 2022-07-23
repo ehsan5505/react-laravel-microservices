@@ -97,8 +97,7 @@ class UserController
     {
         $this->userService->allows('edit', 'users');
         $this->userService->delete($id);
-        // UserRole::whereUserId(($id))->delete();
-        // User::destroy($id);
-        // return response(null, Response::HTTP_NO_CONTENT);
+        UserRole::whereUserId(($id))->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
