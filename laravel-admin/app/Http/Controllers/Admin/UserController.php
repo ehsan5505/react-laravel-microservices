@@ -96,8 +96,9 @@ class UserController
     function destroy($id)
     {
         $this->userService->allows('edit', 'users');
-        UserRole::whereUserId(($id))->delete();
-        User::destroy($id);
-        return response(null, Response::HTTP_NO_CONTENT);
+        $this->userService->delete($id);
+        // UserRole::whereUserId(($id))->delete();
+        // User::destroy($id);
+        // return response(null, Response::HTTP_NO_CONTENT);
     }
 }

@@ -40,8 +40,9 @@ class UserController extends Controller
 
     function destroy($id)
     {
-        User::destroy($id);
+        return "DELETE Request Received";
+        // User::destroy($id);
 
-        return Response(null, Response::HTTP_NO_CONTENT);
+        // return Response(null, Response::HTTP_NO_CONTENT);
     }
 }
