@@ -29,7 +29,7 @@ Route::post("register", [AuthController::class, "register"]);
 Route::group([
     'middleware' => 'auth:api'
 ], function () {
-    // Route::get('user', [AuthController::class, "user"]);
+    Route::get('user', [AuthController::class, "user"]);
     Route::put('info', [AuthController::class, "updateInfo"]);
     Route::put('password', [AuthController::class, "updatePassword"]);
     
