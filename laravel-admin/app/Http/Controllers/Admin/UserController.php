@@ -60,8 +60,8 @@ class UserController
         // $this->userService->allows('edit', 'users');
         return "Good Morning";
 
-        // $data = $request->only('first_name', 'last_name', 'email') + ['password'  => 'password'];
-        // $user = $this->userService->create($data);
+        $data = $request->only('first_name', 'last_name', 'email') + ['password'  => 'password'];
+        $user = $this->userService->create($data);
         // $user =  User::create(
         //     $request->only('first_name', 'last_name', 'email')
         //         + ['password'  => Hash::make(1234)] // default password, user should update
