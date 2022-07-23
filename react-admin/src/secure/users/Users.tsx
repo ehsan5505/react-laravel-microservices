@@ -20,7 +20,6 @@ class User extends Component<{ user: UserProps }> {
   componentDidMount = async () => {
     const res = await axios.get(`${constant.BASE_URL}/users?page=${this.page}`);
 
-    console.log(res.data.data);
     this.setState({
       users: res.data.data,
     });
@@ -76,7 +75,6 @@ class User extends Component<{ user: UserProps }> {
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
-                <th scope="col">Role</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -89,7 +87,6 @@ class User extends Component<{ user: UserProps }> {
                       {user.first_name} {user.last_name}
                     </td>
                     <td>{user.email}</td>
-                    {/* <td>{user.roles.name}</td> */}
                     <td>{this.action(user.id)}</td>
                   </tr>
                 );
