@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropUserRoleForeignKeyFromUsersTable extends Migration
+class DropUserRoleForeignKeyFromUsersRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class DropUserRoleForeignKeyFromUsersTable extends Migration
     public function up()
     {
         Schema::table('user_roles', function (Blueprint $table) {
-            dropForeign(['user_id'])
+            dropForeign(['user_id']);
         });
     }
 
