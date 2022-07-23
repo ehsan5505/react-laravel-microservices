@@ -34,6 +34,7 @@ class EditUser extends Component<any, any> {
     this.userId = id;
     const res = await axios.get(`${constant.BASE_URL}/roles`);
     const rolesData = res.data.data;
+    console.info(id);
     const resp = await axios.get(`${constant.BASE_URL}/users/` + id);
     console.info(resp.data.data);
     // const userData: UserProps = resp.data.data;
