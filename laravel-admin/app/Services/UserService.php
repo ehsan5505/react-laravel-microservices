@@ -43,6 +43,11 @@ class UserService {
     return \Http::withHeaders($this->headers())->get("{$this->endpoint}/influencer")->successful();
   }
 
+  public function request()
+  {
+    return \Http::withHeaders($this->headers());
+  }
+
 
   public function allows($action, $model)
   {    
@@ -51,8 +56,10 @@ class UserService {
 
   public function all($page)
   {
-    return \Http::withHeaders($this->headers())->get("{$this->endpoint}/users?page={$page}")->json();
+    return $this->request()->get("{$this->endpoint}/users?page={$page}")->json();
   }
+
+
 
 
 }
