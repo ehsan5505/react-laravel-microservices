@@ -7,7 +7,7 @@ class Deleter extends Component<{ id: number; endpoint: string, handleDelete:any
   delete = async () => {
     if (window.confirm("Are you sure to delete the record?")) {
       try {
-        await axios.delete(`${constant.BASE_USER + "/" + this.props.endpoint + "/" + this.props.id}`);
+        await axios.delete(`${constant.BASE_URL + "/" + this.props.endpoint + "/" + this.props.id}`);
         this.props.handleDelete(this.props.id);
       } catch (err: any) {
         toast.error(err.response.data.message);

@@ -48,7 +48,7 @@ class EditUser extends Component<any, any> {
   submit = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-      await axios.put(`${constant.BASE_URL}/users/${this.userId}`, {
+      await axios.put(`${constant.BASE_URL}/${this.userId}`, {
         first_name: this.firstName,
         last_name: this.lastName,
         email: this.email,
