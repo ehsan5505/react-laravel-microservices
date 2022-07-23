@@ -24,7 +24,7 @@ class UserController extends Controller
     function store()
     {
 
-        dd("Working");
+        dd("Working...");
 
         // $data = $request->only('first_name', 'last_name', 'email')
         // + ['password'  => Hash::make('password')];
@@ -34,17 +34,17 @@ class UserController extends Controller
 
     }
 
-    function update(Request $request,$id)
-    {
-        $user = User::find($id);
-        $user->update($request->only('first_name', 'last_name', 'email'));
-        return response($user, Response::HTTP_ACCEPTED);
-    } 
+    // function update(Request $request,$id)
+    // {
+    //     $user = User::find($id);
+    //     $user->update($request->only('first_name', 'last_name', 'email'));
+    //     return response($user, Response::HTTP_ACCEPTED);
+    // } 
 
-    function destroy($id)
-    {
-        User::destroy($id);
+    // function destroy($id)
+    // {
+    //     User::destroy($id);
 
-        return Response(null, Response::HTTP_NO_CONTENT);
-    }
+    //     return Response(null, Response::HTTP_NO_CONTENT);
+    // }
 }
