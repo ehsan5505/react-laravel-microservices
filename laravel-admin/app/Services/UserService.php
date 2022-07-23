@@ -70,8 +70,7 @@ class UserService {
 
   public function create($data)
   {
-    dd("THis is User Service");
-    // return $this->request()->post("{$this->endpoint}/users",$data)->json();
+    return $this->request()->post("{$this->endpoint}/users",$data);
   }
 
   public function update($id,$data)
