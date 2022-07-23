@@ -13,8 +13,7 @@ class UserController extends Controller
 {
     function index()
     {
-        $user = User::whereIsFluencer(0)->paginate();
-        return PaginateResource::collection($user);
+        return PaginateResource::collection(User::paginate());
     }
 
     function show($id)
