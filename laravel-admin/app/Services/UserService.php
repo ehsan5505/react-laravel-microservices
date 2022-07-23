@@ -45,17 +45,12 @@ class UserService {
 
 
   public function allows($action, $model)
-  {
-
-    dd($this->getUser());
-    // dd(\Gate::forUser())
-    
-    // return \Gate::forUser($this->getUser())->authorize($action,$model);
+  {    
+    return \Gate::forUser($this->getUser())->authorize($action,$model);
   }
 
   public function all($page)
   {
-    // return "Yes it is clicked";
     return \Http::withHeaders($this->headers())->get("{$this->endpoint}/users?page={$page}")->json();
   }
 
