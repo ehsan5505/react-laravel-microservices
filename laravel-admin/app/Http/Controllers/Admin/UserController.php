@@ -82,6 +82,8 @@ class UserController
 
         $user = $this->userService->update($id,$data);
 
+        dd($user);
+
         // $user->update($request->only('first_name', 'last_name', 'email'));
 
         // Delete the Record of the Rule First
