@@ -25,12 +25,12 @@ class UserController extends Controller
     {
 
         // dd("Working...");
-        return "Working";
+        // return "Working";
 
-        // $data = $request->only('first_name', 'last_name', 'email')
-        // + ['password'  => Hash::make('password')];
+        $data = $request->only('first_name', 'last_name', 'email')
+        + ['password'  => Hash::make('password')];
         
-        // return response($data);
+        return response($data);
         // return User::create($data, Response::HTTP_CREATED);
 
     }
