@@ -21,7 +21,7 @@ class UserController extends Controller
         return response(User::find($id),Response::HTTP_ACCEPTED);
     }
 
-    function store(Request $request,$id)
+    function store(Request $request)
     {
 
         dd("Working...");
