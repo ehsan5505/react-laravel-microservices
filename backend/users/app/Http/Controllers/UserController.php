@@ -24,7 +24,8 @@ class UserController extends Controller
     function store(Request $request)
     {
 
-        dd("Working...");
+        // dd("Working...");
+        return "Working";
 
         // $data = $request->only('first_name', 'last_name', 'email')
         // + ['password'  => Hash::make('password')];

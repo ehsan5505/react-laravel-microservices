@@ -62,6 +62,7 @@ class UserController
 
         $data = $request->only('first_name', 'last_name', 'email') + ['password'  => 'password'];
         $user = $this->userService->create($data);
+        return response($user);
         // $user =  User::create(
         //     $request->only('first_name', 'last_name', 'email')
         //         + ['password'  => Hash::make(1234)] // default password, user should update
