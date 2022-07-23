@@ -51,7 +51,7 @@ class UserService {
 
   public function all($page)
   {
-    return "Yes it is clicked";
+    // return "Yes it is clicked";
     // return \Http::withHeaders($this->headers())->get("{$this->endpoint}/users?page={$page}")->json();
   }
 
