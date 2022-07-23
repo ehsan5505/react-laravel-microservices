@@ -14,7 +14,7 @@ class DropUserRoleForeignKeyFromUserRolesTable extends Migration
     public function up()
     {
         Schema::table('user_roles', function (Blueprint $table) {
-            dropForeign(['user_id']);
+            $table->dropForeign(['user_id']);
         });
     }
 
