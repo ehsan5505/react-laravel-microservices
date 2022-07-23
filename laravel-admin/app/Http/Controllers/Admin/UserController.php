@@ -79,10 +79,10 @@ class UserController
         $this->userService->allows('edit', 'users');
         // $user = User::find($id);
         $data = $request->only('first_name', 'last_name', 'email');
+        dd($data);
 
-        $user = $this->userService->update($id,$data);
+        // $user = $this->userService->update($id,$data);
 
-        dd($user);
 
         // $user->update($request->only('first_name', 'last_name', 'email'));
 
