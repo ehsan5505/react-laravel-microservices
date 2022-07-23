@@ -13,8 +13,8 @@ class DropUserRoleForeignKeyFromUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
+        Schema::table('user_roles', function (Blueprint $table) {
+            dropForeign(['user_id'])
         });
     }
 
@@ -26,7 +26,7 @@ class DropUserRoleForeignKeyFromUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 }
