@@ -58,24 +58,18 @@ class UserController
         
         
         $this->userService->allows('edit', 'users');
-        // return "Good Morning";
-
+        
         $data = $request->only('first_name', 'last_name', 'email') + ['password'  => 'password'];
         $user = $this->userService->create($data);
-        return response($user);
-        // $user =  User::create(
-        //     $request->only('first_name', 'last_name', 'email')
-        //         + ['password'  => Hash::make(1234)] // default password, user should update
-        // );
+        
+        UserRole::create([
+            'user_id'   => $user->id,
+            'role_id'   => $request->input('role_id')
+        ]);
 
-        // UserRole::create([
-        //     'user_id'   => $user->id,
-        //     'role_id'   => $request->input('role_id')
-        // ]);
+        AdminAdded::dispatch($user->email);
 
-        // AdminAdded::dispatch($user->email);
-
-        // return response(new UserResource($user), Response::HTTP_CREATED);
+        return response(new UserResource($user), Response::HTTP_CREATED);
     }
 
     // Update Particular user
