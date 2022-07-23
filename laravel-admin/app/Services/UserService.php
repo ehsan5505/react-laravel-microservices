@@ -51,7 +51,7 @@ class UserService {
 
   public function all($page)
   {
-    return \Http::withHeaders($this->headers())->get("{$this->endpoint}/users?page={$page}");
+    return \Http::withHeaders($this->headers())->get("{$this->endpoint}/users?page={$page}")->json();
   }
 
 
