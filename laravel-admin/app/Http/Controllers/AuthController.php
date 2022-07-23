@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\AuthRegisterRequest;
 use App\Http\Resources\UserResource;
 use App\Services\UserService;
-use App\User;
 
 class AuthController
 {
@@ -21,9 +19,9 @@ class AuthController
     // Return the User Info
     public function user(Request $request)
     {
+        $this->userService->allow('view','users');
         $user = $this->userService->getUser();
-        // // Gate::authorize('view', 'users');
-        // // return new UserResource(\Auth::user());
+ 
         $resource = new UserResource($user);
         if ($user->isInfluencer()) {
             return ($resource)->additional([

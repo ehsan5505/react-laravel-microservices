@@ -4,17 +4,22 @@ namespace App\Http\Controllers\Influencer;
 
 use App\Link;
 use App\Order;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Redis;
 
 class StatsController
 {
+    private $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function index(Request $request)
     {
 
-        $user = $request->user();
+        $user = $this->userService->getUser();
 
         $links = Link::whereUserId($user->id)->get();
         return $links->map(function (Link $link) {

@@ -8,7 +8,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
 /**
- * App\User
  *
  * @property int $id
  * @property string $first_name

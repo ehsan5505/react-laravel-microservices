@@ -1730,7 +1730,6 @@
          * Log the given user ID into the application without sessions or cookies.
          *
          * @param mixed $id
-         * @return \App\User|false 
          * @static 
          */ 
         public static function onceUsingId($id)
@@ -1793,9 +1792,7 @@
          * Log the given user ID into the application.
          *
          * @param mixed $id
-         * @param bool $remember
-         * @return \App\User|false 
-         * @static 
+         * @param bool $remember         * @static 
          */ 
         public static function loginUsingId($id, $remember = false)
         {

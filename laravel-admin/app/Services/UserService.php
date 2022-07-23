@@ -1,10 +1,7 @@
 <?php
 
-use App\User;
 
 namespace App\Services;
-
-use App\User;
 
 class UserService {
 

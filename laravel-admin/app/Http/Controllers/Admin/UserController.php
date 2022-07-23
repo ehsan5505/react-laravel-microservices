@@ -7,7 +7,6 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
 use App\Jobs\AdminAdded;
 use Illuminate\Support\Facades\Hash;
-use App\User;
 use App\UserRole;
 use App\Services\UserService;
 use Illuminate\Http\Request;
@@ -22,12 +21,6 @@ class UserController
         $this->userService = $userService;
     }
 
-    //
-    function hello()
-    {
-        return "Hello From the Controller";
-    }
-
     // Return all the users
     // @users
     function index(Request $request)
@@ -35,8 +28,7 @@ class UserController
 
         // Did the Role has has access view | users (Gate(privilege, model?))
         $this->userService->allows('view', 'users');
-        return $this->userService->all($request->input("page",1));
-        // return response($this->userService->all($request->input("page",1)));
+        return response($this->userService->all($request->input("page",1)));
         // $users = User::whereIsFluencer(0)->paginate();
         // return UserResource::collection($users);
     }
@@ -46,8 +38,6 @@ class UserController
     function show($id)
     {
         $this->userService->allows('view', 'users');
-        // $user = \Auth::user();
-        // return new UserResource(User::find($id));
         return $this->userService->find($id);
     }
 
@@ -96,9 +86,8 @@ class UserController
     function destroy($id)
     {
         $this->userService->allows('edit', 'users');
+        UserRole::whereUserId(($id))->delete();
         $this->userService->delete($id);
-        // UserRole::whereUserId(($id))->delete();
-        // User::destroy($id);
-        // return response(null, Response::HTTP_NO_CONTENT);
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
