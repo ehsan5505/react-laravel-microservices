@@ -33,10 +33,10 @@ class UserController
     function index(Request $request)
     {
 
-        
+        dd($this->userService->all($request->input("page",1)));
         // Did the Role has has access view | users (Gate(privilege, model?))
         $this->userService->allows('view', 'users');
-        return response($this->userService->all($request->input("page",1)));
+        // return response($this->userService->all($request->input("page",1)));
         // $users = User::whereIsFluencer(0)->paginate();
         // return UserResource::collection($users);
     }
