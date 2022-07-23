@@ -77,15 +77,9 @@ class UserController
     function update($id, UserUpdateRequest $request)
     {
         $this->userService->allows('edit', 'users');
-        // $user = User::find($id);
-        $data = $request->only('first_name', 'last_name', 'email');
-        
+        $data = $request->only('first_name', 'last_name', 'email');        
         $user = $this->userService->update($id,$data);
-        dd($user);
         
-
-        // $user->update($request->only('first_name', 'last_name', 'email'));
-
         // Delete the Record of the Rule First
         UserRole::where('user_id', $user->id)->delete();
         // Add the User Role then
