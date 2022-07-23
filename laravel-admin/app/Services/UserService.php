@@ -46,6 +46,9 @@ class UserService {
 
   public function allows($action, $model)
   {
+
+    dd($this->getUser());
+    // dd(\Gate::forUser())
     
     // return \Gate::forUser($this->getUser())->authorize($action,$model);
   }
