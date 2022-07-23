@@ -36,15 +36,14 @@ class EditUser extends Component<any, any> {
     const rolesData = res.data.data;
     console.info(`${constant.BASE_URL}/users/` + id);
     const resp = await axios.get(`${constant.BASE_URL}/users/` + id);
-    console.info(resp);
-    // const userData: UserProps = resp.data.data;
-    // this.setState({
-    //   roles: rolesData,
-    //   firstName: userData.first_name,
-    //   lastName: userData.last_name,
-    //   email: userData.email,
-    //   roleId: userData.role.id,
-    // });
+    const userData: UserProps = resp.data;
+    this.setState({
+      roles: rolesData,
+      firstName: userData.first_name,
+      lastName: userData.last_name,
+      email: userData.email,
+      roleId: userData.role.id,
+    });
   };
 
   submit = async (e: SyntheticEvent) => {
