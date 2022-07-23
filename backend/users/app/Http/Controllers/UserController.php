@@ -34,7 +34,7 @@ class UserController extends Controller
     function update(Request $request,$id)
     {
         $user = User::find($id);
-        // $user->update($request->only('first_name', 'last_name', 'email'));
+        $user->update($request->only('first_name', 'last_name', 'email'));
         return response($user, Response::HTTP_ACCEPTED);
     } 
 
