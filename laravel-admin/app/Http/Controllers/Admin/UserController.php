@@ -80,7 +80,7 @@ class UserController
         $data = $request->only('first_name', 'last_name', 'email');        
         $user = $this->userService->update($id,$data);
         
-        return response(UserRole::whereUserId($user->id));
+        dd(UserRole::whereUserId($user->id));
         // Delete the Record of the Rule First
         // UserRole::where('user_id', $user->id)->delete();
         // Add the User Role then
