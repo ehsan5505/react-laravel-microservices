@@ -53,7 +53,7 @@ class UserController
 
     // Create new user
     // POST @users
-    function store()
+    function store(UserCreateRequest $request)
     {
         
         
