@@ -43,7 +43,7 @@ class User extends Component<{ user: UserProps }> {
     if (this.props.user.can_edit("users")) {
       return (
         <div>
-          <Link to={`/${id}/edit`} className="btn">
+          <Link to={`users/${id}/edit`} className="btn">
             Edit
           </Link>
           <Deleter id={id} endpoint="users" handleDelete={this.delete} />
