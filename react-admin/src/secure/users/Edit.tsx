@@ -42,7 +42,7 @@ class EditUser extends Component<any, any> {
       firstName: userData.first_name,
       lastName: userData.last_name,
       email: userData.email,
-      roleId: userData.role.id,
+      // roleId: userData.role.id,
     });
   };
 
