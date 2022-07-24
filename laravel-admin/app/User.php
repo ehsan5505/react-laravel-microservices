@@ -53,7 +53,7 @@ class User
     public $email;
     public $is_fluencer;
 
-    function public __construct($json)
+    public function __construct($json)
     {
         $this->id           = $json['id'];
         $this->first_name   = $json['first_name'];
