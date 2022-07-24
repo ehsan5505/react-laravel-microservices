@@ -35,9 +35,9 @@ class UpdateRankingCommand extends Command
             $revenue = $orders->sum(function (Order $order) {
                     return (int) $order->influencer_total;
                 });
-                dd($revenue);
+                // dd($revenue);
 
-            //     print `$revenue, $user->first_name." ".$user->last_name`;
+                print `$revenue, $user->first_name." ".$user->last_name`;
 
             //     // Redis::zadd('rankings', $user->revenue, $user->first_name." ".$user->last_name);
         });
