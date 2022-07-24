@@ -32,15 +32,16 @@ class UpdateRankingCommand extends Command
 
         // dd($users);
 
+        dd(Redis::connection());
 
-        $users->each(function ($user) {
-            $orders = Order::where('user_id', $user['id'])->where('complete', 1)->get();
-            $revenue = $orders->sum(function (Order $order) {
-                return (int) $order->influencer_total;
-            });
 
-            // dd($revenue);
-            Redis::zadd('rankings', $revenue, $user['first_name']." ".$user['last_name']);
-        });
+        // $users->each(function ($user) {
+        //     $orders = Order::where('user_id', $user['id'])->where('complete', 1)->get();
+        //     $revenue = $orders->sum(function (Order $order) {
+        //         return (int) $order->influencer_total;
+        //     });
+
+        //     Redis::zadd('rankings', $revenue, $user['first_name']." ".$user['last_name']);
+        // });
     }
 }
