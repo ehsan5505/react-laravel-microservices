@@ -33,7 +33,7 @@ class UpdateRankingCommand extends Command
         // dd($users);
 
         // dd(Redis::connection());
-        Redis::zadd("rankings","44", "Another Test");
+        Redis::zadd("rankings",44, "Another Test");
 
 
         // $users->each(function ($user) {
