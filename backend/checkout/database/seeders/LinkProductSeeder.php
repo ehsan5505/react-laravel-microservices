@@ -9,7 +9,7 @@ class LinkProductSeeder extends Seeder
 {
     public function run()
     {
-        $linkProducts = \DB::connection('mysql_migrate')->tablet('link_products')->get();
+        $linkProducts = \DB::connection('mysql_migrate')->table('link_products')->get();
 
         foreach ($linkProducts as $linkProduct) {
             LinkProduct::create([
