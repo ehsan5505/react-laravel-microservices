@@ -39,7 +39,8 @@ class StatsController
     {
         $users=collect($this->userService->all(-1));
         $users = $users->filter(function($user){
-            return $user.is_fluencer;
+            if($user['is_fluencer'])
+                return $user;
         });
 
         $rankings = $users.map(function($user){
