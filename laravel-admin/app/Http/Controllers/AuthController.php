@@ -19,7 +19,7 @@ class AuthController
     // Return the User Info
     public function user(Request $request)
     {
-        $this->userService->allow('view','users');
+        $this->userService->allows('view','users');
         $user = $this->userService->getUser();
  
         $resource = new UserResource($user);
