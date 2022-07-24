@@ -57,7 +57,8 @@ class UserService {
 
   public function all($page)
   {
-    return $this->request()->get("{$this->endpoint}/users?page={$page}")->json();
+    return "From User Service | All Method";
+    // return $this->request()->get("{$this->endpoint}/users?page={$page}")->json();
   }
 
   public function find($id)
