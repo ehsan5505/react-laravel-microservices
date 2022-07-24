@@ -43,7 +43,7 @@ class StatsController
                 return $user;
         });
 
-        $users->each(function($user){
+        $users->map(function($user){
             dd($user);
         });
 
