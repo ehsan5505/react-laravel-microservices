@@ -19,10 +19,10 @@ class AuthController
     // Return the User Info
     public function user(Request $request)
     {
-        $this->userService->allows('view', 'users');
+        $this->userService->allows('view','users');
         $user = $this->userService->getUser();
-
-        dd($user->role());
+ 
+        dd($user);
         $resource = new UserResource($user);
         if ($user->isInfluencer()) {
             return ($resource)->additional([
