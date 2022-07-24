@@ -11,8 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
+        if($request->input('page') == -1)
+        {
+            return User::all();
+        }
         return PaginateResource::collection(User::paginate());
     }
 

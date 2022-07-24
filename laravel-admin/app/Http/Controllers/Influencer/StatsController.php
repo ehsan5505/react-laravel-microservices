@@ -36,7 +36,24 @@ class StatsController
 
     public function rankings()
     {
+        $users=collect($this->userService->all(-1));
+        $users = $users->filter(function($user){
+            return $user.is_fluencer;
+        });
+
+        $rankings = $users.map(function($user){
+            $orders = Order::where('user_id',$user->id)->where('complete',1)->get();
+
+            return [
+                'name' => $user->$first_name." ".$$user->last_name,
+                'revenue' => $orders->sum(function (Order $order){
+                    return (int) $order->influencer_total;
+                }),
+            ];
+        });
+
+        return $rankings->sortByDesc('revenue')->values();
         // return \Cache::get('rankings');
-        return Redis::zrevrange('rankings', 0, -1, 'WITHSCORES');
+        // return Redis::zrevrange('rankings', 0, -1, 'WITHSCORES');
     }
 }
