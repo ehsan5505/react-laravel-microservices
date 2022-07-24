@@ -66,7 +66,7 @@ class User
     public function role()
     {
         $userRole = UserRole::whereUserId($this->id)->first();
-        dd(Role::find($userRole->role_id));
+        dd(Role::find($userRole->role_id)->permissions);
         return Role::find($userRole->role_id);
 
     }
