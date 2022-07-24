@@ -9,7 +9,8 @@ class UserService {
 
   public function headers(){
     return [
-      'Authorization' => request()->headers->get('Authorization')
+      // 'Authorization' => request()->headers->get('Authorization')
+      'Authorization' =>  "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiNzIzN2M2NDU0MTFjYTIyMjBjYmMxMGIyNDM1NGRhYTVlYmIyOGRkOTIzZWVlZDMxNTY0NmRlYzhlMzc0YjgxZjI5OWZhNGU5YzhiOWQzNjAiLCJpYXQiOjE2NTg1MTc5MzkuODE0NDA5LCJuYmYiOjE2NTg1MTc5MzkuODE0NDE2LCJleHAiOjE2OTAwNTM5MzkuODA4MzIzLCJzdWIiOiIxMCIsInNjb3BlcyI6WyJhZG1pbiJdfQ.p4JMnzheedOarJcgJZeql0HYpwf2hvpgI-H7D44JuJncIeUYjUmuc0uUiuUPxrXz2y4KCzsbb3hzk2_K3FVH1wLUDhGJdHNYB8dsEvZWhjGkiMxIlVxE50ocLk7wIz3MzpGDixKWgp-OaiAt-UUYnejOhiXBkGokoV9uXdAeD0mq5TCXtxzg3XaXM_ZCuqIsoKlONaHfOifdS8XUZXv4UjMVRcN9_3NKRavUlDsNH8gjK7BL-HcDNKiCOtxXWLlC4MM34KuFOd_gGQBGBVfkaSX1_7DMOCoyZNZwwIGfANGsw5msKCQ6phwagMofWcOgR0u8kL6FBHPYGGkpayiMYvj6jqxSLocoDFyCJbcQuWXE9QyxHrUHEW0ClII49BgstpSQQSNe5V80qQzvOymFR9qgiE33OdfxQKhkWItPPMw2f78YY-GzDl7YrwnP5loIopknmYVTxQX-2RfEUyEml0FYr16qk1K6cyavqQlM4Bd0M-wFXAypzQWpTFXm5QbJUjMj0AeWS_an2L43FPfYxK4T08BviSG3X92N-PFyC-AV12ZB0dX-4RRgj6esTMnF7Zag9UrWL7xyMiiXQJaWlToJ8s5VDcaXd1qik5AdrL5iKWUo5T1aoKxDDWN9-lpssM290X-SYXHaoJdOE5TJy0aogGwE9tv4OKSvlIMkJww"
     ];
   }
 
