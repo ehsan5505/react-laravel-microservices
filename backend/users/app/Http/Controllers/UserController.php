@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         if($request->input('page') == -1)
         {
-            return PaginateResource::collection(User::all());
+            return User::all();
         }
         return PaginateResource::collection(User::paginate());
     }
