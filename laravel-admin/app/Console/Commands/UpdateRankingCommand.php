@@ -31,11 +31,11 @@ class UpdateRankingCommand extends Command
         });
 
         $users->each(function ($user) {
-            dd($user);
-            // $orders = Order::where('user_id', $user['id'])->where('complete', 1)->get();
+            $orders = Order::where('user_id', $user['id'])->where('complete', 1)->get();
+            dd($orders);
             // $revenue = $orders->sum(function (Order $order) {
-            //     return (int) $order->influencer_total;
-            // });
+                //     return (int) $order->influencer_total;
+                // });
 
             //     print `$revenue, $user->first_name." ".$user->last_name`;
 
