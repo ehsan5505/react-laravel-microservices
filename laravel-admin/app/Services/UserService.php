@@ -20,8 +20,8 @@ class UserService {
   public function getUser(){
     // $response = \Http::withHeaders($this->headers())->get(`{$this->endpoint}/user`);
     $json = \Http::withHeaders($this->headers())->get("{$this->endpoint}/user")->json();
-    
-    return new User($json);
+    dd($json);
+    // return new User($json);
   }
 
 
