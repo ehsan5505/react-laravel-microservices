@@ -31,7 +31,7 @@ class UpdateRankingCommand extends Command
         });
 
         
-        $users->foreach(function ($user) {
+        $users->each(function ($user) {
             dd($user);
             // $orders = Order::where('user_id', $user['id'])->where('complete', 1)->get();
             // $revenue = $orders->sum(function (Order $order) {
