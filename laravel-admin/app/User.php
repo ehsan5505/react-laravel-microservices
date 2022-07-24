@@ -66,14 +66,8 @@ class User
     public function role()
     {
 
-        // dd(UserRole::whereId(10)->get());
-
-        // dd("For role we need to further check");
-
-        // dd(UserRole::where('user_id',$this->id));
         $userRole = UserRole::whereUserId($this->id)->first();
-        dd($userRole->role_id);
-        // return Role::find($userRole->role_id);
+        dd(Role::find($userRole->role_id));
         // return $this->belongsTo(Role::class);
         // return $this->hasOneThrough(Role::class,UserRole::class,'user_id','id','id','role_id');
     }
