@@ -59,7 +59,8 @@ class User
         // $this->last_name    = $json['last_name'];
         // $this->email        = $json['email'];
         // $this->is_fluencer  = $json['is_fluencer'];
-        dd($json);
+        // dd($json);
+        return "Power";
     }
 
     public function role()
