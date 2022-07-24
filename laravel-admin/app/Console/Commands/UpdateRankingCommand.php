@@ -40,7 +40,7 @@ class UpdateRankingCommand extends Command
                 return (int) $order->influencer_total;
             });
 
-            dd(`$revenue, $user['first_name'] $user['last_name']`);
+            dd(`$revenue, $user`);
             //     print `$revenue, $user->first_name." ".$user->last_name`;
 
             //     // Redis::zadd('rankings', $user->revenue, $user->first_name." ".$user->last_name);
