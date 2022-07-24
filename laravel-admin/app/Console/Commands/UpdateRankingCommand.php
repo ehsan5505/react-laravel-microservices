@@ -25,10 +25,10 @@ class UpdateRankingCommand extends Command
 
         $users = collect($userService->all(-1));
         $users = $users->filter(function ($user) {
-            return $user->is_fluencer;
+            dd($user);
+        //     return $user->is_fluencer;
         });
 
-        dd($users);
 
         // $users->each(function ($user) {
         //     $orders = Order::where('user_id', $user->id)->where('complete', 1)->get();
