@@ -43,18 +43,22 @@ class StatsController
                 return $user;
         });
 
-        $rankings = $users.map(function($user){
-            $orders = Order::where('user_id',$user['id'])->where('complete',1)->get();
+        dd($users);
 
-            return [
-                'name' => $user['first_name']." ".$user['last_name'],
-                'revenue' => $orders->sum(function (Order $order){
-                    return (int) $order->influencer_total;
-                }),
-            ];
-        });
+        // $rankings = $users.map(function($user){
+        //     $orders = Order::where('user_id',$user['id'])->where('complete',1)->get();
 
-        return $rankings->sortByDesc('revenue')->values();
+        //     return [
+        //         'name' => $user['first_name']." ".$user['last_name'],
+        //         'revenue' => $orders->sum(function (Order $order){
+        //             return (int) $order->influencer_total;
+        //         }),
+        //     ];
+        // });
+
+        // return $rankings->sortByDesc('revenue')->values();
+
+
         // return \Cache::get('rankings');
         // return Redis::zrevrange('rankings', 0, -1, 'WITHSCORES');
     }
