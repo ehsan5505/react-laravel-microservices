@@ -4,7 +4,7 @@
 namespace App\Services;
 
 // use \App\Model;
-use App\Models\User;
+use \App\User;
 
 class UserService {
 
