@@ -43,23 +43,19 @@ class StatsController
                 return $user;
         });
 
-        $users->map(function($user){
-            dd($user);
+
+        $rankings = $users->map(function($user){
+            $orders = Order::where('user_id',$user['id'])->where('complete',1)->get();
+
+            return [
+                'name' => $user['first_name']." ".$user['last_name'],
+                'revenue' => $orders->sum(function (Order $order){
+                    return (int) $order->influencer_total;
+                }),
+            ];
         });
 
-
-        // $rankings = $users.each(function($user){
-        //     $orders = Order::where('user_id',$user['id'])->where('complete',1)->get();
-
-        //     return [
-        //         'name' => $user['first_name']." ".$user['last_name'],
-        //         'revenue' => $orders->sum(function (Order $order){
-        //             return (int) $order->influencer_total;
-        //         }),
-        //     ];
-        // });
-
-        // return $rankings->sortByDesc('revenue')->values();
+        return $rankings->sortByDesc('revenue')->values();
 
 
         // return \Cache::get('rankings');
