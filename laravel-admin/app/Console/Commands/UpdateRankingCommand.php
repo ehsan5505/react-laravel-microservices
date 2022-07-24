@@ -23,7 +23,7 @@ class UpdateRankingCommand extends Command
 
         $userService = new UserService();
 
-        $users = ($userService->all(-1));
+        $users = collect($userService->all(-1));
         // dd($users);
         // $users = $users['data'];
         $users = $users->filter(function ($user) {
