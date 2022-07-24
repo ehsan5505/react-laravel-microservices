@@ -43,9 +43,8 @@ class StatsController
                 return $user;
         });
 
-        dd($users);
-
-        // $rankings = $users.map(function($user){
+        $rankings = $users.each(function($user){
+            dd($user);
         //     $orders = Order::where('user_id',$user['id'])->where('complete',1)->get();
 
         //     return [
@@ -54,7 +53,7 @@ class StatsController
         //             return (int) $order->influencer_total;
         //         }),
         //     ];
-        // });
+        });
 
         // return $rankings->sortByDesc('revenue')->values();
 
