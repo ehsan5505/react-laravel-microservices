@@ -1,9 +1,9 @@
 <?php
 
 namespace App;
-
+use App\UserRole;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+// use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
@@ -66,7 +66,8 @@ class User
     public function role()
     {
 
-        dd(UserRole::where('user_id',$this->id));
+        dd(UserRole::where('user_id',10));
+        // dd(UserRole::where('user_id',$this->id));
         // $userRole = UserRole::whereUserId($this->id);
         // dd($userRole->role_id);
         // return Role::find($userRole->role_id);
