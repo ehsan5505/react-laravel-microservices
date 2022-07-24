@@ -20,7 +20,7 @@ class UpdateRankingCommand extends Command
     public function handle()
     {
 
-        return "Test";
+        dd("Test");
 
         // $userService = new UserService();
 
