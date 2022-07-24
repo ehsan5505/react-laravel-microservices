@@ -65,11 +65,8 @@ class User
 
     public function role()
     {
-
         $userRole = UserRole::whereUserId($this->id)->first();
-        dd(Role::find($userRole->role_id));
-        // return $this->belongsTo(Role::class);
-        // return $this->hasOneThrough(Role::class,UserRole::class,'user_id','id','id','role_id');
+        return Role::find($userRole->role_id);
     }
 
     public function permissions()
