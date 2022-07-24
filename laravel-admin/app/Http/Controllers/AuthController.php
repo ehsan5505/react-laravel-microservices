@@ -21,6 +21,8 @@ class AuthController
     {
         $this->userService->allows('view','users');
         $user = $this->userService->getUser();
+
+        dd($user);
  
         $resource = new UserResource($user);
         if ($user->isInfluencer()) {
