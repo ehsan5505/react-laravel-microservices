@@ -17,7 +17,7 @@ const Rankings = () => {
       // setRankings(Object.entries(response.data));
       setRankings(response.data);
 
-      // console.info(rankings);
+      console.info(rankings);
     })();
   }, []);
   return (
