@@ -18,6 +18,6 @@ class RankingListener
 
         $user = User::find($order->user_id);
 
-        Redis::zincrby('rankings',$revenue,$user->full_name);
+        Redis::zincrby('rankings',$revenue,$user->first_name." ".$last_name);
     }
 }

@@ -11,6 +11,8 @@ class CreateUserRoleTable extends Migration
      *
      * @return void
      */
+
+     
     public function up()
     {
         Schema::create('user_roles', function (Blueprint $table) {
@@ -22,6 +24,7 @@ class CreateUserRoleTable extends Migration
         });
 
         // Database Seeding to fill the information already given
+        $userService =
         $users = \App\User::all();
         foreach ($users as $user) {
             DB::table('user_roles')->insert([
