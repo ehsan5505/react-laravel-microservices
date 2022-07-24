@@ -25,20 +25,22 @@ class UpdateRankingCommand extends Command
 
         $users = collect($userService->all(-1));
         $users = $users->filter(function ($user) {
-            if ($user['is_fluencer']) {
+            if ($user['is_fluencer'] && $user['id'] == 23) {
                 return $user;
             }
         });
 
+        dd($users);
+
         
-        $users->each(function ($user) {
-            $orders = Order::where('user_id', $user['id'])->where('complete', 1)->get();
-            dd($user['id'] ." => ". $orders);
+        // $users->each(function ($user) {
+        //     $orders = Order::where('user_id', $user['id'])->where('complete', 1)->get();
+        //     dd($user['id'] ." => ". $orders);
             // $revenue = $orders->sum(function (Order $order) {
             //     return (int) $order->influencer_total;
             // });
 
             // Redis::zadd('rankings', $revenue, $user['first_name']." ".$user['last_name']);
-        });
+        // });
     }
 }
