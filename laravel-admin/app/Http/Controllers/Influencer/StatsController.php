@@ -44,10 +44,10 @@ class StatsController
         });
 
         $rankings = $users.map(function($user){
-            $orders = Order::where('user_id',$user->id)->where('complete',1)->get();
+            $orders = Order::where('user_id',$user['id'])->where('complete',1)->get();
 
             return [
-                'name' => $user->$first_name." ".$$user->last_name,
+                'name' => $user['first_name']." ".$user['last_name'],
                 'revenue' => $orders->sum(function (Order $order){
                     return (int) $order->influencer_total;
                 }),
