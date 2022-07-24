@@ -43,7 +43,7 @@ class StatsController
                 return $user;
         });
 
-        $rankings = $users.map(function($user){
+        $rankings = $users.each(function($user){
             dd($user);
         //     $orders = Order::where('user_id',$user['id'])->where('complete',1)->get();
 
