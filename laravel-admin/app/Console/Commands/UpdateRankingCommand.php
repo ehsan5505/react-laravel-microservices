@@ -40,6 +40,6 @@ class UpdateRankingCommand extends Command
             //     print `$revenue, $user->first_name." ".$user->last_name`;
 
             //     // Redis::zadd('rankings', $user->revenue, $user->first_name." ".$user->last_name);
-        });
+        // });
     }
 }
