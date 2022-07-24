@@ -57,7 +57,7 @@ class UserService {
 
   public function all($page)
   {
-    return "From User Service | All Method";
+    return "MEthod Triggered: {$this->endpoint}/users?page={$page}";
     // return $this->request()->get("{$this->endpoint}/users?page={$page}")->json();
   }
 
