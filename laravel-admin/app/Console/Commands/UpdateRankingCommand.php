@@ -32,17 +32,17 @@ class UpdateRankingCommand extends Command
 
         // dd($users);
 
-        Redis::zrem("rankings",02.99, "Another Test");
-        dd(Redis::zrevrange('rankings',0,-1, 'WITHSCORES'));
+        // Redis::zrem("rankings",02.99, "Another Test");
+        // dd(Redis::zrevrange('rankings',0,-1, 'WITHSCORES'));
 
 
-        // $users->each(function ($user) {
-        //     $orders = Order::where('user_id', $user['id'])->where('complete', 1)->get();
-        //     $revenue = $orders->sum(function (Order $order) {
-        //         return (int) $order->influencer_total;
-        //     });
+        $users->each(function ($user) {
+            $orders = Order::where('user_id', $user['id'])->where('complete', 1)->get();
+            $revenue = $orders->sum(function (Order $order) {
+                return (int) $order->influencer_total;
+            });
 
-        //     Redis::zadd('rankings', $revenue, $user['first_name']." ".$user['last_name']);
-        // });
+            Redis::zadd('rankings', $revenue, $user['first_name']." ".$user['last_name']);
+        });
     }
 }
