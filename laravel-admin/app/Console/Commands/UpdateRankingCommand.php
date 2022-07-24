@@ -25,7 +25,7 @@ class UpdateRankingCommand extends Command
 
         $users = collect($userService->all(-1));
         $users = $users->filter(function ($user) {
-            dd($user->id);
+            dd($user);
             // if($user['is_fluencer']){
             //     return $user;
             // }
