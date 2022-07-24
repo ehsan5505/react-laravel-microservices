@@ -67,7 +67,7 @@ class User
     {
 
         $userRole = UserRole::whereUserId($this->id);
-        dd($userRole);
+        dd($userRole->role_id);
         // return Role::find($userRole->role_id);
         // return $this->belongsTo(Role::class);
         // return $this->hasOneThrough(Role::class,UserRole::class,'user_id','id','id','role_id');
