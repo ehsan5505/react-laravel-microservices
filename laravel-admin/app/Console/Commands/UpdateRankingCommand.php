@@ -30,10 +30,9 @@ class UpdateRankingCommand extends Command
             }
         });
 
+        dd($users);
 
-
-        $users->each(function ($user) {
-            print_r(`$user`);
+        // $users->each(function ($user) {
             // $orders = Order::where('user_id', $user['id'])->where('complete', 1)->get();
             // $revenue = $orders->sum(function (Order $order) {
             //     return (int) $order->influencer_total;
@@ -42,6 +41,6 @@ class UpdateRankingCommand extends Command
             //     print `$revenue, $user->first_name." ".$user->last_name`;
 
             //     // Redis::zadd('rankings', $user->revenue, $user->first_name." ".$user->last_name);
-        });
+        // });
     }
 }
