@@ -55,7 +55,6 @@ class User
 
     function __construct($json)
     {
-        dd($json);
         $this->id           = $json['id'];
         $this->first_name   = $json['first_name'];
         $this->last_name    = $json['last_name'];
