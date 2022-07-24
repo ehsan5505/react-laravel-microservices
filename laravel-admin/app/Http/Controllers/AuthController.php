@@ -19,23 +19,22 @@ class AuthController
     // Return the User Info
     public function user(Request $request)
     {
-        $this->userService->allows('view','users');
+        $this->userService->allows('view', 'users');
         $user = $this->userService->getUser();
-        dd($user);
- 
-        // $resource = new UserResource($user);
-        // if ($user->isInfluencer()) {
-        //     return ($resource)->additional([
-        //         'data' => [
-        //             'revenue' => $user->revenue()
-        //         ]
-        //     ]);
-        // }
-        // return ($resource)->additional([
-        //     'data' => [
-        //         'role'        => $user->role(),
-        //         'permissions' => $user->permissions()
-        //     ]
-        // ]);
+
+        $resource = new UserResource($user);
+        if ($user->isInfluencer()) {
+            return ($resource)->additional([
+                'data' => [
+                    'revenue' => $user->revenue()
+                ]
+            ]);
+        }
+        return ($resource)->additional([
+            'data' => [
+                'role'        => $user->role(),
+                'permissions' => $user->permissions()
+            ]
+        ]);
     }
 }
