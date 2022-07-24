@@ -66,7 +66,8 @@ class User
     public function role()
     {
 
-        dd(UserRole::where('user_id',10));
+        dd("For role we need to further check");
+
         // dd(UserRole::where('user_id',$this->id));
         // $userRole = UserRole::whereUserId($this->id);
         // dd($userRole->role_id);
