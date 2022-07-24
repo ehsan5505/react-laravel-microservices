@@ -53,7 +53,7 @@ class User
     public $email;
     public $is_fluencer;
 
-    function __construct($json)
+    function public __construct($json)
     {
         $this->id           = $json['id'];
         $this->first_name   = $json['first_name'];
@@ -62,9 +62,6 @@ class User
         $this->is_fluencer  = $json['is_fluencer'];
     }
 
-    public function __contructor($json){
-        dd("GOogle it ");
-    }
 
     public function role()
     {
