@@ -16,17 +16,13 @@ class UpdateRankingCommand extends Command
      */
     protected $signature = 'update:rankings';
     
-    private $userService;
-
-    public function __construct(UserService $userService)
-    {
-        $this->userService = $userService;
-    }
 
     public function handle()
     {
 
-        $users = collect($this->userService->all(-1));
+        $userService = new UserService();
+
+        $users = collect($userService->all(-1));
         $users = $users->filter(function($user){
             return $user->is_fluencer;
         });
