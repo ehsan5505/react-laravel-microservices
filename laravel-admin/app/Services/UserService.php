@@ -16,25 +16,12 @@ class UserService {
     ];
   }
 
-  public function jsonParse($json)
-  {
-
-    $user = new User();
-    $user->id           = $json['id'];
-    $user->first_name   = $json['first_name'];
-    $user->last_name    = $json['last_name'];
-    $user->email        = $json['email'];
-    $user->is_fluencer  = $json['is_fluencer'];
-    
-    return $user;
-  }
-
 
   public function getUser(){
     // $response = \Http::withHeaders($this->headers())->get(`{$this->endpoint}/user`);
     $json = \Http::withHeaders($this->headers())->get("{$this->endpoint}/user")->json();
     
-    return $this->jsonParse($json);
+    return new User($json);
   }
 
 
@@ -67,17 +54,17 @@ class UserService {
 
   public function find($id)
   {
-    return $this->jsonParse($this->request()->get("{$this->endpoint}/users/{$id}")->json());
+    return new User($this->request()->get("{$this->endpoint}/users/{$id}")->json());
   }
 
   public function create($data)
   {
-    return $this->jsonParse($this->request()->post("{$this->endpoint}/users",$data)->json());
+    return new User($this->request()->post("{$this->endpoint}/users",$data)->json());
   }
 
   public function update($id,$data)
   {
-    return $this->jsonParse($this->request()->put("{$this->endpoint}/users/{$id}",$data)->json());
+    return new User($this->request()->put("{$this->endpoint}/users/{$id}",$data)->json());
   }
 
   public function delete($id)

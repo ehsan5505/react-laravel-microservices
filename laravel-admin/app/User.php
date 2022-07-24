@@ -44,25 +44,40 @@ use Laravel\Passport\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereIsFluencer($value)
  * @property-read mixed $revenue
  */
-class User extends Authenticatable
+class User 
 {
-    use HasApiTokens, Notifiable;
 
-    protected $guarded = ['id'];
+    public $id;
+    public $first_name;
+    public $last_name;
+    public $email;
+    public $is_fluencer;
 
-    protected $hidden = [
-        'password',
-    ];
+    public __contructor($json){
+        $this->id           = $json['id'];
+        $this->first_name   = $json['first_name'];
+        $this->last_name    = $json['last_name'];
+        $this->email        = $json['email'];
+        $this->is_fluencer  = $json['is_fluencer'];
+        
+        return $user;
+    
+
+    }
+
 
     public function role()
     {
+
+        $userRole = UserRole::whereUserId($this->id);
+        return Role::find($userRole->role_id);
         // return $this->belongsTo(Role::class);
-        return $this->hasOneThrough(Role::class,UserRole::class,'user_id','id','id','role_id');
+        // return $this->hasOneThrough(Role::class,UserRole::class,'user_id','id','id','role_id');
     }
 
     public function permissions()
     {
-        return $this->role->permissions->pluck('name');
+        return $this->role()->permissions->pluck('name');
     }
 
     public function hasAccess($access)
@@ -80,7 +95,7 @@ class User extends Authenticatable
         return $this->is_fluencer === 1;
     }
 
-    public function getRevenueAttribute()
+    public function revenue()
     {
         $orders = Order::where('user_id',$this->id)->where('complete',1)->get();
         return $orders->sum(function (Order $order){
@@ -88,7 +103,7 @@ class User extends Authenticatable
         });
     }
 
-    public function getFullNameAttribute()
+    public function fullName()
     {
         return $this->first_name." ".$this->last_name;
     }
