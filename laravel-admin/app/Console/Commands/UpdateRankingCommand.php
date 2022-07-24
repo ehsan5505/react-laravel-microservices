@@ -32,8 +32,8 @@ class UpdateRankingCommand extends Command
 
         // dd($users);
 
+        Redis::zadd("rankings",02.99, "Backend Test User");
         dd(Redis::zrevrange('rankings',0,-1, 'WITHSCORES'));
-        // Redis::zadd("rankings",44, "Another Test");
 
 
         // $users->each(function ($user) {
