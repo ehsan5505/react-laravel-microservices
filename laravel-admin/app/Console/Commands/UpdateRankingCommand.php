@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Order;
+use App\Services\UserService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Redis;
 
