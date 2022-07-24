@@ -60,7 +60,7 @@ class User
         // $this->email        = $json['email'];
         // $this->is_fluencer  = $json['is_fluencer'];
         // dd($json);
-        return "Power";
+        dd("GOogle it ");
     }
 
     public function role()
