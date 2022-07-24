@@ -53,18 +53,13 @@ class User
     public $email;
     public $is_fluencer;
 
-    public __contructor($json){
+    public function __contructor($json){
         $this->id           = $json['id'];
         $this->first_name   = $json['first_name'];
         $this->last_name    = $json['last_name'];
         $this->email        = $json['email'];
         $this->is_fluencer  = $json['is_fluencer'];
-        
-        return $user;
-    
-
     }
-
 
     public function role()
     {
