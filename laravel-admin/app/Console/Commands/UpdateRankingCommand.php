@@ -32,10 +32,10 @@ class UpdateRankingCommand extends Command
 
         $users->each(function ($user) {
             $orders = Order::where('user_id', $user['id'])->where('complete', 1)->get();
-            dd($orders);
-            // $revenue = $orders->sum(function (Order $order) {
-                //     return (int) $order->influencer_total;
-                // });
+            $revenue = $orders->sum(function (Order $order) {
+                    return (int) $order->influencer_total;
+                });
+                dd($revenue);
 
             //     print `$revenue, $user->first_name." ".$user->last_name`;
 
