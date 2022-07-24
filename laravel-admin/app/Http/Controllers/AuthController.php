@@ -24,19 +24,19 @@ class AuthController
 
         dd($user);
  
-        $resource = new UserResource($user);
-        if ($user->isInfluencer()) {
-            return ($resource)->additional([
-                'data' => [
-                    'revenue' => $user->revenue()
-                ]
-            ]);
-        }
-        return ($resource)->additional([
-            'data' => [
-                'role'        => $user->role(),
-                'permissions' => $user->permissions()
-            ]
-        ]);
+        // $resource = new UserResource($user);
+        // if ($user->isInfluencer()) {
+        //     return ($resource)->additional([
+        //         'data' => [
+        //             'revenue' => $user->revenue()
+        //         ]
+        //     ]);
+        // }
+        // return ($resource)->additional([
+        //     'data' => [
+        //         'role'        => $user->role(),
+        //         'permissions' => $user->permissions()
+        //     ]
+        // ]);
     }
 }
