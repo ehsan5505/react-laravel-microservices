@@ -30,12 +30,6 @@ class AuthController
                 ]
             ]);
         }
-        dd(($resource)->additional([
-            'data' => [
-                'role'        => $user->role()->name,
-                'permissions' => $user->permissions()
-            ]
-        ]));
         return ($resource)->additional([
             'data' => [
                 'role'        => $user->role(),
