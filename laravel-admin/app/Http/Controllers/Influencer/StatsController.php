@@ -45,7 +45,7 @@ class StatsController
 
         $users->each(function($user){
             dd($user);
-        })
+        });
 
 
         // $rankings = $users.each(function($user){
