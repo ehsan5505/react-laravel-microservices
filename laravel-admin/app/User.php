@@ -55,16 +55,15 @@ class User
 
     function __construct()
     {
-        dd("Inside the User Model");
+        $this->id           = $json['id'];
+        $this->first_name   = $json['first_name'];
+        $this->last_name    = $json['last_name'];
+        $this->email        = $json['email'];
+        $this->is_fluencer  = $json['is_fluencer'];
+        dd($json);
     }
 
     public function __contructor($json){
-        // $this->id           = $json['id'];
-        // $this->first_name   = $json['first_name'];
-        // $this->last_name    = $json['last_name'];
-        // $this->email        = $json['email'];
-        // $this->is_fluencer  = $json['is_fluencer'];
-        // dd($json);
         dd("GOogle it ");
     }
 
