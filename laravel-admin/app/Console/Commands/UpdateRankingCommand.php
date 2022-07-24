@@ -37,7 +37,7 @@ class UpdateRankingCommand extends Command
                 });
                 // dd($revenue);
 
-                print `$revenue => {$user['first_name']} {$user['last_name']}`;
+                dd(`$revenue => {$user['first_name']} {$user['last_name']}`);
 
             //     // Redis::zadd('rankings', $user->revenue, $user->first_name." ".$user->last_name);
         });
