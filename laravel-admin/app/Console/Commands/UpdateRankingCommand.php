@@ -32,7 +32,7 @@ class UpdateRankingCommand extends Command
 
         // dd($users);
 
-        dd(Redis::zrevrange('rankings',0,-1));
+        dd(Redis::zrevrange('rankings',0,-1, 'WITHSCORES'));
         // Redis::zadd("rankings",44, "Another Test");
 
 
