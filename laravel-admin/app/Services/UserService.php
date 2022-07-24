@@ -3,7 +3,7 @@
 
 namespace App\Services;
 
-use \App\Model\User;
+use \App\Model;
 
 class UserService {
 
