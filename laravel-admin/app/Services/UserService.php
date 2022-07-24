@@ -58,8 +58,8 @@ class UserService {
 
   public function all($page)
   {
-    return "MEthod Triggered: {$this->endpoint}/users?page={$page}";
-    // return $this->request()->get("{$this->endpoint}/users?page={$page}")->json();
+    // return "MEthod Triggered: {$this->endpoint}/users?page={$page}";
+    return $this->request()->get("{$this->endpoint}/users?page={$page}")->json();
   }
 
   public function find($id)
