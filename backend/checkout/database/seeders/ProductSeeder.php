@@ -18,7 +18,7 @@ class ProductSeeder extends Seeder
         // dump($products);
         foreach($products as $product)
         {
-            dump($product['id']);
+            dump($product);
             // Product::create([
             //     'id'        =>  $product['id'],
             //     'title'     =>  $product['title'],
