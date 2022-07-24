@@ -53,6 +53,11 @@ class User
     public $email;
     public $is_fluencer;
 
+    function __construct()
+    {
+        dd("Inside the User Model");
+    }
+
     public function __contructor($json){
         // $this->id           = $json['id'];
         // $this->first_name   = $json['first_name'];
