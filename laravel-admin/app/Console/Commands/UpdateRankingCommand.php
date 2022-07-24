@@ -24,8 +24,6 @@ class UpdateRankingCommand extends Command
         $userService = new UserService();
 
         $users = collect($userService->all(-1));
-        // dd($users);
-        // $users = $users['data'];
         $users = $users->filter(function ($user) {
             if($user['is_fluencer']){
                 return $user;
@@ -35,12 +33,12 @@ class UpdateRankingCommand extends Command
 
 
         $users->each(function ($user) {
-            $orders = Order::where('user_id', $user['id'])->where('complete', 1)->get();
-            $revenue = $orders->sum(function (Order $order) {
-                return (int) $order->influencer_total;
-            });
-
             dd(`$user`);
+            // $orders = Order::where('user_id', $user['id'])->where('complete', 1)->get();
+            // $revenue = $orders->sum(function (Order $order) {
+            //     return (int) $order->influencer_total;
+            // });
+
             //     print `$revenue, $user->first_name." ".$user->last_name`;
 
             //     // Redis::zadd('rankings', $user->revenue, $user->first_name." ".$user->last_name);
