@@ -34,7 +34,7 @@ class OrderSeeder extends Seeder
                 'transaction_id'=>  $order['transaction_id'],
                 'created_at'=>  $order['created_at'],
                 'updated_at'=>  $order['updated_at'],
-            ])
+            ]);
         }
     }
 }
