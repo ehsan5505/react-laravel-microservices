@@ -55,11 +55,12 @@ class StatsController
             ];
         });
 
-        dd($rankings->sortByDesc('revenue')->values());
+        // dd($rankings->sortByDesc('revenue')->values());
         // return $rankings->sortByDesc('revenue')->values();
 
 
         // return \Cache::get('rankings');
         // return Redis::zrevrange('rankings', 0, -1, 'WITHSCORES');
+        dd(Redis::zrevrange('rankings', 0, -1, 'WITHSCORES'));
     }
 }
