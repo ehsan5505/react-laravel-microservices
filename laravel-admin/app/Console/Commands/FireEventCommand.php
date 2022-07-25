@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 // use App\Jobs\AdminAdded;
 
 use App\Jobs\ProductCreated;
-use App\Models\Product;
+use App\Product;
 use Illuminate\Console\Command;
 
 class FireEventCommand extends Command
@@ -16,7 +16,8 @@ class FireEventCommand extends Command
     {
 
         $product = Product::find(20);
-        ProductCreated::dispatch($product->toArray())->onQueue('checkout_queue');
+        return $product;
+        // ProductCreated::dispatch($product->toArray())->onQueue('checkout_queue');
         
         // return "Pakistan";
         // AdminAdded::dispatch("john@cena.com");
