@@ -12,21 +12,16 @@ class LinkCreated implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    private $link;
+    private $linkProduct;
+
+    public function __construct($link,$linkProducts)
     {
-        //
+        $this->link = $link;
+        $this->linkProducts = $linkProducts;
     }
 
-    /**
-     * Execute the job.
-     *
-     * @return void
-     */
+
     public function handle()
     {
         //

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Events\ProductUpdatedEvent;
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Resources\ProductResource;
+use App\Jobs\ProductCreated;
+use App\Jobs\ProductDeleted;
+use App\Jobs\ProductUpdated;
 use App\Product;
 use App\Services\UserService;
 use Illuminate\Http\Request;
@@ -39,6 +42,9 @@ class ProductController
         $this->userService->allows('edit', 'products');
         $product = Product::create($request->only(['title', 'description', 'imageUrl', 'price']));
         event(new ProductUpdatedEvent());
+
+        ProductCreated::dispatch($product->toArray());
+
         return response(new ProductResource($product), Response::HTTP_CREATED);
     }
 
@@ -48,6 +54,9 @@ class ProductController
         $product = Product::find($id);
         $product->update($request->only(['title', 'description', 'imageUrl', 'price']));
         event(new ProductUpdatedEvent());
+
+        ProductUpdated::dispatch($product->toArray());
+
         return response(new ProductResource($product), Response::HTTP_ACCEPTED);
     }
 
@@ -55,6 +64,7 @@ class ProductController
     {
         $this->userService->allows('edit', 'products');
         Product::destroy($id);
+        ProductDeleted::dispatch($id);
         return response(null, Response::HTTP_NO_CONTENT);
     }
 }
