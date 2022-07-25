@@ -16,6 +16,12 @@ services:
       - 8002:8000
     depends_on:
       - checkout_db
+
+  queue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: 'php artisan queue:work'
       
   checkout_db:
     image: mysql:5.7.22
