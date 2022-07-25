@@ -1,0 +1,16 @@
+{
+    "name": "erafeeque/common",
+    "description": "This is the package for the Microservice",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ehsan",
+            "email": "ehsan5505@gmail.com"
+        }
+    ],
+    "require": {
+    	"laravel/framework": "^7.0"
+    }
+
+}
