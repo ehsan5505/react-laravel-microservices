@@ -43,7 +43,7 @@ class ProductController
         $product = Product::create($request->only(['title', 'description', 'imageUrl', 'price']));
         event(new ProductUpdatedEvent());
 
-        ProductCreated::dispatch($product->toArray());
+        ProductCreated::dispatch($product->toArray())->onQueue('checkout_queue');
 
         return response(new ProductResource($product), Response::HTTP_CREATED);
     }
@@ -55,7 +55,7 @@ class ProductController
         $product->update($request->only(['title', 'description', 'imageUrl', 'price']));
         event(new ProductUpdatedEvent());
 
-        ProductUpdated::dispatch($product->toArray());
+        ProductUpdated::dispatch($product->toArray())->onQueue('checkout_queue');
 
         return response(new ProductResource($product), Response::HTTP_ACCEPTED);
     }
@@ -64,7 +64,7 @@ class ProductController
     {
         $this->userService->allows('edit', 'products');
         Product::destroy($id);
-        ProductDeleted::dispatch($id);
+        ProductDeleted::dispatch($id)->onQueue('checkout_queue');
         return response(null, Response::HTTP_NO_CONTENT);
     }
 }
