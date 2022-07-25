@@ -15,7 +15,7 @@ class FireEventCommand extends Command
     {
 
         $product = Product::find(20);
-        print_r($product);
+        print_r($product->toArray());
         // ProductCreated::dispatch($product->toArray())->onQueue('checkout_queue');
         
         // return "Pakistan";
