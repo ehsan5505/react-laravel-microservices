@@ -3,9 +3,8 @@
 namespace App\Console\Commands;
 
 // use App\Jobs\AdminAdded;
-
-use App\Jobs\ProductCreated;
 use App\Product;
+use App\Jobs\ProductCreated;
 use Illuminate\Console\Command;
 
 class FireEventCommand extends Command
