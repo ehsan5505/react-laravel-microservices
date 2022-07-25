@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 // use App\Jobs\AdminAdded;
-use App\Product;
+use App\Models\Product;
 use App\Jobs\ProductCreated;
 use Illuminate\Console\Command;
 
