@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class UserRole extends Seeder
+class UserRoleSeeder extends Seeder
 {
     public function run()
     {
