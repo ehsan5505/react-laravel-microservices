@@ -10,6 +10,7 @@ class AuthController
     // Return the User Info
     public function user()
     {
-        return new UserResource((new UserService())->getUser());
+        dd("Atleast something is happening");
+        // return new UserResource((new UserService())->getUser());
     }
 }
