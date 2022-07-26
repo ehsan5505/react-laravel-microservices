@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6997cd83aab0be214cdda554ed02d2b9",
+    "content-hash": "fcb66b8be8f3a95032e1728be8a51753",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -492,6 +492,43 @@
                 }
             ],
             "time": "2020-12-29T14:50:06+00:00"
+        },
+        {
+            "name": "erafeeque/common",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ehsan5505/laravel-microservice-common-pkg.git",
+                "reference": "b09b4e0076dfdbe73cdb3519cb048809fa195023"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ehsan5505/laravel-microservice-common-pkg/zipball/b09b4e0076dfdbe73cdb3519cb048809fa195023",
+                "reference": "b09b4e0076dfdbe73cdb3519cb048809fa195023",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^8.0",
+                "php": "^7.4"
+            },
+            "default-branch": true,
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ehsan",
+                    "email": "ehsan5505@gmail.com"
+                }
+            ],
+            "description": "This is the package for the Microservice",
+            "support": {
+                "issues": "https://github.com/ehsan5505/laravel-microservice-common-pkg/issues",
+                "source": "https://github.com/ehsan5505/laravel-microservice-common-pkg/tree/master"
+            },
+            "time": "2022-07-25T11:10:56+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -8517,7 +8554,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "erafeeque/common": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
