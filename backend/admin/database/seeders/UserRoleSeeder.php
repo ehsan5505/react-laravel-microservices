@@ -12,11 +12,12 @@ class UserRoleSeeder extends Seeder
         $user_roles = \DB::connection('mysql_migrate')->table('user_roles')->get();
 
         foreach ($user_roles as $user_role) {
-            UserRole::create([
-                'id'        => $user_role['id'],
-                'user_id'   => $user_role['user_id'],
-                'role_id'   => $user_role['role_id'],
-            ]);
+            dump($user_role);
+            // UserRole::create([
+            //     'id'        => $user_role['id'],
+            //     'user_id'   => $user_role['user_id'],
+            //     'role_id'   => $user_role['role_id'],
+            // ]);
         }
     }
 }
