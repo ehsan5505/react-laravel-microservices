@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Influencer;
+namespace App\Http\Controllers;
 
 use App\Http\Resources\LinkResource;
 use App\Jobs\LinkCreated;
-use App\Link;
-use App\LinkProduct;
-use App\Services\UserService;
+use App\Models\Link;
+use App\Models\LinkProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Microservice\UserService;
 
 class LinkController
 {
@@ -38,7 +38,7 @@ class LinkController
             $linkProducts[] = $linkProduct->toArray();
         }
 
-        LinkCreated::dispatch($link,$linkProducts)->onQueue('checkout_queue');
+        // LinkCreated::dispatch($link,$linkProducts)->onQueue('checkout_queue');
 
         return new LinkResource($link);
     }

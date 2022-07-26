@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Influencer;
+namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductResource;
-use App\Product;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
