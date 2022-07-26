@@ -14,6 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('user', [AuthController::class, 'user']);
+
+// Admin Routes
+Route::group([
+    'middleware' => 'scope.admin',
+], function () {
+    Route::get('chart', [DashboardController::class, 'chart']);
+    Route::post('image', [ImageController::class, 'upload']);
+    Route::get("export", [OrderController::class, 'export']);
+
+    Route::apiResource("users", UserController::class);
+    Route::apiResource('roles', RoleController::class);
+    Route::apiResource('products', ProductController::class);
+    Route::apiResource('orders', OrderController::class)->only('index', 'show');
+    Route::apiResource('permissions', PermissionController::class)->only('index');
 });
