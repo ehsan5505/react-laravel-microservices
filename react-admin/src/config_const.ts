@@ -1,5 +1,5 @@
 const dev = {
-  BASE_URL: "http://192.168.22.138:8004/api/admin",
+  BASE_URL: "http://192.168.22.138:8004/api",
   USER_URL: "http://192.168.22.138:8001/api",
   BASE_USER: "http://192.168.22.138:8004/api",
 };
