@@ -6,13 +6,9 @@ use Illuminate\Database\Seeder;
 
 class UserRole extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        //
+        $user_roles = \DB::connection('mysql_migrate')->table('user_roles')->get();
+        dump($user_roles);
     }
 }
