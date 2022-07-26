@@ -30,6 +30,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $revenue
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereRevenue($value)
  */
 class OrderItem extends Model
 {
