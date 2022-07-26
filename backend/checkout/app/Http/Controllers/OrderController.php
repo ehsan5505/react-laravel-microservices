@@ -10,7 +10,6 @@ use App\Models\Product;
 use Illuminate\Mail;
 use Cartalyst\Stripe\Stripe;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class OrderController
 {
@@ -101,6 +100,7 @@ class OrderController
             $orderItems[] = $item->toArray();
         }
 
+        OrderCompleted::dispatch($data,$orderItems)->onQueue('admin_queue');
         OrderCompleted::dispatch($data,$orderItems)->onQueue('influencer_queue');
         OrderCompleted::dispatch($data,$orderItems)->onQueue('emails_queue');
 
