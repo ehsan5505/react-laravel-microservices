@@ -42,5 +42,5 @@ services:
       - 33070:3306
   redis:
     image: redis:latest
-    port:
+    ports:
       - 6379:6379
