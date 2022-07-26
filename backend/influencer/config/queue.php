@@ -70,6 +70,7 @@ return [
             'block_for' => null,
             'after_commit' => false,
         ],
+
         'rabbitmq' => [
 
             'driver' => 'rabbitmq',
@@ -85,6 +86,7 @@ return [
                     'vhost' => env('RABBITMQ_VHOST', '/'),
                 ],
             ],
+        ]
 
     ],
 
