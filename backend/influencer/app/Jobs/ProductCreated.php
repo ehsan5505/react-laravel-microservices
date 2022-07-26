@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Product;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -12,7 +13,7 @@ class ProductCreated implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private $data; 
+    private $data;
     public function __construct($data)
     {
         $this->data = $data;
@@ -20,6 +21,7 @@ class ProductCreated implements ShouldQueue
 
     public function handle()
     {
-        //
+        Product::created($this->data);
+        \Cache::forget('products');
     }
 }

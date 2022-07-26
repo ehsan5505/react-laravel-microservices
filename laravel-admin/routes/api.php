@@ -34,24 +34,3 @@ Route::group([
     Route::apiResource('orders', 'OrderController')->only('index', 'show');
     Route::apiResource('permissions', 'PermissionController')->only('index');
 });
-
-// Influencer Routes
-Route::group(
-    [
-        "prefix" => "influencer",
-        "namespace" => "Influencer"
-    ],
-    function () {
-
-        Route::get('products', 'ProductController@index');
-
-        Route::group(
-            ["middleware" => ['scope.influencer']],
-            function () {
-                Route::post('links', "LinkController@store");
-                Route::get('stats', "StatsController@index");
-                Route::get('rankings', "StatsController@rankings");
-            }
-        );
-    }
-);

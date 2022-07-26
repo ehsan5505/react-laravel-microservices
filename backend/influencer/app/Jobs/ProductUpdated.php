@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Product;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -20,6 +21,8 @@ class ProductUpdated implements ShouldQueue
 
     public function handle()
     {
-        //
+        $product = Product::find($this->data['id']);
+        $product->update($this->data);
+        \Cache::forget('products');
     }
 }

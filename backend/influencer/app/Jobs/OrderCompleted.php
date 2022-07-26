@@ -9,6 +9,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Redis;
+use Microservice\UserService;
 
 class OrderCompleted implements ShouldQueue
 {
@@ -24,7 +26,7 @@ class OrderCompleted implements ShouldQueue
 
     public function handle()
     {
-        Order::created([
+        $order = Order::create([
             'id'        => $this->orderData['id'],
             'code'      => $this->orderData['code'],
             'user_id'   => $this->orderData['user_id'],
@@ -38,5 +40,12 @@ class OrderCompleted implements ShouldQueue
             unset($item['admin_revenue']);
             OrderItem::create($item);
         }
+
+        $revenue = $order->total;
+        // $revenue = $order->total;
+
+        $userService = new UserService();
+        $user = $userService->get($order->user_id);
+        Redis::zincrby('rankings',$revenue,$user->fullName());
     }
 }

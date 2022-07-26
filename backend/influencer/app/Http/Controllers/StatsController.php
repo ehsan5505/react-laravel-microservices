@@ -24,34 +24,30 @@ class StatsController
 
         $links = Link::whereUserId($user->id)->get();
         return $links->map(function (Link $link) {
-            $orders = Order::whereCode($link->code)->whereComplete(1)->get();
+            $orders = Order::whereCode($link->code)->get();
             return [
                 "code"      =>  $link->code,
                 "count"     =>  $orders->count(),
-                "revenue"   =>  $orders->sum(function (Order $order) {
-                    return $order->influencer_total;
-                })
+                "revenue"   =>  $orders->sum(fn (Order $order) => $order->total)
             ];
         });
     }
 
     public function rankings()
     {
-        $users=collect($this->userService->all(-1));
-        $users = $users->filter(function($user){
-            if($user['is_fluencer'])
+        $users = collect($this->userService->all(-1));
+        $users = $users->filter(function ($user) {
+            if ($user['is_fluencer'])
                 return $user;
         });
 
 
-        $rankings = $users->map(function($user){
-            $orders = Order::where('user_id',$user['id'])->where('complete',1)->get();
+        $rankings = $users->map(function ($user) {
+            $orders = Order::where('user_id', $user['id'])->get();
 
             return [
-                'name' => $user['first_name']." ".$user['last_name'],
-                'revenue' => $orders->sum(function (Order $order){
-                    return (int) $order->influencer_total;
-                }),
+                'name' => $user->fullName(),
+                'revenue' => $orders->sum(fn (Order $order) => (int) $order->total),
             ];
         });
 

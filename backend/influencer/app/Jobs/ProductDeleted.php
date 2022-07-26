@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Product;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -21,6 +22,7 @@ class ProductDeleted implements ShouldQueue
 
     public function handle()
     {
-        //
+        Product::destroy($this->id);
+        \Cache::forget('products');
     }
 }
