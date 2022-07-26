@@ -14,10 +14,12 @@ class OrderCompleted implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $data;
-    public function __construct($data)
+    public $orderData;
+    private $orderItemsData;
+    public function __construct($orderData, $orderItemsData)
     {
-        $this->data = $data;
+        $this->orderData = $orderData;
+        $this->orderItemsData = $orderItemsData;
     }
 
     public function handle()
@@ -25,11 +27,11 @@ class OrderCompleted implements ShouldQueue
         \Mail::send(
             'influencer.admin',
             [
-                'id' => $this->data['id'],
-                'admin_total' => $this->data['admin_total']
+                'id' => $this->orderData['id'],
+                'admin_total' => $this->orderData['admin_total']
             ],
             function (Message $message) {
-                $message->to($this->data['email']);
+                $message->to($this->orderData['email']);
                 $message->subject('[Test MicroService] || A new order been confirmed!');
             }
         );
@@ -37,11 +39,11 @@ class OrderCompleted implements ShouldQueue
         \Mail::send(
             'influencer.influencer',
             [
-                'code' => $this->data['code'],
-                'influencer_total' => $this->data['influencer_total']
+                'code' => $this->orderData['code'],
+                'influencer_total' => $this->orderData['influencer_total']
             ],
             function (Message $message) {
-                $message->to($this->data['influencer_email']);
+                $message->to($this->orderData['influencer_email']);
                 $message->subject("[Test MicroService] || Order Confirmed");
             }
         );

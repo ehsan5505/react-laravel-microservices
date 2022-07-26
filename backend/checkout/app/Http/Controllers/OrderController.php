@@ -82,7 +82,7 @@ class OrderController
 
     public function confirm(Request $request)
     {
-        
+
         if (!$order = Order::whereTransactionId($request->input('source'))->first()) {
             return response([
                 'error' =>  "Order Not Found!"
@@ -90,11 +90,20 @@ class OrderController
         }
         $order->complete = 1;
         $order->save();
-        
+
         $data = $order->toArray();
         $data['influencer_total'] = $order->influencer_total;
         $data['admin_total']    =   $order->admin_total;
-        OrderCompleted::dispatch($data);
+
+        $orderItems = [];
+
+        foreach ($order->orderItems as $item) {
+            $orderItems[] = $item->toArray();
+        }
+
+        OrderCompleted::dispatch($data,$orderItems)->onQueue('influencer_queue');
+        OrderCompleted::dispatch($data,$orderItems)->onQueue('emails_queue');
+
 
         return response([
             'message' => 'success'

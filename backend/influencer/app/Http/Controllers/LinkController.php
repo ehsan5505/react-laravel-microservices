@@ -38,7 +38,7 @@ class LinkController
             $linkProducts[] = $linkProduct->toArray();
         }
 
-        // LinkCreated::dispatch($link,$linkProducts)->onQueue('checkout_queue');
+        LinkCreated::dispatch($link,$linkProducts)->onQueue('checkout_queue');
 
         return new LinkResource($link);
     }

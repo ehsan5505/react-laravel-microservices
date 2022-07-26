@@ -8,15 +8,16 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class OrderCompleted implements ShouldQueue
+class LinkCreated implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $orderData;
-    private $orderItemsData;
-    public function __construct($orderData, $orderItemsData)
+    private $link;
+    private $linkProduct;
+
+    public function __construct($link, $linkProducts)
     {
-        $this->orderData = $orderData;
-        $this->orderItemsData = $orderItemsData;
+        $this->link = $link;
+        $this->linkProducts = $linkProducts;
     }
 }

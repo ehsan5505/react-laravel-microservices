@@ -8,15 +8,19 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class OrderCompleted implements ShouldQueue
+class ProductDeleted implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $orderData;
-    private $orderItemsData;
-    public function __construct($orderData, $orderItemsData)
+    private $id;
+    public function __construct($id)
     {
-        $this->orderData = $orderData;
-        $this->orderItemsData = $orderItemsData;
+        $this->id = $id;
+    }
+
+
+    public function handle()
+    {
+        //
     }
 }
