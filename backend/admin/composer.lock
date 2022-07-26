@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "182a4085998a222d61680f07a34cd17a",
+    "content-hash": "3f3b8ec5d4636e5f898494532e9afc88",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1050,6 +1050,43 @@
                 }
             ],
             "time": "2020-12-29T14:50:06+00:00"
+        },
+        {
+            "name": "erafeeque/common",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ehsan5505/laravel-microservice-common-pkg.git",
+                "reference": "b09b4e0076dfdbe73cdb3519cb048809fa195023"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ehsan5505/laravel-microservice-common-pkg/zipball/b09b4e0076dfdbe73cdb3519cb048809fa195023",
+                "reference": "b09b4e0076dfdbe73cdb3519cb048809fa195023",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^8.0",
+                "php": "^7.4"
+            },
+            "default-branch": true,
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ehsan",
+                    "email": "ehsan5505@gmail.com"
+                }
+            ],
+            "description": "This is the package for the Microservice",
+            "support": {
+                "issues": "https://github.com/ehsan5505/laravel-microservice-common-pkg/issues",
+                "source": "https://github.com/ehsan5505/laravel-microservice-common-pkg/tree/master"
+            },
+            "time": "2022-07-25T11:10:56+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -8517,12 +8554,14 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "erafeeque/common": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
